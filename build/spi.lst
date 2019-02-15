@@ -1,0 +1,1132 @@
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"spi.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_SPI2_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_SPI2_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MX_SPI2_Init:
+  26              	.LFB126:
+  27              		.file 1 "Src/spi.c"
+   1:Src/spi.c     **** /**
+   2:Src/spi.c     ****   ******************************************************************************
+   3:Src/spi.c     ****   * File Name          : SPI.c
+   4:Src/spi.c     ****   * Description        : This file provides code for the configuration
+   5:Src/spi.c     ****   *                      of the SPI instances.
+   6:Src/spi.c     ****   ******************************************************************************
+   7:Src/spi.c     ****   ** This notice applies to any and all portions of this file
+   8:Src/spi.c     ****   * that are not between comment pairs USER CODE BEGIN and
+   9:Src/spi.c     ****   * USER CODE END. Other portions of this file, whether 
+  10:Src/spi.c     ****   * inserted by the user or by software development tools
+  11:Src/spi.c     ****   * are owned by their respective copyright owners.
+  12:Src/spi.c     ****   *
+  13:Src/spi.c     ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:Src/spi.c     ****   *
+  15:Src/spi.c     ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:Src/spi.c     ****   * are permitted provided that the following conditions are met:
+  17:Src/spi.c     ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:Src/spi.c     ****   *      this list of conditions and the following disclaimer.
+  19:Src/spi.c     ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Src/spi.c     ****   *      this list of conditions and the following disclaimer in the documentation
+  21:Src/spi.c     ****   *      and/or other materials provided with the distribution.
+  22:Src/spi.c     ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:Src/spi.c     ****   *      may be used to endorse or promote products derived from this software
+  24:Src/spi.c     ****   *      without specific prior written permission.
+  25:Src/spi.c     ****   *
+  26:Src/spi.c     ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Src/spi.c     ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:Src/spi.c     ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:Src/spi.c     ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:Src/spi.c     ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:Src/spi.c     ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 2
+
+
+  32:Src/spi.c     ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:Src/spi.c     ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:Src/spi.c     ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:Src/spi.c     ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:Src/spi.c     ****   *
+  37:Src/spi.c     ****   ******************************************************************************
+  38:Src/spi.c     ****   */
+  39:Src/spi.c     **** 
+  40:Src/spi.c     **** /* Includes ------------------------------------------------------------------*/
+  41:Src/spi.c     **** #include "spi.h"
+  42:Src/spi.c     **** 
+  43:Src/spi.c     **** #include "gpio.h"
+  44:Src/spi.c     **** 
+  45:Src/spi.c     **** /* USER CODE BEGIN 0 */
+  46:Src/spi.c     **** //mpu6500
+  47:Src/spi.c     **** #define WHO_AM_I      0x75
+  48:Src/spi.c     **** #define Certain       0x70//return from "WHO_AM_I"
+  49:Src/spi.c     **** #define CONFIG        0x1A
+  50:Src/spi.c     **** #define GYRO_CONFIG   0x1B
+  51:Src/spi.c     **** #define PWR_MGMT_1    0x6B
+  52:Src/spi.c     **** #define GYRO_OUT_Z_L  0x48
+  53:Src/spi.c     **** #define GYRO_OUT_Z_H  0x47
+  54:Src/spi.c     **** #define SETTING       0x80  //0b1000 0000 8bitの上位bitを立てると
+  55:Src/spi.c     **** 
+  56:Src/spi.c     **** #define GYRO_FACTOR  16.4f
+  57:Src/spi.c     **** 
+  58:Src/spi.c     **** #define TRUE 0
+  59:Src/spi.c     **** #define FALSE 1
+  60:Src/spi.c     **** 
+  61:Src/spi.c     **** #define dt 0.001f
+  62:Src/spi.c     **** 
+  63:Src/spi.c     **** gyro_t gyro;
+  64:Src/spi.c     **** uint8_t flag_gyro_calc;
+  65:Src/spi.c     **** /* USER CODE END 0 */
+  66:Src/spi.c     **** 
+  67:Src/spi.c     **** SPI_HandleTypeDef hspi2;
+  68:Src/spi.c     **** 
+  69:Src/spi.c     **** /* SPI2 init function */
+  70:Src/spi.c     **** void MX_SPI2_Init(void)
+  71:Src/spi.c     **** {
+  28              		.loc 1 71 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  72:Src/spi.c     **** 
+  73:Src/spi.c     ****   hspi2.Instance = SPI2;
+  37              		.loc 1 73 0
+  38 0002 0E48     		ldr	r0, .L5
+  39 0004 0E4B     		ldr	r3, .L5+4
+  40 0006 0360     		str	r3, [r0]
+  74:Src/spi.c     ****   hspi2.Init.Mode = SPI_MODE_MASTER;
+  41              		.loc 1 74 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 3
+
+
+  42 0008 4FF48273 		mov	r3, #260
+  43 000c 4360     		str	r3, [r0, #4]
+  75:Src/spi.c     ****   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+  44              		.loc 1 75 0
+  45 000e 0023     		movs	r3, #0
+  46 0010 8360     		str	r3, [r0, #8]
+  76:Src/spi.c     ****   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  47              		.loc 1 76 0
+  48 0012 C360     		str	r3, [r0, #12]
+  77:Src/spi.c     ****   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+  49              		.loc 1 77 0
+  50 0014 0361     		str	r3, [r0, #16]
+  78:Src/spi.c     ****   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+  51              		.loc 1 78 0
+  52 0016 4361     		str	r3, [r0, #20]
+  79:Src/spi.c     ****   hspi2.Init.NSS = SPI_NSS_SOFT;
+  53              		.loc 1 79 0
+  54 0018 4FF40072 		mov	r2, #512
+  55 001c 8261     		str	r2, [r0, #24]
+  80:Src/spi.c     ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  56              		.loc 1 80 0
+  57 001e C361     		str	r3, [r0, #28]
+  81:Src/spi.c     ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  58              		.loc 1 81 0
+  59 0020 0362     		str	r3, [r0, #32]
+  82:Src/spi.c     ****   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+  60              		.loc 1 82 0
+  61 0022 4362     		str	r3, [r0, #36]
+  83:Src/spi.c     ****   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  62              		.loc 1 83 0
+  63 0024 8362     		str	r3, [r0, #40]
+  84:Src/spi.c     ****   hspi2.Init.CRCPolynomial = 10;
+  64              		.loc 1 84 0
+  65 0026 0A23     		movs	r3, #10
+  66 0028 C362     		str	r3, [r0, #44]
+  85:Src/spi.c     ****   if (HAL_SPI_Init(&hspi2) != HAL_OK)
+  67              		.loc 1 85 0
+  68 002a FFF7FEFF 		bl	HAL_SPI_Init
+  69              	.LVL0:
+  70 002e 00B9     		cbnz	r0, .L4
+  71              	.L1:
+  86:Src/spi.c     ****   {
+  87:Src/spi.c     ****     _Error_Handler(__FILE__, __LINE__);
+  88:Src/spi.c     ****   }
+  89:Src/spi.c     **** 
+  90:Src/spi.c     **** }
+  72              		.loc 1 90 0
+  73 0030 08BD     		pop	{r3, pc}
+  74              	.L4:
+  87:Src/spi.c     ****   }
+  75              		.loc 1 87 0
+  76 0032 5721     		movs	r1, #87
+  77 0034 0348     		ldr	r0, .L5+8
+  78 0036 FFF7FEFF 		bl	_Error_Handler
+  79              	.LVL1:
+  80              		.loc 1 90 0
+  81 003a F9E7     		b	.L1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 4
+
+
+  82              	.L6:
+  83              		.align	2
+  84              	.L5:
+  85 003c 00000000 		.word	hspi2
+  86 0040 00380040 		.word	1073756160
+  87 0044 00000000 		.word	.LC0
+  88              		.cfi_endproc
+  89              	.LFE126:
+  91              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+  92              		.align	1
+  93              		.global	HAL_SPI_MspInit
+  94              		.syntax unified
+  95              		.thumb
+  96              		.thumb_func
+  97              		.fpu fpv4-sp-d16
+  99              	HAL_SPI_MspInit:
+ 100              	.LFB127:
+  91:Src/spi.c     **** 
+  92:Src/spi.c     **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+  93:Src/spi.c     **** {
+ 101              		.loc 1 93 0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 24
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              	.LVL2:
+  94:Src/spi.c     **** 
+  95:Src/spi.c     ****   GPIO_InitTypeDef GPIO_InitStruct;
+  96:Src/spi.c     ****   if(spiHandle->Instance==SPI2)
+ 106              		.loc 1 96 0
+ 107 0000 0268     		ldr	r2, [r0]
+ 108 0002 124B     		ldr	r3, .L14
+ 109 0004 9A42     		cmp	r2, r3
+ 110 0006 00D0     		beq	.L13
+ 111 0008 7047     		bx	lr
+ 112              	.L13:
+  93:Src/spi.c     **** 
+ 113              		.loc 1 93 0
+ 114 000a 00B5     		push	{lr}
+ 115              	.LCFI1:
+ 116              		.cfi_def_cfa_offset 4
+ 117              		.cfi_offset 14, -4
+ 118 000c 87B0     		sub	sp, sp, #28
+ 119              	.LCFI2:
+ 120              		.cfi_def_cfa_offset 32
+ 121              	.LBB2:
+  97:Src/spi.c     ****   {
+  98:Src/spi.c     ****   /* USER CODE BEGIN SPI2_MspInit 0 */
+  99:Src/spi.c     **** 
+ 100:Src/spi.c     ****   /* USER CODE END SPI2_MspInit 0 */
+ 101:Src/spi.c     ****     /* SPI2 clock enable */
+ 102:Src/spi.c     ****     __HAL_RCC_SPI2_CLK_ENABLE();
+ 122              		.loc 1 102 0
+ 123 000e 0021     		movs	r1, #0
+ 124 0010 0091     		str	r1, [sp]
+ 125 0012 03F50033 		add	r3, r3, #131072
+ 126 0016 1A6C     		ldr	r2, [r3, #64]
+ 127 0018 42F48042 		orr	r2, r2, #16384
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 5
+
+
+ 128 001c 1A64     		str	r2, [r3, #64]
+ 129 001e 1B6C     		ldr	r3, [r3, #64]
+ 130 0020 03F48043 		and	r3, r3, #16384
+ 131 0024 0093     		str	r3, [sp]
+ 132 0026 009B     		ldr	r3, [sp]
+ 133              	.LBE2:
+ 103:Src/spi.c     ****   
+ 104:Src/spi.c     ****     /**SPI2 GPIO Configuration    
+ 105:Src/spi.c     ****     PB13     ------> SPI2_SCK
+ 106:Src/spi.c     ****     PB14     ------> SPI2_MISO
+ 107:Src/spi.c     ****     PB15     ------> SPI2_MOSI 
+ 108:Src/spi.c     ****     */
+ 109:Src/spi.c     ****     GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+ 134              		.loc 1 109 0
+ 135 0028 4FF46043 		mov	r3, #57344
+ 136 002c 0193     		str	r3, [sp, #4]
+ 110:Src/spi.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 137              		.loc 1 110 0
+ 138 002e 0223     		movs	r3, #2
+ 139 0030 0293     		str	r3, [sp, #8]
+ 111:Src/spi.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 140              		.loc 1 111 0
+ 141 0032 0391     		str	r1, [sp, #12]
+ 112:Src/spi.c     ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 142              		.loc 1 112 0
+ 143 0034 0323     		movs	r3, #3
+ 144 0036 0493     		str	r3, [sp, #16]
+ 113:Src/spi.c     ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 145              		.loc 1 113 0
+ 146 0038 0523     		movs	r3, #5
+ 147 003a 0593     		str	r3, [sp, #20]
+ 114:Src/spi.c     ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 148              		.loc 1 114 0
+ 149 003c 01A9     		add	r1, sp, #4
+ 150 003e 0448     		ldr	r0, .L14+4
+ 151              	.LVL3:
+ 152 0040 FFF7FEFF 		bl	HAL_GPIO_Init
+ 153              	.LVL4:
+ 115:Src/spi.c     **** 
+ 116:Src/spi.c     ****   /* USER CODE BEGIN SPI2_MspInit 1 */
+ 117:Src/spi.c     **** 
+ 118:Src/spi.c     ****   /* USER CODE END SPI2_MspInit 1 */
+ 119:Src/spi.c     ****   }
+ 120:Src/spi.c     **** }
+ 154              		.loc 1 120 0
+ 155 0044 07B0     		add	sp, sp, #28
+ 156              	.LCFI3:
+ 157              		.cfi_def_cfa_offset 4
+ 158              		@ sp needed
+ 159 0046 5DF804FB 		ldr	pc, [sp], #4
+ 160              	.L15:
+ 161 004a 00BF     		.align	2
+ 162              	.L14:
+ 163 004c 00380040 		.word	1073756160
+ 164 0050 00040240 		.word	1073873920
+ 165              		.cfi_endproc
+ 166              	.LFE127:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 6
+
+
+ 168              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	HAL_SPI_MspDeInit
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 174              		.fpu fpv4-sp-d16
+ 176              	HAL_SPI_MspDeInit:
+ 177              	.LFB128:
+ 121:Src/spi.c     **** 
+ 122:Src/spi.c     **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
+ 123:Src/spi.c     **** {
+ 178              		.loc 1 123 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              	.LVL5:
+ 183 0000 08B5     		push	{r3, lr}
+ 184              	.LCFI4:
+ 185              		.cfi_def_cfa_offset 8
+ 186              		.cfi_offset 3, -8
+ 187              		.cfi_offset 14, -4
+ 124:Src/spi.c     **** 
+ 125:Src/spi.c     ****   if(spiHandle->Instance==SPI2)
+ 188              		.loc 1 125 0
+ 189 0002 0268     		ldr	r2, [r0]
+ 190 0004 074B     		ldr	r3, .L20
+ 191 0006 9A42     		cmp	r2, r3
+ 192 0008 00D0     		beq	.L19
+ 193              	.LVL6:
+ 194              	.L16:
+ 126:Src/spi.c     ****   {
+ 127:Src/spi.c     ****   /* USER CODE BEGIN SPI2_MspDeInit 0 */
+ 128:Src/spi.c     **** 
+ 129:Src/spi.c     ****   /* USER CODE END SPI2_MspDeInit 0 */
+ 130:Src/spi.c     ****     /* Peripheral clock disable */
+ 131:Src/spi.c     ****     __HAL_RCC_SPI2_CLK_DISABLE();
+ 132:Src/spi.c     ****   
+ 133:Src/spi.c     ****     /**SPI2 GPIO Configuration    
+ 134:Src/spi.c     ****     PB13     ------> SPI2_SCK
+ 135:Src/spi.c     ****     PB14     ------> SPI2_MISO
+ 136:Src/spi.c     ****     PB15     ------> SPI2_MOSI 
+ 137:Src/spi.c     ****     */
+ 138:Src/spi.c     ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15);
+ 139:Src/spi.c     **** 
+ 140:Src/spi.c     ****   /* USER CODE BEGIN SPI2_MspDeInit 1 */
+ 141:Src/spi.c     **** 
+ 142:Src/spi.c     ****   /* USER CODE END SPI2_MspDeInit 1 */
+ 143:Src/spi.c     ****   }
+ 144:Src/spi.c     **** } 
+ 195              		.loc 1 144 0
+ 196 000a 08BD     		pop	{r3, pc}
+ 197              	.LVL7:
+ 198              	.L19:
+ 131:Src/spi.c     ****   
+ 199              		.loc 1 131 0
+ 200 000c 064A     		ldr	r2, .L20+4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 7
+
+
+ 201 000e 136C     		ldr	r3, [r2, #64]
+ 202 0010 23F48043 		bic	r3, r3, #16384
+ 203 0014 1364     		str	r3, [r2, #64]
+ 138:Src/spi.c     **** 
+ 204              		.loc 1 138 0
+ 205 0016 4FF46041 		mov	r1, #57344
+ 206 001a 0448     		ldr	r0, .L20+8
+ 207              	.LVL8:
+ 208 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 209              	.LVL9:
+ 210              		.loc 1 144 0
+ 211 0020 F3E7     		b	.L16
+ 212              	.L21:
+ 213 0022 00BF     		.align	2
+ 214              	.L20:
+ 215 0024 00380040 		.word	1073756160
+ 216 0028 00380240 		.word	1073887232
+ 217 002c 00040240 		.word	1073873920
+ 218              		.cfi_endproc
+ 219              	.LFE128:
+ 221              		.section	.text.read_byte,"ax",%progbits
+ 222              		.align	1
+ 223              		.global	read_byte
+ 224              		.syntax unified
+ 225              		.thumb
+ 226              		.thumb_func
+ 227              		.fpu fpv4-sp-d16
+ 229              	read_byte:
+ 230              	.LFB129:
+ 145:Src/spi.c     **** 
+ 146:Src/spi.c     **** /* USER CODE BEGIN 1 */
+ 147:Src/spi.c     **** /********************************************************************
+ 148:Src/spi.c     ****  * Overview : spi read register
+ 149:Src/spi.c     ****  * Argument : register
+ 150:Src/spi.c     ****  * Return : 1byte data
+ 151:Src/spi.c     **** ********************************************************************/
+ 152:Src/spi.c     **** uint8_t read_byte(uint8_t reg){
+ 231              		.loc 1 152 0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 8
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              	.LVL10:
+ 236 0000 30B5     		push	{r4, r5, lr}
+ 237              	.LCFI5:
+ 238              		.cfi_def_cfa_offset 12
+ 239              		.cfi_offset 4, -12
+ 240              		.cfi_offset 5, -8
+ 241              		.cfi_offset 14, -4
+ 242 0002 83B0     		sub	sp, sp, #12
+ 243              	.LCFI6:
+ 244              		.cfi_def_cfa_offset 24
+ 245 0004 0446     		mov	r4, r0
+ 153:Src/spi.c     ****   uint8_t ret,val;
+ 154:Src/spi.c     ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port,gyro_cs_Pin,GPIO_PIN_RESET);
+ 246              		.loc 1 154 0
+ 247 0006 114D     		ldr	r5, .L24
+ 248 0008 0022     		movs	r2, #0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 8
+
+
+ 249 000a 4FF48051 		mov	r1, #4096
+ 250 000e 2846     		mov	r0, r5
+ 251              	.LVL11:
+ 252 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 253              	.LVL12:
+ 155:Src/spi.c     ****   ret = reg|SETTING ;
+ 254              		.loc 1 155 0
+ 255 0014 64F07F04 		orn	r4, r4, #127
+ 256 0018 02A9     		add	r1, sp, #8
+ 257 001a 01F8014D 		strb	r4, [r1, #-1]!
+ 156:Src/spi.c     ****   //HAL_SPI_TransmitReceive(&hspi2,&ret,&val,1,400); //not work
+ 157:Src/spi.c     ****   HAL_SPI_Transmit(&hspi2,&ret,1,100);
+ 258              		.loc 1 157 0
+ 259 001e 0C4C     		ldr	r4, .L24+4
+ 260 0020 6423     		movs	r3, #100
+ 261 0022 0122     		movs	r2, #1
+ 262 0024 2046     		mov	r0, r4
+ 263 0026 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 264              	.LVL13:
+ 158:Src/spi.c     ****   HAL_SPI_Receive(&hspi2,&val,1,100);
+ 265              		.loc 1 158 0
+ 266 002a 6423     		movs	r3, #100
+ 267 002c 0122     		movs	r2, #1
+ 268 002e 0DF10601 		add	r1, sp, #6
+ 269 0032 2046     		mov	r0, r4
+ 270 0034 FFF7FEFF 		bl	HAL_SPI_Receive
+ 271              	.LVL14:
+ 159:Src/spi.c     ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port,gyro_cs_Pin,GPIO_PIN_SET);
+ 272              		.loc 1 159 0
+ 273 0038 0122     		movs	r2, #1
+ 274 003a 4FF48051 		mov	r1, #4096
+ 275 003e 2846     		mov	r0, r5
+ 276 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 277              	.LVL15:
+ 160:Src/spi.c     ****   return val;
+ 161:Src/spi.c     **** }
+ 278              		.loc 1 161 0
+ 279 0044 9DF80600 		ldrb	r0, [sp, #6]	@ zero_extendqisi2
+ 280 0048 03B0     		add	sp, sp, #12
+ 281              	.LCFI7:
+ 282              		.cfi_def_cfa_offset 12
+ 283              		@ sp needed
+ 284 004a 30BD     		pop	{r4, r5, pc}
+ 285              	.L25:
+ 286              		.align	2
+ 287              	.L24:
+ 288 004c 00040240 		.word	1073873920
+ 289 0050 00000000 		.word	hspi2
+ 290              		.cfi_endproc
+ 291              	.LFE129:
+ 293              		.section	.text.read_shift_byte,"ax",%progbits
+ 294              		.align	1
+ 295              		.global	read_shift_byte
+ 296              		.syntax unified
+ 297              		.thumb
+ 298              		.thumb_func
+ 299              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 9
+
+
+ 301              	read_shift_byte:
+ 302              	.LFB130:
+ 162:Src/spi.c     **** 
+ 163:Src/spi.c     **** 
+ 164:Src/spi.c     **** /****************************************************************
+ 165:Src/spi.c     ****  * Overview : shift 8bit and spi read register
+ 166:Src/spi.c     ****  * Argument : register
+ 167:Src/spi.c     ****  * Return : 2byte data (shift 8bit)
+ 168:Src/spi.c     ****  ************************************************************/
+ 169:Src/spi.c     **** int16_t read_shift_byte(uint8_t reg){
+ 303              		.loc 1 169 0
+ 304              		.cfi_startproc
+ 305              		@ args = 0, pretend = 0, frame = 8
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307              	.LVL16:
+ 308 0000 30B5     		push	{r4, r5, lr}
+ 309              	.LCFI8:
+ 310              		.cfi_def_cfa_offset 12
+ 311              		.cfi_offset 4, -12
+ 312              		.cfi_offset 5, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 83B0     		sub	sp, sp, #12
+ 315              	.LCFI9:
+ 316              		.cfi_def_cfa_offset 24
+ 317 0004 0446     		mov	r4, r0
+ 170:Src/spi.c     ****   uint8_t address,val_1;
+ 171:Src/spi.c     ****   int16_t val_2;
+ 172:Src/spi.c     ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port,gyro_cs_Pin,GPIO_PIN_RESET);
+ 318              		.loc 1 172 0
+ 319 0006 134D     		ldr	r5, .L28
+ 320 0008 0022     		movs	r2, #0
+ 321 000a 4FF48051 		mov	r1, #4096
+ 322 000e 2846     		mov	r0, r5
+ 323              	.LVL17:
+ 324 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 325              	.LVL18:
+ 173:Src/spi.c     ****   address = reg | SETTING ;
+ 326              		.loc 1 173 0
+ 327 0014 64F07F04 		orn	r4, r4, #127
+ 328 0018 02A9     		add	r1, sp, #8
+ 329 001a 01F8014D 		strb	r4, [r1, #-1]!
+ 174:Src/spi.c     ****   //HAL_SPI_TransmitReceive(&hspi2,&address,&val_1,1,100); //not work
+ 175:Src/spi.c     ****   HAL_SPI_Transmit(&hspi2,&address,1,100);
+ 330              		.loc 1 175 0
+ 331 001e 0E4C     		ldr	r4, .L28+4
+ 332 0020 6423     		movs	r3, #100
+ 333 0022 0122     		movs	r2, #1
+ 334 0024 2046     		mov	r0, r4
+ 335 0026 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 336              	.LVL19:
+ 176:Src/spi.c     ****   HAL_SPI_Receive(&hspi2,&val_1,1,100);
+ 337              		.loc 1 176 0
+ 338 002a 6423     		movs	r3, #100
+ 339 002c 0122     		movs	r2, #1
+ 340 002e 0DF10601 		add	r1, sp, #6
+ 341 0032 2046     		mov	r0, r4
+ 342 0034 FFF7FEFF 		bl	HAL_SPI_Receive
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 10
+
+
+ 343              	.LVL20:
+ 177:Src/spi.c     ****   val_2 = (int16_t)(val_1 << 8);
+ 344              		.loc 1 177 0
+ 345 0038 9DF80640 		ldrb	r4, [sp, #6]	@ zero_extendqisi2
+ 346 003c 2402     		lsls	r4, r4, #8
+ 347 003e 24B2     		sxth	r4, r4
+ 348              	.LVL21:
+ 178:Src/spi.c     ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port,gyro_cs_Pin,GPIO_PIN_SET);
+ 349              		.loc 1 178 0
+ 350 0040 0122     		movs	r2, #1
+ 351 0042 4FF48051 		mov	r1, #4096
+ 352 0046 2846     		mov	r0, r5
+ 353 0048 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 354              	.LVL22:
+ 179:Src/spi.c     ****   return val_2;
+ 180:Src/spi.c     **** }
+ 355              		.loc 1 180 0
+ 356 004c 2046     		mov	r0, r4
+ 357 004e 03B0     		add	sp, sp, #12
+ 358              	.LCFI10:
+ 359              		.cfi_def_cfa_offset 12
+ 360              		@ sp needed
+ 361 0050 30BD     		pop	{r4, r5, pc}
+ 362              	.LVL23:
+ 363              	.L29:
+ 364 0052 00BF     		.align	2
+ 365              	.L28:
+ 366 0054 00040240 		.word	1073873920
+ 367 0058 00000000 		.word	hspi2
+ 368              		.cfi_endproc
+ 369              	.LFE130:
+ 371              		.section	.text.write_byte,"ax",%progbits
+ 372              		.align	1
+ 373              		.global	write_byte
+ 374              		.syntax unified
+ 375              		.thumb
+ 376              		.thumb_func
+ 377              		.fpu fpv4-sp-d16
+ 379              	write_byte:
+ 380              	.LFB131:
+ 181:Src/spi.c     **** 
+ 182:Src/spi.c     **** 
+ 183:Src/spi.c     **** /**************************************************************
+ 184:Src/spi.c     ****  * Overview : spi write 1byte
+ 185:Src/spi.c     ****  * Argument : register
+ 186:Src/spi.c     ****  * Return : 
+ 187:Src/spi.c     ****  *************************************************************/
+ 188:Src/spi.c     **** void write_byte( uint8_t reg,uint8_t val){
+ 381              		.loc 1 188 0
+ 382              		.cfi_startproc
+ 383              		@ args = 0, pretend = 0, frame = 16
+ 384              		@ frame_needed = 0, uses_anonymous_args = 0
+ 385              	.LVL24:
+ 386 0000 70B5     		push	{r4, r5, r6, lr}
+ 387              	.LCFI11:
+ 388              		.cfi_def_cfa_offset 16
+ 389              		.cfi_offset 4, -16
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 11
+
+
+ 390              		.cfi_offset 5, -12
+ 391              		.cfi_offset 6, -8
+ 392              		.cfi_offset 14, -4
+ 393 0002 84B0     		sub	sp, sp, #16
+ 394              	.LCFI12:
+ 395              		.cfi_def_cfa_offset 32
+ 396 0004 8DF80710 		strb	r1, [sp, #7]
+ 189:Src/spi.c     ****   uint8_t ret;
+ 190:Src/spi.c     ****   ret = reg & 0x7F;
+ 397              		.loc 1 190 0
+ 398 0008 00F07F00 		and	r0, r0, #127
+ 399              	.LVL25:
+ 400 000c 04AC     		add	r4, sp, #16
+ 401 000e 04F8010D 		strb	r0, [r4, #-1]!
+ 191:Src/spi.c     ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port,gyro_cs_Pin,GPIO_PIN_RESET);
+ 402              		.loc 1 191 0
+ 403 0012 0E4D     		ldr	r5, .L32
+ 404 0014 0022     		movs	r2, #0
+ 405 0016 4FF48051 		mov	r1, #4096
+ 406              	.LVL26:
+ 407 001a 2846     		mov	r0, r5
+ 408 001c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 409              	.LVL27:
+ 192:Src/spi.c     ****   HAL_SPI_Transmit(&hspi2,&ret,1,100);
+ 410              		.loc 1 192 0
+ 411 0020 0B4E     		ldr	r6, .L32+4
+ 412 0022 6423     		movs	r3, #100
+ 413 0024 0122     		movs	r2, #1
+ 414 0026 2146     		mov	r1, r4
+ 415 0028 3046     		mov	r0, r6
+ 416 002a FFF7FEFF 		bl	HAL_SPI_Transmit
+ 417              	.LVL28:
+ 193:Src/spi.c     ****   HAL_SPI_Transmit(&hspi2,&val,1,100);
+ 418              		.loc 1 193 0
+ 419 002e 6423     		movs	r3, #100
+ 420 0030 0122     		movs	r2, #1
+ 421 0032 0DF10701 		add	r1, sp, #7
+ 422 0036 3046     		mov	r0, r6
+ 423 0038 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 424              	.LVL29:
+ 194:Src/spi.c     ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port,gyro_cs_Pin,GPIO_PIN_SET);
+ 425              		.loc 1 194 0
+ 426 003c 0122     		movs	r2, #1
+ 427 003e 4FF48051 		mov	r1, #4096
+ 428 0042 2846     		mov	r0, r5
+ 429 0044 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 430              	.LVL30:
+ 195:Src/spi.c     **** }
+ 431              		.loc 1 195 0
+ 432 0048 04B0     		add	sp, sp, #16
+ 433              	.LCFI13:
+ 434              		.cfi_def_cfa_offset 16
+ 435              		@ sp needed
+ 436 004a 70BD     		pop	{r4, r5, r6, pc}
+ 437              	.L33:
+ 438              		.align	2
+ 439              	.L32:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 12
+
+
+ 440 004c 00040240 		.word	1073873920
+ 441 0050 00000000 		.word	hspi2
+ 442              		.cfi_endproc
+ 443              	.LFE131:
+ 445              		.section	.text.set_mpu6500,"ax",%progbits
+ 446              		.align	1
+ 447              		.global	set_mpu6500
+ 448              		.syntax unified
+ 449              		.thumb
+ 450              		.thumb_func
+ 451              		.fpu fpv4-sp-d16
+ 453              	set_mpu6500:
+ 454              	.LFB132:
+ 196:Src/spi.c     **** 
+ 197:Src/spi.c     **** 
+ 198:Src/spi.c     **** /****************************************************************
+ 199:Src/spi.c     ****  * Overview : set up mpu6500
+ 200:Src/spi.c     ****  * argument : void
+ 201:Src/spi.c     ****  * return   : void
+ 202:Src/spi.c     ****  ****************************************************************/
+ 203:Src/spi.c     **** void set_mpu6500(void){
+ 455              		.loc 1 203 0
+ 456              		.cfi_startproc
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459 0000 08B5     		push	{r3, lr}
+ 460              	.LCFI14:
+ 461              		.cfi_def_cfa_offset 8
+ 462              		.cfi_offset 3, -8
+ 463              		.cfi_offset 14, -4
+ 464              	.LVL31:
+ 204:Src/spi.c     ****   uint8_t val = 0x00;
+ 465              		.loc 1 204 0
+ 466 0002 0020     		movs	r0, #0
+ 205:Src/spi.c     ****   while(val!=Certain){
+ 467              		.loc 1 205 0
+ 468 0004 02E0     		b	.L35
+ 469              	.LVL32:
+ 470              	.L36:
+ 206:Src/spi.c     ****     val = read_byte(WHO_AM_I);
+ 471              		.loc 1 206 0
+ 472 0006 7520     		movs	r0, #117
+ 473              	.LVL33:
+ 474 0008 FFF7FEFF 		bl	read_byte
+ 475              	.LVL34:
+ 476              	.L35:
+ 205:Src/spi.c     ****   while(val!=Certain){
+ 477              		.loc 1 205 0
+ 478 000c 7028     		cmp	r0, #112
+ 479 000e FAD1     		bne	.L36
+ 207:Src/spi.c     ****   }
+ 208:Src/spi.c     ****   printf("\r\nI am 0x%x\r\n",val );
+ 480              		.loc 1 208 0
+ 481 0010 0146     		mov	r1, r0
+ 482 0012 0848     		ldr	r0, .L38
+ 483              	.LVL35:
+ 484 0014 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 13
+
+
+ 485              	.LVL36:
+ 209:Src/spi.c     ****   write_byte(PWR_MGMT_1,0x00);
+ 486              		.loc 1 209 0
+ 487 0018 0021     		movs	r1, #0
+ 488 001a 6B20     		movs	r0, #107
+ 489 001c FFF7FEFF 		bl	write_byte
+ 490              	.LVL37:
+ 210:Src/spi.c     ****   write_byte(CONFIG,0x00);
+ 491              		.loc 1 210 0
+ 492 0020 0021     		movs	r1, #0
+ 493 0022 1A20     		movs	r0, #26
+ 494 0024 FFF7FEFF 		bl	write_byte
+ 495              	.LVL38:
+ 211:Src/spi.c     ****   write_byte(GYRO_CONFIG,0x18);
+ 496              		.loc 1 211 0
+ 497 0028 1821     		movs	r1, #24
+ 498 002a 1B20     		movs	r0, #27
+ 499 002c FFF7FEFF 		bl	write_byte
+ 500              	.LVL39:
+ 212:Src/spi.c     **** }
+ 501              		.loc 1 212 0
+ 502 0030 08BD     		pop	{r3, pc}
+ 503              	.L39:
+ 504 0032 00BF     		.align	2
+ 505              	.L38:
+ 506 0034 00000000 		.word	.LC1
+ 507              		.cfi_endproc
+ 508              	.LFE132:
+ 510              		.section	.text.get_gyro,"ax",%progbits
+ 511              		.align	1
+ 512              		.global	get_gyro
+ 513              		.syntax unified
+ 514              		.thumb
+ 515              		.thumb_func
+ 516              		.fpu fpv4-sp-d16
+ 518              	get_gyro:
+ 519              	.LFB133:
+ 213:Src/spi.c     **** 
+ 214:Src/spi.c     **** 
+ 215:Src/spi.c     **** /*****************************************************************
+ 216:Src/spi.c     ****  * Overview : get gyro value
+ 217:Src/spi.c     ****  * argument : void
+ 218:Src/spi.c     ****  * Return   : degree (2000 deg/sec)
+ 219:Src/spi.c     ****  ****************************************************************/
+ 220:Src/spi.c     **** int16_t get_gyro(void){
+ 520              		.loc 1 220 0
+ 521              		.cfi_startproc
+ 522              		@ args = 0, pretend = 0, frame = 0
+ 523              		@ frame_needed = 0, uses_anonymous_args = 0
+ 524 0000 10B5     		push	{r4, lr}
+ 525              	.LCFI15:
+ 526              		.cfi_def_cfa_offset 8
+ 527              		.cfi_offset 4, -8
+ 528              		.cfi_offset 14, -4
+ 221:Src/spi.c     ****   int16_t gyro_z;
+ 222:Src/spi.c     ****   gyro_z = (int16_t)(read_shift_byte(GYRO_OUT_Z_H) | read_byte(GYRO_OUT_Z_L));
+ 529              		.loc 1 222 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 14
+
+
+ 530 0002 4720     		movs	r0, #71
+ 531 0004 FFF7FEFF 		bl	read_shift_byte
+ 532              	.LVL40:
+ 533 0008 0446     		mov	r4, r0
+ 534 000a 4820     		movs	r0, #72
+ 535 000c FFF7FEFF 		bl	read_byte
+ 536              	.LVL41:
+ 537 0010 00B2     		sxth	r0, r0
+ 538 0012 2043     		orrs	r0, r0, r4
+ 539 0014 00B2     		sxth	r0, r0
+ 540              	.LVL42:
+ 223:Src/spi.c     ****   gyro_z -= (int16_t)gyro.offset;
+ 541              		.loc 1 223 0
+ 542 0016 024B     		ldr	r3, .L42
+ 543 0018 9C89     		ldrh	r4, [r3, #12]
+ 544 001a 001B     		subs	r0, r0, r4
+ 545              	.LVL43:
+ 224:Src/spi.c     ****   return gyro_z;
+ 225:Src/spi.c     **** }
+ 546              		.loc 1 225 0
+ 547 001c 00B2     		sxth	r0, r0
+ 548 001e 10BD     		pop	{r4, pc}
+ 549              	.L43:
+ 550              		.align	2
+ 551              	.L42:
+ 552 0020 00000000 		.word	gyro
+ 553              		.cfi_endproc
+ 554              	.LFE133:
+ 556              		.section	.text.gyro_offset_calc,"ax",%progbits
+ 557              		.align	1
+ 558              		.global	gyro_offset_calc
+ 559              		.syntax unified
+ 560              		.thumb
+ 561              		.thumb_func
+ 562              		.fpu fpv4-sp-d16
+ 564              	gyro_offset_calc:
+ 565              	.LFB134:
+ 226:Src/spi.c     **** 
+ 227:Src/spi.c     **** /*****************************************************************
+ 228:Src/spi.c     ****  * Overview : calculate gyro offset
+ 229:Src/spi.c     ****  * argument : void
+ 230:Src/spi.c     ****  * Return   : void
+ 231:Src/spi.c     ****  ****************************************************************/
+ 232:Src/spi.c     **** void gyro_offset_calc(void){
+ 566              		.loc 1 232 0
+ 567              		.cfi_startproc
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570 0000 10B5     		push	{r4, lr}
+ 571              	.LCFI16:
+ 572              		.cfi_def_cfa_offset 8
+ 573              		.cfi_offset 4, -8
+ 574              		.cfi_offset 14, -4
+ 233:Src/spi.c     ****   int16_t gyro_z;
+ 234:Src/spi.c     **** 
+ 235:Src/spi.c     ****   gyro_z = (int16_t)(read_shift_byte(GYRO_OUT_Z_H) | read_byte(GYRO_OUT_Z_L));
+ 575              		.loc 1 235 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 15
+
+
+ 576 0002 4720     		movs	r0, #71
+ 577 0004 FFF7FEFF 		bl	read_shift_byte
+ 578              	.LVL44:
+ 579 0008 0446     		mov	r4, r0
+ 580 000a 4820     		movs	r0, #72
+ 581 000c FFF7FEFF 		bl	read_byte
+ 582              	.LVL45:
+ 583 0010 00B2     		sxth	r0, r0
+ 584 0012 0443     		orrs	r4, r4, r0
+ 585              	.LVL46:
+ 236:Src/spi.c     **** 
+ 237:Src/spi.c     ****   if(gyro.offset_cnt<1000){
+ 586              		.loc 1 237 0
+ 587 0014 0C4B     		ldr	r3, .L49
+ 588 0016 1B89     		ldrh	r3, [r3, #8]
+ 589 0018 B3F57A7F 		cmp	r3, #1000
+ 590 001c 0CD3     		bcc	.L48
+ 238:Src/spi.c     ****     gyro.offset += gyro_z;
+ 239:Src/spi.c     ****     gyro.offset_cnt++;
+ 240:Src/spi.c     ****   }else{
+ 241:Src/spi.c     ****     gyro.offset /= 1000;
+ 591              		.loc 1 241 0
+ 592 001e 0A49     		ldr	r1, .L49
+ 593 0020 CB68     		ldr	r3, [r1, #12]
+ 594 0022 0A4A     		ldr	r2, .L49+4
+ 595 0024 82FB0302 		smull	r0, r2, r2, r3
+ 596 0028 DB17     		asrs	r3, r3, #31
+ 597 002a C3EBA213 		rsb	r3, r3, r2, asr #6
+ 598 002e CB60     		str	r3, [r1, #12]
+ 242:Src/spi.c     ****     flag_gyro_calc = TRUE;
+ 599              		.loc 1 242 0
+ 600 0030 074B     		ldr	r3, .L49+8
+ 601 0032 0022     		movs	r2, #0
+ 602 0034 1A70     		strb	r2, [r3]
+ 603              	.LVL47:
+ 604              	.L44:
+ 243:Src/spi.c     ****   }
+ 244:Src/spi.c     **** }
+ 605              		.loc 1 244 0
+ 606 0036 10BD     		pop	{r4, pc}
+ 607              	.LVL48:
+ 608              	.L48:
+ 609 0038 24B2     		sxth	r4, r4
+ 238:Src/spi.c     ****     gyro.offset_cnt++;
+ 610              		.loc 1 238 0
+ 611 003a 034A     		ldr	r2, .L49
+ 612 003c D168     		ldr	r1, [r2, #12]
+ 613 003e 0C44     		add	r4, r4, r1
+ 614              	.LVL49:
+ 615 0040 D460     		str	r4, [r2, #12]
+ 239:Src/spi.c     ****   }else{
+ 616              		.loc 1 239 0
+ 617 0042 0133     		adds	r3, r3, #1
+ 618 0044 1381     		strh	r3, [r2, #8]	@ movhi
+ 619 0046 F6E7     		b	.L44
+ 620              	.L50:
+ 621              		.align	2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 16
+
+
+ 622              	.L49:
+ 623 0048 00000000 		.word	gyro
+ 624 004c D34D6210 		.word	274877907
+ 625 0050 00000000 		.word	flag_gyro_calc
+ 626              		.cfi_endproc
+ 627              	.LFE134:
+ 629              		.section	.text.Update_gyro,"ax",%progbits
+ 630              		.align	1
+ 631              		.global	Update_gyro
+ 632              		.syntax unified
+ 633              		.thumb
+ 634              		.thumb_func
+ 635              		.fpu fpv4-sp-d16
+ 637              	Update_gyro:
+ 638              	.LFB135:
+ 245:Src/spi.c     **** 
+ 246:Src/spi.c     **** void Update_gyro(void){
+ 639              		.loc 1 246 0
+ 640              		.cfi_startproc
+ 641              		@ args = 0, pretend = 0, frame = 0
+ 642              		@ frame_needed = 0, uses_anonymous_args = 0
+ 643 0000 10B5     		push	{r4, lr}
+ 644              	.LCFI17:
+ 645              		.cfi_def_cfa_offset 8
+ 646              		.cfi_offset 4, -8
+ 647              		.cfi_offset 14, -4
+ 648 0002 2DED028B 		vpush.64	{d8}
+ 649              	.LCFI18:
+ 650              		.cfi_def_cfa_offset 16
+ 651              		.cfi_offset 80, -16
+ 652              		.cfi_offset 81, -12
+ 247:Src/spi.c     ****   if(flag_gyro_calc == TRUE){
+ 653              		.loc 1 247 0
+ 654 0006 144B     		ldr	r3, .L56
+ 655 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 656 000a 23B1     		cbz	r3, .L55
+ 248:Src/spi.c     ****     gyro.velocity = (float)get_gyro()/GYRO_FACTOR;
+ 249:Src/spi.c     ****     gyro.degree += (float)get_gyro()/GYRO_FACTOR * dt;
+ 250:Src/spi.c     ****   }else{
+ 251:Src/spi.c     ****     gyro_offset_calc();
+ 657              		.loc 1 251 0
+ 658 000c FFF7FEFF 		bl	gyro_offset_calc
+ 659              	.LVL50:
+ 660              	.L51:
+ 252:Src/spi.c     ****   }
+ 253:Src/spi.c     **** }
+ 661              		.loc 1 253 0
+ 662 0010 BDEC028B 		vldm	sp!, {d8}
+ 663              	.LCFI19:
+ 664              		.cfi_remember_state
+ 665              		.cfi_restore 80
+ 666              		.cfi_restore 81
+ 667              		.cfi_def_cfa_offset 8
+ 668 0014 10BD     		pop	{r4, pc}
+ 669              	.L55:
+ 670              	.LCFI20:
+ 671              		.cfi_restore_state
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 17
+
+
+ 248:Src/spi.c     ****     gyro.velocity = (float)get_gyro()/GYRO_FACTOR;
+ 672              		.loc 1 248 0
+ 673 0016 FFF7FEFF 		bl	get_gyro
+ 674              	.LVL51:
+ 675 001a 07EE900A 		vmov	s15, r0	@ int
+ 676 001e B8EEE77A 		vcvt.f32.s32	s14, s15
+ 677 0022 9FED0E8A 		vldr.32	s16, .L56+4
+ 678 0026 C7EE087A 		vdiv.f32	s15, s14, s16
+ 679 002a 0D4C     		ldr	r4, .L56+8
+ 680 002c C4ED007A 		vstr.32	s15, [r4]
+ 249:Src/spi.c     ****   }else{
+ 681              		.loc 1 249 0
+ 682 0030 FFF7FEFF 		bl	get_gyro
+ 683              	.LVL52:
+ 684 0034 07EE900A 		vmov	s15, r0	@ int
+ 685 0038 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 686 003c C7EE087A 		vdiv.f32	s15, s14, s16
+ 687 0040 9FED087A 		vldr.32	s14, .L56+12
+ 688 0044 27EE877A 		vmul.f32	s14, s15, s14
+ 689 0048 D4ED017A 		vldr.32	s15, [r4, #4]
+ 690 004c 77EE877A 		vadd.f32	s15, s15, s14
+ 691 0050 C4ED017A 		vstr.32	s15, [r4, #4]
+ 692 0054 DCE7     		b	.L51
+ 693              	.L57:
+ 694 0056 00BF     		.align	2
+ 695              	.L56:
+ 696 0058 00000000 		.word	flag_gyro_calc
+ 697 005c 33338341 		.word	1099117363
+ 698 0060 00000000 		.word	gyro
+ 699 0064 6F12833A 		.word	981668463
+ 700              		.cfi_endproc
+ 701              	.LFE135:
+ 703              		.section	.text.gyro_offset_calc_reset,"ax",%progbits
+ 704              		.align	1
+ 705              		.global	gyro_offset_calc_reset
+ 706              		.syntax unified
+ 707              		.thumb
+ 708              		.thumb_func
+ 709              		.fpu fpv4-sp-d16
+ 711              	gyro_offset_calc_reset:
+ 712              	.LFB136:
+ 254:Src/spi.c     **** /*****************************************************************
+ 255:Src/spi.c     ****  * Overview : reset gyro offset variable
+ 256:Src/spi.c     ****  * argument : void
+ 257:Src/spi.c     ****  * Return   : void
+ 258:Src/spi.c     ****  ****************************************************************/
+ 259:Src/spi.c     **** void gyro_offset_calc_reset(void){
+ 713              		.loc 1 259 0
+ 714              		.cfi_startproc
+ 715              		@ args = 0, pretend = 0, frame = 0
+ 716              		@ frame_needed = 0, uses_anonymous_args = 0
+ 717              		@ link register save eliminated.
+ 260:Src/spi.c     ****   gyro.offset = 0;
+ 718              		.loc 1 260 0
+ 719 0000 044B     		ldr	r3, .L59
+ 720 0002 0022     		movs	r2, #0
+ 721 0004 DA60     		str	r2, [r3, #12]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 18
+
+
+ 261:Src/spi.c     ****   gyro.offset_cnt = 0;
+ 722              		.loc 1 261 0
+ 723 0006 1A81     		strh	r2, [r3, #8]	@ movhi
+ 262:Src/spi.c     ****   flag_gyro_calc = FALSE;
+ 724              		.loc 1 262 0
+ 725 0008 034A     		ldr	r2, .L59+4
+ 726 000a 0121     		movs	r1, #1
+ 727 000c 1170     		strb	r1, [r2]
+ 263:Src/spi.c     **** 
+ 264:Src/spi.c     ****   gyro.degree = 0;
+ 728              		.loc 1 264 0
+ 729 000e 0022     		movs	r2, #0
+ 730 0010 5A60     		str	r2, [r3, #4]	@ float
+ 265:Src/spi.c     **** }
+ 731              		.loc 1 265 0
+ 732 0012 7047     		bx	lr
+ 733              	.L60:
+ 734              		.align	2
+ 735              	.L59:
+ 736 0014 00000000 		.word	gyro
+ 737 0018 00000000 		.word	flag_gyro_calc
+ 738              		.cfi_endproc
+ 739              	.LFE136:
+ 741              		.comm	hspi2,88,4
+ 742              		.comm	flag_gyro_calc,1,1
+ 743              		.comm	gyro,16,4
+ 744              		.section	.rodata.MX_SPI2_Init.str1.4,"aMS",%progbits,1
+ 745              		.align	2
+ 746              	.LC0:
+ 747 0000 5372632F 		.ascii	"Src/spi.c\000"
+ 747      7370692E 
+ 747      6300
+ 748              		.section	.rodata.set_mpu6500.str1.4,"aMS",%progbits,1
+ 749              		.align	2
+ 750              	.LC1:
+ 751 0000 0D0A4920 		.ascii	"\015\012I am 0x%x\015\012\000"
+ 751      616D2030 
+ 751      7825780D 
+ 751      0A00
+ 752              		.text
+ 753              	.Letext0:
+ 754              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 755              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 756              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 757              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 758              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 759              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 760              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 761              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 762              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 763              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 764              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 765              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 766              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 767              		.file 15 "Inc/spi.h"
+ 768              		.file 16 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:18     .text.MX_SPI2_Init:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:25     .text.MX_SPI2_Init:00000000 MX_SPI2_Init
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:85     .text.MX_SPI2_Init:0000003c $d
+                            *COM*:00000058 hspi2
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:92     .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:99     .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:163    .text.HAL_SPI_MspInit:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:169    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:176    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:215    .text.HAL_SPI_MspDeInit:00000024 $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:222    .text.read_byte:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:229    .text.read_byte:00000000 read_byte
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:288    .text.read_byte:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:294    .text.read_shift_byte:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:301    .text.read_shift_byte:00000000 read_shift_byte
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:366    .text.read_shift_byte:00000054 $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:372    .text.write_byte:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:379    .text.write_byte:00000000 write_byte
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:440    .text.write_byte:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:446    .text.set_mpu6500:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:453    .text.set_mpu6500:00000000 set_mpu6500
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:506    .text.set_mpu6500:00000034 $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:511    .text.get_gyro:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:518    .text.get_gyro:00000000 get_gyro
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:552    .text.get_gyro:00000020 $d
+                            *COM*:00000010 gyro
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:557    .text.gyro_offset_calc:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:564    .text.gyro_offset_calc:00000000 gyro_offset_calc
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:623    .text.gyro_offset_calc:00000048 $d
+                            *COM*:00000001 flag_gyro_calc
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:630    .text.Update_gyro:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:637    .text.Update_gyro:00000000 Update_gyro
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:696    .text.Update_gyro:00000058 $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:704    .text.gyro_offset_calc_reset:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:711    .text.gyro_offset_calc_reset:00000000 gyro_offset_calc_reset
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:736    .text.gyro_offset_calc_reset:00000014 $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:745    .rodata.MX_SPI2_Init.str1.4:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccLAbeV0.s:749    .rodata.set_mpu6500.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_SPI_Init
+_Error_Handler
+HAL_GPIO_Init
+HAL_GPIO_DeInit
+HAL_GPIO_WritePin
+HAL_SPI_Transmit
+HAL_SPI_Receive
+printf

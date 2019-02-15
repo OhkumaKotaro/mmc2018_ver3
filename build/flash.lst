@@ -1,0 +1,358 @@
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"flash.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.eraseFlash,"ax",%progbits
+  18              		.align	1
+  19              		.global	eraseFlash
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	eraseFlash:
+  26              	.LFB126:
+  27              		.file 1 "Src/flash.c"
+   1:Src/flash.c   **** #include "flash.h"
+   2:Src/flash.c   **** #include "stm32f4xx_hal.h"
+   3:Src/flash.c   **** #include <string.h>
+   4:Src/flash.c   **** #include "maze_info.h"
+   5:Src/flash.c   **** 
+   6:Src/flash.c   **** extern maze_t maze;
+   7:Src/flash.c   **** 
+   8:Src/flash.c   **** // flash use address ( sector11 )
+   9:Src/flash.c   **** const uint32_t start_address = 0x80E0000; //sentor11 start address
+  10:Src/flash.c   **** const uint32_t end_adress = 0x80FFFFF;
+  11:Src/flash.c   **** 
+  12:Src/flash.c   **** 
+  13:Src/flash.c   **** ///////////////////////////////////////////////////////////////////////
+  14:Src/flash.c   **** // ereaseFlash
+  15:Src/flash.c   **** // [argument] nothing
+  16:Src/flash.c   **** // [Substitutiong] nothing
+  17:Src/flash.c   **** // [return] nothing
+  18:Src/flash.c   **** ///////////////////////////////////////////////////////////////////////
+  19:Src/flash.c   **** 
+  20:Src/flash.c   **** void eraseFlash(void)
+  21:Src/flash.c   **** {
+  28              		.loc 1 21 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 24
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 00B5     		push	{lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 14, -4
+  36 0002 87B0     		sub	sp, sp, #28
+  37              	.LCFI1:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 2
+
+
+  38              		.cfi_def_cfa_offset 32
+  22:Src/flash.c   ****     FLASH_EraseInitTypeDef erase;
+  23:Src/flash.c   ****     erase.TypeErase = FLASH_TYPEERASE_SECTORS; // セクタを選ぶ
+  39              		.loc 1 23 0
+  40 0004 0023     		movs	r3, #0
+  41 0006 0193     		str	r3, [sp, #4]
+  24:Src/flash.c   ****     erase.Sector = FLASH_SECTOR_11; // セクタ11を指定
+  42              		.loc 1 24 0
+  43 0008 0B22     		movs	r2, #11
+  44 000a 0392     		str	r2, [sp, #12]
+  25:Src/flash.c   ****     erase.NbSectors = 1; // 消すセクタの数(今回はひとつ)
+  45              		.loc 1 25 0
+  46 000c 0122     		movs	r2, #1
+  47 000e 0492     		str	r2, [sp, #16]
+  26:Src/flash.c   ****     erase.VoltageRange = FLASH_VOLTAGE_RANGE_3; // 3.3Vで消去
+  48              		.loc 1 26 0
+  49 0010 0222     		movs	r2, #2
+  50 0012 0592     		str	r2, [sp, #20]
+  27:Src/flash.c   ****     uint32_t pageError = 0;
+  51              		.loc 1 27 0
+  52 0014 06A9     		add	r1, sp, #24
+  53 0016 41F8183D 		str	r3, [r1, #-24]!
+  28:Src/flash.c   ****     HAL_FLASHEx_Erase(&erase, &pageError); // HAL_FLASHExの関数で消去
+  54              		.loc 1 28 0
+  55 001a 01A8     		add	r0, sp, #4
+  56 001c FFF7FEFF 		bl	HAL_FLASHEx_Erase
+  57              	.LVL0:
+  29:Src/flash.c   **** }
+  58              		.loc 1 29 0
+  59 0020 07B0     		add	sp, sp, #28
+  60              	.LCFI2:
+  61              		.cfi_def_cfa_offset 4
+  62              		@ sp needed
+  63 0022 5DF804FB 		ldr	pc, [sp], #4
+  64              		.cfi_endproc
+  65              	.LFE126:
+  67              		.section	.text.writeFlash,"ax",%progbits
+  68              		.align	1
+  69              		.global	writeFlash
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  73              		.fpu fpv4-sp-d16
+  75              	writeFlash:
+  76              	.LFB127:
+  30:Src/flash.c   **** ///////////////////////////////////////////////////////////////////////
+  31:Src/flash.c   **** // writeFlash
+  32:Src/flash.c   **** // [argument] address, *data, size
+  33:Src/flash.c   **** // [Substitutiong] nothing
+  34:Src/flash.c   **** // [return] nothing
+  35:Src/flash.c   **** ///////////////////////////////////////////////////////////////////////
+  36:Src/flash.c   **** void writeFlash(uint32_t address, uint8_t *data, uint32_t size)
+  37:Src/flash.c   **** {
+  77              		.loc 1 37 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 3
+
+
+  81              	.LVL1:
+  82 0000 70B5     		push	{r4, r5, r6, lr}
+  83              	.LCFI3:
+  84              		.cfi_def_cfa_offset 16
+  85              		.cfi_offset 4, -16
+  86              		.cfi_offset 5, -12
+  87              		.cfi_offset 6, -8
+  88              		.cfi_offset 14, -4
+  89 0002 0546     		mov	r5, r0
+  90 0004 0E46     		mov	r6, r1
+  91 0006 1446     		mov	r4, r2
+  38:Src/flash.c   ****     HAL_FLASH_Unlock(); // フラッシュをアンロック
+  92              		.loc 1 38 0
+  93 0008 FFF7FEFF 		bl	HAL_FLASH_Unlock
+  94              	.LVL2:
+  39:Src/flash.c   ****     eraseFlash(); // セクタ11を消去
+  95              		.loc 1 39 0
+  96 000c FFF7FEFF 		bl	eraseFlash
+  97              	.LVL3:
+  40:Src/flash.c   ****     while (size > 0)
+  98              		.loc 1 40 0
+  99 0010 08E0     		b	.L4
+ 100              	.L5:
+  41:Src/flash.c   ****     {
+  42:Src/flash.c   ****         HAL_FLASH_Program(FLASH_TYPEPROGRAM_BYTE, address, *data);// 1byteずつフラッシュに�
+ 101              		.loc 1 42 0
+ 102 0012 16F8012B 		ldrb	r2, [r6], #1	@ zero_extendqisi2
+ 103              	.LVL4:
+ 104 0016 0023     		movs	r3, #0
+ 105 0018 2946     		mov	r1, r5
+ 106 001a 0020     		movs	r0, #0
+ 107 001c FFF7FEFF 		bl	HAL_FLASH_Program
+ 108              	.LVL5:
+  43:Src/flash.c   ****         ++address;
+ 109              		.loc 1 43 0
+ 110 0020 0135     		adds	r5, r5, #1
+ 111              	.LVL6:
+  44:Src/flash.c   ****         ++data;
+  45:Src/flash.c   ****         --size;
+ 112              		.loc 1 45 0
+ 113 0022 013C     		subs	r4, r4, #1
+ 114              	.LVL7:
+ 115              	.L4:
+  40:Src/flash.c   ****     {
+ 116              		.loc 1 40 0
+ 117 0024 002C     		cmp	r4, #0
+ 118 0026 F4D1     		bne	.L5
+  46:Src/flash.c   ****     }
+  47:Src/flash.c   ****    HAL_FLASH_Lock(); // フラッシュをロック
+ 119              		.loc 1 47 0
+ 120 0028 FFF7FEFF 		bl	HAL_FLASH_Lock
+ 121              	.LVL8:
+  48:Src/flash.c   **** }
+ 122              		.loc 1 48 0
+ 123 002c 70BD     		pop	{r4, r5, r6, pc}
+ 124              		.cfi_endproc
+ 125              	.LFE127:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 4
+
+
+ 127              		.section	.text.loadFlash,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	loadFlash
+ 130              		.syntax unified
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.fpu fpv4-sp-d16
+ 135              	loadFlash:
+ 136              	.LFB128:
+  49:Src/flash.c   **** ///////////////////////////////////////////////////////////////////////
+  50:Src/flash.c   **** // loadFlash
+  51:Src/flash.c   **** // [argument] address, *data, size
+  52:Src/flash.c   **** // [Substitutiong] struct
+  53:Src/flash.c   **** // [return] nothing
+  54:Src/flash.c   **** ///////////////////////////////////////////////////////////////////////
+  55:Src/flash.c   **** void loadFlash(uint32_t address, uint8_t *data, uint32_t size)
+  56:Src/flash.c   **** {
+ 137              		.loc 1 56 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              	.LVL9:
+ 142 0000 08B5     		push	{r3, lr}
+ 143              	.LCFI4:
+ 144              		.cfi_def_cfa_offset 8
+ 145              		.cfi_offset 3, -8
+ 146              		.cfi_offset 14, -4
+ 147 0002 0B46     		mov	r3, r1
+  57:Src/flash.c   ****     memcpy(data, (uint8_t *)address, size);// addressの内容をコピー
+ 148              		.loc 1 57 0
+ 149 0004 0146     		mov	r1, r0
+ 150              	.LVL10:
+ 151 0006 1846     		mov	r0, r3
+ 152              	.LVL11:
+ 153 0008 FFF7FEFF 		bl	memcpy
+ 154              	.LVL12:
+  58:Src/flash.c   **** }
+ 155              		.loc 1 58 0
+ 156 000c 08BD     		pop	{r3, pc}
+ 157              		.cfi_endproc
+ 158              	.LFE128:
+ 160              		.section	.text.writeMaze,"ax",%progbits
+ 161              		.align	1
+ 162              		.global	writeMaze
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 166              		.fpu fpv4-sp-d16
+ 168              	writeMaze:
+ 169              	.LFB129:
+  59:Src/flash.c   **** 
+  60:Src/flash.c   **** void writeMaze(void){
+ 170              		.loc 1 60 0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 5
+
+
+ 175              	.LCFI5:
+ 176              		.cfi_def_cfa_offset 8
+ 177              		.cfi_offset 3, -8
+ 178              		.cfi_offset 14, -4
+  61:Src/flash.c   ****     writeFlash(start_address,(uint8_t*)&maze,sizeof(maze_t));
+ 179              		.loc 1 61 0
+ 180 0002 4FF40172 		mov	r2, #516
+ 181 0006 0249     		ldr	r1, .L11
+ 182 0008 0248     		ldr	r0, .L11+4
+ 183 000a FFF7FEFF 		bl	writeFlash
+ 184              	.LVL13:
+  62:Src/flash.c   **** }
+ 185              		.loc 1 62 0
+ 186 000e 08BD     		pop	{r3, pc}
+ 187              	.L12:
+ 188              		.align	2
+ 189              	.L11:
+ 190 0010 00000000 		.word	maze
+ 191 0014 00000E08 		.word	135135232
+ 192              		.cfi_endproc
+ 193              	.LFE129:
+ 195              		.section	.text.loadMaze,"ax",%progbits
+ 196              		.align	1
+ 197              		.global	loadMaze
+ 198              		.syntax unified
+ 199              		.thumb
+ 200              		.thumb_func
+ 201              		.fpu fpv4-sp-d16
+ 203              	loadMaze:
+ 204              	.LFB130:
+  63:Src/flash.c   **** 
+  64:Src/flash.c   **** void loadMaze(void){
+ 205              		.loc 1 64 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209 0000 08B5     		push	{r3, lr}
+ 210              	.LCFI6:
+ 211              		.cfi_def_cfa_offset 8
+ 212              		.cfi_offset 3, -8
+ 213              		.cfi_offset 14, -4
+  65:Src/flash.c   ****     loadFlash(start_address,(uint8_t*)&maze,sizeof(maze_t));
+ 214              		.loc 1 65 0
+ 215 0002 4FF40172 		mov	r2, #516
+ 216 0006 0249     		ldr	r1, .L15
+ 217 0008 0248     		ldr	r0, .L15+4
+ 218 000a FFF7FEFF 		bl	loadFlash
+ 219              	.LVL14:
+  66:Src/flash.c   **** }...
+ 220              		.loc 1 66 0
+ 221 000e 08BD     		pop	{r3, pc}
+ 222              	.L16:
+ 223              		.align	2
+ 224              	.L15:
+ 225 0010 00000000 		.word	maze
+ 226 0014 00000E08 		.word	135135232
+ 227              		.cfi_endproc
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 6
+
+
+ 228              	.LFE130:
+ 230              		.global	end_adress
+ 231              		.global	start_address
+ 232              		.section	.rodata.end_adress,"a",%progbits
+ 233              		.align	2
+ 236              	end_adress:
+ 237 0000 FFFF0F08 		.word	135266303
+ 238              		.section	.rodata.start_address,"a",%progbits
+ 239              		.align	2
+ 242              	start_address:
+ 243 0000 00000E08 		.word	135135232
+ 244              		.text
+ 245              	.Letext0:
+ 246              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 247              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 248              		.file 4 "Inc/flash.h"
+ 249              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ 250              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 251              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 252              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 253              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 254              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 255              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"
+ 256              		.file 12 "Inc/maze_info.h"
+ 257              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"
+ 258              		.file 14 "<built-in>"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 flash.c
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:18     .text.eraseFlash:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:25     .text.eraseFlash:00000000 eraseFlash
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:68     .text.writeFlash:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:75     .text.writeFlash:00000000 writeFlash
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:128    .text.loadFlash:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:135    .text.loadFlash:00000000 loadFlash
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:161    .text.writeMaze:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:168    .text.writeMaze:00000000 writeMaze
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:190    .text.writeMaze:00000010 $d
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:196    .text.loadMaze:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:203    .text.loadMaze:00000000 loadMaze
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:225    .text.loadMaze:00000010 $d
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:236    .rodata.end_adress:00000000 end_adress
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:242    .rodata.start_address:00000000 start_address
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:233    .rodata.end_adress:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\cc44jHgd.s:239    .rodata.start_address:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_FLASHEx_Erase
+HAL_FLASH_Unlock
+HAL_FLASH_Program
+HAL_FLASH_Lock
+memcpy
+maze

@@ -1,0 +1,926 @@
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"syscalls.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.initialise_monitor_handles,"ax",%progbits
+  18              		.align	1
+  19              		.global	initialise_monitor_handles
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	initialise_monitor_handles:
+  26              	.LFB19:
+  27              		.file 1 "Src/syscalls.c"
+   1:Src/syscalls.c **** /**
+   2:Src/syscalls.c **** *****************************************************************************
+   3:Src/syscalls.c **** **
+   4:Src/syscalls.c **** **  File        : syscalls.c
+   5:Src/syscalls.c **** **
+   6:Src/syscalls.c **** **  Abstract    : System Workbench Minimal System calls file
+   7:Src/syscalls.c **** **
+   8:Src/syscalls.c **** ** 		          For more information about which c-functions
+   9:Src/syscalls.c **** **                need which of these lowlevel functions
+  10:Src/syscalls.c **** **                please consult the Newlib libc-manual
+  11:Src/syscalls.c **** **
+  12:Src/syscalls.c **** **  Environment : System Workbench for MCU
+  13:Src/syscalls.c **** **
+  14:Src/syscalls.c **** **  Distribution: The file is distributed “as is,? without any warranty
+  15:Src/syscalls.c **** **                of any kind.
+  16:Src/syscalls.c **** **
+  17:Src/syscalls.c **** *****************************************************************************
+  18:Src/syscalls.c **** **
+  19:Src/syscalls.c **** ** <h2><center>&copy; COPYRIGHT(c) 2014 Ac6</center></h2>
+  20:Src/syscalls.c **** **
+  21:Src/syscalls.c **** ** Redistribution and use in source and binary forms, with or without modification,
+  22:Src/syscalls.c **** ** are permitted provided that the following conditions are met:
+  23:Src/syscalls.c **** **   1. Redistributions of source code must retain the above copyright notice,
+  24:Src/syscalls.c **** **      this list of conditions and the following disclaimer.
+  25:Src/syscalls.c **** **   2. Redistributions in binary form must reproduce the above copyright notice,
+  26:Src/syscalls.c **** **      this list of conditions and the following disclaimer in the documentation
+  27:Src/syscalls.c **** **      and/or other materials provided with the distribution.
+  28:Src/syscalls.c **** **   3. Neither the name of Ac6 nor the names of its contributors
+  29:Src/syscalls.c **** **      may be used to endorse or promote products derived from this software
+  30:Src/syscalls.c **** **      without specific prior written permission.
+  31:Src/syscalls.c **** **
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 2
+
+
+  32:Src/syscalls.c **** ** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  33:Src/syscalls.c **** ** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  34:Src/syscalls.c **** ** IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  35:Src/syscalls.c **** ** DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  36:Src/syscalls.c **** ** FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  37:Src/syscalls.c **** ** DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  38:Src/syscalls.c **** ** SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  39:Src/syscalls.c **** ** CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  40:Src/syscalls.c **** ** OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  41:Src/syscalls.c **** ** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  42:Src/syscalls.c **** **
+  43:Src/syscalls.c **** *****************************************************************************
+  44:Src/syscalls.c **** */
+  45:Src/syscalls.c **** 
+  46:Src/syscalls.c **** /* Includes */
+  47:Src/syscalls.c **** #include <sys/stat.h>
+  48:Src/syscalls.c **** #include <stdlib.h>
+  49:Src/syscalls.c **** #include <errno.h>
+  50:Src/syscalls.c **** #include <stdio.h>
+  51:Src/syscalls.c **** #include <signal.h>
+  52:Src/syscalls.c **** #include <time.h>
+  53:Src/syscalls.c **** #include <sys/time.h>
+  54:Src/syscalls.c **** #include <sys/times.h>
+  55:Src/syscalls.c **** 
+  56:Src/syscalls.c **** 
+  57:Src/syscalls.c **** /* Variables */
+  58:Src/syscalls.c **** //#undef errno
+  59:Src/syscalls.c **** extern int errno;
+  60:Src/syscalls.c **** extern int __io_putchar(int ch) __attribute__((weak));
+  61:Src/syscalls.c **** extern int __io_getchar(void) __attribute__((weak));
+  62:Src/syscalls.c **** 
+  63:Src/syscalls.c **** register char * stack_ptr asm("sp");
+  64:Src/syscalls.c **** 
+  65:Src/syscalls.c **** char *__env[1] = { 0 };
+  66:Src/syscalls.c **** char **environ = __env;
+  67:Src/syscalls.c **** 
+  68:Src/syscalls.c **** 
+  69:Src/syscalls.c **** /* Functions */
+  70:Src/syscalls.c **** void initialise_monitor_handles()
+  71:Src/syscalls.c **** {
+  28              		.loc 1 71 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  72:Src/syscalls.c **** }
+  33              		.loc 1 72 0
+  34 0000 7047     		bx	lr
+  35              		.cfi_endproc
+  36              	.LFE19:
+  38              		.section	.text._getpid,"ax",%progbits
+  39              		.align	1
+  40              		.global	_getpid
+  41              		.syntax unified
+  42              		.thumb
+  43              		.thumb_func
+  44              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 3
+
+
+  46              	_getpid:
+  47              	.LFB20:
+  73:Src/syscalls.c **** 
+  74:Src/syscalls.c **** int _getpid(void)
+  75:Src/syscalls.c **** {
+  48              		.loc 1 75 0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              		@ link register save eliminated.
+  76:Src/syscalls.c **** 	return 1;
+  77:Src/syscalls.c **** }
+  53              		.loc 1 77 0
+  54 0000 0120     		movs	r0, #1
+  55 0002 7047     		bx	lr
+  56              		.cfi_endproc
+  57              	.LFE20:
+  59              		.section	.text._kill,"ax",%progbits
+  60              		.align	1
+  61              		.global	_kill
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  65              		.fpu fpv4-sp-d16
+  67              	_kill:
+  68              	.LFB21:
+  78:Src/syscalls.c **** 
+  79:Src/syscalls.c **** int _kill(int pid, int sig)
+  80:Src/syscalls.c **** {
+  69              		.loc 1 80 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              	.LVL0:
+  74 0000 08B5     		push	{r3, lr}
+  75              	.LCFI0:
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 3, -8
+  78              		.cfi_offset 14, -4
+  81:Src/syscalls.c **** 	errno = EINVAL;
+  79              		.loc 1 81 0
+  80 0002 FFF7FEFF 		bl	__errno
+  81              	.LVL1:
+  82 0006 1623     		movs	r3, #22
+  83 0008 0360     		str	r3, [r0]
+  82:Src/syscalls.c **** 	return -1;
+  83:Src/syscalls.c **** }
+  84              		.loc 1 83 0
+  85 000a 4FF0FF30 		mov	r0, #-1
+  86 000e 08BD     		pop	{r3, pc}
+  87              		.cfi_endproc
+  88              	.LFE21:
+  90              		.section	.text._exit,"ax",%progbits
+  91              		.align	1
+  92              		.global	_exit
+  93              		.syntax unified
+  94              		.thumb
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 4
+
+
+  95              		.thumb_func
+  96              		.fpu fpv4-sp-d16
+  98              	_exit:
+  99              	.LFB22:
+  84:Src/syscalls.c **** 
+  85:Src/syscalls.c **** void _exit (int status)
+  86:Src/syscalls.c **** {
+ 100              		.loc 1 86 0
+ 101              		.cfi_startproc
+ 102              		@ Volatile: function does not return.
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              	.LVL2:
+ 106 0000 08B5     		push	{r3, lr}
+ 107              	.LCFI1:
+ 108              		.cfi_def_cfa_offset 8
+ 109              		.cfi_offset 3, -8
+ 110              		.cfi_offset 14, -4
+  87:Src/syscalls.c **** 	_kill(status, -1);
+ 111              		.loc 1 87 0
+ 112 0002 4FF0FF31 		mov	r1, #-1
+ 113 0006 FFF7FEFF 		bl	_kill
+ 114              	.LVL3:
+ 115              	.L6:
+ 116 000a FEE7     		b	.L6
+ 117              		.cfi_endproc
+ 118              	.LFE22:
+ 120              		.section	.text._read,"ax",%progbits
+ 121              		.align	1
+ 122              		.global	_read
+ 123              		.syntax unified
+ 124              		.thumb
+ 125              		.thumb_func
+ 126              		.fpu fpv4-sp-d16
+ 128              	_read:
+ 129              	.LFB23:
+  88:Src/syscalls.c **** 	while (1) {}		/* Make sure we hang here */
+  89:Src/syscalls.c **** }
+  90:Src/syscalls.c **** 
+  91:Src/syscalls.c **** int _read (int file, char *ptr, int len)
+  92:Src/syscalls.c **** {
+ 130              		.loc 1 92 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              	.LVL4:
+ 135 0000 70B5     		push	{r4, r5, r6, lr}
+ 136              	.LCFI2:
+ 137              		.cfi_def_cfa_offset 16
+ 138              		.cfi_offset 4, -16
+ 139              		.cfi_offset 5, -12
+ 140              		.cfi_offset 6, -8
+ 141              		.cfi_offset 14, -4
+ 142 0002 0D46     		mov	r5, r1
+ 143 0004 1646     		mov	r6, r2
+ 144              	.LVL5:
+  93:Src/syscalls.c **** 	int DataIdx;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 5
+
+
+  94:Src/syscalls.c **** 
+  95:Src/syscalls.c **** 	for (DataIdx = 0; DataIdx < len; DataIdx++)
+ 145              		.loc 1 95 0
+ 146 0006 0024     		movs	r4, #0
+ 147 0008 04E0     		b	.L9
+ 148              	.LVL6:
+ 149              	.L10:
+  96:Src/syscalls.c **** 	{
+  97:Src/syscalls.c **** 		*ptr++ = __io_getchar();
+ 150              		.loc 1 97 0 discriminator 3
+ 151 000a FFF7FEFF 		bl	__io_getchar
+ 152              	.LVL7:
+ 153 000e 2870     		strb	r0, [r5]
+  95:Src/syscalls.c **** 	{
+ 154              		.loc 1 95 0 discriminator 3
+ 155 0010 0134     		adds	r4, r4, #1
+ 156              	.LVL8:
+ 157              		.loc 1 97 0 discriminator 3
+ 158 0012 0135     		adds	r5, r5, #1
+ 159              	.LVL9:
+ 160              	.L9:
+  95:Src/syscalls.c **** 	{
+ 161              		.loc 1 95 0 discriminator 1
+ 162 0014 B442     		cmp	r4, r6
+ 163 0016 F8DB     		blt	.L10
+  98:Src/syscalls.c **** 	}
+  99:Src/syscalls.c **** 
+ 100:Src/syscalls.c **** return len;
+ 101:Src/syscalls.c **** }
+ 164              		.loc 1 101 0
+ 165 0018 3046     		mov	r0, r6
+ 166 001a 70BD     		pop	{r4, r5, r6, pc}
+ 167              		.cfi_endproc
+ 168              	.LFE23:
+ 170              		.section	.text._write,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	_write
+ 173              		.syntax unified
+ 174              		.thumb
+ 175              		.thumb_func
+ 176              		.fpu fpv4-sp-d16
+ 178              	_write:
+ 179              	.LFB24:
+ 102:Src/syscalls.c **** 
+ 103:Src/syscalls.c **** int _write(int file, char *ptr, int len)
+ 104:Src/syscalls.c **** {
+ 180              		.loc 1 104 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              	.LVL10:
+ 185 0000 70B5     		push	{r4, r5, r6, lr}
+ 186              	.LCFI3:
+ 187              		.cfi_def_cfa_offset 16
+ 188              		.cfi_offset 4, -16
+ 189              		.cfi_offset 5, -12
+ 190              		.cfi_offset 6, -8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 6
+
+
+ 191              		.cfi_offset 14, -4
+ 192 0002 1646     		mov	r6, r2
+ 193              	.LVL11:
+ 105:Src/syscalls.c **** 	int DataIdx;
+ 106:Src/syscalls.c **** 
+ 107:Src/syscalls.c **** 	for (DataIdx = 0; DataIdx < len; DataIdx++)
+ 194              		.loc 1 107 0
+ 195 0004 0024     		movs	r4, #0
+ 196 0006 05E0     		b	.L13
+ 197              	.LVL12:
+ 198              	.L14:
+ 108:Src/syscalls.c **** 	{
+ 109:Src/syscalls.c **** 		__io_putchar(*ptr++);
+ 199              		.loc 1 109 0 discriminator 3
+ 200 0008 4D1C     		adds	r5, r1, #1
+ 201              	.LVL13:
+ 202 000a 0878     		ldrb	r0, [r1]	@ zero_extendqisi2
+ 203 000c FFF7FEFF 		bl	__io_putchar
+ 204              	.LVL14:
+ 107:Src/syscalls.c **** 	{
+ 205              		.loc 1 107 0 discriminator 3
+ 206 0010 0134     		adds	r4, r4, #1
+ 207              	.LVL15:
+ 208              		.loc 1 109 0 discriminator 3
+ 209 0012 2946     		mov	r1, r5
+ 210              	.LVL16:
+ 211              	.L13:
+ 107:Src/syscalls.c **** 	{
+ 212              		.loc 1 107 0 discriminator 1
+ 213 0014 B442     		cmp	r4, r6
+ 214 0016 F7DB     		blt	.L14
+ 110:Src/syscalls.c **** 	}
+ 111:Src/syscalls.c **** 	return len;
+ 112:Src/syscalls.c **** }
+ 215              		.loc 1 112 0
+ 216 0018 3046     		mov	r0, r6
+ 217 001a 70BD     		pop	{r4, r5, r6, pc}
+ 218              		.cfi_endproc
+ 219              	.LFE24:
+ 221              		.section	.text._sbrk,"ax",%progbits
+ 222              		.align	1
+ 223              		.global	_sbrk
+ 224              		.syntax unified
+ 225              		.thumb
+ 226              		.thumb_func
+ 227              		.fpu fpv4-sp-d16
+ 229              	_sbrk:
+ 230              	.LFB25:
+ 113:Src/syscalls.c **** 
+ 114:Src/syscalls.c **** caddr_t _sbrk(int incr)
+ 115:Src/syscalls.c **** {
+ 231              		.loc 1 115 0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              	.LVL17:
+ 236 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 7
+
+
+ 237              	.LCFI4:
+ 238              		.cfi_def_cfa_offset 8
+ 239              		.cfi_offset 3, -8
+ 240              		.cfi_offset 14, -4
+ 241 0002 0346     		mov	r3, r0
+ 116:Src/syscalls.c **** 	extern char end asm("end");
+ 117:Src/syscalls.c **** 	static char *heap_end;
+ 118:Src/syscalls.c **** 	char *prev_heap_end;
+ 119:Src/syscalls.c **** 
+ 120:Src/syscalls.c **** 	if (heap_end == 0)
+ 242              		.loc 1 120 0
+ 243 0004 0B4A     		ldr	r2, .L23
+ 244 0006 1268     		ldr	r2, [r2]
+ 245 0008 42B1     		cbz	r2, .L21
+ 246              	.L17:
+ 121:Src/syscalls.c **** 		heap_end = &end;
+ 122:Src/syscalls.c **** 
+ 123:Src/syscalls.c **** 	prev_heap_end = heap_end;
+ 247              		.loc 1 123 0
+ 248 000a 0A4A     		ldr	r2, .L23
+ 249 000c 1068     		ldr	r0, [r2]
+ 250              	.LVL18:
+ 124:Src/syscalls.c **** 	if (heap_end + incr > stack_ptr)
+ 251              		.loc 1 124 0
+ 252 000e 0344     		add	r3, r3, r0
+ 253              	.LVL19:
+ 254 0010 6A46     		mov	r2, sp
+ 255 0012 9342     		cmp	r3, r2
+ 256 0014 06D8     		bhi	.L22
+ 125:Src/syscalls.c **** 	{
+ 126:Src/syscalls.c **** //		write(1, "Heap and stack collision\n", 25);
+ 127:Src/syscalls.c **** //		abort();
+ 128:Src/syscalls.c **** 		errno = ENOMEM;
+ 129:Src/syscalls.c **** 		return (caddr_t) -1;
+ 130:Src/syscalls.c **** 	}
+ 131:Src/syscalls.c **** 
+ 132:Src/syscalls.c **** 	heap_end += incr;
+ 257              		.loc 1 132 0
+ 258 0016 074A     		ldr	r2, .L23
+ 259 0018 1360     		str	r3, [r2]
+ 260              	.LVL20:
+ 261              	.L16:
+ 133:Src/syscalls.c **** 
+ 134:Src/syscalls.c **** 	return (caddr_t) prev_heap_end;
+ 135:Src/syscalls.c **** }
+ 262              		.loc 1 135 0
+ 263 001a 08BD     		pop	{r3, pc}
+ 264              	.LVL21:
+ 265              	.L21:
+ 121:Src/syscalls.c **** 
+ 266              		.loc 1 121 0
+ 267 001c 054A     		ldr	r2, .L23
+ 268 001e 0649     		ldr	r1, .L23+4
+ 269 0020 1160     		str	r1, [r2]
+ 270 0022 F2E7     		b	.L17
+ 271              	.LVL22:
+ 272              	.L22:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 8
+
+
+ 128:Src/syscalls.c **** 		return (caddr_t) -1;
+ 273              		.loc 1 128 0
+ 274 0024 FFF7FEFF 		bl	__errno
+ 275              	.LVL23:
+ 276 0028 0C23     		movs	r3, #12
+ 277 002a 0360     		str	r3, [r0]
+ 129:Src/syscalls.c **** 	}
+ 278              		.loc 1 129 0
+ 279 002c 4FF0FF30 		mov	r0, #-1
+ 280 0030 F3E7     		b	.L16
+ 281              	.L24:
+ 282 0032 00BF     		.align	2
+ 283              	.L23:
+ 284 0034 00000000 		.word	.LANCHOR0
+ 285 0038 00000000 		.word	end
+ 286              		.cfi_endproc
+ 287              	.LFE25:
+ 289              		.section	.text._close,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	_close
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 295              		.fpu fpv4-sp-d16
+ 297              	_close:
+ 298              	.LFB26:
+ 136:Src/syscalls.c **** 
+ 137:Src/syscalls.c **** int _close(int file)
+ 138:Src/syscalls.c **** {
+ 299              		.loc 1 138 0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		@ link register save eliminated.
+ 304              	.LVL24:
+ 139:Src/syscalls.c **** 	return -1;
+ 140:Src/syscalls.c **** }
+ 305              		.loc 1 140 0
+ 306 0000 4FF0FF30 		mov	r0, #-1
+ 307              	.LVL25:
+ 308 0004 7047     		bx	lr
+ 309              		.cfi_endproc
+ 310              	.LFE26:
+ 312              		.section	.text._fstat,"ax",%progbits
+ 313              		.align	1
+ 314              		.global	_fstat
+ 315              		.syntax unified
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.fpu fpv4-sp-d16
+ 320              	_fstat:
+ 321              	.LFB27:
+ 141:Src/syscalls.c **** 
+ 142:Src/syscalls.c **** 
+ 143:Src/syscalls.c **** int _fstat(int file, struct stat *st)
+ 144:Src/syscalls.c **** {
+ 322              		.loc 1 144 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 9
+
+
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              		@ link register save eliminated.
+ 327              	.LVL26:
+ 145:Src/syscalls.c **** 	st->st_mode = S_IFCHR;
+ 328              		.loc 1 145 0
+ 329 0000 4FF40053 		mov	r3, #8192
+ 330 0004 4B60     		str	r3, [r1, #4]
+ 146:Src/syscalls.c **** 	return 0;
+ 147:Src/syscalls.c **** }
+ 331              		.loc 1 147 0
+ 332 0006 0020     		movs	r0, #0
+ 333              	.LVL27:
+ 334 0008 7047     		bx	lr
+ 335              		.cfi_endproc
+ 336              	.LFE27:
+ 338              		.section	.text._isatty,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	_isatty
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 344              		.fpu fpv4-sp-d16
+ 346              	_isatty:
+ 347              	.LFB28:
+ 148:Src/syscalls.c **** 
+ 149:Src/syscalls.c **** int _isatty(int file)
+ 150:Src/syscalls.c **** {
+ 348              		.loc 1 150 0
+ 349              		.cfi_startproc
+ 350              		@ args = 0, pretend = 0, frame = 0
+ 351              		@ frame_needed = 0, uses_anonymous_args = 0
+ 352              		@ link register save eliminated.
+ 353              	.LVL28:
+ 151:Src/syscalls.c **** 	return 1;
+ 152:Src/syscalls.c **** }
+ 354              		.loc 1 152 0
+ 355 0000 0120     		movs	r0, #1
+ 356              	.LVL29:
+ 357 0002 7047     		bx	lr
+ 358              		.cfi_endproc
+ 359              	.LFE28:
+ 361              		.section	.text._lseek,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	_lseek
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.fpu fpv4-sp-d16
+ 369              	_lseek:
+ 370              	.LFB29:
+ 153:Src/syscalls.c **** 
+ 154:Src/syscalls.c **** int _lseek(int file, int ptr, int dir)
+ 155:Src/syscalls.c **** {
+ 371              		.loc 1 155 0
+ 372              		.cfi_startproc
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 10
+
+
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376              	.LVL30:
+ 156:Src/syscalls.c **** 	return 0;
+ 157:Src/syscalls.c **** }
+ 377              		.loc 1 157 0
+ 378 0000 0020     		movs	r0, #0
+ 379              	.LVL31:
+ 380 0002 7047     		bx	lr
+ 381              		.cfi_endproc
+ 382              	.LFE29:
+ 384              		.section	.text._open,"ax",%progbits
+ 385              		.align	1
+ 386              		.global	_open
+ 387              		.syntax unified
+ 388              		.thumb
+ 389              		.thumb_func
+ 390              		.fpu fpv4-sp-d16
+ 392              	_open:
+ 393              	.LFB30:
+ 158:Src/syscalls.c **** 
+ 159:Src/syscalls.c **** int _open(char *path, int flags, ...)
+ 160:Src/syscalls.c **** {
+ 394              		.loc 1 160 0
+ 395              		.cfi_startproc
+ 396              		@ args = 4, pretend = 12, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 1
+ 398              		@ link register save eliminated.
+ 399              	.LVL32:
+ 400 0000 0EB4     		push	{r1, r2, r3}
+ 401              	.LCFI5:
+ 402              		.cfi_def_cfa_offset 12
+ 403              		.cfi_offset 1, -12
+ 404              		.cfi_offset 2, -8
+ 405              		.cfi_offset 3, -4
+ 161:Src/syscalls.c **** 	/* Pretend like we always fail */
+ 162:Src/syscalls.c **** 	return -1;
+ 163:Src/syscalls.c **** }
+ 406              		.loc 1 163 0
+ 407 0002 4FF0FF30 		mov	r0, #-1
+ 408              	.LVL33:
+ 409 0006 03B0     		add	sp, sp, #12
+ 410              	.LCFI6:
+ 411              		.cfi_restore 3
+ 412              		.cfi_restore 2
+ 413              		.cfi_restore 1
+ 414              		.cfi_def_cfa_offset 0
+ 415 0008 7047     		bx	lr
+ 416              		.cfi_endproc
+ 417              	.LFE30:
+ 419              		.section	.text._wait,"ax",%progbits
+ 420              		.align	1
+ 421              		.global	_wait
+ 422              		.syntax unified
+ 423              		.thumb
+ 424              		.thumb_func
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 11
+
+
+ 425              		.fpu fpv4-sp-d16
+ 427              	_wait:
+ 428              	.LFB31:
+ 164:Src/syscalls.c **** 
+ 165:Src/syscalls.c **** int _wait(int *status)
+ 166:Src/syscalls.c **** {
+ 429              		.loc 1 166 0
+ 430              		.cfi_startproc
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 433              	.LVL34:
+ 434 0000 08B5     		push	{r3, lr}
+ 435              	.LCFI7:
+ 436              		.cfi_def_cfa_offset 8
+ 437              		.cfi_offset 3, -8
+ 438              		.cfi_offset 14, -4
+ 167:Src/syscalls.c **** 	errno = ECHILD;
+ 439              		.loc 1 167 0
+ 440 0002 FFF7FEFF 		bl	__errno
+ 441              	.LVL35:
+ 442 0006 0A23     		movs	r3, #10
+ 443 0008 0360     		str	r3, [r0]
+ 168:Src/syscalls.c **** 	return -1;
+ 169:Src/syscalls.c **** }
+ 444              		.loc 1 169 0
+ 445 000a 4FF0FF30 		mov	r0, #-1
+ 446 000e 08BD     		pop	{r3, pc}
+ 447              		.cfi_endproc
+ 448              	.LFE31:
+ 450              		.section	.text._unlink,"ax",%progbits
+ 451              		.align	1
+ 452              		.global	_unlink
+ 453              		.syntax unified
+ 454              		.thumb
+ 455              		.thumb_func
+ 456              		.fpu fpv4-sp-d16
+ 458              	_unlink:
+ 459              	.LFB32:
+ 170:Src/syscalls.c **** 
+ 171:Src/syscalls.c **** int _unlink(char *name)
+ 172:Src/syscalls.c **** {
+ 460              		.loc 1 172 0
+ 461              		.cfi_startproc
+ 462              		@ args = 0, pretend = 0, frame = 0
+ 463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 464              	.LVL36:
+ 465 0000 08B5     		push	{r3, lr}
+ 466              	.LCFI8:
+ 467              		.cfi_def_cfa_offset 8
+ 468              		.cfi_offset 3, -8
+ 469              		.cfi_offset 14, -4
+ 173:Src/syscalls.c **** 	errno = ENOENT;
+ 470              		.loc 1 173 0
+ 471 0002 FFF7FEFF 		bl	__errno
+ 472              	.LVL37:
+ 473 0006 0223     		movs	r3, #2
+ 474 0008 0360     		str	r3, [r0]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 12
+
+
+ 174:Src/syscalls.c **** 	return -1;
+ 175:Src/syscalls.c **** }
+ 475              		.loc 1 175 0
+ 476 000a 4FF0FF30 		mov	r0, #-1
+ 477 000e 08BD     		pop	{r3, pc}
+ 478              		.cfi_endproc
+ 479              	.LFE32:
+ 481              		.section	.text._times,"ax",%progbits
+ 482              		.align	1
+ 483              		.global	_times
+ 484              		.syntax unified
+ 485              		.thumb
+ 486              		.thumb_func
+ 487              		.fpu fpv4-sp-d16
+ 489              	_times:
+ 490              	.LFB33:
+ 176:Src/syscalls.c **** 
+ 177:Src/syscalls.c **** int _times(struct tms *buf)
+ 178:Src/syscalls.c **** {
+ 491              		.loc 1 178 0
+ 492              		.cfi_startproc
+ 493              		@ args = 0, pretend = 0, frame = 0
+ 494              		@ frame_needed = 0, uses_anonymous_args = 0
+ 495              		@ link register save eliminated.
+ 496              	.LVL38:
+ 179:Src/syscalls.c **** 	return -1;
+ 180:Src/syscalls.c **** }
+ 497              		.loc 1 180 0
+ 498 0000 4FF0FF30 		mov	r0, #-1
+ 499              	.LVL39:
+ 500 0004 7047     		bx	lr
+ 501              		.cfi_endproc
+ 502              	.LFE33:
+ 504              		.section	.text._stat,"ax",%progbits
+ 505              		.align	1
+ 506              		.global	_stat
+ 507              		.syntax unified
+ 508              		.thumb
+ 509              		.thumb_func
+ 510              		.fpu fpv4-sp-d16
+ 512              	_stat:
+ 513              	.LFB34:
+ 181:Src/syscalls.c **** 
+ 182:Src/syscalls.c **** int _stat(char *file, struct stat *st)
+ 183:Src/syscalls.c **** {
+ 514              		.loc 1 183 0
+ 515              		.cfi_startproc
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 518              		@ link register save eliminated.
+ 519              	.LVL40:
+ 184:Src/syscalls.c **** 	st->st_mode = S_IFCHR;
+ 520              		.loc 1 184 0
+ 521 0000 4FF40053 		mov	r3, #8192
+ 522 0004 4B60     		str	r3, [r1, #4]
+ 185:Src/syscalls.c **** 	return 0;
+ 186:Src/syscalls.c **** }
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 13
+
+
+ 523              		.loc 1 186 0
+ 524 0006 0020     		movs	r0, #0
+ 525              	.LVL41:
+ 526 0008 7047     		bx	lr
+ 527              		.cfi_endproc
+ 528              	.LFE34:
+ 530              		.section	.text._link,"ax",%progbits
+ 531              		.align	1
+ 532              		.global	_link
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 536              		.fpu fpv4-sp-d16
+ 538              	_link:
+ 539              	.LFB35:
+ 187:Src/syscalls.c **** 
+ 188:Src/syscalls.c **** int _link(char *old, char *new)
+ 189:Src/syscalls.c **** {
+ 540              		.loc 1 189 0
+ 541              		.cfi_startproc
+ 542              		@ args = 0, pretend = 0, frame = 0
+ 543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 544              	.LVL42:
+ 545 0000 08B5     		push	{r3, lr}
+ 546              	.LCFI9:
+ 547              		.cfi_def_cfa_offset 8
+ 548              		.cfi_offset 3, -8
+ 549              		.cfi_offset 14, -4
+ 190:Src/syscalls.c **** 	errno = EMLINK;
+ 550              		.loc 1 190 0
+ 551 0002 FFF7FEFF 		bl	__errno
+ 552              	.LVL43:
+ 553 0006 1F23     		movs	r3, #31
+ 554 0008 0360     		str	r3, [r0]
+ 191:Src/syscalls.c **** 	return -1;
+ 192:Src/syscalls.c **** }
+ 555              		.loc 1 192 0
+ 556 000a 4FF0FF30 		mov	r0, #-1
+ 557 000e 08BD     		pop	{r3, pc}
+ 558              		.cfi_endproc
+ 559              	.LFE35:
+ 561              		.section	.text._fork,"ax",%progbits
+ 562              		.align	1
+ 563              		.global	_fork
+ 564              		.syntax unified
+ 565              		.thumb
+ 566              		.thumb_func
+ 567              		.fpu fpv4-sp-d16
+ 569              	_fork:
+ 570              	.LFB36:
+ 193:Src/syscalls.c **** 
+ 194:Src/syscalls.c **** int _fork(void)
+ 195:Src/syscalls.c **** {
+ 571              		.loc 1 195 0
+ 572              		.cfi_startproc
+ 573              		@ args = 0, pretend = 0, frame = 0
+ 574              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 14
+
+
+ 575 0000 08B5     		push	{r3, lr}
+ 576              	.LCFI10:
+ 577              		.cfi_def_cfa_offset 8
+ 578              		.cfi_offset 3, -8
+ 579              		.cfi_offset 14, -4
+ 196:Src/syscalls.c **** 	errno = EAGAIN;
+ 580              		.loc 1 196 0
+ 581 0002 FFF7FEFF 		bl	__errno
+ 582              	.LVL44:
+ 583 0006 0B23     		movs	r3, #11
+ 584 0008 0360     		str	r3, [r0]
+ 197:Src/syscalls.c **** 	return -1;
+ 198:Src/syscalls.c **** }
+ 585              		.loc 1 198 0
+ 586 000a 4FF0FF30 		mov	r0, #-1
+ 587 000e 08BD     		pop	{r3, pc}
+ 588              		.cfi_endproc
+ 589              	.LFE36:
+ 591              		.section	.text._execve,"ax",%progbits
+ 592              		.align	1
+ 593              		.global	_execve
+ 594              		.syntax unified
+ 595              		.thumb
+ 596              		.thumb_func
+ 597              		.fpu fpv4-sp-d16
+ 599              	_execve:
+ 600              	.LFB37:
+ 199:Src/syscalls.c **** 
+ 200:Src/syscalls.c **** int _execve(char *name, char **argv, char **env)
+ 201:Src/syscalls.c **** {
+ 601              		.loc 1 201 0
+ 602              		.cfi_startproc
+ 603              		@ args = 0, pretend = 0, frame = 0
+ 604              		@ frame_needed = 0, uses_anonymous_args = 0
+ 605              	.LVL45:
+ 606 0000 08B5     		push	{r3, lr}
+ 607              	.LCFI11:
+ 608              		.cfi_def_cfa_offset 8
+ 609              		.cfi_offset 3, -8
+ 610              		.cfi_offset 14, -4
+ 202:Src/syscalls.c **** 	errno = ENOMEM;
+ 611              		.loc 1 202 0
+ 612 0002 FFF7FEFF 		bl	__errno
+ 613              	.LVL46:
+ 614 0006 0C23     		movs	r3, #12
+ 615 0008 0360     		str	r3, [r0]
+ 203:Src/syscalls.c **** 	return -1;
+ 204:Src/syscalls.c **** }
+ 616              		.loc 1 204 0
+ 617 000a 4FF0FF30 		mov	r0, #-1
+ 618 000e 08BD     		pop	{r3, pc}
+ 619              		.cfi_endproc
+ 620              	.LFE37:
+ 622              		.global	environ
+ 623              		.global	__env
+ 624              		.section	.bss.__env,"aw",%nobits
+ 625              		.align	2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 15
+
+
+ 628              	__env:
+ 629 0000 00000000 		.space	4
+ 630              		.section	.bss.heap_end.7234,"aw",%nobits
+ 631              		.align	2
+ 632              		.set	.LANCHOR0,. + 0
+ 635              	heap_end.7234:
+ 636 0000 00000000 		.space	4
+ 637              		.section	.data.environ,"aw",%progbits
+ 638              		.align	2
+ 641              	environ:
+ 642 0000 00000000 		.word	__env
+ 643              		.weak	__io_putchar
+ 644              		.weak	__io_getchar
+ 645              		.text
+ 646              	.Letext0:
+ 647              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 648              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 649              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 650              		.file 5 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 651              		.file 6 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 652              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 653              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 654              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 655              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 656              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 657              		.file 12 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 658              		.file 13 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 syscalls.c
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:18     .text.initialise_monitor_handles:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:25     .text.initialise_monitor_handles:00000000 initialise_monitor_handles
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:39     .text._getpid:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:46     .text._getpid:00000000 _getpid
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:60     .text._kill:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:67     .text._kill:00000000 _kill
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:91     .text._exit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:98     .text._exit:00000000 _exit
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:121    .text._read:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:128    .text._read:00000000 _read
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:171    .text._write:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:178    .text._write:00000000 _write
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:222    .text._sbrk:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:229    .text._sbrk:00000000 _sbrk
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:284    .text._sbrk:00000034 $d
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:290    .text._close:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:297    .text._close:00000000 _close
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:313    .text._fstat:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:320    .text._fstat:00000000 _fstat
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:339    .text._isatty:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:346    .text._isatty:00000000 _isatty
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:362    .text._lseek:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:369    .text._lseek:00000000 _lseek
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:385    .text._open:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:392    .text._open:00000000 _open
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:420    .text._wait:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:427    .text._wait:00000000 _wait
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:451    .text._unlink:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:458    .text._unlink:00000000 _unlink
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:482    .text._times:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:489    .text._times:00000000 _times
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:505    .text._stat:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:512    .text._stat:00000000 _stat
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:531    .text._link:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:538    .text._link:00000000 _link
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:562    .text._fork:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:569    .text._fork:00000000 _fork
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:592    .text._execve:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:599    .text._execve:00000000 _execve
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:641    .data.environ:00000000 environ
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:628    .bss.__env:00000000 __env
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:625    .bss.__env:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:631    .bss.heap_end.7234:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:635    .bss.heap_end.7234:00000000 heap_end.7234
+C:\Users\kotaro\AppData\Local\Temp\ccp8c6sp.s:638    .data.environ:00000000 $d
+
+UNDEFINED SYMBOLS
+__errno
+__io_getchar
+__io_putchar
+end

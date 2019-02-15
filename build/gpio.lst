@@ -1,0 +1,299 @@
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	MX_GPIO_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MX_GPIO_Init:
+  26              	.LFB126:
+  27              		.file 1 "Src/gpio.c"
+   1:Src/gpio.c    **** /**
+   2:Src/gpio.c    ****   ******************************************************************************
+   3:Src/gpio.c    ****   * File Name          : gpio.c
+   4:Src/gpio.c    ****   * Description        : This file provides code for the configuration
+   5:Src/gpio.c    ****   *                      of all used GPIO pins.
+   6:Src/gpio.c    ****   ******************************************************************************
+   7:Src/gpio.c    ****   ** This notice applies to any and all portions of this file
+   8:Src/gpio.c    ****   * that are not between comment pairs USER CODE BEGIN and
+   9:Src/gpio.c    ****   * USER CODE END. Other portions of this file, whether 
+  10:Src/gpio.c    ****   * inserted by the user or by software development tools
+  11:Src/gpio.c    ****   * are owned by their respective copyright owners.
+  12:Src/gpio.c    ****   *
+  13:Src/gpio.c    ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:Src/gpio.c    ****   *
+  15:Src/gpio.c    ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:Src/gpio.c    ****   * are permitted provided that the following conditions are met:
+  17:Src/gpio.c    ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:Src/gpio.c    ****   *      this list of conditions and the following disclaimer.
+  19:Src/gpio.c    ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Src/gpio.c    ****   *      this list of conditions and the following disclaimer in the documentation
+  21:Src/gpio.c    ****   *      and/or other materials provided with the distribution.
+  22:Src/gpio.c    ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:Src/gpio.c    ****   *      may be used to endorse or promote products derived from this software
+  24:Src/gpio.c    ****   *      without specific prior written permission.
+  25:Src/gpio.c    ****   *
+  26:Src/gpio.c    ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Src/gpio.c    ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:Src/gpio.c    ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:Src/gpio.c    ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:Src/gpio.c    ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:Src/gpio.c    ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s 			page 2
+
+
+  32:Src/gpio.c    ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:Src/gpio.c    ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:Src/gpio.c    ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:Src/gpio.c    ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:Src/gpio.c    ****   *
+  37:Src/gpio.c    ****   ******************************************************************************
+  38:Src/gpio.c    ****   */
+  39:Src/gpio.c    **** 
+  40:Src/gpio.c    **** /* Includes ------------------------------------------------------------------*/
+  41:Src/gpio.c    **** #include "gpio.h"
+  42:Src/gpio.c    **** /* USER CODE BEGIN 0 */
+  43:Src/gpio.c    **** 
+  44:Src/gpio.c    **** /* USER CODE END 0 */
+  45:Src/gpio.c    **** 
+  46:Src/gpio.c    **** /*----------------------------------------------------------------------------*/
+  47:Src/gpio.c    **** /* Configure GPIO                                                             */
+  48:Src/gpio.c    **** /*----------------------------------------------------------------------------*/
+  49:Src/gpio.c    **** /* USER CODE BEGIN 1 */
+  50:Src/gpio.c    **** 
+  51:Src/gpio.c    **** /* USER CODE END 1 */
+  52:Src/gpio.c    **** 
+  53:Src/gpio.c    **** /** Configure pins as 
+  54:Src/gpio.c    ****         * Analog 
+  55:Src/gpio.c    ****         * Input 
+  56:Src/gpio.c    ****         * Output
+  57:Src/gpio.c    ****         * EVENT_OUT
+  58:Src/gpio.c    ****         * EXTI
+  59:Src/gpio.c    **** */
+  60:Src/gpio.c    **** void MX_GPIO_Init(void)
+  61:Src/gpio.c    **** {
+  28              		.loc 1 61 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 40
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 20
+  35              		.cfi_offset 4, -20
+  36              		.cfi_offset 5, -16
+  37              		.cfi_offset 6, -12
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 8BB0     		sub	sp, sp, #44
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 64
+  43              	.LBB2:
+  62:Src/gpio.c    **** 
+  63:Src/gpio.c    ****   GPIO_InitTypeDef GPIO_InitStruct;
+  64:Src/gpio.c    **** 
+  65:Src/gpio.c    ****   /* GPIO Ports Clock Enable */
+  66:Src/gpio.c    ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  44              		.loc 1 66 0
+  45 0004 0024     		movs	r4, #0
+  46 0006 0194     		str	r4, [sp, #4]
+  47 0008 2A4B     		ldr	r3, .L3
+  48 000a 1A6B     		ldr	r2, [r3, #48]
+  49 000c 42F00402 		orr	r2, r2, #4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s 			page 3
+
+
+  50 0010 1A63     		str	r2, [r3, #48]
+  51 0012 1A6B     		ldr	r2, [r3, #48]
+  52 0014 02F00402 		and	r2, r2, #4
+  53 0018 0192     		str	r2, [sp, #4]
+  54 001a 019A     		ldr	r2, [sp, #4]
+  55              	.LBE2:
+  56              	.LBB3:
+  67:Src/gpio.c    ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  57              		.loc 1 67 0
+  58 001c 0294     		str	r4, [sp, #8]
+  59 001e 1A6B     		ldr	r2, [r3, #48]
+  60 0020 42F00102 		orr	r2, r2, #1
+  61 0024 1A63     		str	r2, [r3, #48]
+  62 0026 1A6B     		ldr	r2, [r3, #48]
+  63 0028 02F00102 		and	r2, r2, #1
+  64 002c 0292     		str	r2, [sp, #8]
+  65 002e 029A     		ldr	r2, [sp, #8]
+  66              	.LBE3:
+  67              	.LBB4:
+  68:Src/gpio.c    ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  68              		.loc 1 68 0
+  69 0030 0394     		str	r4, [sp, #12]
+  70 0032 1A6B     		ldr	r2, [r3, #48]
+  71 0034 42F00202 		orr	r2, r2, #2
+  72 0038 1A63     		str	r2, [r3, #48]
+  73 003a 1A6B     		ldr	r2, [r3, #48]
+  74 003c 02F00202 		and	r2, r2, #2
+  75 0040 0392     		str	r2, [sp, #12]
+  76 0042 039A     		ldr	r2, [sp, #12]
+  77              	.LBE4:
+  78              	.LBB5:
+  69:Src/gpio.c    ****   __HAL_RCC_GPIOD_CLK_ENABLE();
+  79              		.loc 1 69 0
+  80 0044 0494     		str	r4, [sp, #16]
+  81 0046 1A6B     		ldr	r2, [r3, #48]
+  82 0048 42F00802 		orr	r2, r2, #8
+  83 004c 1A63     		str	r2, [r3, #48]
+  84 004e 1B6B     		ldr	r3, [r3, #48]
+  85 0050 03F00803 		and	r3, r3, #8
+  86 0054 0493     		str	r3, [sp, #16]
+  87 0056 049B     		ldr	r3, [sp, #16]
+  88              	.LBE5:
+  70:Src/gpio.c    **** 
+  71:Src/gpio.c    ****   /*Configure GPIO pin Output Level */
+  72:Src/gpio.c    ****   HAL_GPIO_WritePin(GPIOC, led0_Pin|led1_Pin|paluse0_Pin|paluse1_Pin 
+  89              		.loc 1 72 0
+  90 0058 174F     		ldr	r7, .L3+4
+  91 005a 2246     		mov	r2, r4
+  92 005c 46F2CF11 		movw	r1, #25039
+  93 0060 3846     		mov	r0, r7
+  94 0062 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  95              	.LVL0:
+  73:Src/gpio.c    ****                           |paluse2_Pin|paluse3_Pin|gyro_int_Pin|led2_Pin 
+  74:Src/gpio.c    ****                           |led3_Pin, GPIO_PIN_RESET);
+  75:Src/gpio.c    **** 
+  76:Src/gpio.c    ****   /*Configure GPIO pin Output Level */
+  77:Src/gpio.c    ****   HAL_GPIO_WritePin(gyro_cs_GPIO_Port, gyro_cs_Pin, GPIO_PIN_RESET);
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s 			page 4
+
+
+  96              		.loc 1 77 0
+  97 0066 154D     		ldr	r5, .L3+8
+  98 0068 2246     		mov	r2, r4
+  99 006a 4FF48051 		mov	r1, #4096
+ 100 006e 2846     		mov	r0, r5
+ 101 0070 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 102              	.LVL1:
+  78:Src/gpio.c    **** 
+  79:Src/gpio.c    ****   /*Configure GPIO pins : PCPin PCPin PCPin PCPin 
+  80:Src/gpio.c    ****                            PCPin PCPin PCPin PCPin 
+  81:Src/gpio.c    ****                            PCPin */
+  82:Src/gpio.c    ****   GPIO_InitStruct.Pin = led0_Pin|led1_Pin|paluse0_Pin|paluse1_Pin 
+ 103              		.loc 1 82 0
+ 104 0074 46F2CF13 		movw	r3, #25039
+ 105 0078 0593     		str	r3, [sp, #20]
+  83:Src/gpio.c    ****                           |paluse2_Pin|paluse3_Pin|gyro_int_Pin|led2_Pin 
+  84:Src/gpio.c    ****                           |led3_Pin;
+  85:Src/gpio.c    ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 106              		.loc 1 85 0
+ 107 007a 0126     		movs	r6, #1
+ 108 007c 0696     		str	r6, [sp, #24]
+  86:Src/gpio.c    ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 109              		.loc 1 86 0
+ 110 007e 0794     		str	r4, [sp, #28]
+  87:Src/gpio.c    ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 111              		.loc 1 87 0
+ 112 0080 0894     		str	r4, [sp, #32]
+  88:Src/gpio.c    ****   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 113              		.loc 1 88 0
+ 114 0082 05A9     		add	r1, sp, #20
+ 115 0084 3846     		mov	r0, r7
+ 116 0086 FFF7FEFF 		bl	HAL_GPIO_Init
+ 117              	.LVL2:
+  89:Src/gpio.c    **** 
+  90:Src/gpio.c    ****   /*Configure GPIO pin : PtPin */
+  91:Src/gpio.c    ****   GPIO_InitStruct.Pin = gyro_cs_Pin;
+ 118              		.loc 1 91 0
+ 119 008a 4FF48053 		mov	r3, #4096
+ 120 008e 0593     		str	r3, [sp, #20]
+  92:Src/gpio.c    ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 121              		.loc 1 92 0
+ 122 0090 0696     		str	r6, [sp, #24]
+  93:Src/gpio.c    ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 123              		.loc 1 93 0
+ 124 0092 0794     		str	r4, [sp, #28]
+  94:Src/gpio.c    ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 125              		.loc 1 94 0
+ 126 0094 0894     		str	r4, [sp, #32]
+  95:Src/gpio.c    ****   HAL_GPIO_Init(gyro_cs_GPIO_Port, &GPIO_InitStruct);
+ 127              		.loc 1 95 0
+ 128 0096 05A9     		add	r1, sp, #20
+ 129 0098 2846     		mov	r0, r5
+ 130 009a FFF7FEFF 		bl	HAL_GPIO_Init
+ 131              	.LVL3:
+  96:Src/gpio.c    **** 
+  97:Src/gpio.c    ****   /*Configure GPIO pin : PtPin */
+  98:Src/gpio.c    ****   GPIO_InitStruct.Pin = push0_Pin;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s 			page 5
+
+
+ 132              		.loc 1 98 0
+ 133 009e 0423     		movs	r3, #4
+ 134 00a0 0593     		str	r3, [sp, #20]
+  99:Src/gpio.c    ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 135              		.loc 1 99 0
+ 136 00a2 0694     		str	r4, [sp, #24]
+ 100:Src/gpio.c    ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 137              		.loc 1 100 0
+ 138 00a4 0794     		str	r4, [sp, #28]
+ 101:Src/gpio.c    ****   HAL_GPIO_Init(push0_GPIO_Port, &GPIO_InitStruct);
+ 139              		.loc 1 101 0
+ 140 00a6 05A9     		add	r1, sp, #20
+ 141 00a8 0548     		ldr	r0, .L3+12
+ 142 00aa FFF7FEFF 		bl	HAL_GPIO_Init
+ 143              	.LVL4:
+ 102:Src/gpio.c    **** 
+ 103:Src/gpio.c    **** }
+ 144              		.loc 1 103 0
+ 145 00ae 0BB0     		add	sp, sp, #44
+ 146              	.LCFI2:
+ 147              		.cfi_def_cfa_offset 20
+ 148              		@ sp needed
+ 149 00b0 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 150              	.L4:
+ 151 00b2 00BF     		.align	2
+ 152              	.L3:
+ 153 00b4 00380240 		.word	1073887232
+ 154 00b8 00080240 		.word	1073874944
+ 155 00bc 00040240 		.word	1073873920
+ 156 00c0 000C0240 		.word	1073875968
+ 157              		.cfi_endproc
+ 158              	.LFE126:
+ 160              		.text
+ 161              	.Letext0:
+ 162              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 163              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 164              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 165              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 166              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 167              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 168              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 169              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 170              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 171              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s:18     .text.MX_GPIO_Init:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s:25     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\kotaro\AppData\Local\Temp\ccDm0Jdl.s:153    .text.MX_GPIO_Init:000000b4 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_Init

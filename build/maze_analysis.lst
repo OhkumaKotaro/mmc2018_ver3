@@ -1,0 +1,792 @@
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"maze_analysis.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Que_initialize,"ax",%progbits
+  18              		.align	1
+  19              		.global	Que_initialize
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	Que_initialize:
+  26              	.LFB0:
+  27              		.file 1 "Src/maze_analysis.c"
+   1:Src/maze_analysis.c **** #include "maze_analysis.h"
+   2:Src/maze_analysis.c **** 
+   3:Src/maze_analysis.c **** #define MAX_STEP 255
+   4:Src/maze_analysis.c **** 
+   5:Src/maze_analysis.c **** typedef struct {
+   6:Src/maze_analysis.c **** 	unsigned char data[MAX_STEP];
+   7:Src/maze_analysis.c **** 	unsigned char x[MAX_STEP];
+   8:Src/maze_analysis.c **** 	unsigned char y[MAX_STEP];
+   9:Src/maze_analysis.c **** 	unsigned int head;
+  10:Src/maze_analysis.c **** 	unsigned int tail;
+  11:Src/maze_analysis.c **** }queue_t;
+  12:Src/maze_analysis.c **** 
+  13:Src/maze_analysis.c **** typedef struct {
+  14:Src/maze_analysis.c **** 	unsigned char data;
+  15:Src/maze_analysis.c **** 	unsigned char x;
+  16:Src/maze_analysis.c **** 	unsigned char y;
+  17:Src/maze_analysis.c **** }buff_queue_t;
+  18:Src/maze_analysis.c **** 
+  19:Src/maze_analysis.c **** 
+  20:Src/maze_analysis.c **** void Que_initialize(queue_t *q) {
+  28              		.loc 1 20 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  21:Src/maze_analysis.c **** 	int i;
+  22:Src/maze_analysis.c **** 
+  23:Src/maze_analysis.c **** 	q->head = 0;
+  34              		.loc 1 23 0
+  35 0000 0023     		movs	r3, #0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 2
+
+
+  36 0002 C0F80033 		str	r3, [r0, #768]
+  24:Src/maze_analysis.c **** 	q->tail = 0;
+  37              		.loc 1 24 0
+  38 0006 C0F80433 		str	r3, [r0, #772]
+  39              	.LVL1:
+  25:Src/maze_analysis.c **** 	for (i = 0; i < MAX_STEP; ++i) {
+  40              		.loc 1 25 0
+  41 000a 07E0     		b	.L2
+  42              	.LVL2:
+  43              	.L3:
+  26:Src/maze_analysis.c **** 		q->data[i] = 0;
+  44              		.loc 1 26 0 discriminator 3
+  45 000c 0022     		movs	r2, #0
+  46 000e C254     		strb	r2, [r0, r3]
+  27:Src/maze_analysis.c **** 		q->x[i] = 0;
+  47              		.loc 1 27 0 discriminator 3
+  48 0010 C118     		adds	r1, r0, r3
+  49 0012 81F8FF20 		strb	r2, [r1, #255]
+  28:Src/maze_analysis.c **** 		q->y[i] = 0;
+  50              		.loc 1 28 0 discriminator 3
+  51 0016 81F8FE21 		strb	r2, [r1, #510]
+  25:Src/maze_analysis.c **** 		q->data[i] = 0;
+  52              		.loc 1 25 0 discriminator 3
+  53 001a 0133     		adds	r3, r3, #1
+  54              	.LVL3:
+  55              	.L2:
+  25:Src/maze_analysis.c **** 		q->data[i] = 0;
+  56              		.loc 1 25 0 is_stmt 0 discriminator 1
+  57 001c FE2B     		cmp	r3, #254
+  58 001e F5DD     		ble	.L3
+  29:Src/maze_analysis.c **** 	}
+  30:Src/maze_analysis.c **** }
+  59              		.loc 1 30 0 is_stmt 1
+  60 0020 7047     		bx	lr
+  61              		.cfi_endproc
+  62              	.LFE0:
+  64              		.section	.text.enqueue,"ax",%progbits
+  65              		.align	1
+  66              		.global	enqueue
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  70              		.fpu fpv4-sp-d16
+  72              	enqueue:
+  73              	.LFB1:
+  31:Src/maze_analysis.c **** 
+  32:Src/maze_analysis.c **** unsigned char enqueue(queue_t *q, unsigned char item, unsigned char px, unsigned char py) {
+  74              		.loc 1 32 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79              	.LVL4:
+  80 0000 10B4     		push	{r4}
+  81              	.LCFI0:
+  82              		.cfi_def_cfa_offset 4
+  83              		.cfi_offset 4, -4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 3
+
+
+  33:Src/maze_analysis.c **** 	if (q->tail >= MAX_STEP) {
+  84              		.loc 1 33 0
+  85 0002 D0F80443 		ldr	r4, [r0, #772]
+  86 0006 FE2C     		cmp	r4, #254
+  87 0008 0CD8     		bhi	.L6
+  34:Src/maze_analysis.c **** 		return MAX_STEP;
+  35:Src/maze_analysis.c **** 	}
+  36:Src/maze_analysis.c **** 	else {
+  37:Src/maze_analysis.c **** 		q->data[q->tail] = item;
+  88              		.loc 1 37 0
+  89 000a 0155     		strb	r1, [r0, r4]
+  38:Src/maze_analysis.c **** 		q->x[q->tail] = px;
+  90              		.loc 1 38 0
+  91 000c 0119     		adds	r1, r0, r4
+  92              	.LVL5:
+  93 000e 81F8FF20 		strb	r2, [r1, #255]
+  39:Src/maze_analysis.c **** 		q->y[q->tail] = py;
+  94              		.loc 1 39 0
+  95 0012 81F8FE31 		strb	r3, [r1, #510]
+  40:Src/maze_analysis.c **** 		q->tail++;
+  96              		.loc 1 40 0
+  97 0016 0134     		adds	r4, r4, #1
+  98 0018 C0F80443 		str	r4, [r0, #772]
+  99              	.LVL6:
+  41:Src/maze_analysis.c **** 	}
+  42:Src/maze_analysis.c **** 	return 1;
+ 100              		.loc 1 42 0
+ 101 001c 0120     		movs	r0, #1
+ 102              	.LVL7:
+ 103              	.L5:
+  43:Src/maze_analysis.c **** }
+ 104              		.loc 1 43 0
+ 105 001e 5DF8044B 		ldr	r4, [sp], #4
+ 106              	.LCFI1:
+ 107              		.cfi_remember_state
+ 108              		.cfi_restore 4
+ 109              		.cfi_def_cfa_offset 0
+ 110 0022 7047     		bx	lr
+ 111              	.LVL8:
+ 112              	.L6:
+ 113              	.LCFI2:
+ 114              		.cfi_restore_state
+  34:Src/maze_analysis.c **** 	}
+ 115              		.loc 1 34 0
+ 116 0024 FF20     		movs	r0, #255
+ 117              	.LVL9:
+ 118 0026 FAE7     		b	.L5
+ 119              		.cfi_endproc
+ 120              	.LFE1:
+ 122              		.section	.text.dequeue,"ax",%progbits
+ 123              		.align	1
+ 124              		.global	dequeue
+ 125              		.syntax unified
+ 126              		.thumb
+ 127              		.thumb_func
+ 128              		.fpu fpv4-sp-d16
+ 130              	dequeue:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 4
+
+
+ 131              	.LFB2:
+  44:Src/maze_analysis.c **** 
+  45:Src/maze_analysis.c **** buff_queue_t dequeue(queue_t *q) {
+ 132              		.loc 1 45 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 8
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		@ link register save eliminated.
+ 137              	.LVL10:
+ 138 0000 82B0     		sub	sp, sp, #8
+ 139              	.LCFI3:
+ 140              		.cfi_def_cfa_offset 8
+  46:Src/maze_analysis.c **** 	buff_queue_t tmp;
+  47:Src/maze_analysis.c **** 	tmp.data = q->data[q->head];
+ 141              		.loc 1 47 0
+ 142 0002 D0F80033 		ldr	r3, [r0, #768]
+ 143 0006 C25C     		ldrb	r2, [r0, r3]	@ zero_extendqisi2
+ 144 0008 8DF80020 		strb	r2, [sp]
+  48:Src/maze_analysis.c **** 	tmp.x = q->x[q->head];
+ 145              		.loc 1 48 0
+ 146 000c C218     		adds	r2, r0, r3
+ 147 000e 92F8FF10 		ldrb	r1, [r2, #255]	@ zero_extendqisi2
+ 148 0012 8DF80110 		strb	r1, [sp, #1]
+  49:Src/maze_analysis.c **** 	tmp.y = q->y[q->head];
+ 149              		.loc 1 49 0
+ 150 0016 92F8FE21 		ldrb	r2, [r2, #510]	@ zero_extendqisi2
+ 151 001a 8DF80220 		strb	r2, [sp, #2]
+  50:Src/maze_analysis.c **** 	q->head++;
+ 152              		.loc 1 50 0
+ 153 001e 0133     		adds	r3, r3, #1
+ 154 0020 C0F80033 		str	r3, [r0, #768]
+  51:Src/maze_analysis.c **** 	return tmp;
+ 155              		.loc 1 51 0
+ 156 0024 009B     		ldr	r3, [sp]
+ 157 0026 0020     		movs	r0, #0
+ 158              	.LVL11:
+ 159 0028 DAB2     		uxtb	r2, r3
+ 160 002a 62F30700 		bfi	r0, r2, #0, #8
+ 161 002e C3F30722 		ubfx	r2, r3, #8, #8
+ 162 0032 62F30F20 		bfi	r0, r2, #8, #8
+ 163 0036 C3F30743 		ubfx	r3, r3, #16, #8
+ 164 003a 63F31740 		bfi	r0, r3, #16, #8
+  52:Src/maze_analysis.c **** }
+ 165              		.loc 1 52 0
+ 166 003e 02B0     		add	sp, sp, #8
+ 167              	.LCFI4:
+ 168              		.cfi_def_cfa_offset 0
+ 169              		@ sp needed
+ 170 0040 7047     		bx	lr
+ 171              		.cfi_endproc
+ 172              	.LFE2:
+ 174              		.section	.text.Maze_CreateMap,"ax",%progbits
+ 175              		.align	1
+ 176              		.global	Maze_CreateMap
+ 177              		.syntax unified
+ 178              		.thumb
+ 179              		.thumb_func
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 5
+
+
+ 180              		.fpu fpv4-sp-d16
+ 182              	Maze_CreateMap:
+ 183              	.LFB3:
+  53:Src/maze_analysis.c **** 
+  54:Src/maze_analysis.c **** 
+  55:Src/maze_analysis.c **** void Maze_CreateMap(maze_t *maze) {
+ 184              		.loc 1 55 0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 784
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              	.LVL12:
+ 189 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 190              	.LCFI5:
+ 191              		.cfi_def_cfa_offset 24
+ 192              		.cfi_offset 4, -24
+ 193              		.cfi_offset 5, -20
+ 194              		.cfi_offset 6, -16
+ 195              		.cfi_offset 7, -12
+ 196              		.cfi_offset 8, -8
+ 197              		.cfi_offset 14, -4
+ 198 0004 ADF5447D 		sub	sp, sp, #784
+ 199              	.LCFI6:
+ 200              		.cfi_def_cfa_offset 808
+ 201 0008 0446     		mov	r4, r0
+ 202              	.LVL13:
+ 203              	.LBB2:
+  56:Src/maze_analysis.c **** 	queue_t q;
+  57:Src/maze_analysis.c **** 	buff_queue_t buff;
+  58:Src/maze_analysis.c **** 	unsigned char x;
+  59:Src/maze_analysis.c **** 	unsigned char y;
+  60:Src/maze_analysis.c **** 	unsigned char step;
+  61:Src/maze_analysis.c **** 	unsigned int tmp;
+  62:Src/maze_analysis.c **** 
+  63:Src/maze_analysis.c **** 	//init step
+  64:Src/maze_analysis.c **** 	for(unsigned char i=0;i<WALL_NUM;i++){
+ 204              		.loc 1 64 0
+ 205 000a 0021     		movs	r1, #0
+ 206 000c 18E0     		b	.L11
+ 207              	.LVL14:
+ 208              	.L12:
+ 209              	.LBB3:
+  65:Src/maze_analysis.c **** 		for(unsigned char j=0;j<WALL_NUM;j++){
+  66:Src/maze_analysis.c **** 			if(maze->goal_x==i && maze->goal_y==j){
+  67:Src/maze_analysis.c **** 				maze->step[i][j]=0;
+  68:Src/maze_analysis.c **** 			}else{
+  69:Src/maze_analysis.c **** 				maze->step[i][j]=MAX_STEP;
+ 210              		.loc 1 69 0
+ 211 000e 04EB0112 		add	r2, r4, r1, lsl #4
+ 212 0012 1A44     		add	r2, r2, r3
+ 213 0014 FF20     		movs	r0, #255
+ 214 0016 82F80401 		strb	r0, [r2, #260]
+ 215              	.L13:
+  65:Src/maze_analysis.c **** 		for(unsigned char j=0;j<WALL_NUM;j++){
+ 216              		.loc 1 65 0 discriminator 2
+ 217 001a 0133     		adds	r3, r3, #1
+ 218              	.LVL15:
+ 219 001c DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 6
+
+
+ 220              	.LVL16:
+ 221              	.L15:
+  65:Src/maze_analysis.c **** 		for(unsigned char j=0;j<WALL_NUM;j++){
+ 222              		.loc 1 65 0 is_stmt 0 discriminator 1
+ 223 001e 0F2B     		cmp	r3, #15
+ 224 0020 0CD8     		bhi	.L23
+  66:Src/maze_analysis.c **** 				maze->step[i][j]=0;
+ 225              		.loc 1 66 0 is_stmt 1
+ 226 0022 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 227 0024 8A42     		cmp	r2, r1
+ 228 0026 F2D1     		bne	.L12
+  66:Src/maze_analysis.c **** 				maze->step[i][j]=0;
+ 229              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 230 0028 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
+ 231 002a 9A42     		cmp	r2, r3
+ 232 002c EFD1     		bne	.L12
+  67:Src/maze_analysis.c **** 			}else{
+ 233              		.loc 1 67 0 is_stmt 1
+ 234 002e 04EB0112 		add	r2, r4, r1, lsl #4
+ 235 0032 1A44     		add	r2, r2, r3
+ 236 0034 0020     		movs	r0, #0
+ 237 0036 82F80401 		strb	r0, [r2, #260]
+ 238 003a EEE7     		b	.L13
+ 239              	.L23:
+ 240              	.LBE3:
+  64:Src/maze_analysis.c **** 		for(unsigned char j=0;j<WALL_NUM;j++){
+ 241              		.loc 1 64 0 discriminator 2
+ 242 003c 0131     		adds	r1, r1, #1
+ 243              	.LVL17:
+ 244 003e C9B2     		uxtb	r1, r1
+ 245              	.LVL18:
+ 246              	.L11:
+  64:Src/maze_analysis.c **** 		for(unsigned char j=0;j<WALL_NUM;j++){
+ 247              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 248 0040 0F29     		cmp	r1, #15
+ 249 0042 01D8     		bhi	.L24
+ 250              	.LBB4:
+  65:Src/maze_analysis.c **** 			if(maze->goal_x==i && maze->goal_y==j){
+ 251              		.loc 1 65 0 is_stmt 1
+ 252 0044 0023     		movs	r3, #0
+ 253 0046 EAE7     		b	.L15
+ 254              	.L24:
+ 255              	.LBE4:
+ 256              	.LBE2:
+  70:Src/maze_analysis.c **** 			}
+  71:Src/maze_analysis.c **** 		}
+  72:Src/maze_analysis.c **** 	}
+  73:Src/maze_analysis.c **** 
+  74:Src/maze_analysis.c **** 	Que_initialize(&q);
+ 257              		.loc 1 74 0
+ 258 0048 02A8     		add	r0, sp, #8
+ 259 004a FFF7FEFF 		bl	Que_initialize
+ 260              	.LVL19:
+  75:Src/maze_analysis.c **** 	enqueue(&q, 0, maze->goal_x, maze->goal_y);
+ 261              		.loc 1 75 0
+ 262 004e 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 263 0050 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 7
+
+
+ 264 0052 0021     		movs	r1, #0
+ 265 0054 02A8     		add	r0, sp, #8
+ 266 0056 FFF7FEFF 		bl	enqueue
+ 267              	.LVL20:
+ 268 005a 2AE0     		b	.L20
+ 269              	.LVL21:
+ 270              	.L26:
+  76:Src/maze_analysis.c **** 
+  77:Src/maze_analysis.c **** 	while (1)
+  78:Src/maze_analysis.c **** 	{
+  79:Src/maze_analysis.c **** 		buff = dequeue(&q);
+  80:Src/maze_analysis.c **** 		x = buff.x;
+  81:Src/maze_analysis.c **** 		y = buff.y;
+  82:Src/maze_analysis.c **** 		step = buff.data + 1;
+  83:Src/maze_analysis.c **** 		//north
+  84:Src/maze_analysis.c **** 		if (y < WALL_NUM-1)
+  85:Src/maze_analysis.c **** 		{
+  86:Src/maze_analysis.c **** 			tmp = maze->wall_horizontal[y] & (0b1 << x);
+  87:Src/maze_analysis.c **** 			if (tmp == 0)
+  88:Src/maze_analysis.c **** 			{
+  89:Src/maze_analysis.c **** 				if (maze->step[x][y + 1] == MAX_STEP) {
+  90:Src/maze_analysis.c **** 					enqueue(&q, step, x, y + 1);
+ 271              		.loc 1 90 0
+ 272 005c 5FFA88F3 		uxtb	r3, r8
+ 273 0060 3A46     		mov	r2, r7
+ 274              	.LVL22:
+ 275 0062 2946     		mov	r1, r5
+ 276 0064 02A8     		add	r0, sp, #8
+ 277 0066 FFF7FEFF 		bl	enqueue
+ 278              	.LVL23:
+  91:Src/maze_analysis.c **** 					maze->step[x][y + 1] = step;
+ 279              		.loc 1 91 0
+ 280 006a 04EB0713 		add	r3, r4, r7, lsl #4
+ 281 006e 9844     		add	r8, r8, r3
+ 282 0070 88F80451 		strb	r5, [r8, #260]
+ 283 0074 42E0     		b	.L16
+ 284              	.LVL24:
+ 285              	.L27:
+  92:Src/maze_analysis.c **** 				}
+  93:Src/maze_analysis.c **** 			}
+  94:Src/maze_analysis.c **** 		}
+  95:Src/maze_analysis.c **** 		//south
+  96:Src/maze_analysis.c **** 		if (y>0) {
+  97:Src/maze_analysis.c **** 			tmp = maze->wall_horizontal[y - 1] & (0b1 << x);
+  98:Src/maze_analysis.c **** 			if ( tmp == 0)
+  99:Src/maze_analysis.c **** 			{
+ 100:Src/maze_analysis.c **** 				if (maze->step[x][y - 1] == MAX_STEP) {
+ 101:Src/maze_analysis.c **** 					enqueue(&q, step, x, y - 1);
+ 286              		.loc 1 101 0
+ 287 0076 5FFA88F3 		uxtb	r3, r8
+ 288 007a 3A46     		mov	r2, r7
+ 289              	.LVL25:
+ 290 007c 2946     		mov	r1, r5
+ 291 007e 02A8     		add	r0, sp, #8
+ 292 0080 FFF7FEFF 		bl	enqueue
+ 293              	.LVL26:
+ 102:Src/maze_analysis.c **** 					maze->step[x][y - 1] = step;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 8
+
+
+ 294              		.loc 1 102 0
+ 295 0084 04EB0713 		add	r3, r4, r7, lsl #4
+ 296 0088 9844     		add	r8, r8, r3
+ 297 008a 88F80451 		strb	r5, [r8, #260]
+ 298 008e 48E0     		b	.L17
+ 299              	.LVL27:
+ 300              	.L28:
+ 103:Src/maze_analysis.c **** 				}
+ 104:Src/maze_analysis.c **** 			}
+ 105:Src/maze_analysis.c **** 		}
+ 106:Src/maze_analysis.c **** 		//east
+ 107:Src/maze_analysis.c **** 		if (x < WALL_NUM - 1) 
+ 108:Src/maze_analysis.c **** 		{
+ 109:Src/maze_analysis.c **** 			tmp = maze->wall_vertical[x] & (0b1 << y);
+ 110:Src/maze_analysis.c **** 			if ( tmp == 0)
+ 111:Src/maze_analysis.c **** 			{
+ 112:Src/maze_analysis.c **** 				if (maze->step[x + 1][y] == MAX_STEP) {
+ 113:Src/maze_analysis.c **** 					enqueue(&q, step, x + 1, y);
+ 301              		.loc 1 113 0
+ 302 0090 3346     		mov	r3, r6
+ 303 0092 5FFA88F2 		uxtb	r2, r8
+ 304              	.LVL28:
+ 305 0096 2946     		mov	r1, r5
+ 306 0098 02A8     		add	r0, sp, #8
+ 307 009a FFF7FEFF 		bl	enqueue
+ 308              	.LVL29:
+ 114:Src/maze_analysis.c **** 					maze->step[x + 1][y] = step;
+ 309              		.loc 1 114 0
+ 310 009e 04EB0813 		add	r3, r4, r8, lsl #4
+ 311 00a2 3344     		add	r3, r3, r6
+ 312 00a4 83F80451 		strb	r5, [r3, #260]
+ 313 00a8 4DE0     		b	.L18
+ 314              	.LVL30:
+ 315              	.L19:
+ 115:Src/maze_analysis.c **** 				}
+ 116:Src/maze_analysis.c **** 			}
+ 117:Src/maze_analysis.c **** 		}
+ 118:Src/maze_analysis.c **** 		//west
+ 119:Src/maze_analysis.c **** 		if (x > 0) 
+ 120:Src/maze_analysis.c **** 		{
+ 121:Src/maze_analysis.c **** 			tmp = maze->wall_vertical[x - 1] & (0b1 << y);
+ 122:Src/maze_analysis.c **** 			if (tmp == 0)
+ 123:Src/maze_analysis.c **** 			{
+ 124:Src/maze_analysis.c **** 				if (maze->step[x-1][y] == MAX_STEP) {
+ 125:Src/maze_analysis.c **** 					enqueue(&q, step, x - 1, y);
+ 126:Src/maze_analysis.c **** 					maze->step[x - 1][y] = step;
+ 127:Src/maze_analysis.c **** 				}
+ 128:Src/maze_analysis.c **** 			}
+ 129:Src/maze_analysis.c **** 		}
+ 130:Src/maze_analysis.c **** 		if (q.head == q.tail) {
+ 316              		.loc 1 130 0
+ 317 00aa C29A     		ldr	r2, [sp, #776]
+ 318 00ac C39B     		ldr	r3, [sp, #780]
+ 319 00ae 9A42     		cmp	r2, r3
+ 320 00b0 68D0     		beq	.L25
+ 321              	.LVL31:
+ 322              	.L20:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 9
+
+
+  79:Src/maze_analysis.c **** 		x = buff.x;
+ 323              		.loc 1 79 0
+ 324 00b2 02A8     		add	r0, sp, #8
+ 325 00b4 FFF7FEFF 		bl	dequeue
+ 326              	.LVL32:
+ 327 00b8 8DF80400 		strb	r0, [sp, #4]
+ 328 00bc C0F30722 		ubfx	r2, r0, #8, #8
+ 329 00c0 8DF80520 		strb	r2, [sp, #5]
+ 330 00c4 C0F30746 		ubfx	r6, r0, #16, #8
+ 331 00c8 8DF80660 		strb	r6, [sp, #6]
+  80:Src/maze_analysis.c **** 		y = buff.y;
+ 332              		.loc 1 80 0
+ 333 00cc 1746     		mov	r7, r2
+ 334              	.LVL33:
+  82:Src/maze_analysis.c **** 		//north
+ 335              		.loc 1 82 0
+ 336 00ce C0B2     		uxtb	r0, r0
+ 337 00d0 0130     		adds	r0, r0, #1
+ 338 00d2 C5B2     		uxtb	r5, r0
+ 339              	.LVL34:
+  84:Src/maze_analysis.c **** 		{
+ 340              		.loc 1 84 0
+ 341 00d4 0E2E     		cmp	r6, #14
+ 342 00d6 11D8     		bhi	.L16
+  86:Src/maze_analysis.c **** 			if (tmp == 0)
+ 343              		.loc 1 86 0
+ 344 00d8 06F11003 		add	r3, r6, #16
+ 345 00dc 04EB8303 		add	r3, r4, r3, lsl #2
+ 346 00e0 5A68     		ldr	r2, [r3, #4]
+ 347 00e2 0123     		movs	r3, #1
+ 348 00e4 BB40     		lsls	r3, r3, r7
+ 349              	.LVL35:
+  87:Src/maze_analysis.c **** 			{
+ 350              		.loc 1 87 0
+ 351 00e6 1A42     		tst	r2, r3
+ 352 00e8 08D1     		bne	.L16
+  89:Src/maze_analysis.c **** 					enqueue(&q, step, x, y + 1);
+ 353              		.loc 1 89 0
+ 354 00ea 06F10108 		add	r8, r6, #1
+ 355 00ee 04EB0713 		add	r3, r4, r7, lsl #4
+ 356              	.LVL36:
+ 357 00f2 4344     		add	r3, r3, r8
+ 358 00f4 93F80431 		ldrb	r3, [r3, #260]	@ zero_extendqisi2
+ 359 00f8 FF2B     		cmp	r3, #255
+ 360 00fa AFD0     		beq	.L26
+ 361              	.LVL37:
+ 362              	.L16:
+  96:Src/maze_analysis.c **** 			tmp = maze->wall_horizontal[y - 1] & (0b1 << x);
+ 363              		.loc 1 96 0
+ 364 00fc 8EB1     		cbz	r6, .L17
+  97:Src/maze_analysis.c **** 			if ( tmp == 0)
+ 365              		.loc 1 97 0
+ 366 00fe 06F1FF38 		add	r8, r6, #-1
+ 367 0102 06F10F03 		add	r3, r6, #15
+ 368 0106 04EB8303 		add	r3, r4, r3, lsl #2
+ 369 010a 5A68     		ldr	r2, [r3, #4]
+ 370 010c 0123     		movs	r3, #1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 10
+
+
+ 371 010e BB40     		lsls	r3, r3, r7
+ 372              	.LVL38:
+  98:Src/maze_analysis.c **** 			{
+ 373              		.loc 1 98 0
+ 374 0110 1A42     		tst	r2, r3
+ 375 0112 06D1     		bne	.L17
+ 100:Src/maze_analysis.c **** 					enqueue(&q, step, x, y - 1);
+ 376              		.loc 1 100 0
+ 377 0114 04EB0713 		add	r3, r4, r7, lsl #4
+ 378              	.LVL39:
+ 379 0118 4344     		add	r3, r3, r8
+ 380 011a 93F80431 		ldrb	r3, [r3, #260]	@ zero_extendqisi2
+ 381 011e FF2B     		cmp	r3, #255
+ 382 0120 A9D0     		beq	.L27
+ 383              	.LVL40:
+ 384              	.L17:
+ 107:Src/maze_analysis.c **** 		{
+ 385              		.loc 1 107 0
+ 386 0122 0E2F     		cmp	r7, #14
+ 387 0124 0FD8     		bhi	.L18
+ 109:Src/maze_analysis.c **** 			if ( tmp == 0)
+ 388              		.loc 1 109 0
+ 389 0126 04EB8703 		add	r3, r4, r7, lsl #2
+ 390 012a 5A68     		ldr	r2, [r3, #4]
+ 391 012c 0123     		movs	r3, #1
+ 392 012e B340     		lsls	r3, r3, r6
+ 393              	.LVL41:
+ 110:Src/maze_analysis.c **** 			{
+ 394              		.loc 1 110 0
+ 395 0130 1A42     		tst	r2, r3
+ 396 0132 08D1     		bne	.L18
+ 112:Src/maze_analysis.c **** 					enqueue(&q, step, x + 1, y);
+ 397              		.loc 1 112 0
+ 398 0134 07F10108 		add	r8, r7, #1
+ 399 0138 04EB0813 		add	r3, r4, r8, lsl #4
+ 400              	.LVL42:
+ 401 013c 3344     		add	r3, r3, r6
+ 402 013e 93F80431 		ldrb	r3, [r3, #260]	@ zero_extendqisi2
+ 403 0142 FF2B     		cmp	r3, #255
+ 404 0144 A4D0     		beq	.L28
+ 405              	.LVL43:
+ 406              	.L18:
+ 119:Src/maze_analysis.c **** 		{
+ 407              		.loc 1 119 0
+ 408 0146 002F     		cmp	r7, #0
+ 409 0148 AFD0     		beq	.L19
+ 121:Src/maze_analysis.c **** 			if (tmp == 0)
+ 410              		.loc 1 121 0
+ 411 014a 07F1FF38 		add	r8, r7, #-1
+ 412 014e 04EB8803 		add	r3, r4, r8, lsl #2
+ 413 0152 5A68     		ldr	r2, [r3, #4]
+ 414 0154 0123     		movs	r3, #1
+ 415 0156 B340     		lsls	r3, r3, r6
+ 416              	.LVL44:
+ 122:Src/maze_analysis.c **** 			{
+ 417              		.loc 1 122 0
+ 418 0158 1A42     		tst	r2, r3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 11
+
+
+ 419 015a A6D1     		bne	.L19
+ 124:Src/maze_analysis.c **** 					enqueue(&q, step, x - 1, y);
+ 420              		.loc 1 124 0
+ 421 015c 04EB0813 		add	r3, r4, r8, lsl #4
+ 422              	.LVL45:
+ 423 0160 3344     		add	r3, r3, r6
+ 424 0162 93F80431 		ldrb	r3, [r3, #260]	@ zero_extendqisi2
+ 425 0166 FF2B     		cmp	r3, #255
+ 426 0168 9FD1     		bne	.L19
+ 125:Src/maze_analysis.c **** 					maze->step[x - 1][y] = step;
+ 427              		.loc 1 125 0
+ 428 016a 3346     		mov	r3, r6
+ 429 016c 5FFA88F2 		uxtb	r2, r8
+ 430              	.LVL46:
+ 431 0170 2946     		mov	r1, r5
+ 432 0172 02A8     		add	r0, sp, #8
+ 433 0174 FFF7FEFF 		bl	enqueue
+ 434              	.LVL47:
+ 126:Src/maze_analysis.c **** 				}
+ 435              		.loc 1 126 0
+ 436 0178 04EB0818 		add	r8, r4, r8, lsl #4
+ 437 017c 4644     		add	r6, r6, r8
+ 438              	.LVL48:
+ 439 017e 86F80451 		strb	r5, [r6, #260]
+ 440 0182 92E7     		b	.L19
+ 441              	.L25:
+ 131:Src/maze_analysis.c **** 			break;
+ 132:Src/maze_analysis.c **** 		}
+ 133:Src/maze_analysis.c **** 	}
+ 134:Src/maze_analysis.c **** }
+ 442              		.loc 1 134 0
+ 443 0184 0DF5447D 		add	sp, sp, #784
+ 444              	.LCFI7:
+ 445              		.cfi_def_cfa_offset 24
+ 446              		@ sp needed
+ 447 0188 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 448              		.cfi_endproc
+ 449              	.LFE3:
+ 451              		.section	.text.Maze_CreateFastMap,"ax",%progbits
+ 452              		.align	1
+ 453              		.global	Maze_CreateFastMap
+ 454              		.syntax unified
+ 455              		.thumb
+ 456              		.thumb_func
+ 457              		.fpu fpv4-sp-d16
+ 459              	Maze_CreateFastMap:
+ 460              	.LFB4:
+ 135:Src/maze_analysis.c **** 
+ 136:Src/maze_analysis.c **** void Maze_CreateFastMap(maze_t *maze) {
+ 461              		.loc 1 136 0
+ 462              		.cfi_startproc
+ 463              		@ args = 0, pretend = 0, frame = 0
+ 464              		@ frame_needed = 0, uses_anonymous_args = 0
+ 465              	.LVL49:
+ 466 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 467              	.LCFI8:
+ 468              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 12
+
+
+ 469              		.cfi_offset 3, -24
+ 470              		.cfi_offset 4, -20
+ 471              		.cfi_offset 5, -16
+ 472              		.cfi_offset 6, -12
+ 473              		.cfi_offset 7, -8
+ 474              		.cfi_offset 14, -4
+ 475              	.LVL50:
+ 476              	.LBB5:
+ 137:Src/maze_analysis.c **** 	for (unsigned char i = 0; i < WALL_NUM; i++)
+ 477              		.loc 1 137 0
+ 478 0002 0024     		movs	r4, #0
+ 479 0004 2BE0     		b	.L30
+ 480              	.LVL51:
+ 481              	.L32:
+ 482              	.LBB6:
+ 138:Src/maze_analysis.c **** 	{
+ 139:Src/maze_analysis.c **** 		for (unsigned char j = 0; j < WALL_NUM; j++)
+ 483              		.loc 1 139 0 discriminator 2
+ 484 0006 0133     		adds	r3, r3, #1
+ 485              	.LVL52:
+ 486 0008 DBB2     		uxtb	r3, r3
+ 487              	.LVL53:
+ 488              	.L34:
+ 489              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 490 000a 0F2B     		cmp	r3, #15
+ 491 000c 25D8     		bhi	.L37
+ 140:Src/maze_analysis.c **** 		{
+ 141:Src/maze_analysis.c **** 			if (maze->wall_hor_search[i]>>j & 0b1 != 0)
+ 492              		.loc 1 141 0 is_stmt 1
+ 493 000e 2146     		mov	r1, r4
+ 494 0010 04F13002 		add	r2, r4, #48
+ 495 0014 00EB8202 		add	r2, r0, r2, lsl #2
+ 496 0018 5268     		ldr	r2, [r2, #4]
+ 497 001a 1D46     		mov	r5, r3
+ 498 001c DA40     		lsrs	r2, r2, r3
+ 499 001e 12F0010F 		tst	r2, #1
+ 500 0022 08D1     		bne	.L31
+ 142:Src/maze_analysis.c **** 			{
+ 143:Src/maze_analysis.c **** 			}
+ 144:Src/maze_analysis.c **** 			else
+ 145:Src/maze_analysis.c **** 			{
+ 146:Src/maze_analysis.c **** 				maze->wall_horizontal[i] = maze->wall_horizontal[i] | (0b1 << j);
+ 501              		.loc 1 146 0
+ 502 0024 04F11002 		add	r2, r4, #16
+ 503 0028 00EB8202 		add	r2, r0, r2, lsl #2
+ 504 002c 5668     		ldr	r6, [r2, #4]
+ 505 002e 0127     		movs	r7, #1
+ 506 0030 9F40     		lsls	r7, r7, r3
+ 507 0032 3E43     		orrs	r6, r6, r7
+ 508 0034 5660     		str	r6, [r2, #4]
+ 509              	.L31:
+ 147:Src/maze_analysis.c **** 			}
+ 148:Src/maze_analysis.c **** 			if (maze->wall_ver_search[i]>>j & 0b1 != 0)
+ 510              		.loc 1 148 0
+ 511 0036 01F12002 		add	r2, r1, #32
+ 512 003a 00EB8202 		add	r2, r0, r2, lsl #2
+ 513 003e 5268     		ldr	r2, [r2, #4]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 13
+
+
+ 514 0040 EA40     		lsrs	r2, r2, r5
+ 515 0042 12F0010F 		tst	r2, #1
+ 516 0046 DED1     		bne	.L32
+ 149:Src/maze_analysis.c **** 			{
+ 150:Src/maze_analysis.c **** 			}
+ 151:Src/maze_analysis.c **** 			else
+ 152:Src/maze_analysis.c **** 			{
+ 153:Src/maze_analysis.c **** 				maze->wall_vertical[i] = maze->wall_vertical[i] | (0b1 << j);
+ 517              		.loc 1 153 0
+ 518 0048 00EB8101 		add	r1, r0, r1, lsl #2
+ 519 004c 4A68     		ldr	r2, [r1, #4]
+ 520 004e 0126     		movs	r6, #1
+ 521 0050 06FA05F5 		lsl	r5, r6, r5
+ 522 0054 2A43     		orrs	r2, r2, r5
+ 523 0056 4A60     		str	r2, [r1, #4]
+ 524 0058 D5E7     		b	.L32
+ 525              	.L37:
+ 526              	.LBE6:
+ 137:Src/maze_analysis.c **** 	{
+ 527              		.loc 1 137 0 discriminator 2
+ 528 005a 0134     		adds	r4, r4, #1
+ 529              	.LVL54:
+ 530 005c E4B2     		uxtb	r4, r4
+ 531              	.LVL55:
+ 532              	.L30:
+ 137:Src/maze_analysis.c **** 	{
+ 533              		.loc 1 137 0 is_stmt 0 discriminator 1
+ 534 005e 0F2C     		cmp	r4, #15
+ 535 0060 01D8     		bhi	.L38
+ 536              	.LBB7:
+ 139:Src/maze_analysis.c **** 		{
+ 537              		.loc 1 139 0 is_stmt 1
+ 538 0062 0023     		movs	r3, #0
+ 539 0064 D1E7     		b	.L34
+ 540              	.L38:
+ 541              	.LBE7:
+ 542              	.LBE5:
+ 154:Src/maze_analysis.c **** 			}
+ 155:Src/maze_analysis.c **** 		}
+ 156:Src/maze_analysis.c **** 	}
+ 157:Src/maze_analysis.c **** 	Maze_CreateMap(maze);
+ 543              		.loc 1 157 0
+ 544 0066 FFF7FEFF 		bl	Maze_CreateMap
+ 545              	.LVL56:
+ 158:Src/maze_analysis.c **** }
+ 546              		.loc 1 158 0
+ 547 006a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 548              		.cfi_endproc
+ 549              	.LFE4:
+ 551              		.text
+ 552              	.Letext0:
+ 553              		.file 2 "Inc/maze_info.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 maze_analysis.c
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:18     .text.Que_initialize:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:25     .text.Que_initialize:00000000 Que_initialize
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:65     .text.enqueue:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:72     .text.enqueue:00000000 enqueue
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:123    .text.dequeue:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:130    .text.dequeue:00000000 dequeue
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:175    .text.Maze_CreateMap:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:182    .text.Maze_CreateMap:00000000 Maze_CreateMap
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:452    .text.Maze_CreateFastMap:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccHqbfLb.s:459    .text.Maze_CreateFastMap:00000000 Maze_CreateFastMap
+
+NO UNDEFINED SYMBOLS

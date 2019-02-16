@@ -8,6 +8,7 @@
 #include "maze_info.h"
 
 void Maze_CreateMap(maze_t *maze);
+unsigned char Maze_CreateAllMap(maze_t *maze);
 void Maze_CreateFastMap(maze_t *maze);
 
 #ifdef __cplusplus

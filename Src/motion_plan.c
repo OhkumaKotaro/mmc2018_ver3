@@ -450,18 +450,82 @@ void Plan_Adachi(void)
 			break;
 		}
 	}
+	Maze_Get_Wall();
 	Motion_Goal();
 	flag_motor = FALSE;
-	maze.wall_hor_search[maze.goal_y] = maze.wall_hor_search[maze.goal_y] | (0b1 << maze.goal_x);
-	if (maze.goal_y > 0)
+}
+
+void Plan_AllSearch(void)
+{
+	unsigned char end_flag = 0;
+
+	Output_Buzzer(HZ_G);
+	flag_motor = TRUE;
+
+	if (sen_front.is_wall == FALSE)
 	{
-		maze.wall_hor_search[maze.goal_y - 1] = maze.wall_hor_search[maze.goal_y - 1] | (0b1 << maze.goal_x);
+		Straight_half_accel();
 	}
-	maze.wall_ver_search[maze.goal_x] = maze.wall_ver_search[maze.goal_x] | (0b1 << maze.goal_y);
-	if (maze.goal_x > 0)
+	else
 	{
-		maze.wall_ver_search[maze.goal_x - 1] = maze.wall_ver_search[maze.goal_x - 1] | (0b1 << maze.goal_y);
+		switch (direction)
+		{
+		case NORTH:
+			direction = SOUTH;
+			position--;
+			break;
+		case SOUTH:
+			direction = NORTH;
+			position++;
+			break;
+		case EAST:
+			direction = WEST;
+			position = position - (0b1 << 4);
+			break;
+		case WEST:
+			direction = EAST;
+			position = position + (0b1 << 4);
+			break;
+		default:
+			break;
+		}
+		Motion_Restart();
 	}
+
+	while (end_flag != 1)
+	{
+		unsigned char next_dir;
+
+		enc.offset = 0;
+		Maze_Get_Wall();
+		end_flag = Maze_CreateAllMap(&maze);
+		next_dir = Maze_Next_Motion();
+		Update_Position(next_dir);
+		switch (next_dir)
+		{
+		case LEFT:
+			Motion_Left();
+			break;
+
+		case FRONT:
+			Motion_Straight();
+			break;
+
+		case RIGHT:
+			Motion_Right();
+			break;
+
+		case UTURN:
+			Motion_Uturn();
+			break;
+
+		case KABEATE:
+			Motion_Kabeate();
+			break;
+		}
+	}
+	Motion_Goal();
+	flag_motor = FALSE;
 }
 
 void Plan_Root(void)

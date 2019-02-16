@@ -15,6 +15,7 @@
 void Update_Position(unsigned char next_motion);
 unsigned char Maze_Next_Motion(void);
 void Plan_Adachi(void);
+void Plan_AllSearch(void);
 void Plan_Root(void);
 void Plan_Fast(void);
 

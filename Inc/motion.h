@@ -18,6 +18,7 @@ void Motion_Right(void);
 void Motion_Uturn(void);
 void Motion_Kabeate(void);
 void Motion_Goal(void);
+void Motion_Restart(void);
 
 #ifdef __cplusplus
 }

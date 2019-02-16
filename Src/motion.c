@@ -27,7 +27,7 @@ void Straight_half_accel(void){
 }
 
 void Straight_half_stop(void){
-    Straight_Calc_fb(90,MAX_VELOCITY,0,MAX_VELOCITY,ACCEL);
+    Straight_Calc_fb(90-enc.offset,MAX_VELOCITY,0,MAX_VELOCITY,ACCEL);
     Yawrate_Calc_fb(0,0,0,0,0);
 }
 
@@ -127,7 +127,7 @@ void Motion_Kabeate(void){
     while(flag_motion_end==FALSE){}
     HAL_Delay(500);
     //kabeate
-    Straight_Calc_fb(-55,0,0,200,2000);
+    Straight_Calc_fb(-47,0,0,200,2000);
     Yawrate_Calc_fb(0,0,0,0,0);
     while(flag_motion_end==FALSE){}
     HAL_Delay(500);
@@ -137,6 +137,7 @@ void Motion_Kabeate(void){
 }
 
 void Motion_Goal(void){
+    enc.offset = 0;
     Straight_half_stop();
     while(flag_motion_end==FALSE){}
 }
@@ -146,4 +147,18 @@ void Motion_FastStraight(unsigned char block){
     Yawrate_Calc_fb(0,0,0,0,0);
     Straight_Calc_fb(90,MAX_VELOCITY,0,MAX_VELOCITY,ACCEL);
     Yawrate_Calc_fb(0,0,0,0,0);
+}
+
+void Motion_Restart(void){
+    U_Turn();
+    while(flag_motion_end==FALSE){}
+    HAL_Delay(500);
+    //kabeate
+    Straight_Calc_fb(-47,0,0,200,2000);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+    HAL_Delay(500);
+    Straight_Calc_fb(137,0,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
 }

@@ -207,6 +207,10 @@ void Mode_Run(unsigned char flag_search)
         Plan_Adachi();
         HAL_Delay(500);
         writeMaze();
+        HAL_Delay(1000);
+        Plan_AllSearch();
+        HAL_Delay(500);
+        writeMaze();
     }
     else if(flag_search==TRUE)
     {

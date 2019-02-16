@@ -59,9 +59,13 @@ void Maze_Init(maze_t *maze) {
 		}
 	}
 	maze->wall_vertical[WALL_NUM - 1] = 0xffff;
+	maze->wall_ver_search[WALL_NUM - 1] = 0xffff;
+
 	maze->wall_horizontal[WALL_NUM - 1] = 0xffff;
+	maze->wall_hor_search[WALL_NUM - 1] = 0xffff;
 
 	maze->wall_vertical[0] += 0b1;
+	maze->wall_ver_search[0] += 0b1;
 }
 
 

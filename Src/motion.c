@@ -162,3 +162,22 @@ void Motion_Restart(void){
     Yawrate_Calc_fb(0,0,0,0,0);
     while(flag_motion_end==FALSE){}
 }
+
+//ゲインは500未満
+void Motion_StartFast(unsigned char step){
+    Straight_Calc_fb(137+180*step,0,MAX_VELOCITY,MAX_VELOCITY+150*step,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+}
+
+void Motion_StraightFast(unsigned char step){
+    Straight_Calc_fb(180*step-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY+150*step,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+}
+
+void Motion_GoalFast(unsigned char step){
+    Straight_Calc_fb(90+180*step-enc.offset,MAX_VELOCITY,0,MAX_VELOCITY+150*step,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+}

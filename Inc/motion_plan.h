@@ -10,13 +10,15 @@
 #define RIGHT 2
 #define UTURN 3
 #define KABEATE 4
-
+#define START 5
+#define GOAL 6
 
 void Update_Position(unsigned char next_motion);
 unsigned char Maze_Next_Motion(void);
 void Plan_Adachi(void);
 void Plan_AllSearch(void);
 void Plan_Root(void);
+void Plan_Compress(void);
 void Plan_Fast(void);
 
 

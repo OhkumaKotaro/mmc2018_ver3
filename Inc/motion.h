@@ -19,6 +19,9 @@ void Motion_Uturn(void);
 void Motion_Kabeate(void);
 void Motion_Goal(void);
 void Motion_Restart(void);
+void Motion_StartFast(unsigned char step);
+void Motion_StraightFast(unsigned char step);
+void Motion_GoalFast(unsigned char step);
 
 #ifdef __cplusplus
 }

@@ -216,6 +216,7 @@ void Mode_Run(unsigned char flag_search)
     {
         loadMaze();
         Plan_Root();
+        Plan_Compress();
         Plan_Fast();
     }
 }

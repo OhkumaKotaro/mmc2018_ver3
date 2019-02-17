@@ -492,13 +492,16 @@ void Plan_AllSearch(void)
 		Motion_Restart();
 	}
 
-	while (end_flag != 1)
+	while (1)
 	{
 		unsigned char next_dir;
 
 		enc.offset = 0;
 		Maze_Get_Wall();
 		end_flag = Maze_CreateAllMap(&maze);
+		if (end_flag==1) {
+			break;
+		}
 		next_dir = Maze_Next_Motion();
 		Update_Position(next_dir);
 		switch (next_dir)
@@ -537,6 +540,7 @@ void Plan_Root(void)
 	Que_init_motion(&q_motion);
 	position = 0b1;
 	direction = NORTH;
+	enq_motion(&q_motion,START);
 	while (flag_goal_is == FALSE)
 	{
 		unsigned char tmp;
@@ -546,13 +550,71 @@ void Plan_Root(void)
 		if (position == (maze.goal_x << 4 | maze.goal_y))
 		{
 			flag_goal_is = TRUE;
+			enq_motion(&q_motion, GOAL);
 		}
 	}
 }
 
+void Plan_Compress(void)
+{
+	queue_motion_t q_buff;
+	unsigned motion;
+
+	Que_init_motion(&q_buff);
+	motion = deq_motion(&q_motion);
+
+	while (q_motion.head != q_motion.tail)
+	{
+		unsigned char buff = 0;
+		switch (motion)
+		{
+		case START: //5
+			motion = deq_motion(&q_motion);
+			while (motion == FRONT && q_motion.head != q_motion.tail)
+			{
+				buff++;
+				motion = deq_motion(&q_motion);
+			}
+			buff = START << 4 | buff;
+			enq_motion(&q_buff, buff);
+			break;
+		case FRONT:
+			while (motion == FRONT && q_motion.head != q_motion.tail)
+			{
+				buff++;
+				motion = deq_motion(&q_motion);
+			}
+			if (motion == GOAL)
+			{
+				buff = GOAL << 4 | buff;
+				enq_motion(&q_buff, buff);
+			}
+			else
+			{
+				buff = FRONT << 4 | buff;
+				enq_motion(&q_buff, buff);
+			}
+			break;
+		case LEFT:
+			buff = LEFT << 4;
+			enq_motion(&q_buff, buff);
+			motion = deq_motion(&q_motion);
+			break;
+		case RIGHT:
+			buff = RIGHT << 4;
+			enq_motion(&q_buff, buff);
+			motion = deq_motion(&q_motion);
+			break;
+		default:
+			break;
+		}
+	}
+	q_motion = q_buff;
+}
+
 void Plan_Fast(void)
 {
-	unsigned char next_dir;
+	unsigned char motion_h, motion_l;
 
 	adcStart();
 	while (sen_front.is_wall == FALSE)
@@ -560,30 +622,35 @@ void Plan_Fast(void)
 	}
 	Output_Buzzer(HZ_G);
 	gyro_offset_calc_reset();
+
 	HAL_Delay(2500);
 	flag_motor = TRUE;
 
-	Motion_Start();
 	while (q_motion.head != q_motion.tail)
 	{
 		enc.offset = 0;
-		next_dir = deq_motion(&q_motion);
+		motion_h = deq_motion(&q_motion);
+		motion_l = motion_h & 0b1111;
+		motion_h = motion_h >> 4;
 
-		switch (next_dir)
+		switch (motion_h)
 		{
+		case START:
+			Motion_StartFast(motion_l);
+			break;
 		case LEFT:
 			Motion_Left();
 			break;
-
 		case FRONT:
-			Motion_Straight();
+			Motion_StraightFast(motion_l);
 			break;
-
 		case RIGHT:
 			Motion_Right();
 			break;
+		case GOAL:
+			Motion_GoalFast(motion_l);
+			break;
 		}
 	}
-	Motion_Goal();
 	flag_motor = FALSE;
 }

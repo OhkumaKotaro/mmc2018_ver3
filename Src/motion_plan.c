@@ -498,7 +498,8 @@ void Plan_AllSearch(void)
 		unsigned char next_dir;
 		Maze_Get_Wall();
 		end_flag = Maze_CreateAllMap(&maze);
-		if (end_flag==1) {
+		if (end_flag == 1)
+		{
 			break;
 		}
 		next_dir = Maze_Next_Motion();
@@ -539,7 +540,7 @@ void Plan_Root(void)
 	Que_init_motion(&q_motion);
 	position = 0b1;
 	direction = NORTH;
-	enq_motion(&q_motion,START);
+	enq_motion(&q_motion, START);
 	while (flag_goal_is == FALSE)
 	{
 		unsigned char tmp;
@@ -598,11 +599,19 @@ void Plan_Compress(void)
 			buff = LEFT << 4;
 			enq_motion(&q_buff, buff);
 			motion = deq_motion(&q_motion);
+			if(motion==GOAL){
+				buff = GOAL << 4;
+				enq_motion(&q_buff, buff);
+			}
 			break;
 		case RIGHT:
 			buff = RIGHT << 4;
 			enq_motion(&q_buff, buff);
 			motion = deq_motion(&q_motion);
+			if(motion==GOAL){
+				buff = GOAL << 4;
+				enq_motion(&q_buff, buff);
+			}
 			break;
 		default:
 			break;

@@ -29,6 +29,7 @@ extern uint8_t flag_motor;
 extern maze_t maze;
 
 void Mode_Run(unsigned char flag_search);
+void Mode_Adjust(void);
 
 /****************************************************************************************
  * outline  : wright mode 
@@ -41,6 +42,7 @@ void Mode_Mouse(int8_t mode)
     {
     case 0:
         Mode_Run(FALSE);
+        //Mode_Adjust();
         break;
     case 1:
         Mode_Run(TRUE);
@@ -219,4 +221,26 @@ void Mode_Run(unsigned char flag_search)
         Plan_Compress();
         Plan_Fast();
     }
+}
+
+void Mode_Adjust(void){
+    adcStart();
+	while (sen_front.is_wall == FALSE)
+	{
+	}
+	Output_Buzzer(HZ_G);
+	gyro_offset_calc_reset();
+
+	HAL_Delay(2500);
+	flag_motor = TRUE;
+
+    Straight_half_accel();
+    while(flag_motion_end==FALSE){}
+    enc.offset=0;
+    Motion_SlalomLeft();
+    enc.offset=0;
+    Straight_half_stop();
+    while(flag_motion_end==FALSE){}
+
+    flag_motor = FALSE;
 }

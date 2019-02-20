@@ -16,6 +16,10 @@
 //yawrate
 #define Y_ACCEL 2000 //[degree/s^2]//2000
 #define Y_MAX_VELOCITY 380//[degree/s]
+//slalom
+#define S_ACCEL 2100
+#define S_VELOCITY 400
+#define OFFSET 5
 
 extern volatile unsigned char flag_motion_end;
 extern enc_t enc;
@@ -163,19 +167,19 @@ void Motion_Restart(void){
     while(flag_motion_end==FALSE){}
 }
 
-float buff_enc_offset;
+//float buff_enc_offset;
 void Motion_SlalomLeft(void){
     //offset
-    buff_enc_offset=enc.offset;
-    Straight_Calc_fb(10-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    //buff_enc_offset=enc.offset;
+    Straight_Calc_fb(OFFSET-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
     Yawrate_Calc_fb(0,0,0,0,0);
     while(flag_motion_end==FALSE){}
     //slalom
-    Straight_Calc_fb(10,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
-    Yawrate_Calc_fb(0,0,0,0,0);
+    Straight_Calc_fb(180,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    Yawrate_Calc_fb(90,0,0,S_VELOCITY,S_ACCEL);
     while(flag_motion_end==FALSE){}
     //out straight
-    Straight_Calc_fb(10,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    Straight_Calc_fb(OFFSET,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
     Yawrate_Calc_fb(0,0,0,0,0);
     while(flag_motion_end==FALSE){}
 }
@@ -194,7 +198,7 @@ void Motion_StraightFast(unsigned char step){
 }
 
 void Motion_GoalFast(unsigned char step){
-    Straight_Calc_fb(90+180*step-enc.offset,MAX_VELOCITY,0,MAX_VELOCITY+150*step,ACCEL);
+    Straight_Calc_fb(90+180*step-enc.offset,MAX_VELOCITY,0,MAX_VELOCITY+(150*step),ACCEL);
     Yawrate_Calc_fb(0,0,0,0,0);
     while(flag_motion_end==FALSE){}
 }

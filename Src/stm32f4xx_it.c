@@ -192,6 +192,7 @@ void SysTick_Handler(void)
   adcCheckConvert();
   Tim_UpdateEncoder();
   Control_pwm();
+  Control_EmergencyStop(300);
   /* USER CODE END SysTick_IRQn 1 */
 }
 

@@ -163,6 +163,23 @@ void Motion_Restart(void){
     while(flag_motion_end==FALSE){}
 }
 
+float buff_enc_offset;
+void Motion_SlalomLeft(void){
+    //offset
+    buff_enc_offset=enc.offset;
+    Straight_Calc_fb(10-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+    //slalom
+    Straight_Calc_fb(10,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+    //out straight
+    Straight_Calc_fb(10,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
+    Yawrate_Calc_fb(0,0,0,0,0);
+    while(flag_motion_end==FALSE){}
+}
+
 //ゲインは500未満
 void Motion_StartFast(unsigned char step){
     Straight_Calc_fb(137+180*step,0,MAX_VELOCITY,MAX_VELOCITY+150*step,ACCEL);

@@ -317,3 +317,11 @@ void Control_pwm(void)
         Motor_pwm(0,0);
     }
 }
+
+void Control_EmergencyStop(unsigned short diff_yaw){
+    int buff_yaw=yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall()-gyro.velocity;
+    //yawrate
+    if(buff_yaw>diff_yaw || buff_yaw<-diff_yaw){
+        flag_motor=FALSE;
+    }
+}

@@ -494,9 +494,8 @@ void Plan_AllSearch(void)
 
 	while (1)
 	{
-		unsigned char next_dir;
-
 		enc.offset = 0;
+		unsigned char next_dir;
 		Maze_Get_Wall();
 		end_flag = Maze_CreateAllMap(&maze);
 		if (end_flag==1) {

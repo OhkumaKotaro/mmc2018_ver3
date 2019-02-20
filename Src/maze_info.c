@@ -34,8 +34,8 @@ unsigned char direction;
  * return : void
 ******************************************************************************************************/
 void Maze_Set(void){
-    maze.goal_x = 4;
-    maze.goal_y = 7;
+    maze.goal_x = 1;
+    maze.goal_y = 0;
 }
 
 

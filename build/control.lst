@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
   25:Src/control.c **** {
   26:Src/control.c ****     uint16_t up;
   27:Src/control.c ****     uint16_t cons;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 2
 
 
   28:Src/control.c ****     uint16_t down;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
   52              		.cfi_offset 83, -28
   53 0006 0546     		mov	r5, r0
   54 0008 0C46     		mov	r4, r1
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 3
 
 
   55 000a F0EE619A 		vmov.f32	s19, s3
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
   96 005c 38EE800A 		vadd.f32	s0, s17, s0
   97              	.LVL11:
   75:Src/control.c **** }
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 4
 
 
   98              		.loc 1 75 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  141              		.loc 1 87 0
  142 0006 0025     		movs	r5, #0
  143 0008 354E     		ldr	r6, .L12
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 5
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 5
 
 
  144 000a 3560     		str	r5, [r6]	@ float
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  177              	.L7:
  107:Src/control.c ****     }
  108:Src/control.c **** 
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 6
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 6
 
 
  109:Src/control.c ****     t1 = (float)(v_max - v_start) / accel;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  223 00a2 65EE877A 		vmul.f32	s15, s11, s14
  224              	.LVL27:
  118:Src/control.c ****     t3 *= 1000;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 7
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 7
 
 
  225              		.loc 1 118 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  268              		.loc 1 101 0
  269 00da 0124     		movs	r4, #1
  102:Src/control.c ****     }
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 8
 
 
  270              		.loc 1 102 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  314 000c 354E     		ldr	r6, .L21+4
  315 000e 3560     		str	r5, [r6]	@ float
  140:Src/control.c **** 
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 9
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 9
 
 
  141:Src/control.c ****     yawrate_tgt.velocity = v_start;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  353              	.LVL41:
  156:Src/control.c ****     t3 = (float)(v_max - v_end) / accel;
  354              		.loc 1 156 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 10
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 10
 
 
  355 0048 9C1A     		subs	r4, r3, r2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  399 00ac BCEEC66A 		vcvt.u32.f32	s12, s12
  400              	.LVL53:
  401 00b0 16EE102A 		vmov	r2, s12	@ int
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 11
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 11
 
 
  402 00b4 1A80     		strh	r2, [r3]	@ movhi
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  448 00f0 00000000 		.word	yawrate_tim
  449 00f4 00000000 		.word	flag_motion_end
  450              		.cfi_endproc
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 12
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 12
 
 
  451              	.LFE128:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  191:Src/control.c ****         else if (straight_tim.cons > 0)
  488              		.loc 1 191 0
  489 0012 344B     		ldr	r3, .L32+12
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 13
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 13
 
 
  490 0014 5B88     		ldrh	r3, [r3, #2]
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  204:Src/control.c ****     }
  205:Src/control.c **** 
  206:Src/control.c ****     target = (float)straight_tgt.dir * straight_tgt.velocity;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 14
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 14
 
 
  530              		.loc 1 206 0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  579              	.LVL73:
  580 00ca 3080     		strh	r0, [r6]	@ movhi
  198:Src/control.c ****         }
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 15
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 15
 
 
  581              		.loc 1 198 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  624 0008 012B     		cmp	r3, #1
  625 000a 2CD0     		beq	.L42
  223:Src/control.c ****     {
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 16
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 16
 
 
  224:Src/control.c ****         //if(sen_l.diff_1ms > -20){
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  655              		.loc 1 219 0
  656 003a 1A4A     		ldr	r2, .L44
  657 003c B2F90030 		ldrsh	r3, [r2]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 17
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 17
 
 
  658 0040 B2F90420 		ldrsh	r2, [r2, #4]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  711              		.section	.text.Control_gyro,"ax",%progbits
  712              		.align	1
  713              		.global	Control_gyro
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 18
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 18
 
 
  714              		.syntax unified
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  749              		.loc 1 266 0
  750 0016 3B4B     		ldr	r3, .L57+12
  751 0018 5B88     		ldrh	r3, [r3, #2]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 19
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 19
 
 
  752 001a 002B     		cmp	r3, #0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  788 0064 9FED291A 		vldr.32	s2, .L57+20
  789 0068 2949     		ldr	r1, .L57+24
  790 006a 2A48     		ldr	r0, .L57+28
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 20
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 20
 
 
  791 006c 2A4B     		ldr	r3, .L57+32
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  841              	.L56:
  272:Src/control.c ****         yawrate_tim.down--;
  842              		.loc 1 272 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 21
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 21
 
 
  843 00be 104D     		ldr	r5, .L57+8
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  894              		.cfi_startproc
  895              		@ args = 0, pretend = 0, frame = 0
  896              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 22
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 22
 
 
  897              		@ link register save eliminated.
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  933 0040 CDCC4C3E 		.word	1045220557
  934              		.cfi_endproc
  935              	.LFE132:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 23
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 23
 
 
  937              		.section	.text.Control_pwm,"ax",%progbits
@@ -1365,30 +1365,30 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  965              	.LVL101:
  966              	.L66:
  318:Src/control.c ****     }
- 319:Src/control.c **** }...
+ 319:Src/control.c **** }
  967              		.loc 1 319 0
  968 0012 10BD     		pop	{r4, pc}
  969              	.L70:
  970              	.LVL102:
  971              	.LBB2:
- 312:Src/control.c ****         straight_pid = (int16_t)Control_encoder(); //+ Control_Front_Wall();
+ 312:Src/control.c ****         yawrate_pid = (int16_t)Control_gyro();     //+ Control_Side_Wall();
  972              		.loc 1 312 0
  973 0014 FFF7FEFF 		bl	Control_encoder
  974              	.LVL103:
  975 0018 BDEEC00A 		vcvt.s32.f32	s0, s0
  976 001c 10EE103A 		vmov	r3, s0	@ int
  977 0020 1CB2     		sxth	r4, r3
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 24
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 24
 
 
  978              	.LVL104:
- 313:Src/control.c ****         yawrate_pid = (int16_t)Control_gyro();     //+ Control_Side_Wall();
+ 313:Src/control.c **** 
  979              		.loc 1 313 0
  980 0022 FFF7FEFF 		bl	Control_gyro
  981              	.LVL105:
  982 0026 BDEEC00A 		vcvt.s32.f32	s0, s0
  983              	.LVL106:
- 315:Src/control.c ****         Motor_pwm(straight_pid - yawrate_pid, straight_pid + yawrate_pid);
+ 315:Src/control.c ****     }else{
  984              		.loc 1 315 0
  985 002a A1B2     		uxth	r1, r4
  986 002c 10EE103A 		vmov	r3, s0	@ int
@@ -1407,118 +1407,194 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 1
  999 0040 00000000 		.word	flag_motor
  1000              		.cfi_endproc
  1001              	.LFE133:
- 1003              		.comm	flag_motor,1,1
- 1004              		.comm	flag_motion_end,1,1
- 1005              		.global	front_wall_before
- 1006              		.global	front_wall_sum
- 1007              		.comm	si_wall_bef,4,4
- 1008              		.comm	si_wall_sum,4,4
- 1009              		.global	y_before
- 1010              		.global	y_sum
- 1011              		.global	enc_before
- 1012              		.global	enc_sum
- 1013              		.comm	yawrate_tim,6,4
- 1014              		.comm	straight_tim,6,4
- 1015              		.comm	yawrate_tgt,6,4
- 1016              		.comm	straight_tgt,6,4
- 1017              		.section	.bss.enc_before,"aw",%nobits
- 1018              		.align	2
- 1019              		.set	.LANCHOR0,. + 0
- 1022              	enc_before:
- 1023 0000 00000000 		.space	4
- 1024              		.section	.bss.enc_sum,"aw",%nobits
- 1025              		.align	2
- 1026              		.set	.LANCHOR2,. + 0
- 1029              	enc_sum:
- 1030 0000 00000000 		.space	4
- 1031              		.section	.bss.front_wall_before,"aw",%nobits
- 1032              		.align	2
- 1035              	front_wall_before:
- 1036 0000 00000000 		.space	4
- 1037              		.section	.bss.front_wall_sum,"aw",%nobits
- 1038              		.align	2
- 1041              	front_wall_sum:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 25
+ 1003              		.section	.text.Control_EmergencyStop,"ax",%progbits
+ 1004              		.align	1
+ 1005              		.global	Control_EmergencyStop
+ 1006              		.syntax unified
+ 1007              		.thumb
+ 1008              		.thumb_func
+ 1009              		.fpu fpv4-sp-d16
+ 1011              	Control_EmergencyStop:
+ 1012              	.LFB134:
+ 320:Src/control.c **** 
+ 321:Src/control.c **** void Control_EmergencyStop(unsigned short diff_yaw){
+ 1013              		.loc 1 321 0
+ 1014              		.cfi_startproc
+ 1015              		@ args = 0, pretend = 0, frame = 0
+ 1016              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1017              	.LVL108:
+ 1018 0000 38B5     		push	{r3, r4, r5, lr}
+ 1019              	.LCFI15:
+ 1020              		.cfi_def_cfa_offset 16
+ 1021              		.cfi_offset 3, -16
+ 1022              		.cfi_offset 4, -12
+ 1023              		.cfi_offset 5, -8
+ 1024              		.cfi_offset 14, -4
+ 1025 0002 0546     		mov	r5, r0
+ 322:Src/control.c ****     int buff_yaw=yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall()-gyro.velocity;
+ 1026              		.loc 1 322 0
+ 1027 0004 104A     		ldr	r2, .L77
+ 1028 0006 92F90440 		ldrsb	r4, [r2, #4]
+ 1029 000a B2F90030 		ldrsh	r3, [r2]
+ 1030 000e 03FB04F4 		mul	r4, r3, r4
+ 1031 0012 FFF7FEFF 		bl	Control_Side_Wall
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 25
 
 
- 1042 0000 00000000 		.space	4
- 1043              		.section	.bss.y_before,"aw",%nobits
- 1044              		.align	2
- 1045              		.set	.LANCHOR1,. + 0
- 1048              	y_before:
- 1049 0000 00000000 		.space	4
- 1050              		.section	.bss.y_sum,"aw",%nobits
- 1051              		.align	2
- 1052              		.set	.LANCHOR3,. + 0
- 1055              	y_sum:
- 1056 0000 00000000 		.space	4
- 1057              		.text
- 1058              	.Letext0:
- 1059              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1060              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1061              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 1062              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 1063              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 1064              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1065              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1066              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
- 1067              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 1068              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1069              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1070              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
- 1071              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1072              		.file 15 "Inc/tim.h"
- 1073              		.file 16 "Inc/filter.h"
- 1074              		.file 17 "Inc/spi.h"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 26
+ 1032              	.LVL109:
+ 1033 0016 07EE904A 		vmov	s15, r4	@ int
+ 1034 001a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 1035 001e 37EEC00A 		vsub.f32	s0, s15, s0
+ 1036 0022 0A4B     		ldr	r3, .L77+4
+ 1037 0024 D3ED007A 		vldr.32	s15, [r3]
+ 1038 0028 30EE670A 		vsub.f32	s0, s0, s15
+ 1039 002c FDEEC07A 		vcvt.s32.f32	s15, s0
+ 1040 0030 17EE903A 		vmov	r3, s15	@ int
+ 1041              	.LVL110:
+ 323:Src/control.c ****     //yawrate
+ 324:Src/control.c ****     if(buff_yaw>diff_yaw || buff_yaw<-diff_yaw){
+ 1042              		.loc 1 324 0
+ 1043 0034 9D42     		cmp	r5, r3
+ 1044 0036 02DB     		blt	.L74
+ 1045              		.loc 1 324 0 is_stmt 0 discriminator 1
+ 1046 0038 6D42     		negs	r5, r5
+ 1047 003a 9D42     		cmp	r5, r3
+ 1048 003c 02DD     		ble	.L73
+ 1049              	.L74:
+ 325:Src/control.c ****         flag_motor=FALSE;
+ 1050              		.loc 1 325 0 is_stmt 1
+ 1051 003e 044B     		ldr	r3, .L77+8
+ 1052              	.LVL111:
+ 1053 0040 0022     		movs	r2, #0
+ 1054 0042 1A70     		strb	r2, [r3]
+ 1055              	.L73:
+ 326:Src/control.c ****     }
+ 327:Src/control.c **** }...
+ 1056              		.loc 1 327 0
+ 1057 0044 38BD     		pop	{r3, r4, r5, pc}
+ 1058              	.L78:
+ 1059 0046 00BF     		.align	2
+ 1060              	.L77:
+ 1061 0048 00000000 		.word	yawrate_tgt
+ 1062 004c 00000000 		.word	gyro
+ 1063 0050 00000000 		.word	flag_motor
+ 1064              		.cfi_endproc
+ 1065              	.LFE134:
+ 1067              		.comm	flag_motor,1,1
+ 1068              		.comm	flag_motion_end,1,1
+ 1069              		.global	front_wall_before
+ 1070              		.global	front_wall_sum
+ 1071              		.comm	si_wall_bef,4,4
+ 1072              		.comm	si_wall_sum,4,4
+ 1073              		.global	y_before
+ 1074              		.global	y_sum
+ 1075              		.global	enc_before
+ 1076              		.global	enc_sum
+ 1077              		.comm	yawrate_tim,6,4
+ 1078              		.comm	straight_tim,6,4
+ 1079              		.comm	yawrate_tgt,6,4
+ 1080              		.comm	straight_tgt,6,4
+ 1081              		.section	.bss.enc_before,"aw",%nobits
+ 1082              		.align	2
+ 1083              		.set	.LANCHOR0,. + 0
+ 1086              	enc_before:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 26
+
+
+ 1087 0000 00000000 		.space	4
+ 1088              		.section	.bss.enc_sum,"aw",%nobits
+ 1089              		.align	2
+ 1090              		.set	.LANCHOR2,. + 0
+ 1093              	enc_sum:
+ 1094 0000 00000000 		.space	4
+ 1095              		.section	.bss.front_wall_before,"aw",%nobits
+ 1096              		.align	2
+ 1099              	front_wall_before:
+ 1100 0000 00000000 		.space	4
+ 1101              		.section	.bss.front_wall_sum,"aw",%nobits
+ 1102              		.align	2
+ 1105              	front_wall_sum:
+ 1106 0000 00000000 		.space	4
+ 1107              		.section	.bss.y_before,"aw",%nobits
+ 1108              		.align	2
+ 1109              		.set	.LANCHOR1,. + 0
+ 1112              	y_before:
+ 1113 0000 00000000 		.space	4
+ 1114              		.section	.bss.y_sum,"aw",%nobits
+ 1115              		.align	2
+ 1116              		.set	.LANCHOR3,. + 0
+ 1119              	y_sum:
+ 1120 0000 00000000 		.space	4
+ 1121              		.text
+ 1122              	.Letext0:
+ 1123              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1124              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1125              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1126              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1127              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 1128              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1129              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1130              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 1131              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 1132              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1133              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1134              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1135              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1136              		.file 15 "Inc/tim.h"
+ 1137              		.file 16 "Inc/filter.h"
+ 1138              		.file 17 "Inc/spi.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 control.c
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:22     .text.PID_value:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:29     .text.PID_value:00000000 PID_value
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:113    .text.PID_value:00000070 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:119    .text.Straight_Calc_fb:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:126    .text.Straight_Calc_fb:00000000 Straight_Calc_fb
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:276    .text.Straight_Calc_fb:000000e0 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:22     .text.PID_value:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:29     .text.PID_value:00000000 PID_value
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:113    .text.PID_value:00000070 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:119    .text.Straight_Calc_fb:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:126    .text.Straight_Calc_fb:00000000 Straight_Calc_fb
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:276    .text.Straight_Calc_fb:000000e0 $d
                             *COM*:00000006 straight_tgt
                             *COM*:00000006 straight_tim
                             *COM*:00000001 flag_motion_end
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:286    .text.Yawrate_Calc_fb:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:293    .text.Yawrate_Calc_fb:00000000 Yawrate_Calc_fb
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:444    .text.Yawrate_Calc_fb:000000e0 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:286    .text.Yawrate_Calc_fb:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:293    .text.Yawrate_Calc_fb:00000000 Yawrate_Calc_fb
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:444    .text.Yawrate_Calc_fb:000000e0 $d
                             *COM*:00000006 yawrate_tgt
                             *COM*:00000006 yawrate_tim
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:457    .text.Control_encoder:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:464    .text.Control_encoder:00000000 Control_encoder
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:589    .text.Control_encoder:000000d8 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:602    .text.Control_Side_Wall:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:609    .text.Control_Side_Wall:00000000 Control_Side_Wall
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:700    .text.Control_Side_Wall:000000a4 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:712    .text.Control_gyro:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:719    .text.Control_gyro:00000000 Control_gyro
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:871    .text.Control_gyro:000000f8 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:884    .text.Control_Front_Wall:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:891    .text.Control_Front_Wall:00000000 Control_Front_Wall
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:931    .text.Control_Front_Wall:00000038 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:938    .text.Control_pwm:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:945    .text.Control_pwm:00000000 Control_pwm
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:999    .text.Control_pwm:00000040 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:457    .text.Control_encoder:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:464    .text.Control_encoder:00000000 Control_encoder
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:589    .text.Control_encoder:000000d8 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:602    .text.Control_Side_Wall:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:609    .text.Control_Side_Wall:00000000 Control_Side_Wall
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:700    .text.Control_Side_Wall:000000a4 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:712    .text.Control_gyro:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:719    .text.Control_gyro:00000000 Control_gyro
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:871    .text.Control_gyro:000000f8 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:884    .text.Control_Front_Wall:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:891    .text.Control_Front_Wall:00000000 Control_Front_Wall
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:931    .text.Control_Front_Wall:00000038 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:938    .text.Control_pwm:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:945    .text.Control_pwm:00000000 Control_pwm
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:999    .text.Control_pwm:00000040 $d
                             *COM*:00000001 flag_motor
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1035   .bss.front_wall_before:00000000 front_wall_before
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1041   .bss.front_wall_sum:00000000 front_wall_sum
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1004   .text.Control_EmergencyStop:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1011   .text.Control_EmergencyStop:00000000 Control_EmergencyStop
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1061   .text.Control_EmergencyStop:00000048 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1099   .bss.front_wall_before:00000000 front_wall_before
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1105   .bss.front_wall_sum:00000000 front_wall_sum
                             *COM*:00000004 si_wall_bef
                             *COM*:00000004 si_wall_sum
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1048   .bss.y_before:00000000 y_before
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1055   .bss.y_sum:00000000 y_sum
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1022   .bss.enc_before:00000000 enc_before
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1029   .bss.enc_sum:00000000 enc_sum
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1018   .bss.enc_before:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1025   .bss.enc_sum:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1032   .bss.front_wall_before:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1038   .bss.front_wall_sum:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1044   .bss.y_before:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s:1051   .bss.y_sum:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1112   .bss.y_before:00000000 y_before
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1119   .bss.y_sum:00000000 y_sum
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1086   .bss.enc_before:00000000 enc_before
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1093   .bss.enc_sum:00000000 enc_sum
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1082   .bss.enc_before:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1089   .bss.enc_sum:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1096   .bss.front_wall_before:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1102   .bss.front_wall_sum:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1108   .bss.y_before:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s:1115   .bss.y_sum:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
@@ -1527,12 +1603,12 @@ __aeabi_dadd
 __aeabi_d2f
 __aeabi_i2d
 __aeabi_d2iz
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccTc1Szo.s 			page 28
+
+
 __aeabi_dsub
 enc
 sen_l
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9cgV5i.s 			page 27
-
-
 sen_r
 gyro
 sen_front

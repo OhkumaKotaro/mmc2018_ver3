@@ -37,10 +37,10 @@ extern sensor_t sen_l;
 extern sensor_t sen_front;
 extern sensor_t sen_r;
 
-float enc_sum = 0;
+float enc_sum;
 float enc_before = 0;
 
-float y_sum = 0;
+float y_sum;
 float y_before = 0;
 
 float si_wall_sum;
@@ -51,6 +51,7 @@ float front_wall_before = 0;
 
 volatile unsigned char flag_motion_end;
 uint8_t flag_motor;
+unsigned char flag_wall;
 
 /****************************************************************************************
  * outline  : PID control
@@ -211,37 +212,38 @@ float Control_encoder(void)
 float Control_Side_Wall(void)
 {
     float wall_dif = 0;
-    float kp=0.10f;
+    if(flag_wall==TRUE){
+        float kp=0.15f;
 
-    if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
-    {
-        //if(sen_l.dif>-200 && sen_r.dif>-200){
-        wall_dif = kp*((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
-        //}
-    }
-    else if (sen_l.is_wall == TRUE)
-    {
-        //if(sen_l.diff_1ms > -20){
-            wall_dif = 2 * kp *(sen_l.now - sen_l.reference);
-        //}
-    }
-    else if (sen_r.is_wall == TRUE)
-    {
-        //if(sen_r.diff_1ms > -20){
-            wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
-        //}
-    }
-    else
-    {
-        wall_dif = 0;
+        if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
+        {
+            if(sen_l.diff>-200 && sen_r.diff>-200){
+                wall_dif = kp*((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
+            }
+        }
+        else if (sen_l.is_wall == TRUE)
+        {
+            if(sen_l.diff_1ms > -20){
+                wall_dif = 2 * kp *(sen_l.now - sen_l.reference);
+            }
+        }
+        else if (sen_r.is_wall == TRUE)
+        {
+            if(sen_r.diff_1ms > -20){
+                wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
+            }
+        }
+        else
+        {
+            wall_dif = 0;
+        }
+
+        if (enc.velocity<300)
+        {
+            wall_dif = 0;
+        }
     }
 
-    if (enc.velocity<300)
-    {
-        wall_dif = 0;
-    }
-
-    //return PID_value(0, wall_dif, &si_wall_sum, &si_wall_bef, 0.1f, 0, 0);
     return wall_dif;
 }
 
@@ -280,7 +282,7 @@ float Control_gyro(void)
 
     target = (float)yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall();
 
-    return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.92f, 17.0f, 4.0f);
+    return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.92f, 17.0f, 4.0f);//2.0f, 20.0f, 4.0f
 }
 
 

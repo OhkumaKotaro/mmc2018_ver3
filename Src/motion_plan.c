@@ -402,6 +402,7 @@ void Plan_Adachi(void)
 	{
 	}
 	Output_Buzzer(HZ_G);
+	HAL_Delay(2500);
 	gyro_offset_calc_reset();
 	HAL_Delay(2500);
 
@@ -430,7 +431,8 @@ void Plan_Adachi(void)
 		switch (next_dir)
 		{
 		case LEFT:
-			Motion_Left();
+			//Motion_Left();
+			Motion_SlalomLeft();
 			break;
 
 		case FRONT:
@@ -438,7 +440,8 @@ void Plan_Adachi(void)
 			break;
 
 		case RIGHT:
-			Motion_Right();
+			//Motion_Right();
+			Motion_SlalomRight();
 			break;
 
 		case UTURN:
@@ -507,7 +510,8 @@ void Plan_AllSearch(void)
 		switch (next_dir)
 		{
 		case LEFT:
-			Motion_Left();
+			//Motion_Left();
+			Motion_SlalomLeft();
 			break;
 
 		case FRONT:
@@ -515,7 +519,8 @@ void Plan_AllSearch(void)
 			break;
 
 		case RIGHT:
-			Motion_Right();
+			//Motion_Right();
+			Motion_SlalomRight();
 			break;
 
 		case UTURN:
@@ -647,13 +652,13 @@ void Plan_Fast(void)
 			Motion_StartFast(motion_l);
 			break;
 		case LEFT:
-			Motion_Left();
+			Motion_SlalomLeft();
 			break;
 		case FRONT:
 			Motion_StraightFast(motion_l);
 			break;
 		case RIGHT:
-			Motion_Right();
+			Motion_SlalomRight();
 			break;
 		case GOAL:
 			Motion_GoalFast(motion_l);

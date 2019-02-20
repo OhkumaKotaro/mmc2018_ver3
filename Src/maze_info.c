@@ -66,6 +66,8 @@ void Maze_Init(maze_t *maze) {
 
 	maze->wall_vertical[0] += 0b1;
 	maze->wall_ver_search[0] += 0b1;
+
+	maze->wall_hor_search[0] += 0b1;
 }
 
 

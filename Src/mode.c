@@ -42,28 +42,12 @@ void Mode_Mouse(int8_t mode)
     {
     case 0:
         Mode_Run(FALSE);
-        //Mode_Adjust();
         break;
     case 1:
         Mode_Run(TRUE);
         break;
     case 2:
-        HAL_Delay(5000);
-        gyro_offset_calc_reset();
-        HAL_Delay(2000);
-
-        flag_motor = TRUE;
-
-        Straight_half_accel();
-        while (flag_motion_end == FALSE)
-        {
-        }
-        Motion_Left();
-        Straight_half_stop();
-        while (flag_motion_end == FALSE)
-        {
-        }
-        flag_motor = FALSE;
+        Mode_Adjust();
         break;
     case 3:
         HAL_Delay(5000);
@@ -229,18 +213,18 @@ void Mode_Adjust(void){
 	{
 	}
 	Output_Buzzer(HZ_G);
+    HAL_Delay(2500);
 	gyro_offset_calc_reset();
-
 	HAL_Delay(2500);
 	flag_motor = TRUE;
 
     Straight_half_accel();
     while(flag_motion_end==FALSE){}
     enc.offset=0;
+    //Motion_SlalomRight();
     Motion_SlalomLeft();
     enc.offset=0;
     Straight_half_stop();
     while(flag_motion_end==FALSE){}
-
     flag_motor = FALSE;
 }

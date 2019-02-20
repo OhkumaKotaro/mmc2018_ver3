@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 1
   29:Src/maze_info.c **** unsigned char direction;
   30:Src/maze_info.c **** 
   31:Src/maze_info.c **** /**************************************************************************************************
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 2
 
 
   32:Src/maze_info.c ****  * outline : input maze size , goal point
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 1
   66              	.LCFI0:
   67              		.cfi_def_cfa_offset 8
   68              		.cfi_offset 4, -8
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 3
 
 
   69              		.cfi_offset 5, -4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 1
  108 002c 05F11002 		add	r2, r5, #16
  109 0030 00EB8202 		add	r2, r0, r2, lsl #2
  110 0034 5360     		str	r3, [r2, #4]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 4
 
 
   54:Src/maze_info.c **** 		maze->wall_hor_search[i] = 0;
@@ -227,650 +227,656 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 1
  141 0064 D0F88430 		ldr	r3, [r0, #132]
  142 0068 0133     		adds	r3, r3, #1
  143 006a C0F88430 		str	r3, [r0, #132]
-  69:Src/maze_info.c **** }
- 144              		.loc 1 69 0
- 145 006e 30BC     		pop	{r4, r5}
- 146              	.LCFI1:
- 147              		.cfi_restore 5
- 148              		.cfi_restore 4
- 149              		.cfi_def_cfa_offset 0
- 150              	.LVL9:
- 151 0070 7047     		bx	lr
- 152              		.cfi_endproc
- 153              	.LFE127:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 5
+  69:Src/maze_info.c **** 
+  70:Src/maze_info.c **** 	maze->wall_hor_search[0] += 0b1;
+ 144              		.loc 1 70 0
+ 145 006e D0F8C430 		ldr	r3, [r0, #196]
+ 146 0072 0133     		adds	r3, r3, #1
+ 147 0074 C0F8C430 		str	r3, [r0, #196]
+  71:Src/maze_info.c **** }
+ 148              		.loc 1 71 0
+ 149 0078 30BC     		pop	{r4, r5}
+ 150              	.LCFI1:
+ 151              		.cfi_restore 5
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 5
 
 
- 155              		.section	.text.Maze_Get_Wall,"ax",%progbits
- 156              		.align	1
- 157              		.global	Maze_Get_Wall
- 158              		.syntax unified
- 159              		.thumb
- 160              		.thumb_func
- 161              		.fpu fpv4-sp-d16
- 163              	Maze_Get_Wall:
- 164              	.LFB128:
-  70:Src/maze_info.c **** 
-  71:Src/maze_info.c **** 
+ 152              		.cfi_restore 4
+ 153              		.cfi_def_cfa_offset 0
+ 154              	.LVL9:
+ 155 007a 7047     		bx	lr
+ 156              		.cfi_endproc
+ 157              	.LFE127:
+ 159              		.section	.text.Maze_Get_Wall,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	Maze_Get_Wall
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 165              		.fpu fpv4-sp-d16
+ 167              	Maze_Get_Wall:
+ 168              	.LFB128:
   72:Src/maze_info.c **** 
   73:Src/maze_info.c **** 
-  74:Src/maze_info.c **** void Maze_Get_Wall(void){
- 165              		.loc 1 74 0
- 166              		.cfi_startproc
- 167              		@ args = 0, pretend = 0, frame = 0
- 168              		@ frame_needed = 0, uses_anonymous_args = 0
- 169              		@ link register save eliminated.
- 170 0000 F0B4     		push	{r4, r5, r6, r7}
- 171              	.LCFI2:
- 172              		.cfi_def_cfa_offset 16
- 173              		.cfi_offset 4, -16
- 174              		.cfi_offset 5, -12
- 175              		.cfi_offset 6, -8
- 176              		.cfi_offset 7, -4
- 177              	.LVL10:
-  75:Src/maze_info.c **** 	unsigned char n_wall=0, e_wall=0, s_wall=0, w_wall=0;
-  76:Src/maze_info.c **** 
-  77:Src/maze_info.c ****     unsigned char x=position>>4&0b1111;
- 178              		.loc 1 77 0
- 179 0002 3D4B     		ldr	r3, .L24
- 180 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 181 0006 1A09     		lsrs	r2, r3, #4
- 182              	.LVL11:
-  78:Src/maze_info.c ****     unsigned char y=position&0b1111;
- 183              		.loc 1 78 0
- 184 0008 03F00F03 		and	r3, r3, #15
- 185              	.LVL12:
-  79:Src/maze_info.c **** 
-  80:Src/maze_info.c **** 	// 方向別に壁の状態を取得
-  81:Src/maze_info.c **** 	switch(direction){
- 186              		.loc 1 81 0
- 187 000c 3B49     		ldr	r1, .L24+4
- 188 000e 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
- 189 0010 0329     		cmp	r1, #3
- 190 0012 6CD8     		bhi	.L22
- 191 0014 DFE801F0 		tbb	[pc, r1]
- 192              	.L14:
- 193 0018 02       		.byte	(.L13-.L14)/2
- 194 0019 53       		.byte	(.L15-.L14)/2
- 195 001a 5B       		.byte	(.L16-.L14)/2
- 196 001b 63       		.byte	(.L17-.L14)/2
- 197              		.p2align 1
- 198              	.L13:
-  82:Src/maze_info.c **** 	case NORTH:
-  83:Src/maze_info.c **** 		n_wall = sen_front.is_wall;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 6
-
-
- 199              		.loc 1 83 0
- 200 001c 3848     		ldr	r0, .L24+8
- 201 001e 077B     		ldrb	r7, [r0, #12]	@ zero_extendqisi2
- 202              	.LVL13:
-  84:Src/maze_info.c **** 		e_wall = sen_r.is_wall;
- 203              		.loc 1 84 0
- 204 0020 3848     		ldr	r0, .L24+12
- 205 0022 067B     		ldrb	r6, [r0, #12]	@ zero_extendqisi2
- 206              	.LVL14:
-  85:Src/maze_info.c **** 		w_wall = sen_l.is_wall;
- 207              		.loc 1 85 0
- 208 0024 3848     		ldr	r0, .L24+16
- 209 0026 057B     		ldrb	r5, [r0, #12]	@ zero_extendqisi2
- 210              	.LVL15:
- 211              	.L12:
-  86:Src/maze_info.c **** 		s_wall = 0;
-  87:Src/maze_info.c **** 		break;
-  88:Src/maze_info.c **** 	case EAST:
-  89:Src/maze_info.c **** 		e_wall = sen_front.is_wall;
-  90:Src/maze_info.c **** 		s_wall = sen_r.is_wall;
-  91:Src/maze_info.c **** 		n_wall = sen_l.is_wall;
-  92:Src/maze_info.c **** 		w_wall = 0;
-  93:Src/maze_info.c **** 		break;
-  94:Src/maze_info.c **** 	case SOUTH:
-  95:Src/maze_info.c **** 		s_wall = sen_front.is_wall;
-  96:Src/maze_info.c **** 		w_wall = sen_r.is_wall;
-  97:Src/maze_info.c **** 		e_wall = sen_l.is_wall;
-  98:Src/maze_info.c **** 		n_wall = 0;
-  99:Src/maze_info.c **** 		break;
- 100:Src/maze_info.c **** 	case WEST:
- 101:Src/maze_info.c **** 		w_wall = sen_front.is_wall;
- 102:Src/maze_info.c **** 		n_wall = sen_r.is_wall;
- 103:Src/maze_info.c **** 		s_wall = sen_l.is_wall;
- 104:Src/maze_info.c **** 		e_wall = 0;
- 105:Src/maze_info.c **** 		break;
- 106:Src/maze_info.c **** 	default:
- 107:Src/maze_info.c **** 		break;
- 108:Src/maze_info.c **** 	}
- 109:Src/maze_info.c **** 	// 方向別に保存
- 110:Src/maze_info.c **** 	maze.wall_horizontal[y] = maze.wall_horizontal[y]|(n_wall<<x);
- 212              		.loc 1 110 0
- 213 0028 03F11000 		add	r0, r3, #16
- 214 002c 374C     		ldr	r4, .L24+20
- 215 002e 04EB8000 		add	r0, r4, r0, lsl #2
- 216 0032 4468     		ldr	r4, [r0, #4]
- 217 0034 9740     		lsls	r7, r7, r2
- 218              	.LVL16:
- 219 0036 3C43     		orrs	r4, r4, r7
- 220 0038 4460     		str	r4, [r0, #4]
- 111:Src/maze_info.c ****     if(y>0){
- 221              		.loc 1 111 0
- 222 003a 43B1     		cbz	r3, .L18
- 112:Src/maze_info.c ****         maze.wall_horizontal[y-1] = maze.wall_horizontal[y-1]|(s_wall<<x);
- 223              		.loc 1 112 0
- 224 003c 03F10F00 		add	r0, r3, #15
- 225 0040 324C     		ldr	r4, .L24+20
- 226 0042 04EB8000 		add	r0, r4, r0, lsl #2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 7
-
-
- 227 0046 4468     		ldr	r4, [r0, #4]
- 228 0048 9140     		lsls	r1, r1, r2
- 229              	.LVL17:
- 230 004a 2143     		orrs	r1, r1, r4
- 231 004c 4160     		str	r1, [r0, #4]
- 232              	.L18:
- 113:Src/maze_info.c ****     }
- 114:Src/maze_info.c **** 	maze.wall_vertical[x] = maze.wall_vertical[x]|(e_wall<<y);
- 233              		.loc 1 114 0
- 234 004e 2F49     		ldr	r1, .L24+20
- 235 0050 01EB8201 		add	r1, r1, r2, lsl #2
- 236 0054 4868     		ldr	r0, [r1, #4]
- 237 0056 9E40     		lsls	r6, r6, r3
- 238              	.LVL18:
- 239 0058 3043     		orrs	r0, r0, r6
- 240 005a 4860     		str	r0, [r1, #4]
- 115:Src/maze_info.c ****     if(x>0){
- 241              		.loc 1 115 0
- 242 005c 3AB1     		cbz	r2, .L19
- 116:Src/maze_info.c **** 	    maze.wall_vertical[x-1] = maze.wall_vertical[x-1]|(w_wall<<y);
- 243              		.loc 1 116 0
- 244 005e 511E     		subs	r1, r2, #1
- 245 0060 2A48     		ldr	r0, .L24+20
- 246 0062 00EB8101 		add	r1, r0, r1, lsl #2
- 247 0066 4868     		ldr	r0, [r1, #4]
- 248 0068 9D40     		lsls	r5, r5, r3
- 249              	.LVL19:
- 250 006a 0543     		orrs	r5, r5, r0
- 251 006c 4D60     		str	r5, [r1, #4]
- 252              	.L19:
- 117:Src/maze_info.c ****     }
- 118:Src/maze_info.c **** 	
- 119:Src/maze_info.c **** 	maze.wall_hor_search[y] = maze.wall_hor_search[y] | (1 << x);
- 253              		.loc 1 119 0
- 254 006e 03F13000 		add	r0, r3, #48
- 255 0072 2649     		ldr	r1, .L24+20
- 256 0074 01EB8000 		add	r0, r1, r0, lsl #2
- 257 0078 4468     		ldr	r4, [r0, #4]
- 258 007a 0121     		movs	r1, #1
- 259 007c 9140     		lsls	r1, r1, r2
- 260 007e 0C43     		orrs	r4, r4, r1
- 261 0080 4460     		str	r4, [r0, #4]
- 120:Src/maze_info.c **** 	if (y > 0) {
- 262              		.loc 1 120 0
- 263 0082 3BB1     		cbz	r3, .L20
- 121:Src/maze_info.c **** 		maze.wall_hor_search[y - 1] = maze.wall_hor_search[y - 1] | (1 << x);
- 264              		.loc 1 121 0
- 265 0084 03F12F00 		add	r0, r3, #47
- 266 0088 204C     		ldr	r4, .L24+20
- 267 008a 04EB8000 		add	r0, r4, r0, lsl #2
- 268 008e 4468     		ldr	r4, [r0, #4]
- 269 0090 2143     		orrs	r1, r1, r4
- 270 0092 4160     		str	r1, [r0, #4]
- 271              	.L20:
- 122:Src/maze_info.c **** 	}
- 123:Src/maze_info.c **** 	maze.wall_ver_search[x] = maze.wall_ver_search[x] | (1 << y);
- 272              		.loc 1 123 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 8
-
-
- 273 0094 02F12000 		add	r0, r2, #32
- 274 0098 1C49     		ldr	r1, .L24+20
- 275 009a 01EB8000 		add	r0, r1, r0, lsl #2
- 276 009e 4468     		ldr	r4, [r0, #4]
- 277 00a0 0121     		movs	r1, #1
- 278 00a2 01FA03F3 		lsl	r3, r1, r3
- 279              	.LVL20:
- 280 00a6 1C43     		orrs	r4, r4, r3
- 281 00a8 4460     		str	r4, [r0, #4]
- 124:Src/maze_info.c **** 	if (x > 0) {
- 282              		.loc 1 124 0
- 283 00aa 32B1     		cbz	r2, .L11
- 125:Src/maze_info.c **** 		maze.wall_ver_search[x - 1] = maze.wall_ver_search[x - 1] | (1 << y);
- 284              		.loc 1 125 0
- 285 00ac 1F32     		adds	r2, r2, #31
- 286              	.LVL21:
- 287 00ae 1749     		ldr	r1, .L24+20
- 288 00b0 01EB8202 		add	r2, r1, r2, lsl #2
- 289              	.LVL22:
- 290 00b4 5168     		ldr	r1, [r2, #4]
- 291 00b6 0B43     		orrs	r3, r3, r1
- 292 00b8 5360     		str	r3, [r2, #4]
- 293              	.L11:
- 126:Src/maze_info.c **** 	}
- 127:Src/maze_info.c **** }
- 294              		.loc 1 127 0
- 295 00ba F0BC     		pop	{r4, r5, r6, r7}
- 296              	.LCFI3:
- 297              		.cfi_remember_state
- 298              		.cfi_restore 7
- 299              		.cfi_restore 6
- 300              		.cfi_restore 5
- 301              		.cfi_restore 4
- 302              		.cfi_def_cfa_offset 0
- 303 00bc 7047     		bx	lr
- 304              	.LVL23:
- 305              	.L15:
- 306              	.LCFI4:
- 307              		.cfi_restore_state
-  89:Src/maze_info.c **** 		s_wall = sen_r.is_wall;
- 308              		.loc 1 89 0
- 309 00be 1049     		ldr	r1, .L24+8
- 310 00c0 0E7B     		ldrb	r6, [r1, #12]	@ zero_extendqisi2
- 311              	.LVL24:
-  90:Src/maze_info.c **** 		n_wall = sen_l.is_wall;
- 312              		.loc 1 90 0
- 313 00c2 1049     		ldr	r1, .L24+12
- 314 00c4 097B     		ldrb	r1, [r1, #12]	@ zero_extendqisi2
- 315              	.LVL25:
-  91:Src/maze_info.c **** 		w_wall = 0;
- 316              		.loc 1 91 0
- 317 00c6 1048     		ldr	r0, .L24+16
- 318 00c8 077B     		ldrb	r7, [r0, #12]	@ zero_extendqisi2
- 319              	.LVL26:
-  92:Src/maze_info.c **** 		break;
- 320              		.loc 1 92 0
- 321 00ca 0025     		movs	r5, #0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 9
-
-
-  93:Src/maze_info.c **** 	case SOUTH:
- 322              		.loc 1 93 0
- 323 00cc ACE7     		b	.L12
- 324              	.LVL27:
- 325              	.L16:
-  95:Src/maze_info.c **** 		w_wall = sen_r.is_wall;
- 326              		.loc 1 95 0
- 327 00ce 0C49     		ldr	r1, .L24+8
- 328 00d0 097B     		ldrb	r1, [r1, #12]	@ zero_extendqisi2
- 329              	.LVL28:
-  96:Src/maze_info.c **** 		e_wall = sen_l.is_wall;
- 330              		.loc 1 96 0
- 331 00d2 0C48     		ldr	r0, .L24+12
- 332 00d4 057B     		ldrb	r5, [r0, #12]	@ zero_extendqisi2
- 333              	.LVL29:
-  97:Src/maze_info.c **** 		n_wall = 0;
- 334              		.loc 1 97 0
- 335 00d6 0C48     		ldr	r0, .L24+16
- 336 00d8 067B     		ldrb	r6, [r0, #12]	@ zero_extendqisi2
- 337              	.LVL30:
-  98:Src/maze_info.c **** 		break;
- 338              		.loc 1 98 0
- 339 00da 0027     		movs	r7, #0
-  99:Src/maze_info.c **** 	case WEST:
- 340              		.loc 1 99 0
- 341 00dc A4E7     		b	.L12
- 342              	.LVL31:
- 343              	.L17:
- 101:Src/maze_info.c **** 		n_wall = sen_r.is_wall;
- 344              		.loc 1 101 0
- 345 00de 0849     		ldr	r1, .L24+8
- 346 00e0 0D7B     		ldrb	r5, [r1, #12]	@ zero_extendqisi2
- 347              	.LVL32:
- 102:Src/maze_info.c **** 		s_wall = sen_l.is_wall;
- 348              		.loc 1 102 0
- 349 00e2 0849     		ldr	r1, .L24+12
- 350 00e4 0F7B     		ldrb	r7, [r1, #12]	@ zero_extendqisi2
- 351              	.LVL33:
- 103:Src/maze_info.c **** 		e_wall = 0;
- 352              		.loc 1 103 0
- 353 00e6 0849     		ldr	r1, .L24+16
- 354 00e8 097B     		ldrb	r1, [r1, #12]	@ zero_extendqisi2
- 355              	.LVL34:
- 104:Src/maze_info.c **** 		break;
- 356              		.loc 1 104 0
- 357 00ea 0026     		movs	r6, #0
- 105:Src/maze_info.c **** 	default:
- 358              		.loc 1 105 0
- 359 00ec 9CE7     		b	.L12
- 360              	.LVL35:
- 361              	.L22:
+  74:Src/maze_info.c **** 
   75:Src/maze_info.c **** 
- 362              		.loc 1 75 0
- 363 00ee 0025     		movs	r5, #0
- 364 00f0 2946     		mov	r1, r5
- 365 00f2 2E46     		mov	r6, r5
- 366 00f4 2F46     		mov	r7, r5
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 10
+  76:Src/maze_info.c **** void Maze_Get_Wall(void){
+ 169              		.loc 1 76 0
+ 170              		.cfi_startproc
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
+ 174 0000 F0B4     		push	{r4, r5, r6, r7}
+ 175              	.LCFI2:
+ 176              		.cfi_def_cfa_offset 16
+ 177              		.cfi_offset 4, -16
+ 178              		.cfi_offset 5, -12
+ 179              		.cfi_offset 6, -8
+ 180              		.cfi_offset 7, -4
+ 181              	.LVL10:
+  77:Src/maze_info.c **** 	unsigned char n_wall=0, e_wall=0, s_wall=0, w_wall=0;
+  78:Src/maze_info.c **** 
+  79:Src/maze_info.c ****     unsigned char x=position>>4&0b1111;
+ 182              		.loc 1 79 0
+ 183 0002 3D4B     		ldr	r3, .L24
+ 184 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 185 0006 1A09     		lsrs	r2, r3, #4
+ 186              	.LVL11:
+  80:Src/maze_info.c ****     unsigned char y=position&0b1111;
+ 187              		.loc 1 80 0
+ 188 0008 03F00F03 		and	r3, r3, #15
+ 189              	.LVL12:
+  81:Src/maze_info.c **** 
+  82:Src/maze_info.c **** 	// 方向別に壁の状態を取得
+  83:Src/maze_info.c **** 	switch(direction){
+ 190              		.loc 1 83 0
+ 191 000c 3B49     		ldr	r1, .L24+4
+ 192 000e 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 193 0010 0329     		cmp	r1, #3
+ 194 0012 6CD8     		bhi	.L22
+ 195 0014 DFE801F0 		tbb	[pc, r1]
+ 196              	.L14:
+ 197 0018 02       		.byte	(.L13-.L14)/2
+ 198 0019 53       		.byte	(.L15-.L14)/2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 6
 
 
- 367 00f6 97E7     		b	.L12
- 368              	.L25:
- 369              		.align	2
- 370              	.L24:
- 371 00f8 00000000 		.word	position
- 372 00fc 00000000 		.word	direction
- 373 0100 00000000 		.word	sen_front
- 374 0104 00000000 		.word	sen_r
- 375 0108 00000000 		.word	sen_l
- 376 010c 00000000 		.word	maze
- 377              		.cfi_endproc
- 378              	.LFE128:
- 380              		.section	.text.Maze_Printf,"ax",%progbits
- 381              		.align	1
- 382              		.global	Maze_Printf
- 383              		.syntax unified
- 384              		.thumb
- 385              		.thumb_func
- 386              		.fpu fpv4-sp-d16
- 388              	Maze_Printf:
- 389              	.LFB129:
- 128:Src/maze_info.c **** 
- 129:Src/maze_info.c **** 
- 130:Src/maze_info.c **** void Maze_Printf(maze_t maze) {
- 390              		.loc 1 130 0
- 391              		.cfi_startproc
- 392              		@ args = 516, pretend = 16, frame = 0
- 393              		@ frame_needed = 0, uses_anonymous_args = 0
- 394 0000 84B0     		sub	sp, sp, #16
- 395              	.LCFI5:
- 396              		.cfi_def_cfa_offset 16
- 397 0002 70B5     		push	{r4, r5, r6, lr}
- 398              	.LCFI6:
- 399              		.cfi_def_cfa_offset 32
- 400              		.cfi_offset 4, -32
- 401              		.cfi_offset 5, -28
- 402              		.cfi_offset 6, -24
- 403              		.cfi_offset 14, -20
- 404 0004 04AC     		add	r4, sp, #16
- 405 0006 84E80F00 		stm	r4, {r0, r1, r2, r3}
- 131:Src/maze_info.c **** 	printf("\r\n");
- 406              		.loc 1 131 0
- 407 000a 2D48     		ldr	r0, .L42
- 408 000c FFF7FEFF 		bl	puts
- 409              	.LVL36:
- 410              	.LBB5:
- 132:Src/maze_info.c **** 	for (unsigned char j = WALL_NUM; j > 0; j--)
- 411              		.loc 1 132 0
- 412 0010 1025     		movs	r5, #16
- 413 0012 41E0     		b	.L27
- 414              	.LVL37:
- 415              	.L28:
- 416              	.LBB6:
- 133:Src/maze_info.c **** 	{
- 134:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
- 135:Src/maze_info.c **** 		{
- 136:Src/maze_info.c **** 			printf("+");
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 11
+ 199 001a 5B       		.byte	(.L16-.L14)/2
+ 200 001b 63       		.byte	(.L17-.L14)/2
+ 201              		.p2align 1
+ 202              	.L13:
+  84:Src/maze_info.c **** 	case NORTH:
+  85:Src/maze_info.c **** 		n_wall = sen_front.is_wall;
+ 203              		.loc 1 85 0
+ 204 001c 3848     		ldr	r0, .L24+8
+ 205 001e 077B     		ldrb	r7, [r0, #12]	@ zero_extendqisi2
+ 206              	.LVL13:
+  86:Src/maze_info.c **** 		e_wall = sen_r.is_wall;
+ 207              		.loc 1 86 0
+ 208 0020 3848     		ldr	r0, .L24+12
+ 209 0022 067B     		ldrb	r6, [r0, #12]	@ zero_extendqisi2
+ 210              	.LVL14:
+  87:Src/maze_info.c **** 		w_wall = sen_l.is_wall;
+ 211              		.loc 1 87 0
+ 212 0024 3848     		ldr	r0, .L24+16
+ 213 0026 057B     		ldrb	r5, [r0, #12]	@ zero_extendqisi2
+ 214              	.LVL15:
+ 215              	.L12:
+  88:Src/maze_info.c **** 		s_wall = 0;
+  89:Src/maze_info.c **** 		break;
+  90:Src/maze_info.c **** 	case EAST:
+  91:Src/maze_info.c **** 		e_wall = sen_front.is_wall;
+  92:Src/maze_info.c **** 		s_wall = sen_r.is_wall;
+  93:Src/maze_info.c **** 		n_wall = sen_l.is_wall;
+  94:Src/maze_info.c **** 		w_wall = 0;
+  95:Src/maze_info.c **** 		break;
+  96:Src/maze_info.c **** 	case SOUTH:
+  97:Src/maze_info.c **** 		s_wall = sen_front.is_wall;
+  98:Src/maze_info.c **** 		w_wall = sen_r.is_wall;
+  99:Src/maze_info.c **** 		e_wall = sen_l.is_wall;
+ 100:Src/maze_info.c **** 		n_wall = 0;
+ 101:Src/maze_info.c **** 		break;
+ 102:Src/maze_info.c **** 	case WEST:
+ 103:Src/maze_info.c **** 		w_wall = sen_front.is_wall;
+ 104:Src/maze_info.c **** 		n_wall = sen_r.is_wall;
+ 105:Src/maze_info.c **** 		s_wall = sen_l.is_wall;
+ 106:Src/maze_info.c **** 		e_wall = 0;
+ 107:Src/maze_info.c **** 		break;
+ 108:Src/maze_info.c **** 	default:
+ 109:Src/maze_info.c **** 		break;
+ 110:Src/maze_info.c **** 	}
+ 111:Src/maze_info.c **** 	// 方向別に保存
+ 112:Src/maze_info.c **** 	maze.wall_horizontal[y] = maze.wall_horizontal[y]|(n_wall<<x);
+ 216              		.loc 1 112 0
+ 217 0028 03F11000 		add	r0, r3, #16
+ 218 002c 374C     		ldr	r4, .L24+20
+ 219 002e 04EB8000 		add	r0, r4, r0, lsl #2
+ 220 0032 4468     		ldr	r4, [r0, #4]
+ 221 0034 9740     		lsls	r7, r7, r2
+ 222              	.LVL16:
+ 223 0036 3C43     		orrs	r4, r4, r7
+ 224 0038 4460     		str	r4, [r0, #4]
+ 113:Src/maze_info.c ****     if(y>0){
+ 225              		.loc 1 113 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 7
 
 
- 137:Src/maze_info.c **** 			if (maze.wall_horizontal[j-1] & 0b1 << i)
- 138:Src/maze_info.c **** 			{
- 139:Src/maze_info.c **** 				printf("---");
- 140:Src/maze_info.c **** 			}
- 141:Src/maze_info.c **** 			else
- 142:Src/maze_info.c **** 			{
- 143:Src/maze_info.c **** 				printf("   ");
- 417              		.loc 1 143 0
- 418 0014 2B48     		ldr	r0, .L42+4
- 419 0016 FFF7FEFF 		bl	printf
- 420              	.LVL38:
- 421              	.L29:
- 134:Src/maze_info.c **** 		{
- 422              		.loc 1 134 0 discriminator 2
- 423 001a 0134     		adds	r4, r4, #1
- 424              	.LVL39:
- 425 001c E4B2     		uxtb	r4, r4
- 426              	.LVL40:
- 427              	.L35:
- 134:Src/maze_info.c **** 		{
- 428              		.loc 1 134 0 is_stmt 0 discriminator 1
- 429 001e 0F2C     		cmp	r4, #15
- 430 0020 10D8     		bhi	.L40
- 136:Src/maze_info.c **** 			if (maze.wall_horizontal[j-1] & 0b1 << i)
- 431              		.loc 1 136 0 is_stmt 1
- 432 0022 2B20     		movs	r0, #43
- 433 0024 FFF7FEFF 		bl	putchar
- 434              	.LVL41:
- 137:Src/maze_info.c **** 			{
- 435              		.loc 1 137 0
- 436 0028 05F10F03 		add	r3, r5, #15
- 437 002c 04AA     		add	r2, sp, #16
- 438 002e 02EB8303 		add	r3, r2, r3, lsl #2
- 439 0032 5A68     		ldr	r2, [r3, #4]
- 440 0034 0123     		movs	r3, #1
- 441 0036 A340     		lsls	r3, r3, r4
- 442 0038 1A42     		tst	r2, r3
- 443 003a EBD0     		beq	.L28
- 139:Src/maze_info.c **** 			}
- 444              		.loc 1 139 0
- 445 003c 2248     		ldr	r0, .L42+8
- 446 003e FFF7FEFF 		bl	printf
- 447              	.LVL42:
- 448 0042 EAE7     		b	.L29
- 449              	.L40:
- 450              	.LBE6:
- 144:Src/maze_info.c **** 			}
- 145:Src/maze_info.c **** 		}
- 146:Src/maze_info.c **** 		printf("+\r\n");
- 451              		.loc 1 146 0
- 452 0044 2148     		ldr	r0, .L42+12
- 453 0046 FFF7FEFF 		bl	puts
- 454              	.LVL43:
- 147:Src/maze_info.c **** 		printf("|");
- 455              		.loc 1 147 0
- 456 004a 7C20     		movs	r0, #124
- 457 004c FFF7FEFF 		bl	putchar
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 12
+ 226 003a 43B1     		cbz	r3, .L18
+ 114:Src/maze_info.c ****         maze.wall_horizontal[y-1] = maze.wall_horizontal[y-1]|(s_wall<<x);
+ 227              		.loc 1 114 0
+ 228 003c 03F10F00 		add	r0, r3, #15
+ 229 0040 324C     		ldr	r4, .L24+20
+ 230 0042 04EB8000 		add	r0, r4, r0, lsl #2
+ 231 0046 4468     		ldr	r4, [r0, #4]
+ 232 0048 9140     		lsls	r1, r1, r2
+ 233              	.LVL17:
+ 234 004a 2143     		orrs	r1, r1, r4
+ 235 004c 4160     		str	r1, [r0, #4]
+ 236              	.L18:
+ 115:Src/maze_info.c ****     }
+ 116:Src/maze_info.c **** 	maze.wall_vertical[x] = maze.wall_vertical[x]|(e_wall<<y);
+ 237              		.loc 1 116 0
+ 238 004e 2F49     		ldr	r1, .L24+20
+ 239 0050 01EB8201 		add	r1, r1, r2, lsl #2
+ 240 0054 4868     		ldr	r0, [r1, #4]
+ 241 0056 9E40     		lsls	r6, r6, r3
+ 242              	.LVL18:
+ 243 0058 3043     		orrs	r0, r0, r6
+ 244 005a 4860     		str	r0, [r1, #4]
+ 117:Src/maze_info.c ****     if(x>0){
+ 245              		.loc 1 117 0
+ 246 005c 3AB1     		cbz	r2, .L19
+ 118:Src/maze_info.c **** 	    maze.wall_vertical[x-1] = maze.wall_vertical[x-1]|(w_wall<<y);
+ 247              		.loc 1 118 0
+ 248 005e 511E     		subs	r1, r2, #1
+ 249 0060 2A48     		ldr	r0, .L24+20
+ 250 0062 00EB8101 		add	r1, r0, r1, lsl #2
+ 251 0066 4868     		ldr	r0, [r1, #4]
+ 252 0068 9D40     		lsls	r5, r5, r3
+ 253              	.LVL19:
+ 254 006a 0543     		orrs	r5, r5, r0
+ 255 006c 4D60     		str	r5, [r1, #4]
+ 256              	.L19:
+ 119:Src/maze_info.c ****     }
+ 120:Src/maze_info.c **** 	
+ 121:Src/maze_info.c **** 	maze.wall_hor_search[y] = maze.wall_hor_search[y] | (1 << x);
+ 257              		.loc 1 121 0
+ 258 006e 03F13000 		add	r0, r3, #48
+ 259 0072 2649     		ldr	r1, .L24+20
+ 260 0074 01EB8000 		add	r0, r1, r0, lsl #2
+ 261 0078 4468     		ldr	r4, [r0, #4]
+ 262 007a 0121     		movs	r1, #1
+ 263 007c 9140     		lsls	r1, r1, r2
+ 264 007e 0C43     		orrs	r4, r4, r1
+ 265 0080 4460     		str	r4, [r0, #4]
+ 122:Src/maze_info.c **** 	if (y > 0) {
+ 266              		.loc 1 122 0
+ 267 0082 3BB1     		cbz	r3, .L20
+ 123:Src/maze_info.c **** 		maze.wall_hor_search[y - 1] = maze.wall_hor_search[y - 1] | (1 << x);
+ 268              		.loc 1 123 0
+ 269 0084 03F12F00 		add	r0, r3, #47
+ 270 0088 204C     		ldr	r4, .L24+20
+ 271 008a 04EB8000 		add	r0, r4, r0, lsl #2
+ 272 008e 4468     		ldr	r4, [r0, #4]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 8
 
 
- 458              	.LVL44:
- 459              	.LBB7:
- 148:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
- 460              		.loc 1 148 0
- 461 0050 0024     		movs	r4, #0
- 462              	.LVL45:
- 463 0052 04E0     		b	.L31
- 464              	.LVL46:
- 465              	.L32:
- 149:Src/maze_info.c **** 		{
- 150:Src/maze_info.c **** 			printf("%3d", maze.step[i][j-1]);
- 151:Src/maze_info.c **** 			if (maze.wall_vertical[i] & 0b1 << (j - 1)) {
- 152:Src/maze_info.c **** 				printf("|");
- 153:Src/maze_info.c **** 			}
- 154:Src/maze_info.c **** 			else
- 155:Src/maze_info.c **** 			{
- 156:Src/maze_info.c **** 				printf(" ");
- 466              		.loc 1 156 0
- 467 0054 2020     		movs	r0, #32
- 468 0056 FFF7FEFF 		bl	putchar
- 469              	.LVL47:
- 470              	.L33:
- 148:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
- 471              		.loc 1 148 0 discriminator 2
- 472 005a 0134     		adds	r4, r4, #1
- 473              	.LVL48:
- 474 005c E4B2     		uxtb	r4, r4
- 475              	.LVL49:
- 476              	.L31:
- 148:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
- 477              		.loc 1 148 0 is_stmt 0 discriminator 1
- 478 005e 0F2C     		cmp	r4, #15
- 479 0060 15D8     		bhi	.L41
- 150:Src/maze_info.c **** 			if (maze.wall_vertical[i] & 0b1 << (j - 1)) {
- 480              		.loc 1 150 0 is_stmt 1
- 481 0062 6E1E     		subs	r6, r5, #1
- 482 0064 04AB     		add	r3, sp, #16
- 483 0066 03EB0413 		add	r3, r3, r4, lsl #4
- 484 006a 3344     		add	r3, r3, r6
- 485 006c 93F80411 		ldrb	r1, [r3, #260]	@ zero_extendqisi2
- 486 0070 1748     		ldr	r0, .L42+16
- 487 0072 FFF7FEFF 		bl	printf
- 488              	.LVL50:
- 151:Src/maze_info.c **** 				printf("|");
- 489              		.loc 1 151 0
- 490 0076 04AB     		add	r3, sp, #16
- 491 0078 03EB8403 		add	r3, r3, r4, lsl #2
- 492 007c 5A68     		ldr	r2, [r3, #4]
- 493 007e 0123     		movs	r3, #1
- 494 0080 B340     		lsls	r3, r3, r6
- 495 0082 1A42     		tst	r2, r3
- 496 0084 E6D0     		beq	.L32
- 152:Src/maze_info.c **** 			}
- 497              		.loc 1 152 0
- 498 0086 7C20     		movs	r0, #124
- 499 0088 FFF7FEFF 		bl	putchar
- 500              	.LVL51:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 13
+ 273 0090 2143     		orrs	r1, r1, r4
+ 274 0092 4160     		str	r1, [r0, #4]
+ 275              	.L20:
+ 124:Src/maze_info.c **** 	}
+ 125:Src/maze_info.c **** 	maze.wall_ver_search[x] = maze.wall_ver_search[x] | (1 << y);
+ 276              		.loc 1 125 0
+ 277 0094 02F12000 		add	r0, r2, #32
+ 278 0098 1C49     		ldr	r1, .L24+20
+ 279 009a 01EB8000 		add	r0, r1, r0, lsl #2
+ 280 009e 4468     		ldr	r4, [r0, #4]
+ 281 00a0 0121     		movs	r1, #1
+ 282 00a2 01FA03F3 		lsl	r3, r1, r3
+ 283              	.LVL20:
+ 284 00a6 1C43     		orrs	r4, r4, r3
+ 285 00a8 4460     		str	r4, [r0, #4]
+ 126:Src/maze_info.c **** 	if (x > 0) {
+ 286              		.loc 1 126 0
+ 287 00aa 32B1     		cbz	r2, .L11
+ 127:Src/maze_info.c **** 		maze.wall_ver_search[x - 1] = maze.wall_ver_search[x - 1] | (1 << y);
+ 288              		.loc 1 127 0
+ 289 00ac 1F32     		adds	r2, r2, #31
+ 290              	.LVL21:
+ 291 00ae 1749     		ldr	r1, .L24+20
+ 292 00b0 01EB8202 		add	r2, r1, r2, lsl #2
+ 293              	.LVL22:
+ 294 00b4 5168     		ldr	r1, [r2, #4]
+ 295 00b6 0B43     		orrs	r3, r3, r1
+ 296 00b8 5360     		str	r3, [r2, #4]
+ 297              	.L11:
+ 128:Src/maze_info.c **** 	}
+ 129:Src/maze_info.c **** }
+ 298              		.loc 1 129 0
+ 299 00ba F0BC     		pop	{r4, r5, r6, r7}
+ 300              	.LCFI3:
+ 301              		.cfi_remember_state
+ 302              		.cfi_restore 7
+ 303              		.cfi_restore 6
+ 304              		.cfi_restore 5
+ 305              		.cfi_restore 4
+ 306              		.cfi_def_cfa_offset 0
+ 307 00bc 7047     		bx	lr
+ 308              	.LVL23:
+ 309              	.L15:
+ 310              	.LCFI4:
+ 311              		.cfi_restore_state
+  91:Src/maze_info.c **** 		s_wall = sen_r.is_wall;
+ 312              		.loc 1 91 0
+ 313 00be 1049     		ldr	r1, .L24+8
+ 314 00c0 0E7B     		ldrb	r6, [r1, #12]	@ zero_extendqisi2
+ 315              	.LVL24:
+  92:Src/maze_info.c **** 		n_wall = sen_l.is_wall;
+ 316              		.loc 1 92 0
+ 317 00c2 1049     		ldr	r1, .L24+12
+ 318 00c4 097B     		ldrb	r1, [r1, #12]	@ zero_extendqisi2
+ 319              	.LVL25:
+  93:Src/maze_info.c **** 		w_wall = 0;
+ 320              		.loc 1 93 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 9
 
 
- 501 008c E5E7     		b	.L33
- 502              	.L41:
- 503              	.LBE7:
- 157:Src/maze_info.c **** 			}
- 158:Src/maze_info.c **** 		}
- 159:Src/maze_info.c **** 		printf("\r\n");
- 504              		.loc 1 159 0 discriminator 2
- 505 008e 0C48     		ldr	r0, .L42
- 506 0090 FFF7FEFF 		bl	puts
- 507              	.LVL52:
- 132:Src/maze_info.c **** 	{
- 508              		.loc 1 132 0 discriminator 2
- 509 0094 013D     		subs	r5, r5, #1
- 510              	.LVL53:
- 511 0096 EDB2     		uxtb	r5, r5
- 512              	.LVL54:
- 513              	.L27:
- 132:Src/maze_info.c **** 	{
- 514              		.loc 1 132 0 is_stmt 0 discriminator 1
- 515 0098 4DB1     		cbz	r5, .L36
- 516              	.LBB8:
- 134:Src/maze_info.c **** 		{
- 517              		.loc 1 134 0 is_stmt 1
- 518 009a 0024     		movs	r4, #0
- 519 009c BFE7     		b	.L35
- 520              	.LVL55:
- 521              	.L37:
- 522              	.LBE8:
- 523              	.LBE5:
- 524              	.LBB9:
- 160:Src/maze_info.c **** 
- 161:Src/maze_info.c **** 	}
- 162:Src/maze_info.c **** 	for (unsigned char i = 0; i < WALL_NUM; i++)
- 163:Src/maze_info.c **** 	{
- 164:Src/maze_info.c **** 		printf("+");
- 525              		.loc 1 164 0 discriminator 3
- 526 009e 2B20     		movs	r0, #43
- 527 00a0 FFF7FEFF 		bl	putchar
- 528              	.LVL56:
- 165:Src/maze_info.c **** 		printf("---");
- 529              		.loc 1 165 0 discriminator 3
- 530 00a4 0848     		ldr	r0, .L42+8
- 531 00a6 FFF7FEFF 		bl	printf
- 532              	.LVL57:
- 162:Src/maze_info.c **** 	{
- 533              		.loc 1 162 0 discriminator 3
- 534 00aa 0135     		adds	r5, r5, #1
- 535              	.LVL58:
- 536 00ac EDB2     		uxtb	r5, r5
- 537              	.LVL59:
- 538              	.L36:
- 162:Src/maze_info.c **** 	{
- 539              		.loc 1 162 0 is_stmt 0 discriminator 1
- 540 00ae 0F2D     		cmp	r5, #15
- 541 00b0 F5D9     		bls	.L37
- 542              	.LBE9:
- 166:Src/maze_info.c **** 	}
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 14
+ 321 00c6 1048     		ldr	r0, .L24+16
+ 322 00c8 077B     		ldrb	r7, [r0, #12]	@ zero_extendqisi2
+ 323              	.LVL26:
+  94:Src/maze_info.c **** 		break;
+ 324              		.loc 1 94 0
+ 325 00ca 0025     		movs	r5, #0
+  95:Src/maze_info.c **** 	case SOUTH:
+ 326              		.loc 1 95 0
+ 327 00cc ACE7     		b	.L12
+ 328              	.LVL27:
+ 329              	.L16:
+  97:Src/maze_info.c **** 		w_wall = sen_r.is_wall;
+ 330              		.loc 1 97 0
+ 331 00ce 0C49     		ldr	r1, .L24+8
+ 332 00d0 097B     		ldrb	r1, [r1, #12]	@ zero_extendqisi2
+ 333              	.LVL28:
+  98:Src/maze_info.c **** 		e_wall = sen_l.is_wall;
+ 334              		.loc 1 98 0
+ 335 00d2 0C48     		ldr	r0, .L24+12
+ 336 00d4 057B     		ldrb	r5, [r0, #12]	@ zero_extendqisi2
+ 337              	.LVL29:
+  99:Src/maze_info.c **** 		n_wall = 0;
+ 338              		.loc 1 99 0
+ 339 00d6 0C48     		ldr	r0, .L24+16
+ 340 00d8 067B     		ldrb	r6, [r0, #12]	@ zero_extendqisi2
+ 341              	.LVL30:
+ 100:Src/maze_info.c **** 		break;
+ 342              		.loc 1 100 0
+ 343 00da 0027     		movs	r7, #0
+ 101:Src/maze_info.c **** 	case WEST:
+ 344              		.loc 1 101 0
+ 345 00dc A4E7     		b	.L12
+ 346              	.LVL31:
+ 347              	.L17:
+ 103:Src/maze_info.c **** 		n_wall = sen_r.is_wall;
+ 348              		.loc 1 103 0
+ 349 00de 0849     		ldr	r1, .L24+8
+ 350 00e0 0D7B     		ldrb	r5, [r1, #12]	@ zero_extendqisi2
+ 351              	.LVL32:
+ 104:Src/maze_info.c **** 		s_wall = sen_l.is_wall;
+ 352              		.loc 1 104 0
+ 353 00e2 0849     		ldr	r1, .L24+12
+ 354 00e4 0F7B     		ldrb	r7, [r1, #12]	@ zero_extendqisi2
+ 355              	.LVL33:
+ 105:Src/maze_info.c **** 		e_wall = 0;
+ 356              		.loc 1 105 0
+ 357 00e6 0849     		ldr	r1, .L24+16
+ 358 00e8 097B     		ldrb	r1, [r1, #12]	@ zero_extendqisi2
+ 359              	.LVL34:
+ 106:Src/maze_info.c **** 		break;
+ 360              		.loc 1 106 0
+ 361 00ea 0026     		movs	r6, #0
+ 107:Src/maze_info.c **** 	default:
+ 362              		.loc 1 107 0
+ 363 00ec 9CE7     		b	.L12
+ 364              	.LVL35:
+ 365              	.L22:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 10
 
 
- 167:Src/maze_info.c **** 	printf("+\r\n");
- 543              		.loc 1 167 0 is_stmt 1
- 544 00b2 0648     		ldr	r0, .L42+12
- 545 00b4 FFF7FEFF 		bl	puts
- 546              	.LVL60:
- 168:Src/maze_info.c **** }...
- 547              		.loc 1 168 0
- 548 00b8 BDE87040 		pop	{r4, r5, r6, lr}
- 549              	.LCFI7:
- 550              		.cfi_restore 14
- 551              		.cfi_restore 6
- 552              		.cfi_restore 5
- 553              		.cfi_restore 4
- 554              		.cfi_def_cfa_offset 16
- 555              	.LVL61:
- 556 00bc 04B0     		add	sp, sp, #16
- 557              	.LCFI8:
- 558              		.cfi_def_cfa_offset 0
- 559 00be 7047     		bx	lr
- 560              	.L43:
- 561              		.align	2
- 562              	.L42:
- 563 00c0 00000000 		.word	.LC0
- 564 00c4 08000000 		.word	.LC2
- 565 00c8 04000000 		.word	.LC1
- 566 00cc 0C000000 		.word	.LC3
- 567 00d0 10000000 		.word	.LC4
- 568              		.cfi_endproc
- 569              	.LFE129:
- 571              		.comm	direction,1,1
- 572              		.comm	position,1,1
- 573              		.comm	maze,516,4
- 574              		.section	.rodata.Maze_Printf.str1.4,"aMS",%progbits,1
- 575              		.align	2
- 576              	.LC0:
- 577 0000 0D00     		.ascii	"\015\000"
- 578 0002 0000     		.space	2
- 579              	.LC1:
- 580 0004 2D2D2D00 		.ascii	"---\000"
- 581              	.LC2:
- 582 0008 20202000 		.ascii	"   \000"
- 583              	.LC3:
- 584 000c 2B0D00   		.ascii	"+\015\000"
- 585 000f 00       		.space	1
- 586              	.LC4:
- 587 0010 25336400 		.ascii	"%3d\000"
- 588              		.text
- 589              	.Letext0:
- 590              		.file 2 "Inc/maze_info.h"
- 591              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 592              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 593              		.file 5 "Inc/filter.h"
- 594              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
- 595              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 596              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 597              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 598              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 15
+  77:Src/maze_info.c **** 
+ 366              		.loc 1 77 0
+ 367 00ee 0025     		movs	r5, #0
+ 368 00f0 2946     		mov	r1, r5
+ 369 00f2 2E46     		mov	r6, r5
+ 370 00f4 2F46     		mov	r7, r5
+ 371 00f6 97E7     		b	.L12
+ 372              	.L25:
+ 373              		.align	2
+ 374              	.L24:
+ 375 00f8 00000000 		.word	position
+ 376 00fc 00000000 		.word	direction
+ 377 0100 00000000 		.word	sen_front
+ 378 0104 00000000 		.word	sen_r
+ 379 0108 00000000 		.word	sen_l
+ 380 010c 00000000 		.word	maze
+ 381              		.cfi_endproc
+ 382              	.LFE128:
+ 384              		.section	.text.Maze_Printf,"ax",%progbits
+ 385              		.align	1
+ 386              		.global	Maze_Printf
+ 387              		.syntax unified
+ 388              		.thumb
+ 389              		.thumb_func
+ 390              		.fpu fpv4-sp-d16
+ 392              	Maze_Printf:
+ 393              	.LFB129:
+ 130:Src/maze_info.c **** 
+ 131:Src/maze_info.c **** 
+ 132:Src/maze_info.c **** void Maze_Printf(maze_t maze) {
+ 394              		.loc 1 132 0
+ 395              		.cfi_startproc
+ 396              		@ args = 516, pretend = 16, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 398 0000 84B0     		sub	sp, sp, #16
+ 399              	.LCFI5:
+ 400              		.cfi_def_cfa_offset 16
+ 401 0002 70B5     		push	{r4, r5, r6, lr}
+ 402              	.LCFI6:
+ 403              		.cfi_def_cfa_offset 32
+ 404              		.cfi_offset 4, -32
+ 405              		.cfi_offset 5, -28
+ 406              		.cfi_offset 6, -24
+ 407              		.cfi_offset 14, -20
+ 408 0004 04AC     		add	r4, sp, #16
+ 409 0006 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 133:Src/maze_info.c **** 	printf("\r\n");
+ 410              		.loc 1 133 0
+ 411 000a 2D48     		ldr	r0, .L42
+ 412 000c FFF7FEFF 		bl	puts
+ 413              	.LVL36:
+ 414              	.LBB5:
+ 134:Src/maze_info.c **** 	for (unsigned char j = WALL_NUM; j > 0; j--)
+ 415              		.loc 1 134 0
+ 416 0010 1025     		movs	r5, #16
+ 417 0012 41E0     		b	.L27
+ 418              	.LVL37:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 11
 
 
- 599              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eab
- 600              		.file 12 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 601              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 602              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 603              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 604              		.file 16 "Inc/usart.h"
- 605              		.file 17 "<built-in>"
- 606              		.file 18 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s 			page 16
+ 419              	.L28:
+ 420              	.LBB6:
+ 135:Src/maze_info.c **** 	{
+ 136:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
+ 137:Src/maze_info.c **** 		{
+ 138:Src/maze_info.c **** 			printf("+");
+ 139:Src/maze_info.c **** 			if (maze.wall_horizontal[j-1] & 0b1 << i)
+ 140:Src/maze_info.c **** 			{
+ 141:Src/maze_info.c **** 				printf("---");
+ 142:Src/maze_info.c **** 			}
+ 143:Src/maze_info.c **** 			else
+ 144:Src/maze_info.c **** 			{
+ 145:Src/maze_info.c **** 				printf("   ");
+ 421              		.loc 1 145 0
+ 422 0014 2B48     		ldr	r0, .L42+4
+ 423 0016 FFF7FEFF 		bl	printf
+ 424              	.LVL38:
+ 425              	.L29:
+ 136:Src/maze_info.c **** 		{
+ 426              		.loc 1 136 0 discriminator 2
+ 427 001a 0134     		adds	r4, r4, #1
+ 428              	.LVL39:
+ 429 001c E4B2     		uxtb	r4, r4
+ 430              	.LVL40:
+ 431              	.L35:
+ 136:Src/maze_info.c **** 		{
+ 432              		.loc 1 136 0 is_stmt 0 discriminator 1
+ 433 001e 0F2C     		cmp	r4, #15
+ 434 0020 10D8     		bhi	.L40
+ 138:Src/maze_info.c **** 			if (maze.wall_horizontal[j-1] & 0b1 << i)
+ 435              		.loc 1 138 0 is_stmt 1
+ 436 0022 2B20     		movs	r0, #43
+ 437 0024 FFF7FEFF 		bl	putchar
+ 438              	.LVL41:
+ 139:Src/maze_info.c **** 			{
+ 439              		.loc 1 139 0
+ 440 0028 05F10F03 		add	r3, r5, #15
+ 441 002c 04AA     		add	r2, sp, #16
+ 442 002e 02EB8303 		add	r3, r2, r3, lsl #2
+ 443 0032 5A68     		ldr	r2, [r3, #4]
+ 444 0034 0123     		movs	r3, #1
+ 445 0036 A340     		lsls	r3, r3, r4
+ 446 0038 1A42     		tst	r2, r3
+ 447 003a EBD0     		beq	.L28
+ 141:Src/maze_info.c **** 			}
+ 448              		.loc 1 141 0
+ 449 003c 2248     		ldr	r0, .L42+8
+ 450 003e FFF7FEFF 		bl	printf
+ 451              	.LVL42:
+ 452 0042 EAE7     		b	.L29
+ 453              	.L40:
+ 454              	.LBE6:
+ 146:Src/maze_info.c **** 			}
+ 147:Src/maze_info.c **** 		}
+ 148:Src/maze_info.c **** 		printf("+\r\n");
+ 455              		.loc 1 148 0
+ 456 0044 2148     		ldr	r0, .L42+12
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 12
+
+
+ 457 0046 FFF7FEFF 		bl	puts
+ 458              	.LVL43:
+ 149:Src/maze_info.c **** 		printf("|");
+ 459              		.loc 1 149 0
+ 460 004a 7C20     		movs	r0, #124
+ 461 004c FFF7FEFF 		bl	putchar
+ 462              	.LVL44:
+ 463              	.LBB7:
+ 150:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
+ 464              		.loc 1 150 0
+ 465 0050 0024     		movs	r4, #0
+ 466              	.LVL45:
+ 467 0052 04E0     		b	.L31
+ 468              	.LVL46:
+ 469              	.L32:
+ 151:Src/maze_info.c **** 		{
+ 152:Src/maze_info.c **** 			printf("%3d", maze.step[i][j-1]);
+ 153:Src/maze_info.c **** 			if (maze.wall_vertical[i] & 0b1 << (j - 1)) {
+ 154:Src/maze_info.c **** 				printf("|");
+ 155:Src/maze_info.c **** 			}
+ 156:Src/maze_info.c **** 			else
+ 157:Src/maze_info.c **** 			{
+ 158:Src/maze_info.c **** 				printf(" ");
+ 470              		.loc 1 158 0
+ 471 0054 2020     		movs	r0, #32
+ 472 0056 FFF7FEFF 		bl	putchar
+ 473              	.LVL47:
+ 474              	.L33:
+ 150:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
+ 475              		.loc 1 150 0 discriminator 2
+ 476 005a 0134     		adds	r4, r4, #1
+ 477              	.LVL48:
+ 478 005c E4B2     		uxtb	r4, r4
+ 479              	.LVL49:
+ 480              	.L31:
+ 150:Src/maze_info.c **** 		for (unsigned char i = 0; i < WALL_NUM; i++)
+ 481              		.loc 1 150 0 is_stmt 0 discriminator 1
+ 482 005e 0F2C     		cmp	r4, #15
+ 483 0060 15D8     		bhi	.L41
+ 152:Src/maze_info.c **** 			if (maze.wall_vertical[i] & 0b1 << (j - 1)) {
+ 484              		.loc 1 152 0 is_stmt 1
+ 485 0062 6E1E     		subs	r6, r5, #1
+ 486 0064 04AB     		add	r3, sp, #16
+ 487 0066 03EB0413 		add	r3, r3, r4, lsl #4
+ 488 006a 3344     		add	r3, r3, r6
+ 489 006c 93F80411 		ldrb	r1, [r3, #260]	@ zero_extendqisi2
+ 490 0070 1748     		ldr	r0, .L42+16
+ 491 0072 FFF7FEFF 		bl	printf
+ 492              	.LVL50:
+ 153:Src/maze_info.c **** 				printf("|");
+ 493              		.loc 1 153 0
+ 494 0076 04AB     		add	r3, sp, #16
+ 495 0078 03EB8403 		add	r3, r3, r4, lsl #2
+ 496 007c 5A68     		ldr	r2, [r3, #4]
+ 497 007e 0123     		movs	r3, #1
+ 498 0080 B340     		lsls	r3, r3, r6
+ 499 0082 1A42     		tst	r2, r3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 13
+
+
+ 500 0084 E6D0     		beq	.L32
+ 154:Src/maze_info.c **** 			}
+ 501              		.loc 1 154 0
+ 502 0086 7C20     		movs	r0, #124
+ 503 0088 FFF7FEFF 		bl	putchar
+ 504              	.LVL51:
+ 505 008c E5E7     		b	.L33
+ 506              	.L41:
+ 507              	.LBE7:
+ 159:Src/maze_info.c **** 			}
+ 160:Src/maze_info.c **** 		}
+ 161:Src/maze_info.c **** 		printf("\r\n");
+ 508              		.loc 1 161 0 discriminator 2
+ 509 008e 0C48     		ldr	r0, .L42
+ 510 0090 FFF7FEFF 		bl	puts
+ 511              	.LVL52:
+ 134:Src/maze_info.c **** 	{
+ 512              		.loc 1 134 0 discriminator 2
+ 513 0094 013D     		subs	r5, r5, #1
+ 514              	.LVL53:
+ 515 0096 EDB2     		uxtb	r5, r5
+ 516              	.LVL54:
+ 517              	.L27:
+ 134:Src/maze_info.c **** 	{
+ 518              		.loc 1 134 0 is_stmt 0 discriminator 1
+ 519 0098 4DB1     		cbz	r5, .L36
+ 520              	.LBB8:
+ 136:Src/maze_info.c **** 		{
+ 521              		.loc 1 136 0 is_stmt 1
+ 522 009a 0024     		movs	r4, #0
+ 523 009c BFE7     		b	.L35
+ 524              	.LVL55:
+ 525              	.L37:
+ 526              	.LBE8:
+ 527              	.LBE5:
+ 528              	.LBB9:
+ 162:Src/maze_info.c **** 
+ 163:Src/maze_info.c **** 	}
+ 164:Src/maze_info.c **** 	for (unsigned char i = 0; i < WALL_NUM; i++)
+ 165:Src/maze_info.c **** 	{
+ 166:Src/maze_info.c **** 		printf("+");
+ 529              		.loc 1 166 0 discriminator 3
+ 530 009e 2B20     		movs	r0, #43
+ 531 00a0 FFF7FEFF 		bl	putchar
+ 532              	.LVL56:
+ 167:Src/maze_info.c **** 		printf("---");
+ 533              		.loc 1 167 0 discriminator 3
+ 534 00a4 0848     		ldr	r0, .L42+8
+ 535 00a6 FFF7FEFF 		bl	printf
+ 536              	.LVL57:
+ 164:Src/maze_info.c **** 	{
+ 537              		.loc 1 164 0 discriminator 3
+ 538 00aa 0135     		adds	r5, r5, #1
+ 539              	.LVL58:
+ 540 00ac EDB2     		uxtb	r5, r5
+ 541              	.LVL59:
+ 542              	.L36:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 14
+
+
+ 164:Src/maze_info.c **** 	{
+ 543              		.loc 1 164 0 is_stmt 0 discriminator 1
+ 544 00ae 0F2D     		cmp	r5, #15
+ 545 00b0 F5D9     		bls	.L37
+ 546              	.LBE9:
+ 168:Src/maze_info.c **** 	}
+ 169:Src/maze_info.c **** 	printf("+\r\n");
+ 547              		.loc 1 169 0 is_stmt 1
+ 548 00b2 0648     		ldr	r0, .L42+12
+ 549 00b4 FFF7FEFF 		bl	puts
+ 550              	.LVL60:
+ 170:Src/maze_info.c **** }...
+ 551              		.loc 1 170 0
+ 552 00b8 BDE87040 		pop	{r4, r5, r6, lr}
+ 553              	.LCFI7:
+ 554              		.cfi_restore 14
+ 555              		.cfi_restore 6
+ 556              		.cfi_restore 5
+ 557              		.cfi_restore 4
+ 558              		.cfi_def_cfa_offset 16
+ 559              	.LVL61:
+ 560 00bc 04B0     		add	sp, sp, #16
+ 561              	.LCFI8:
+ 562              		.cfi_def_cfa_offset 0
+ 563 00be 7047     		bx	lr
+ 564              	.L43:
+ 565              		.align	2
+ 566              	.L42:
+ 567 00c0 00000000 		.word	.LC0
+ 568 00c4 08000000 		.word	.LC2
+ 569 00c8 04000000 		.word	.LC1
+ 570 00cc 0C000000 		.word	.LC3
+ 571 00d0 10000000 		.word	.LC4
+ 572              		.cfi_endproc
+ 573              	.LFE129:
+ 575              		.comm	direction,1,1
+ 576              		.comm	position,1,1
+ 577              		.comm	maze,516,4
+ 578              		.section	.rodata.Maze_Printf.str1.4,"aMS",%progbits,1
+ 579              		.align	2
+ 580              	.LC0:
+ 581 0000 0D00     		.ascii	"\015\000"
+ 582 0002 0000     		.space	2
+ 583              	.LC1:
+ 584 0004 2D2D2D00 		.ascii	"---\000"
+ 585              	.LC2:
+ 586 0008 20202000 		.ascii	"   \000"
+ 587              	.LC3:
+ 588 000c 2B0D00   		.ascii	"+\015\000"
+ 589 000f 00       		.space	1
+ 590              	.LC4:
+ 591 0010 25336400 		.ascii	"%3d\000"
+ 592              		.text
+ 593              	.Letext0:
+ 594              		.file 2 "Inc/maze_info.h"
+ 595              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 596              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 15
+
+
+ 597              		.file 5 "Inc/filter.h"
+ 598              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+ 599              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 600              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 601              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 602              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 603              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eab
+ 604              		.file 12 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 605              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 606              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 607              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 608              		.file 16 "Inc/usart.h"
+ 609              		.file 17 "<built-in>"
+ 610              		.file 18 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 maze_info.c
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:18     .text.Maze_Set:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:25     .text.Maze_Set:00000000 Maze_Set
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:45     .text.Maze_Set:0000000c $d
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:18     .text.Maze_Set:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:25     .text.Maze_Set:00000000 Maze_Set
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:45     .text.Maze_Set:0000000c $d
                             *COM*:00000204 maze
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:50     .text.Maze_Init:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:57     .text.Maze_Init:00000000 Maze_Init
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:156    .text.Maze_Get_Wall:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:163    .text.Maze_Get_Wall:00000000 Maze_Get_Wall
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:193    .text.Maze_Get_Wall:00000018 $d
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:197    .text.Maze_Get_Wall:0000001c $t
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:371    .text.Maze_Get_Wall:000000f8 $d
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:50     .text.Maze_Init:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:57     .text.Maze_Init:00000000 Maze_Init
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:160    .text.Maze_Get_Wall:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:167    .text.Maze_Get_Wall:00000000 Maze_Get_Wall
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:197    .text.Maze_Get_Wall:00000018 $d
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:201    .text.Maze_Get_Wall:0000001c $t
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:375    .text.Maze_Get_Wall:000000f8 $d
                             *COM*:00000001 position
                             *COM*:00000001 direction
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:381    .text.Maze_Printf:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:388    .text.Maze_Printf:00000000 Maze_Printf
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:563    .text.Maze_Printf:000000c0 $d
-C:\Users\kotaro\AppData\Local\Temp\ccYVfVHJ.s:575    .rodata.Maze_Printf.str1.4:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:385    .text.Maze_Printf:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:392    .text.Maze_Printf:00000000 Maze_Printf
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:567    .text.Maze_Printf:000000c0 $d
+C:\Users\kotaro\AppData\Local\Temp\ccg27ypY.s:579    .rodata.Maze_Printf.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 sen_front

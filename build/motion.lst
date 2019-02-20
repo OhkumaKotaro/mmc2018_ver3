@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -36,31 +36,35 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
    7:Src/motion.c  **** #define FALSE 0
    8:Src/motion.c  **** 
    9:Src/motion.c  **** //straight
-  10:Src/motion.c  **** #define ACCEL 4000 //[mm/s^2]
+  10:Src/motion.c  **** #define ACCEL 4000       //[mm/s^2]
   11:Src/motion.c  **** #define MAX_VELOCITY 400 //[mm/s]
   12:Src/motion.c  **** //fast
-  13:Src/motion.c  **** #define FAST_VELOCITY 500 //[mm/s]
+  13:Src/motion.c  **** #define FAST_VELOCITY 500    //[mm/s]
   14:Src/motion.c  **** #define FASTEST_VELOCITY 700 //[mm/s]
   15:Src/motion.c  **** 
   16:Src/motion.c  **** //yawrate
-  17:Src/motion.c  **** #define Y_ACCEL 2000 //[degree/s^2]//2000
-  18:Src/motion.c  **** #define Y_MAX_VELOCITY 380//[degree/s]
+  17:Src/motion.c  **** #define Y_ACCEL 2000       //[degree/s^2]//2000
+  18:Src/motion.c  **** #define Y_MAX_VELOCITY 380 //[degree/s]
   19:Src/motion.c  **** //slalom
-  20:Src/motion.c  **** #define S_ACCEL 2100
-  21:Src/motion.c  **** #define S_VELOCITY 400
-  22:Src/motion.c  **** #define OFFSET 5
-  23:Src/motion.c  **** 
-  24:Src/motion.c  **** extern volatile unsigned char flag_motion_end;
-  25:Src/motion.c  **** extern enc_t enc;
-  26:Src/motion.c  **** 
-  27:Src/motion.c  **** 
-  28:Src/motion.c  **** void Straight_half_accel(void){
-  28              		.loc 1 28 0
+  20:Src/motion.c  **** #define S_ACCEL 4000
+  21:Src/motion.c  **** #define S_VELOCITY 440
+  22:Src/motion.c  **** #define OFFSET_IN 17
+  23:Src/motion.c  **** #define OFFSET_OUT 15 //10
+  24:Src/motion.c  **** 
+  25:Src/motion.c  **** extern volatile unsigned char flag_motion_end;
+  26:Src/motion.c  **** extern enc_t enc;
+  27:Src/motion.c  **** extern unsigned char flag_wall;
+  28:Src/motion.c  **** extern float enc_sum;
+  29:Src/motion.c  **** extern float y_sum;
+  30:Src/motion.c  **** 
+  31:Src/motion.c  **** void Straight_half_accel(void)
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 2
+
+
+  32:Src/motion.c  **** {
+  28              		.loc 1 32 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 2
-
-
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32 0000 00B5     		push	{lr}
   33              	.LCFI0:
@@ -69,8 +73,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
   36 0002 83B0     		sub	sp, sp, #12
   37              	.LCFI1:
   38              		.cfi_def_cfa_offset 16
-  29:Src/motion.c  ****     Straight_Calc_fb(90,0,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
-  39              		.loc 1 29 0
+  33:Src/motion.c  ****     Straight_Calc_fb(90, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+  39              		.loc 1 33 0
   40 0004 4FF47A63 		mov	r3, #4000
   41 0008 0093     		str	r3, [sp]
   42 000a 4FF4C873 		mov	r3, #400
@@ -79,8 +83,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
   45 0012 5A20     		movs	r0, #90
   46 0014 FFF7FEFF 		bl	Straight_Calc_fb
   47              	.LVL0:
-  30:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
-  48              		.loc 1 30 0
+  34:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+  48              		.loc 1 34 0
   49 0018 0020     		movs	r0, #0
   50 001a 0090     		str	r0, [sp]
   51 001c 0346     		mov	r3, r0
@@ -88,8 +92,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
   53 0020 0146     		mov	r1, r0
   54 0022 FFF7FEFF 		bl	Yawrate_Calc_fb
   55              	.LVL1:
-  31:Src/motion.c  **** }
-  56              		.loc 1 31 0
+  35:Src/motion.c  **** }
+  56              		.loc 1 35 0
   57 0026 03B0     		add	sp, sp, #12
   58              	.LCFI2:
   59              		.cfi_def_cfa_offset 4
@@ -106,24 +110,25 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
   71              		.fpu fpv4-sp-d16
   73              	Straight_half_stop:
   74              	.LFB127:
-  32:Src/motion.c  **** 
-  33:Src/motion.c  **** void Straight_half_stop(void){
-  75              		.loc 1 33 0
+  36:Src/motion.c  **** 
+  37:Src/motion.c  **** void Straight_half_stop(void)
+  38:Src/motion.c  **** {
+  75              		.loc 1 38 0
   76              		.cfi_startproc
   77              		@ args = 0, pretend = 0, frame = 0
   78              		@ frame_needed = 0, uses_anonymous_args = 0
   79 0000 00B5     		push	{lr}
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 3
+
+
   80              	.LCFI3:
   81              		.cfi_def_cfa_offset 4
   82              		.cfi_offset 14, -4
   83 0002 83B0     		sub	sp, sp, #12
   84              	.LCFI4:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 3
-
-
   85              		.cfi_def_cfa_offset 16
-  34:Src/motion.c  ****     Straight_Calc_fb(90-enc.offset,MAX_VELOCITY,0,MAX_VELOCITY,ACCEL);
-  86              		.loc 1 34 0
+  39:Src/motion.c  ****     Straight_Calc_fb(90 - enc.offset, MAX_VELOCITY, 0, MAX_VELOCITY, ACCEL);
+  86              		.loc 1 39 0
   87 0004 0F4B     		ldr	r3, .L5
   88 0006 93ED027A 		vldr.32	s14, [r3, #8]
   89 000a DFED0F7A 		vldr.32	s15, .L5+4
@@ -138,8 +143,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
   98 0028 00B2     		sxth	r0, r0
   99 002a FFF7FEFF 		bl	Straight_Calc_fb
  100              	.LVL2:
-  35:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 101              		.loc 1 35 0
+  40:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 101              		.loc 1 40 0
  102 002e 0020     		movs	r0, #0
  103 0030 0090     		str	r0, [sp]
  104 0032 0346     		mov	r3, r0
@@ -147,8 +152,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  106 0036 0146     		mov	r1, r0
  107 0038 FFF7FEFF 		bl	Yawrate_Calc_fb
  108              	.LVL3:
-  36:Src/motion.c  **** }
- 109              		.loc 1 36 0
+  41:Src/motion.c  **** }
+ 109              		.loc 1 41 0
  110 003c 03B0     		add	sp, sp, #12
  111              	.LCFI5:
  112              		.cfi_def_cfa_offset 4
@@ -170,24 +175,25 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  129              		.fpu fpv4-sp-d16
  131              	Straight_const:
  132              	.LFB128:
-  37:Src/motion.c  **** 
-  38:Src/motion.c  **** void Straight_const(void){
- 133              		.loc 1 38 0
+  42:Src/motion.c  **** 
+  43:Src/motion.c  **** void Straight_const(void)
+  44:Src/motion.c  **** {
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 4
+
+
+ 133              		.loc 1 44 0
  134              		.cfi_startproc
  135              		@ args = 0, pretend = 0, frame = 0
  136              		@ frame_needed = 0, uses_anonymous_args = 0
  137 0000 00B5     		push	{lr}
  138              	.LCFI6:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 4
-
-
  139              		.cfi_def_cfa_offset 4
  140              		.cfi_offset 14, -4
  141 0002 83B0     		sub	sp, sp, #12
  142              	.LCFI7:
  143              		.cfi_def_cfa_offset 16
-  39:Src/motion.c  ****     Straight_Calc_fb(180-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 144              		.loc 1 39 0
+  45:Src/motion.c  ****     Straight_Calc_fb(180 - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 144              		.loc 1 45 0
  145 0004 0F4B     		ldr	r3, .L9
  146 0006 93ED027A 		vldr.32	s14, [r3, #8]
  147 000a DFED0F7A 		vldr.32	s15, .L9+4
@@ -202,8 +208,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  156 0028 00B2     		sxth	r0, r0
  157 002a FFF7FEFF 		bl	Straight_Calc_fb
  158              	.LVL4:
-  40:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 159              		.loc 1 40 0
+  46:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 159              		.loc 1 46 0
  160 002e 0020     		movs	r0, #0
  161 0030 0090     		str	r0, [sp]
  162 0032 0346     		mov	r3, r0
@@ -211,8 +217,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  164 0036 0146     		mov	r1, r0
  165 0038 FFF7FEFF 		bl	Yawrate_Calc_fb
  166              	.LVL5:
-  41:Src/motion.c  **** }
- 167              		.loc 1 41 0
+  47:Src/motion.c  **** }
+ 167              		.loc 1 47 0
  168 003c 03B0     		add	sp, sp, #12
  169              	.LCFI8:
  170              		.cfi_def_cfa_offset 4
@@ -232,15 +238,16 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  185              		.thumb
  186              		.thumb_func
  187              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 5
+
+
  189              	LeftTurn:
  190              	.LFB129:
-  42:Src/motion.c  **** 
-  43:Src/motion.c  **** void LeftTurn(void){
- 191              		.loc 1 43 0
+  48:Src/motion.c  **** 
+  49:Src/motion.c  **** void LeftTurn(void)
+  50:Src/motion.c  **** {
+ 191              		.loc 1 50 0
  192              		.cfi_startproc
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 5
-
-
  193              		@ args = 0, pretend = 0, frame = 0
  194              		@ frame_needed = 0, uses_anonymous_args = 0
  195 0000 10B5     		push	{r4, lr}
@@ -251,8 +258,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  200 0002 82B0     		sub	sp, sp, #8
  201              	.LCFI10:
  202              		.cfi_def_cfa_offset 16
-  44:Src/motion.c  ****     Straight_Calc_fb(0,0,0,0,0);
- 203              		.loc 1 44 0
+  51:Src/motion.c  ****     Straight_Calc_fb(0, 0, 0, 0, 0);
+ 203              		.loc 1 51 0
  204 0004 0024     		movs	r4, #0
  205 0006 0094     		str	r4, [sp]
  206 0008 2346     		mov	r3, r4
@@ -261,8 +268,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  209 000e 2046     		mov	r0, r4
  210 0010 FFF7FEFF 		bl	Straight_Calc_fb
  211              	.LVL6:
-  45:Src/motion.c  ****     Yawrate_Calc_fb(90,0,0,Y_MAX_VELOCITY,Y_ACCEL);
- 212              		.loc 1 45 0
+  52:Src/motion.c  ****     Yawrate_Calc_fb(90, 0, 0, Y_MAX_VELOCITY, Y_ACCEL);
+ 212              		.loc 1 52 0
  213 0014 4FF4FA63 		mov	r3, #2000
  214 0018 0093     		str	r3, [sp]
  215 001a 4FF4BE73 		mov	r3, #380
@@ -271,8 +278,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  218 0022 5A20     		movs	r0, #90
  219 0024 FFF7FEFF 		bl	Yawrate_Calc_fb
  220              	.LVL7:
-  46:Src/motion.c  **** }
- 221              		.loc 1 46 0
+  53:Src/motion.c  **** }
+ 221              		.loc 1 53 0
  222 0028 02B0     		add	sp, sp, #8
  223              	.LCFI11:
  224              		.cfi_def_cfa_offset 8
@@ -289,25 +296,26 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  236              		.fpu fpv4-sp-d16
  238              	RightTurn:
  239              	.LFB130:
-  47:Src/motion.c  **** 
-  48:Src/motion.c  **** void RightTurn(void){
- 240              		.loc 1 48 0
+  54:Src/motion.c  **** 
+  55:Src/motion.c  **** void RightTurn(void)
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 6
+
+
+  56:Src/motion.c  **** {
+ 240              		.loc 1 56 0
  241              		.cfi_startproc
  242              		@ args = 0, pretend = 0, frame = 0
  243              		@ frame_needed = 0, uses_anonymous_args = 0
  244 0000 10B5     		push	{r4, lr}
  245              	.LCFI12:
  246              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 6
-
-
  247              		.cfi_offset 4, -8
  248              		.cfi_offset 14, -4
  249 0002 82B0     		sub	sp, sp, #8
  250              	.LCFI13:
  251              		.cfi_def_cfa_offset 16
-  49:Src/motion.c  ****     Straight_Calc_fb(0,0,0,0,0);
- 252              		.loc 1 49 0
+  57:Src/motion.c  ****     Straight_Calc_fb(0, 0, 0, 0, 0);
+ 252              		.loc 1 57 0
  253 0004 0024     		movs	r4, #0
  254 0006 0094     		str	r4, [sp]
  255 0008 2346     		mov	r3, r4
@@ -316,8 +324,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  258 000e 2046     		mov	r0, r4
  259 0010 FFF7FEFF 		bl	Straight_Calc_fb
  260              	.LVL8:
-  50:Src/motion.c  ****     Yawrate_Calc_fb(-90,0,0,Y_MAX_VELOCITY,Y_ACCEL);
- 261              		.loc 1 50 0
+  58:Src/motion.c  ****     Yawrate_Calc_fb(-90, 0, 0, Y_MAX_VELOCITY, Y_ACCEL);
+ 261              		.loc 1 58 0
  262 0014 4FF4FA63 		mov	r3, #2000
  263 0018 0093     		str	r3, [sp]
  264 001a 4FF4BE73 		mov	r3, #380
@@ -326,8 +334,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  267 0022 6FF05900 		mvn	r0, #89
  268 0026 FFF7FEFF 		bl	Yawrate_Calc_fb
  269              	.LVL9:
-  51:Src/motion.c  **** }
- 270              		.loc 1 51 0
+  59:Src/motion.c  **** }
+ 270              		.loc 1 59 0
  271 002a 02B0     		add	sp, sp, #8
  272              	.LCFI14:
  273              		.cfi_def_cfa_offset 8
@@ -344,11 +352,15 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  285              		.fpu fpv4-sp-d16
  287              	U_Turn:
  288              	.LFB131:
-  52:Src/motion.c  **** 
-  53:Src/motion.c  **** void U_Turn(void){
- 289              		.loc 1 53 0
+  60:Src/motion.c  **** 
+  61:Src/motion.c  **** void U_Turn(void)
+  62:Src/motion.c  **** {
+ 289              		.loc 1 62 0
  290              		.cfi_startproc
  291              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 7
+
+
  292              		@ frame_needed = 0, uses_anonymous_args = 0
  293 0000 10B5     		push	{r4, lr}
  294              	.LCFI15:
@@ -358,11 +370,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  298 0002 82B0     		sub	sp, sp, #8
  299              	.LCFI16:
  300              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 7
-
-
-  54:Src/motion.c  ****     Straight_Calc_fb(0,0,0,0,0);
- 301              		.loc 1 54 0
+  63:Src/motion.c  ****     Straight_Calc_fb(0, 0, 0, 0, 0);
+ 301              		.loc 1 63 0
  302 0004 0024     		movs	r4, #0
  303 0006 0094     		str	r4, [sp]
  304 0008 2346     		mov	r3, r4
@@ -371,8 +380,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  307 000e 2046     		mov	r0, r4
  308 0010 FFF7FEFF 		bl	Straight_Calc_fb
  309              	.LVL10:
-  55:Src/motion.c  ****     Yawrate_Calc_fb(180,0,0,Y_MAX_VELOCITY,Y_ACCEL);
- 310              		.loc 1 55 0
+  64:Src/motion.c  ****     Yawrate_Calc_fb(180, 0, 0, Y_MAX_VELOCITY, Y_ACCEL);
+ 310              		.loc 1 64 0
  311 0014 4FF4FA63 		mov	r3, #2000
  312 0018 0093     		str	r3, [sp]
  313 001a 4FF4BE73 		mov	r3, #380
@@ -381,8 +390,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  316 0022 B420     		movs	r0, #180
  317 0024 FFF7FEFF 		bl	Yawrate_Calc_fb
  318              	.LVL11:
-  56:Src/motion.c  **** }
- 319              		.loc 1 56 0
+  65:Src/motion.c  **** }
+ 319              		.loc 1 65 0
  320 0028 02B0     		add	sp, sp, #8
  321              	.LCFI17:
  322              		.cfi_def_cfa_offset 8
@@ -399,1183 +408,1449 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 1
  334              		.fpu fpv4-sp-d16
  336              	Motion_Start:
  337              	.LFB132:
-  57:Src/motion.c  **** 
-  58:Src/motion.c  **** void Motion_Start(void){
- 338              		.loc 1 58 0
+  66:Src/motion.c  **** 
+  67:Src/motion.c  **** void Motion_Start(void)
+  68:Src/motion.c  **** {
+ 338              		.loc 1 68 0
  339              		.cfi_startproc
  340              		@ args = 0, pretend = 0, frame = 0
  341              		@ frame_needed = 0, uses_anonymous_args = 0
  342 0000 00B5     		push	{lr}
  343              	.LCFI18:
  344              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 8
+
+
  345              		.cfi_offset 14, -4
  346 0002 83B0     		sub	sp, sp, #12
  347              	.LCFI19:
  348              		.cfi_def_cfa_offset 16
-  59:Src/motion.c  ****     /*
-  60:Src/motion.c  ****     Straight_Calc_fb(-55,0,0,200,2000);
-  61:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
-  62:Src/motion.c  ****     while(flag_motion_end==FALSE){}
-  63:Src/motion.c  ****     HAL_Delay(500);
-  64:Src/motion.c  ****     */
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 8
+  69:Src/motion.c  ****     /*
+  70:Src/motion.c  ****     Straight_Calc_fb(-55,0,0,200,2000);
+  71:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
+  72:Src/motion.c  ****     while(flag_motion_end==FALSE){}
+  73:Src/motion.c  ****     HAL_Delay(500);
+  74:Src/motion.c  ****     */
+  75:Src/motion.c  ****     enc_sum = 0;
+ 349              		.loc 1 75 0
+ 350 0004 0023     		movs	r3, #0
+ 351 0006 0E4A     		ldr	r2, .L20
+ 352 0008 1360     		str	r3, [r2]	@ float
+  76:Src/motion.c  ****     y_sum = 0;
+ 353              		.loc 1 76 0
+ 354 000a 0E4A     		ldr	r2, .L20+4
+ 355 000c 1360     		str	r3, [r2]	@ float
+  77:Src/motion.c  ****     Straight_Calc_fb(137, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 356              		.loc 1 77 0
+ 357 000e 4FF47A63 		mov	r3, #4000
+ 358 0012 0093     		str	r3, [sp]
+ 359 0014 4FF4C873 		mov	r3, #400
+ 360 0018 1A46     		mov	r2, r3
+ 361 001a 0021     		movs	r1, #0
+ 362 001c 8920     		movs	r0, #137
+ 363 001e FFF7FEFF 		bl	Straight_Calc_fb
+ 364              	.LVL12:
+  78:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 365              		.loc 1 78 0
+ 366 0022 0020     		movs	r0, #0
+ 367 0024 0090     		str	r0, [sp]
+ 368 0026 0346     		mov	r3, r0
+ 369 0028 0246     		mov	r2, r0
+ 370 002a 0146     		mov	r1, r0
+ 371 002c FFF7FEFF 		bl	Yawrate_Calc_fb
+ 372              	.LVL13:
+ 373              	.L18:
+  79:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 374              		.loc 1 79 0 discriminator 1
+ 375 0030 054B     		ldr	r3, .L20+8
+ 376 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 377 0034 002B     		cmp	r3, #0
+ 378 0036 FBD0     		beq	.L18
+  80:Src/motion.c  ****     {
+  81:Src/motion.c  ****     }
+  82:Src/motion.c  **** }
+ 379              		.loc 1 82 0
+ 380 0038 03B0     		add	sp, sp, #12
+ 381              	.LCFI20:
+ 382              		.cfi_def_cfa_offset 4
+ 383              		@ sp needed
+ 384 003a 5DF804FB 		ldr	pc, [sp], #4
+ 385              	.L21:
+ 386 003e 00BF     		.align	2
+ 387              	.L20:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 9
 
 
-  65:Src/motion.c  ****     Straight_Calc_fb(137,0,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 349              		.loc 1 65 0
- 350 0004 4FF47A63 		mov	r3, #4000
- 351 0008 0093     		str	r3, [sp]
- 352 000a 4FF4C873 		mov	r3, #400
- 353 000e 1A46     		mov	r2, r3
- 354 0010 0021     		movs	r1, #0
- 355 0012 8920     		movs	r0, #137
- 356 0014 FFF7FEFF 		bl	Straight_Calc_fb
- 357              	.LVL12:
-  66:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 358              		.loc 1 66 0
- 359 0018 0020     		movs	r0, #0
- 360 001a 0090     		str	r0, [sp]
- 361 001c 0346     		mov	r3, r0
- 362 001e 0246     		mov	r2, r0
- 363 0020 0146     		mov	r1, r0
- 364 0022 FFF7FEFF 		bl	Yawrate_Calc_fb
- 365              	.LVL13:
- 366              	.L18:
-  67:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 367              		.loc 1 67 0 discriminator 1
- 368 0026 034B     		ldr	r3, .L20
- 369 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 370 002a 002B     		cmp	r3, #0
- 371 002c FBD0     		beq	.L18
-  68:Src/motion.c  **** }
- 372              		.loc 1 68 0
- 373 002e 03B0     		add	sp, sp, #12
- 374              	.LCFI20:
- 375              		.cfi_def_cfa_offset 4
- 376              		@ sp needed
- 377 0030 5DF804FB 		ldr	pc, [sp], #4
- 378              	.L21:
- 379              		.align	2
- 380              	.L20:
- 381 0034 00000000 		.word	flag_motion_end
- 382              		.cfi_endproc
- 383              	.LFE132:
- 385              		.section	.text.Motion_Straight,"ax",%progbits
- 386              		.align	1
- 387              		.global	Motion_Straight
- 388              		.syntax unified
- 389              		.thumb
- 390              		.thumb_func
- 391              		.fpu fpv4-sp-d16
- 393              	Motion_Straight:
- 394              	.LFB133:
-  69:Src/motion.c  **** 
-  70:Src/motion.c  **** 
-  71:Src/motion.c  **** void Motion_Straight(void){
- 395              		.loc 1 71 0
- 396              		.cfi_startproc
- 397              		@ args = 0, pretend = 0, frame = 0
- 398              		@ frame_needed = 0, uses_anonymous_args = 0
- 399 0000 08B5     		push	{r3, lr}
- 400              	.LCFI21:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 9
+ 388 0040 00000000 		.word	enc_sum
+ 389 0044 00000000 		.word	y_sum
+ 390 0048 00000000 		.word	flag_motion_end
+ 391              		.cfi_endproc
+ 392              	.LFE132:
+ 394              		.section	.text.Motion_Straight,"ax",%progbits
+ 395              		.align	1
+ 396              		.global	Motion_Straight
+ 397              		.syntax unified
+ 398              		.thumb
+ 399              		.thumb_func
+ 400              		.fpu fpv4-sp-d16
+ 402              	Motion_Straight:
+ 403              	.LFB133:
+  83:Src/motion.c  **** 
+  84:Src/motion.c  **** void Motion_Straight(void)
+  85:Src/motion.c  **** {
+ 404              		.loc 1 85 0
+ 405              		.cfi_startproc
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408 0000 08B5     		push	{r3, lr}
+ 409              	.LCFI21:
+ 410              		.cfi_def_cfa_offset 8
+ 411              		.cfi_offset 3, -8
+ 412              		.cfi_offset 14, -4
+  86:Src/motion.c  ****     flag_wall = TRUE;
+ 413              		.loc 1 86 0
+ 414 0002 054B     		ldr	r3, .L25
+ 415 0004 0122     		movs	r2, #1
+ 416 0006 1A70     		strb	r2, [r3]
+  87:Src/motion.c  ****     Straight_const();
+ 417              		.loc 1 87 0
+ 418 0008 FFF7FEFF 		bl	Straight_const
+ 419              	.LVL14:
+ 420              	.L23:
+  88:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 421              		.loc 1 88 0 discriminator 1
+ 422 000c 034B     		ldr	r3, .L25+4
+ 423 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 424 0010 002B     		cmp	r3, #0
+ 425 0012 FBD0     		beq	.L23
+  89:Src/motion.c  ****     {
+  90:Src/motion.c  ****     }
+  91:Src/motion.c  **** }
+ 426              		.loc 1 91 0
+ 427 0014 08BD     		pop	{r3, pc}
+ 428              	.L26:
+ 429 0016 00BF     		.align	2
+ 430              	.L25:
+ 431 0018 00000000 		.word	flag_wall
+ 432 001c 00000000 		.word	flag_motion_end
+ 433              		.cfi_endproc
+ 434              	.LFE133:
+ 436              		.section	.text.Motion_Left,"ax",%progbits
+ 437              		.align	1
+ 438              		.global	Motion_Left
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 10
 
 
- 401              		.cfi_def_cfa_offset 8
- 402              		.cfi_offset 3, -8
- 403              		.cfi_offset 14, -4
-  72:Src/motion.c  ****     Straight_const();
- 404              		.loc 1 72 0
- 405 0002 FFF7FEFF 		bl	Straight_const
- 406              	.LVL14:
- 407              	.L23:
-  73:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 408              		.loc 1 73 0 discriminator 1
- 409 0006 024B     		ldr	r3, .L25
- 410 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 411 000a 002B     		cmp	r3, #0
- 412 000c FBD0     		beq	.L23
-  74:Src/motion.c  **** }
- 413              		.loc 1 74 0
- 414 000e 08BD     		pop	{r3, pc}
- 415              	.L26:
- 416              		.align	2
- 417              	.L25:
- 418 0010 00000000 		.word	flag_motion_end
- 419              		.cfi_endproc
- 420              	.LFE133:
- 422              		.section	.text.Motion_Left,"ax",%progbits
- 423              		.align	1
- 424              		.global	Motion_Left
- 425              		.syntax unified
- 426              		.thumb
- 427              		.thumb_func
- 428              		.fpu fpv4-sp-d16
- 430              	Motion_Left:
- 431              	.LFB134:
-  75:Src/motion.c  **** 
-  76:Src/motion.c  **** void Motion_Left(void){
- 432              		.loc 1 76 0
- 433              		.cfi_startproc
- 434              		@ args = 0, pretend = 0, frame = 0
- 435              		@ frame_needed = 0, uses_anonymous_args = 0
- 436 0000 08B5     		push	{r3, lr}
- 437              	.LCFI22:
- 438              		.cfi_def_cfa_offset 8
- 439              		.cfi_offset 3, -8
- 440              		.cfi_offset 14, -4
-  77:Src/motion.c  ****     Straight_half_stop();
- 441              		.loc 1 77 0
- 442 0002 FFF7FEFF 		bl	Straight_half_stop
- 443              	.LVL15:
- 444              	.L28:
-  78:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 445              		.loc 1 78 0 discriminator 1
- 446 0006 0C4B     		ldr	r3, .L32
- 447 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 448 000a 002B     		cmp	r3, #0
- 449 000c FBD0     		beq	.L28
-  79:Src/motion.c  ****     /*
-  80:Src/motion.c  ****     if(sen_front.is_wall == TRUE){
-  81:Src/motion.c  ****         flag.fr_wall = TRUE;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 10
+ 439              		.syntax unified
+ 440              		.thumb
+ 441              		.thumb_func
+ 442              		.fpu fpv4-sp-d16
+ 444              	Motion_Left:
+ 445              	.LFB134:
+  92:Src/motion.c  **** 
+  93:Src/motion.c  **** void Motion_Left(void)
+  94:Src/motion.c  **** {
+ 446              		.loc 1 94 0
+ 447              		.cfi_startproc
+ 448              		@ args = 0, pretend = 0, frame = 0
+ 449              		@ frame_needed = 0, uses_anonymous_args = 0
+ 450 0000 08B5     		push	{r3, lr}
+ 451              	.LCFI22:
+ 452              		.cfi_def_cfa_offset 8
+ 453              		.cfi_offset 3, -8
+ 454              		.cfi_offset 14, -4
+  95:Src/motion.c  ****     flag_wall = TRUE;
+ 455              		.loc 1 95 0
+ 456 0002 124B     		ldr	r3, .L32
+ 457 0004 0122     		movs	r2, #1
+ 458 0006 1A70     		strb	r2, [r3]
+  96:Src/motion.c  ****     Straight_half_stop();
+ 459              		.loc 1 96 0
+ 460 0008 FFF7FEFF 		bl	Straight_half_stop
+ 461              	.LVL15:
+ 462              	.L28:
+  97:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 463              		.loc 1 97 0 discriminator 1
+ 464 000c 104B     		ldr	r3, .L32+4
+ 465 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 466 0010 002B     		cmp	r3, #0
+ 467 0012 FBD0     		beq	.L28
+  98:Src/motion.c  ****     {
+  99:Src/motion.c  ****     }
+ 100:Src/motion.c  ****     HAL_Delay(1000);
+ 468              		.loc 1 100 0
+ 469 0014 4FF47A70 		mov	r0, #1000
+ 470 0018 FFF7FEFF 		bl	HAL_Delay
+ 471              	.LVL16:
+ 101:Src/motion.c  ****     flag_wall = FALSE;
+ 472              		.loc 1 101 0
+ 473 001c 0B4B     		ldr	r3, .L32
+ 474 001e 0022     		movs	r2, #0
+ 475 0020 1A70     		strb	r2, [r3]
+ 102:Src/motion.c  ****     LeftTurn();
+ 476              		.loc 1 102 0
+ 477 0022 FFF7FEFF 		bl	LeftTurn
+ 478              	.LVL17:
+ 479              	.L29:
+ 103:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 480              		.loc 1 103 0 discriminator 1
+ 481 0026 0A4B     		ldr	r3, .L32+4
+ 482 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 483 002a 002B     		cmp	r3, #0
+ 484 002c FBD0     		beq	.L29
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 11
 
 
-  82:Src/motion.c  ****     }
-  83:Src/motion.c  ****     HAL_Delay(1000);
-  84:Src/motion.c  ****     flag.fr_wall = FALSE;
-  85:Src/motion.c  ****     */
-  86:Src/motion.c  ****     HAL_Delay(1000);
- 450              		.loc 1 86 0
- 451 000e 4FF47A70 		mov	r0, #1000
- 452 0012 FFF7FEFF 		bl	HAL_Delay
- 453              	.LVL16:
-  87:Src/motion.c  ****     LeftTurn();
- 454              		.loc 1 87 0
- 455 0016 FFF7FEFF 		bl	LeftTurn
- 456              	.LVL17:
- 457              	.L29:
-  88:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 458              		.loc 1 88 0 discriminator 1
- 459 001a 074B     		ldr	r3, .L32
- 460 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 461 001e 002B     		cmp	r3, #0
- 462 0020 FBD0     		beq	.L29
-  89:Src/motion.c  ****     HAL_Delay(1000);
- 463              		.loc 1 89 0
- 464 0022 4FF47A70 		mov	r0, #1000
- 465 0026 FFF7FEFF 		bl	HAL_Delay
- 466              	.LVL18:
-  90:Src/motion.c  ****     Straight_half_accel();
- 467              		.loc 1 90 0
- 468 002a FFF7FEFF 		bl	Straight_half_accel
- 469              	.LVL19:
- 470              	.L30:
-  91:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 471              		.loc 1 91 0 discriminator 1
- 472 002e 024B     		ldr	r3, .L32
- 473 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 474 0032 002B     		cmp	r3, #0
- 475 0034 FBD0     		beq	.L30
-  92:Src/motion.c  **** }
- 476              		.loc 1 92 0
- 477 0036 08BD     		pop	{r3, pc}
- 478              	.L33:
- 479              		.align	2
- 480              	.L32:
- 481 0038 00000000 		.word	flag_motion_end
- 482              		.cfi_endproc
- 483              	.LFE134:
- 485              		.section	.text.Motion_Right,"ax",%progbits
- 486              		.align	1
- 487              		.global	Motion_Right
- 488              		.syntax unified
- 489              		.thumb
- 490              		.thumb_func
- 491              		.fpu fpv4-sp-d16
- 493              	Motion_Right:
- 494              	.LFB135:
-  93:Src/motion.c  **** 
-  94:Src/motion.c  **** void Motion_Right(void){
- 495              		.loc 1 94 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 11
-
-
- 496              		.cfi_startproc
- 497              		@ args = 0, pretend = 0, frame = 0
- 498              		@ frame_needed = 0, uses_anonymous_args = 0
- 499 0000 08B5     		push	{r3, lr}
- 500              	.LCFI23:
- 501              		.cfi_def_cfa_offset 8
- 502              		.cfi_offset 3, -8
- 503              		.cfi_offset 14, -4
-  95:Src/motion.c  ****     Straight_half_stop();
- 504              		.loc 1 95 0
- 505 0002 FFF7FEFF 		bl	Straight_half_stop
- 506              	.LVL20:
- 507              	.L35:
-  96:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 508              		.loc 1 96 0 discriminator 1
- 509 0006 0C4B     		ldr	r3, .L39
- 510 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 511 000a 002B     		cmp	r3, #0
- 512 000c FBD0     		beq	.L35
-  97:Src/motion.c  ****     /*
-  98:Src/motion.c  ****     if(sen_front.is_wall == TRUE){
-  99:Src/motion.c  ****         flag.fr_wall = TRUE;
- 100:Src/motion.c  ****     }
- 101:Src/motion.c  ****     HAL_Delay(1000);
- 102:Src/motion.c  ****     flag.fr_wall = FALSE;
- 103:Src/motion.c  ****     */
- 104:Src/motion.c  ****     HAL_Delay(1000);
- 513              		.loc 1 104 0
- 514 000e 4FF47A70 		mov	r0, #1000
- 515 0012 FFF7FEFF 		bl	HAL_Delay
- 516              	.LVL21:
- 105:Src/motion.c  ****     RightTurn();
- 517              		.loc 1 105 0
- 518 0016 FFF7FEFF 		bl	RightTurn
- 519              	.LVL22:
+ 104:Src/motion.c  ****     {
+ 105:Src/motion.c  ****     }
  106:Src/motion.c  ****     HAL_Delay(1000);
- 520              		.loc 1 106 0
- 521 001a 4FF47A70 		mov	r0, #1000
- 522 001e FFF7FEFF 		bl	HAL_Delay
- 523              	.LVL23:
- 524              	.L36:
- 107:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 525              		.loc 1 107 0 discriminator 1
- 526 0022 054B     		ldr	r3, .L39
- 527 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 528 0026 002B     		cmp	r3, #0
- 529 0028 FBD0     		beq	.L36
+ 485              		.loc 1 106 0
+ 486 002e 4FF47A70 		mov	r0, #1000
+ 487 0032 FFF7FEFF 		bl	HAL_Delay
+ 488              	.LVL18:
+ 107:Src/motion.c  ****     flag_wall = TRUE;
+ 489              		.loc 1 107 0
+ 490 0036 054B     		ldr	r3, .L32
+ 491 0038 0122     		movs	r2, #1
+ 492 003a 1A70     		strb	r2, [r3]
  108:Src/motion.c  ****     Straight_half_accel();
- 530              		.loc 1 108 0
- 531 002a FFF7FEFF 		bl	Straight_half_accel
- 532              	.LVL24:
- 533              	.L37:
- 109:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 534              		.loc 1 109 0 discriminator 1
- 535 002e 024B     		ldr	r3, .L39
- 536 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 537 0032 002B     		cmp	r3, #0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 12
+ 493              		.loc 1 108 0
+ 494 003c FFF7FEFF 		bl	Straight_half_accel
+ 495              	.LVL19:
+ 496              	.L30:
+ 109:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 497              		.loc 1 109 0 discriminator 1
+ 498 0040 034B     		ldr	r3, .L32+4
+ 499 0042 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 500 0044 002B     		cmp	r3, #0
+ 501 0046 FBD0     		beq	.L30
+ 110:Src/motion.c  ****     {
+ 111:Src/motion.c  ****     }
+ 112:Src/motion.c  **** }
+ 502              		.loc 1 112 0
+ 503 0048 08BD     		pop	{r3, pc}
+ 504              	.L33:
+ 505 004a 00BF     		.align	2
+ 506              	.L32:
+ 507 004c 00000000 		.word	flag_wall
+ 508 0050 00000000 		.word	flag_motion_end
+ 509              		.cfi_endproc
+ 510              	.LFE134:
+ 512              		.section	.text.Motion_Right,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	Motion_Right
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 518              		.fpu fpv4-sp-d16
+ 520              	Motion_Right:
+ 521              	.LFB135:
+ 113:Src/motion.c  **** 
+ 114:Src/motion.c  **** void Motion_Right(void)
+ 115:Src/motion.c  **** {
+ 522              		.loc 1 115 0
+ 523              		.cfi_startproc
+ 524              		@ args = 0, pretend = 0, frame = 0
+ 525              		@ frame_needed = 0, uses_anonymous_args = 0
+ 526 0000 08B5     		push	{r3, lr}
+ 527              	.LCFI23:
+ 528              		.cfi_def_cfa_offset 8
+ 529              		.cfi_offset 3, -8
+ 530              		.cfi_offset 14, -4
+ 116:Src/motion.c  ****     flag_wall = TRUE;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 12
 
 
- 538 0034 FBD0     		beq	.L37
- 110:Src/motion.c  **** }
- 539              		.loc 1 110 0
- 540 0036 08BD     		pop	{r3, pc}
- 541              	.L40:
- 542              		.align	2
- 543              	.L39:
- 544 0038 00000000 		.word	flag_motion_end
- 545              		.cfi_endproc
- 546              	.LFE135:
- 548              		.section	.text.Motion_Uturn,"ax",%progbits
- 549              		.align	1
- 550              		.global	Motion_Uturn
- 551              		.syntax unified
- 552              		.thumb
- 553              		.thumb_func
- 554              		.fpu fpv4-sp-d16
- 556              	Motion_Uturn:
- 557              	.LFB136:
- 111:Src/motion.c  **** 
- 112:Src/motion.c  **** void Motion_Uturn(void){
- 558              		.loc 1 112 0
- 559              		.cfi_startproc
- 560              		@ args = 0, pretend = 0, frame = 0
- 561              		@ frame_needed = 0, uses_anonymous_args = 0
- 562 0000 08B5     		push	{r3, lr}
- 563              	.LCFI24:
- 564              		.cfi_def_cfa_offset 8
- 565              		.cfi_offset 3, -8
- 566              		.cfi_offset 14, -4
- 113:Src/motion.c  ****     Straight_half_stop();
- 567              		.loc 1 113 0
- 568 0002 FFF7FEFF 		bl	Straight_half_stop
- 569              	.LVL25:
- 570              	.L42:
- 114:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 571              		.loc 1 114 0 discriminator 1
- 572 0006 0C4B     		ldr	r3, .L46
- 573 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 574 000a 002B     		cmp	r3, #0
- 575 000c FBD0     		beq	.L42
- 115:Src/motion.c  ****     HAL_Delay(500);
- 576              		.loc 1 115 0
- 577 000e 4FF4FA70 		mov	r0, #500
- 578 0012 FFF7FEFF 		bl	HAL_Delay
- 579              	.LVL26:
- 116:Src/motion.c  ****     U_Turn();
- 580              		.loc 1 116 0
- 581 0016 FFF7FEFF 		bl	U_Turn
- 582              	.LVL27:
- 583              	.L43:
- 117:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 584              		.loc 1 117 0 discriminator 1
- 585 001a 074B     		ldr	r3, .L46
- 586 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 587 001e 002B     		cmp	r3, #0
- 588 0020 FBD0     		beq	.L43
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 13
+ 531              		.loc 1 116 0
+ 532 0002 124B     		ldr	r3, .L39
+ 533 0004 0122     		movs	r2, #1
+ 534 0006 1A70     		strb	r2, [r3]
+ 117:Src/motion.c  ****     Straight_half_stop();
+ 535              		.loc 1 117 0
+ 536 0008 FFF7FEFF 		bl	Straight_half_stop
+ 537              	.LVL20:
+ 538              	.L35:
+ 118:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 539              		.loc 1 118 0 discriminator 1
+ 540 000c 104B     		ldr	r3, .L39+4
+ 541 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 542 0010 002B     		cmp	r3, #0
+ 543 0012 FBD0     		beq	.L35
+ 119:Src/motion.c  ****     {
+ 120:Src/motion.c  ****     }
+ 121:Src/motion.c  ****     HAL_Delay(1000);
+ 544              		.loc 1 121 0
+ 545 0014 4FF47A70 		mov	r0, #1000
+ 546 0018 FFF7FEFF 		bl	HAL_Delay
+ 547              	.LVL21:
+ 122:Src/motion.c  ****     flag_wall = FALSE;
+ 548              		.loc 1 122 0
+ 549 001c 0B4B     		ldr	r3, .L39
+ 550 001e 0022     		movs	r2, #0
+ 551 0020 1A70     		strb	r2, [r3]
+ 123:Src/motion.c  ****     RightTurn();
+ 552              		.loc 1 123 0
+ 553 0022 FFF7FEFF 		bl	RightTurn
+ 554              	.LVL22:
+ 555              	.L36:
+ 124:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 556              		.loc 1 124 0 discriminator 1
+ 557 0026 0A4B     		ldr	r3, .L39+4
+ 558 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 559 002a 002B     		cmp	r3, #0
+ 560 002c FBD0     		beq	.L36
+ 125:Src/motion.c  ****     {
+ 126:Src/motion.c  ****     }
+ 127:Src/motion.c  ****     HAL_Delay(1000);
+ 561              		.loc 1 127 0
+ 562 002e 4FF47A70 		mov	r0, #1000
+ 563 0032 FFF7FEFF 		bl	HAL_Delay
+ 564              	.LVL23:
+ 128:Src/motion.c  ****     flag_wall = TRUE;
+ 565              		.loc 1 128 0
+ 566 0036 054B     		ldr	r3, .L39
+ 567 0038 0122     		movs	r2, #1
+ 568 003a 1A70     		strb	r2, [r3]
+ 129:Src/motion.c  ****     Straight_half_accel();
+ 569              		.loc 1 129 0
+ 570 003c FFF7FEFF 		bl	Straight_half_accel
+ 571              	.LVL24:
+ 572              	.L37:
+ 130:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 573              		.loc 1 130 0 discriminator 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 13
 
 
- 118:Src/motion.c  ****     HAL_Delay(500);
- 589              		.loc 1 118 0
- 590 0022 4FF4FA70 		mov	r0, #500
- 591 0026 FFF7FEFF 		bl	HAL_Delay
- 592              	.LVL28:
- 119:Src/motion.c  ****     Straight_half_accel();
- 593              		.loc 1 119 0
- 594 002a FFF7FEFF 		bl	Straight_half_accel
- 595              	.LVL29:
- 596              	.L44:
- 120:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 597              		.loc 1 120 0 discriminator 1
- 598 002e 024B     		ldr	r3, .L46
- 599 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 600 0032 002B     		cmp	r3, #0
- 601 0034 FBD0     		beq	.L44
- 121:Src/motion.c  **** }
- 602              		.loc 1 121 0
- 603 0036 08BD     		pop	{r3, pc}
- 604              	.L47:
- 605              		.align	2
- 606              	.L46:
- 607 0038 00000000 		.word	flag_motion_end
- 608              		.cfi_endproc
- 609              	.LFE136:
- 611              		.section	.text.Motion_Kabeate,"ax",%progbits
- 612              		.align	1
- 613              		.global	Motion_Kabeate
- 614              		.syntax unified
- 615              		.thumb
- 616              		.thumb_func
- 617              		.fpu fpv4-sp-d16
- 619              	Motion_Kabeate:
- 620              	.LFB137:
- 122:Src/motion.c  **** 
- 123:Src/motion.c  **** void Motion_Kabeate(void){
- 621              		.loc 1 123 0
- 622              		.cfi_startproc
- 623              		@ args = 0, pretend = 0, frame = 0
- 624              		@ frame_needed = 0, uses_anonymous_args = 0
- 625 0000 00B5     		push	{lr}
- 626              	.LCFI25:
- 627              		.cfi_def_cfa_offset 4
- 628              		.cfi_offset 14, -4
- 629 0002 83B0     		sub	sp, sp, #12
- 630              	.LCFI26:
- 631              		.cfi_def_cfa_offset 16
- 124:Src/motion.c  ****     //U turn 
- 125:Src/motion.c  ****     Straight_half_stop();
- 632              		.loc 1 125 0
- 633 0004 FFF7FEFF 		bl	Straight_half_stop
- 634              	.LVL30:
- 635              	.L49:
- 126:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 636              		.loc 1 126 0 discriminator 1
- 637 0008 214B     		ldr	r3, .L54
- 638 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 14
+ 574 0040 034B     		ldr	r3, .L39+4
+ 575 0042 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 576 0044 002B     		cmp	r3, #0
+ 577 0046 FBD0     		beq	.L37
+ 131:Src/motion.c  ****     {
+ 132:Src/motion.c  ****     }
+ 133:Src/motion.c  **** }
+ 578              		.loc 1 133 0
+ 579 0048 08BD     		pop	{r3, pc}
+ 580              	.L40:
+ 581 004a 00BF     		.align	2
+ 582              	.L39:
+ 583 004c 00000000 		.word	flag_wall
+ 584 0050 00000000 		.word	flag_motion_end
+ 585              		.cfi_endproc
+ 586              	.LFE135:
+ 588              		.section	.text.Motion_Uturn,"ax",%progbits
+ 589              		.align	1
+ 590              		.global	Motion_Uturn
+ 591              		.syntax unified
+ 592              		.thumb
+ 593              		.thumb_func
+ 594              		.fpu fpv4-sp-d16
+ 596              	Motion_Uturn:
+ 597              	.LFB136:
+ 134:Src/motion.c  **** 
+ 135:Src/motion.c  **** void Motion_Uturn(void)
+ 136:Src/motion.c  **** {
+ 598              		.loc 1 136 0
+ 599              		.cfi_startproc
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 602 0000 08B5     		push	{r3, lr}
+ 603              	.LCFI24:
+ 604              		.cfi_def_cfa_offset 8
+ 605              		.cfi_offset 3, -8
+ 606              		.cfi_offset 14, -4
+ 137:Src/motion.c  ****     flag_wall = TRUE;
+ 607              		.loc 1 137 0
+ 608 0002 124B     		ldr	r3, .L46
+ 609 0004 0122     		movs	r2, #1
+ 610 0006 1A70     		strb	r2, [r3]
+ 138:Src/motion.c  ****     Straight_half_stop();
+ 611              		.loc 1 138 0
+ 612 0008 FFF7FEFF 		bl	Straight_half_stop
+ 613              	.LVL25:
+ 614              	.L42:
+ 139:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 615              		.loc 1 139 0 discriminator 1
+ 616 000c 104B     		ldr	r3, .L46+4
+ 617 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 618 0010 002B     		cmp	r3, #0
+ 619 0012 FBD0     		beq	.L42
+ 140:Src/motion.c  ****     {
+ 141:Src/motion.c  ****     }
+ 142:Src/motion.c  ****     HAL_Delay(500);
+ 620              		.loc 1 142 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 14
 
 
- 639 000c 002B     		cmp	r3, #0
- 640 000e FBD0     		beq	.L49
- 127:Src/motion.c  ****     //front wall control
- 128:Src/motion.c  ****     //while(sen_front.adc > sen_front.reference-20);
- 129:Src/motion.c  ****     HAL_Delay(1000);
- 641              		.loc 1 129 0
- 642 0010 4FF47A70 		mov	r0, #1000
- 643 0014 FFF7FEFF 		bl	HAL_Delay
- 644              	.LVL31:
- 130:Src/motion.c  ****     U_Turn();
- 645              		.loc 1 130 0
- 646 0018 FFF7FEFF 		bl	U_Turn
- 647              	.LVL32:
- 648              	.L50:
- 131:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 649              		.loc 1 131 0 discriminator 1
- 650 001c 1C4B     		ldr	r3, .L54
- 651 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 652 0020 002B     		cmp	r3, #0
- 653 0022 FBD0     		beq	.L50
- 132:Src/motion.c  ****     HAL_Delay(500);
- 654              		.loc 1 132 0
- 655 0024 4FF4FA70 		mov	r0, #500
- 656 0028 FFF7FEFF 		bl	HAL_Delay
- 657              	.LVL33:
- 133:Src/motion.c  ****     //kabeate
- 134:Src/motion.c  ****     Straight_Calc_fb(-47,0,0,200,2000);
- 658              		.loc 1 134 0
- 659 002c 4FF4FA63 		mov	r3, #2000
- 660 0030 0093     		str	r3, [sp]
- 661 0032 C823     		movs	r3, #200
- 662 0034 0022     		movs	r2, #0
- 663 0036 1146     		mov	r1, r2
- 664 0038 6FF02E00 		mvn	r0, #46
- 665 003c FFF7FEFF 		bl	Straight_Calc_fb
- 666              	.LVL34:
- 135:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 667              		.loc 1 135 0
- 668 0040 0020     		movs	r0, #0
- 669 0042 0090     		str	r0, [sp]
- 670 0044 0346     		mov	r3, r0
- 671 0046 0246     		mov	r2, r0
- 672 0048 0146     		mov	r1, r0
- 673 004a FFF7FEFF 		bl	Yawrate_Calc_fb
- 674              	.LVL35:
- 675              	.L51:
- 136:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 676              		.loc 1 136 0 discriminator 1
- 677 004e 104B     		ldr	r3, .L54
- 678 0050 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 679 0052 002B     		cmp	r3, #0
- 680 0054 FBD0     		beq	.L51
- 137:Src/motion.c  ****     HAL_Delay(500);
- 681              		.loc 1 137 0
- 682 0056 4FF4FA70 		mov	r0, #500
- 683 005a FFF7FEFF 		bl	HAL_Delay
- 684              	.LVL36:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 15
-
-
- 138:Src/motion.c  ****     Straight_Calc_fb(137,0,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 685              		.loc 1 138 0
- 686 005e 4FF47A63 		mov	r3, #4000
- 687 0062 0093     		str	r3, [sp]
- 688 0064 4FF4C873 		mov	r3, #400
- 689 0068 1A46     		mov	r2, r3
- 690 006a 0021     		movs	r1, #0
- 691 006c 8920     		movs	r0, #137
- 692 006e FFF7FEFF 		bl	Straight_Calc_fb
- 693              	.LVL37:
- 139:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 694              		.loc 1 139 0
- 695 0072 0020     		movs	r0, #0
- 696 0074 0090     		str	r0, [sp]
- 697 0076 0346     		mov	r3, r0
- 698 0078 0246     		mov	r2, r0
- 699 007a 0146     		mov	r1, r0
- 700 007c FFF7FEFF 		bl	Yawrate_Calc_fb
- 701              	.LVL38:
- 702              	.L52:
- 140:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 703              		.loc 1 140 0 discriminator 1
- 704 0080 034B     		ldr	r3, .L54
- 705 0082 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 706 0084 002B     		cmp	r3, #0
- 707 0086 FBD0     		beq	.L52
- 141:Src/motion.c  **** }
- 708              		.loc 1 141 0
- 709 0088 03B0     		add	sp, sp, #12
- 710              	.LCFI27:
- 711              		.cfi_def_cfa_offset 4
- 712              		@ sp needed
- 713 008a 5DF804FB 		ldr	pc, [sp], #4
- 714              	.L55:
- 715 008e 00BF     		.align	2
- 716              	.L54:
- 717 0090 00000000 		.word	flag_motion_end
- 718              		.cfi_endproc
- 719              	.LFE137:
- 721              		.section	.text.Motion_Goal,"ax",%progbits
- 722              		.align	1
- 723              		.global	Motion_Goal
- 724              		.syntax unified
- 725              		.thumb
- 726              		.thumb_func
- 727              		.fpu fpv4-sp-d16
- 729              	Motion_Goal:
- 730              	.LFB138:
- 142:Src/motion.c  **** 
- 143:Src/motion.c  **** void Motion_Goal(void){
- 731              		.loc 1 143 0
- 732              		.cfi_startproc
- 733              		@ args = 0, pretend = 0, frame = 0
- 734              		@ frame_needed = 0, uses_anonymous_args = 0
- 735 0000 08B5     		push	{r3, lr}
- 736              	.LCFI28:
- 737              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 16
-
-
- 738              		.cfi_offset 3, -8
- 739              		.cfi_offset 14, -4
- 144:Src/motion.c  ****     enc.offset = 0;
- 740              		.loc 1 144 0
- 741 0002 054B     		ldr	r3, .L59
- 742 0004 0022     		movs	r2, #0
- 743 0006 9A60     		str	r2, [r3, #8]	@ float
- 145:Src/motion.c  ****     Straight_half_stop();
- 744              		.loc 1 145 0
- 745 0008 FFF7FEFF 		bl	Straight_half_stop
- 746              	.LVL39:
- 747              	.L57:
- 146:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 748              		.loc 1 146 0 discriminator 1
- 749 000c 034B     		ldr	r3, .L59+4
- 750 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 751 0010 002B     		cmp	r3, #0
- 752 0012 FBD0     		beq	.L57
- 147:Src/motion.c  **** }
- 753              		.loc 1 147 0
- 754 0014 08BD     		pop	{r3, pc}
- 755              	.L60:
- 756 0016 00BF     		.align	2
- 757              	.L59:
- 758 0018 00000000 		.word	enc
- 759 001c 00000000 		.word	flag_motion_end
- 760              		.cfi_endproc
- 761              	.LFE138:
- 763              		.section	.text.Motion_FastStraight,"ax",%progbits
- 764              		.align	1
- 765              		.global	Motion_FastStraight
- 766              		.syntax unified
- 767              		.thumb
- 768              		.thumb_func
- 769              		.fpu fpv4-sp-d16
- 771              	Motion_FastStraight:
- 772              	.LFB139:
- 148:Src/motion.c  **** 
- 149:Src/motion.c  **** void Motion_FastStraight(unsigned char block){
- 773              		.loc 1 149 0
- 774              		.cfi_startproc
- 775              		@ args = 0, pretend = 0, frame = 0
- 776              		@ frame_needed = 0, uses_anonymous_args = 0
- 777              	.LVL40:
- 778 0000 30B5     		push	{r4, r5, lr}
- 779              	.LCFI29:
- 780              		.cfi_def_cfa_offset 12
- 781              		.cfi_offset 4, -12
- 782              		.cfi_offset 5, -8
- 783              		.cfi_offset 14, -4
- 784 0002 83B0     		sub	sp, sp, #12
- 785              	.LCFI30:
- 786              		.cfi_def_cfa_offset 24
- 150:Src/motion.c  ****     Straight_Calc_fb(90,MAX_VELOCITY,0,MAX_VELOCITY,ACCEL);
- 787              		.loc 1 150 0
- 788 0004 4FF47A65 		mov	r5, #4000
- 789 0008 0095     		str	r5, [sp]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 17
-
-
- 790 000a 4FF4C873 		mov	r3, #400
- 791 000e 0022     		movs	r2, #0
- 792 0010 1946     		mov	r1, r3
- 793 0012 5A20     		movs	r0, #90
- 794              	.LVL41:
- 795 0014 FFF7FEFF 		bl	Straight_Calc_fb
- 796              	.LVL42:
- 151:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 797              		.loc 1 151 0
- 798 0018 0024     		movs	r4, #0
- 799 001a 0094     		str	r4, [sp]
- 800 001c 2346     		mov	r3, r4
- 801 001e 2246     		mov	r2, r4
- 802 0020 2146     		mov	r1, r4
- 803 0022 2046     		mov	r0, r4
- 804 0024 FFF7FEFF 		bl	Yawrate_Calc_fb
- 805              	.LVL43:
- 152:Src/motion.c  ****     Straight_Calc_fb(90,MAX_VELOCITY,0,MAX_VELOCITY,ACCEL);
- 806              		.loc 1 152 0
- 807 0028 0095     		str	r5, [sp]
- 808 002a 4FF4C873 		mov	r3, #400
- 809 002e 2246     		mov	r2, r4
- 810 0030 1946     		mov	r1, r3
- 811 0032 5A20     		movs	r0, #90
- 812 0034 FFF7FEFF 		bl	Straight_Calc_fb
- 813              	.LVL44:
- 153:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 814              		.loc 1 153 0
- 815 0038 0094     		str	r4, [sp]
- 816 003a 2346     		mov	r3, r4
- 817 003c 2246     		mov	r2, r4
- 818 003e 2146     		mov	r1, r4
- 819 0040 2046     		mov	r0, r4
- 820 0042 FFF7FEFF 		bl	Yawrate_Calc_fb
- 821              	.LVL45:
+ 621 0014 4FF4FA70 		mov	r0, #500
+ 622 0018 FFF7FEFF 		bl	HAL_Delay
+ 623              	.LVL26:
+ 143:Src/motion.c  ****     flag_wall = FALSE;
+ 624              		.loc 1 143 0
+ 625 001c 0B4B     		ldr	r3, .L46
+ 626 001e 0022     		movs	r2, #0
+ 627 0020 1A70     		strb	r2, [r3]
+ 144:Src/motion.c  ****     U_Turn();
+ 628              		.loc 1 144 0
+ 629 0022 FFF7FEFF 		bl	U_Turn
+ 630              	.LVL27:
+ 631              	.L43:
+ 145:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 632              		.loc 1 145 0 discriminator 1
+ 633 0026 0A4B     		ldr	r3, .L46+4
+ 634 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 635 002a 002B     		cmp	r3, #0
+ 636 002c FBD0     		beq	.L43
+ 146:Src/motion.c  ****     {
+ 147:Src/motion.c  ****     }
+ 148:Src/motion.c  ****     HAL_Delay(500);
+ 637              		.loc 1 148 0
+ 638 002e 4FF4FA70 		mov	r0, #500
+ 639 0032 FFF7FEFF 		bl	HAL_Delay
+ 640              	.LVL28:
+ 149:Src/motion.c  ****     flag_wall = TRUE;
+ 641              		.loc 1 149 0
+ 642 0036 054B     		ldr	r3, .L46
+ 643 0038 0122     		movs	r2, #1
+ 644 003a 1A70     		strb	r2, [r3]
+ 150:Src/motion.c  ****     Straight_half_accel();
+ 645              		.loc 1 150 0
+ 646 003c FFF7FEFF 		bl	Straight_half_accel
+ 647              	.LVL29:
+ 648              	.L44:
+ 151:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 649              		.loc 1 151 0 discriminator 1
+ 650 0040 034B     		ldr	r3, .L46+4
+ 651 0042 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 652 0044 002B     		cmp	r3, #0
+ 653 0046 FBD0     		beq	.L44
+ 152:Src/motion.c  ****     {
+ 153:Src/motion.c  ****     }
  154:Src/motion.c  **** }
- 822              		.loc 1 154 0
- 823 0046 03B0     		add	sp, sp, #12
- 824              	.LCFI31:
- 825              		.cfi_def_cfa_offset 12
- 826              		@ sp needed
- 827 0048 30BD     		pop	{r4, r5, pc}
- 828              		.cfi_endproc
- 829              	.LFE139:
- 831              		.section	.text.Motion_Restart,"ax",%progbits
- 832              		.align	1
- 833              		.global	Motion_Restart
- 834              		.syntax unified
- 835              		.thumb
- 836              		.thumb_func
- 837              		.fpu fpv4-sp-d16
- 839              	Motion_Restart:
- 840              	.LFB140:
+ 654              		.loc 1 154 0
+ 655 0048 08BD     		pop	{r3, pc}
+ 656              	.L47:
+ 657 004a 00BF     		.align	2
+ 658              	.L46:
+ 659 004c 00000000 		.word	flag_wall
+ 660 0050 00000000 		.word	flag_motion_end
+ 661              		.cfi_endproc
+ 662              	.LFE136:
+ 664              		.section	.text.Motion_Kabeate,"ax",%progbits
+ 665              		.align	1
+ 666              		.global	Motion_Kabeate
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 15
+
+
+ 667              		.syntax unified
+ 668              		.thumb
+ 669              		.thumb_func
+ 670              		.fpu fpv4-sp-d16
+ 672              	Motion_Kabeate:
+ 673              	.LFB137:
  155:Src/motion.c  **** 
- 156:Src/motion.c  **** void Motion_Restart(void){
- 841              		.loc 1 156 0
- 842              		.cfi_startproc
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 18
+ 156:Src/motion.c  **** void Motion_Kabeate(void)
+ 157:Src/motion.c  **** {
+ 674              		.loc 1 157 0
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678 0000 00B5     		push	{lr}
+ 679              	.LCFI25:
+ 680              		.cfi_def_cfa_offset 4
+ 681              		.cfi_offset 14, -4
+ 682 0002 83B0     		sub	sp, sp, #12
+ 683              	.LCFI26:
+ 684              		.cfi_def_cfa_offset 16
+ 158:Src/motion.c  ****     //U turn
+ 159:Src/motion.c  ****     flag_wall = TRUE;
+ 685              		.loc 1 159 0
+ 686 0004 274B     		ldr	r3, .L54
+ 687 0006 0122     		movs	r2, #1
+ 688 0008 1A70     		strb	r2, [r3]
+ 160:Src/motion.c  ****     Straight_half_stop();
+ 689              		.loc 1 160 0
+ 690 000a FFF7FEFF 		bl	Straight_half_stop
+ 691              	.LVL30:
+ 692              	.L49:
+ 161:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 693              		.loc 1 161 0 discriminator 1
+ 694 000e 264B     		ldr	r3, .L54+4
+ 695 0010 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 696 0012 002B     		cmp	r3, #0
+ 697 0014 FBD0     		beq	.L49
+ 162:Src/motion.c  ****     {
+ 163:Src/motion.c  ****     }
+ 164:Src/motion.c  ****     //front wall control
+ 165:Src/motion.c  ****     //while(sen_front.adc > sen_front.reference-20);
+ 166:Src/motion.c  ****     HAL_Delay(1000);
+ 698              		.loc 1 166 0
+ 699 0016 4FF47A70 		mov	r0, #1000
+ 700 001a FFF7FEFF 		bl	HAL_Delay
+ 701              	.LVL31:
+ 167:Src/motion.c  ****     flag_wall = FALSE;
+ 702              		.loc 1 167 0
+ 703 001e 214B     		ldr	r3, .L54
+ 704 0020 0022     		movs	r2, #0
+ 705 0022 1A70     		strb	r2, [r3]
+ 168:Src/motion.c  ****     U_Turn();
+ 706              		.loc 1 168 0
+ 707 0024 FFF7FEFF 		bl	U_Turn
+ 708              	.LVL32:
+ 709              	.L50:
+ 169:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 16
 
 
- 843              		@ args = 0, pretend = 0, frame = 0
- 844              		@ frame_needed = 0, uses_anonymous_args = 0
- 845 0000 00B5     		push	{lr}
- 846              	.LCFI32:
- 847              		.cfi_def_cfa_offset 4
- 848              		.cfi_offset 14, -4
- 849 0002 83B0     		sub	sp, sp, #12
- 850              	.LCFI33:
- 851              		.cfi_def_cfa_offset 16
- 157:Src/motion.c  ****     U_Turn();
- 852              		.loc 1 157 0
- 853 0004 FFF7FEFF 		bl	U_Turn
- 854              	.LVL46:
- 855              	.L64:
- 158:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 856              		.loc 1 158 0 discriminator 1
- 857 0008 1C4B     		ldr	r3, .L68
- 858 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 859 000c 002B     		cmp	r3, #0
- 860 000e FBD0     		beq	.L64
- 159:Src/motion.c  ****     HAL_Delay(500);
- 861              		.loc 1 159 0
- 862 0010 4FF4FA70 		mov	r0, #500
- 863 0014 FFF7FEFF 		bl	HAL_Delay
- 864              	.LVL47:
- 160:Src/motion.c  ****     //kabeate
- 161:Src/motion.c  ****     Straight_Calc_fb(-47,0,0,200,2000);
- 865              		.loc 1 161 0
- 866 0018 4FF4FA63 		mov	r3, #2000
- 867 001c 0093     		str	r3, [sp]
- 868 001e C823     		movs	r3, #200
- 869 0020 0022     		movs	r2, #0
- 870 0022 1146     		mov	r1, r2
- 871 0024 6FF02E00 		mvn	r0, #46
- 872 0028 FFF7FEFF 		bl	Straight_Calc_fb
- 873              	.LVL48:
- 162:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 874              		.loc 1 162 0
- 875 002c 0020     		movs	r0, #0
- 876 002e 0090     		str	r0, [sp]
- 877 0030 0346     		mov	r3, r0
- 878 0032 0246     		mov	r2, r0
- 879 0034 0146     		mov	r1, r0
- 880 0036 FFF7FEFF 		bl	Yawrate_Calc_fb
- 881              	.LVL49:
- 882              	.L65:
- 163:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 883              		.loc 1 163 0 discriminator 1
- 884 003a 104B     		ldr	r3, .L68
- 885 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 886 003e 002B     		cmp	r3, #0
- 887 0040 FBD0     		beq	.L65
- 164:Src/motion.c  ****     HAL_Delay(500);
- 888              		.loc 1 164 0
- 889 0042 4FF4FA70 		mov	r0, #500
- 890 0046 FFF7FEFF 		bl	HAL_Delay
- 891              	.LVL50:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 19
+ 710              		.loc 1 169 0 discriminator 1
+ 711 0028 1F4B     		ldr	r3, .L54+4
+ 712 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 713 002c 002B     		cmp	r3, #0
+ 714 002e FBD0     		beq	.L50
+ 170:Src/motion.c  ****     {
+ 171:Src/motion.c  ****     }
+ 172:Src/motion.c  ****     HAL_Delay(500);
+ 715              		.loc 1 172 0
+ 716 0030 4FF4FA70 		mov	r0, #500
+ 717 0034 FFF7FEFF 		bl	HAL_Delay
+ 718              	.LVL33:
+ 173:Src/motion.c  ****     //kabeate
+ 174:Src/motion.c  ****     Straight_Calc_fb(-47, 0, 0, 200, 2000);
+ 719              		.loc 1 174 0
+ 720 0038 4FF4FA63 		mov	r3, #2000
+ 721 003c 0093     		str	r3, [sp]
+ 722 003e C823     		movs	r3, #200
+ 723 0040 0022     		movs	r2, #0
+ 724 0042 1146     		mov	r1, r2
+ 725 0044 6FF02E00 		mvn	r0, #46
+ 726 0048 FFF7FEFF 		bl	Straight_Calc_fb
+ 727              	.LVL34:
+ 175:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 728              		.loc 1 175 0
+ 729 004c 0020     		movs	r0, #0
+ 730 004e 0090     		str	r0, [sp]
+ 731 0050 0346     		mov	r3, r0
+ 732 0052 0246     		mov	r2, r0
+ 733 0054 0146     		mov	r1, r0
+ 734 0056 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 735              	.LVL35:
+ 736              	.L51:
+ 176:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 737              		.loc 1 176 0 discriminator 1
+ 738 005a 134B     		ldr	r3, .L54+4
+ 739 005c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 740 005e 002B     		cmp	r3, #0
+ 741 0060 FBD0     		beq	.L51
+ 177:Src/motion.c  ****     {
+ 178:Src/motion.c  ****     }
+ 179:Src/motion.c  ****     enc_sum = 0;
+ 742              		.loc 1 179 0
+ 743 0062 0023     		movs	r3, #0
+ 744 0064 114A     		ldr	r2, .L54+8
+ 745 0066 1360     		str	r3, [r2]	@ float
+ 180:Src/motion.c  ****     y_sum = 0;
+ 746              		.loc 1 180 0
+ 747 0068 114A     		ldr	r2, .L54+12
+ 748 006a 1360     		str	r3, [r2]	@ float
+ 181:Src/motion.c  ****     HAL_Delay(500);
+ 749              		.loc 1 181 0
+ 750 006c 4FF4FA70 		mov	r0, #500
+ 751 0070 FFF7FEFF 		bl	HAL_Delay
+ 752              	.LVL36:
+ 182:Src/motion.c  ****     Straight_Calc_fb(137, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 753              		.loc 1 182 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 17
 
 
- 165:Src/motion.c  ****     Straight_Calc_fb(137,0,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 892              		.loc 1 165 0
- 893 004a 4FF47A63 		mov	r3, #4000
- 894 004e 0093     		str	r3, [sp]
- 895 0050 4FF4C873 		mov	r3, #400
- 896 0054 1A46     		mov	r2, r3
- 897 0056 0021     		movs	r1, #0
- 898 0058 8920     		movs	r0, #137
- 899 005a FFF7FEFF 		bl	Straight_Calc_fb
- 900              	.LVL51:
- 166:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 901              		.loc 1 166 0
- 902 005e 0020     		movs	r0, #0
- 903 0060 0090     		str	r0, [sp]
- 904 0062 0346     		mov	r3, r0
- 905 0064 0246     		mov	r2, r0
- 906 0066 0146     		mov	r1, r0
- 907 0068 FFF7FEFF 		bl	Yawrate_Calc_fb
- 908              	.LVL52:
- 909              	.L66:
- 167:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 910              		.loc 1 167 0 discriminator 1
- 911 006c 034B     		ldr	r3, .L68
- 912 006e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 913 0070 002B     		cmp	r3, #0
- 914 0072 FBD0     		beq	.L66
- 168:Src/motion.c  **** }
- 915              		.loc 1 168 0
- 916 0074 03B0     		add	sp, sp, #12
- 917              	.LCFI34:
- 918              		.cfi_def_cfa_offset 4
- 919              		@ sp needed
- 920 0076 5DF804FB 		ldr	pc, [sp], #4
- 921              	.L69:
- 922 007a 00BF     		.align	2
- 923              	.L68:
- 924 007c 00000000 		.word	flag_motion_end
- 925              		.cfi_endproc
- 926              	.LFE140:
- 928              		.section	.text.Motion_SlalomLeft,"ax",%progbits
- 929              		.align	1
- 930              		.global	Motion_SlalomLeft
- 931              		.syntax unified
- 932              		.thumb
- 933              		.thumb_func
- 934              		.fpu fpv4-sp-d16
- 936              	Motion_SlalomLeft:
- 937              	.LFB141:
- 169:Src/motion.c  **** 
- 170:Src/motion.c  **** //float buff_enc_offset;
- 171:Src/motion.c  **** void Motion_SlalomLeft(void){
- 938              		.loc 1 171 0
- 939              		.cfi_startproc
- 940              		@ args = 0, pretend = 0, frame = 0
- 941              		@ frame_needed = 0, uses_anonymous_args = 0
- 942 0000 00B5     		push	{lr}
- 943              	.LCFI35:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 20
+ 754 0074 4FF47A63 		mov	r3, #4000
+ 755 0078 0093     		str	r3, [sp]
+ 756 007a 4FF4C873 		mov	r3, #400
+ 757 007e 1A46     		mov	r2, r3
+ 758 0080 0021     		movs	r1, #0
+ 759 0082 8920     		movs	r0, #137
+ 760 0084 FFF7FEFF 		bl	Straight_Calc_fb
+ 761              	.LVL37:
+ 183:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 762              		.loc 1 183 0
+ 763 0088 0020     		movs	r0, #0
+ 764 008a 0090     		str	r0, [sp]
+ 765 008c 0346     		mov	r3, r0
+ 766 008e 0246     		mov	r2, r0
+ 767 0090 0146     		mov	r1, r0
+ 768 0092 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 769              	.LVL38:
+ 770              	.L52:
+ 184:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 771              		.loc 1 184 0 discriminator 1
+ 772 0096 044B     		ldr	r3, .L54+4
+ 773 0098 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 774 009a 002B     		cmp	r3, #0
+ 775 009c FBD0     		beq	.L52
+ 185:Src/motion.c  ****     {
+ 186:Src/motion.c  ****     }
+ 187:Src/motion.c  **** }
+ 776              		.loc 1 187 0
+ 777 009e 03B0     		add	sp, sp, #12
+ 778              	.LCFI27:
+ 779              		.cfi_def_cfa_offset 4
+ 780              		@ sp needed
+ 781 00a0 5DF804FB 		ldr	pc, [sp], #4
+ 782              	.L55:
+ 783              		.align	2
+ 784              	.L54:
+ 785 00a4 00000000 		.word	flag_wall
+ 786 00a8 00000000 		.word	flag_motion_end
+ 787 00ac 00000000 		.word	enc_sum
+ 788 00b0 00000000 		.word	y_sum
+ 789              		.cfi_endproc
+ 790              	.LFE137:
+ 792              		.section	.text.Motion_Goal,"ax",%progbits
+ 793              		.align	1
+ 794              		.global	Motion_Goal
+ 795              		.syntax unified
+ 796              		.thumb
+ 797              		.thumb_func
+ 798              		.fpu fpv4-sp-d16
+ 800              	Motion_Goal:
+ 801              	.LFB138:
+ 188:Src/motion.c  **** 
+ 189:Src/motion.c  **** void Motion_Goal(void)
+ 190:Src/motion.c  **** {
+ 802              		.loc 1 190 0
+ 803              		.cfi_startproc
+ 804              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 18
 
 
- 944              		.cfi_def_cfa_offset 4
- 945              		.cfi_offset 14, -4
- 946 0002 83B0     		sub	sp, sp, #12
- 947              	.LCFI36:
- 948              		.cfi_def_cfa_offset 16
- 172:Src/motion.c  ****     //offset
- 173:Src/motion.c  ****     //buff_enc_offset=enc.offset;
- 174:Src/motion.c  ****     Straight_Calc_fb(OFFSET-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 949              		.loc 1 174 0
- 950 0004 274B     		ldr	r3, .L75
- 951 0006 93ED027A 		vldr.32	s14, [r3, #8]
- 952 000a F1EE047A 		vmov.f32	s15, #5.0e+0
- 953 000e 77EEC77A 		vsub.f32	s15, s15, s14
- 954 0012 FDEEE77A 		vcvt.s32.f32	s15, s15
- 955 0016 4FF47A63 		mov	r3, #4000
- 956 001a 0093     		str	r3, [sp]
- 957 001c 4FF4C873 		mov	r3, #400
- 958 0020 1A46     		mov	r2, r3
- 959 0022 1946     		mov	r1, r3
- 960 0024 17EE900A 		vmov	r0, s15	@ int
- 961 0028 00B2     		sxth	r0, r0
- 962 002a FFF7FEFF 		bl	Straight_Calc_fb
- 963              	.LVL53:
- 175:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 964              		.loc 1 175 0
- 965 002e 0020     		movs	r0, #0
- 966 0030 0090     		str	r0, [sp]
- 967 0032 0346     		mov	r3, r0
- 968 0034 0246     		mov	r2, r0
- 969 0036 0146     		mov	r1, r0
- 970 0038 FFF7FEFF 		bl	Yawrate_Calc_fb
- 971              	.LVL54:
- 972              	.L71:
- 176:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 973              		.loc 1 176 0 discriminator 1
- 974 003c 1A4B     		ldr	r3, .L75+4
- 975 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 976 0040 002B     		cmp	r3, #0
- 977 0042 FBD0     		beq	.L71
- 177:Src/motion.c  ****     //slalom
- 178:Src/motion.c  ****     Straight_Calc_fb(180,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 978              		.loc 1 178 0
- 979 0044 4FF47A63 		mov	r3, #4000
- 980 0048 0093     		str	r3, [sp]
- 981 004a 4FF4C873 		mov	r3, #400
- 982 004e 1A46     		mov	r2, r3
- 983 0050 1946     		mov	r1, r3
- 984 0052 B420     		movs	r0, #180
- 985 0054 FFF7FEFF 		bl	Straight_Calc_fb
- 986              	.LVL55:
- 179:Src/motion.c  ****     Yawrate_Calc_fb(90,0,0,S_VELOCITY,S_ACCEL);
- 987              		.loc 1 179 0
- 988 0058 40F63403 		movw	r3, #2100
- 989 005c 0093     		str	r3, [sp]
- 990 005e 4FF4C873 		mov	r3, #400
- 991 0062 0022     		movs	r2, #0
- 992 0064 1146     		mov	r1, r2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 21
+ 805              		@ frame_needed = 0, uses_anonymous_args = 0
+ 806 0000 08B5     		push	{r3, lr}
+ 807              	.LCFI28:
+ 808              		.cfi_def_cfa_offset 8
+ 809              		.cfi_offset 3, -8
+ 810              		.cfi_offset 14, -4
+ 191:Src/motion.c  ****     enc.offset = 0;
+ 811              		.loc 1 191 0
+ 812 0002 064B     		ldr	r3, .L59
+ 813 0004 0022     		movs	r2, #0
+ 814 0006 9A60     		str	r2, [r3, #8]	@ float
+ 192:Src/motion.c  ****     flag_wall = TRUE;
+ 815              		.loc 1 192 0
+ 816 0008 054B     		ldr	r3, .L59+4
+ 817 000a 0122     		movs	r2, #1
+ 818 000c 1A70     		strb	r2, [r3]
+ 193:Src/motion.c  ****     Straight_half_stop();
+ 819              		.loc 1 193 0
+ 820 000e FFF7FEFF 		bl	Straight_half_stop
+ 821              	.LVL39:
+ 822              	.L57:
+ 194:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 823              		.loc 1 194 0 discriminator 1
+ 824 0012 044B     		ldr	r3, .L59+8
+ 825 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 826 0016 002B     		cmp	r3, #0
+ 827 0018 FBD0     		beq	.L57
+ 195:Src/motion.c  ****     {
+ 196:Src/motion.c  ****     }
+ 197:Src/motion.c  **** }
+ 828              		.loc 1 197 0
+ 829 001a 08BD     		pop	{r3, pc}
+ 830              	.L60:
+ 831              		.align	2
+ 832              	.L59:
+ 833 001c 00000000 		.word	enc
+ 834 0020 00000000 		.word	flag_wall
+ 835 0024 00000000 		.word	flag_motion_end
+ 836              		.cfi_endproc
+ 837              	.LFE138:
+ 839              		.section	.text.Motion_Restart,"ax",%progbits
+ 840              		.align	1
+ 841              		.global	Motion_Restart
+ 842              		.syntax unified
+ 843              		.thumb
+ 844              		.thumb_func
+ 845              		.fpu fpv4-sp-d16
+ 847              	Motion_Restart:
+ 848              	.LFB139:
+ 198:Src/motion.c  **** 
+ 199:Src/motion.c  **** void Motion_Restart(void)
+ 200:Src/motion.c  **** {
+ 849              		.loc 1 200 0
+ 850              		.cfi_startproc
+ 851              		@ args = 0, pretend = 0, frame = 0
+ 852              		@ frame_needed = 0, uses_anonymous_args = 0
+ 853 0000 00B5     		push	{lr}
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 19
 
 
- 993 0066 5A20     		movs	r0, #90
- 994 0068 FFF7FEFF 		bl	Yawrate_Calc_fb
- 995              	.LVL56:
- 996              	.L72:
- 180:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 997              		.loc 1 180 0 discriminator 1
- 998 006c 0E4B     		ldr	r3, .L75+4
- 999 006e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1000 0070 002B     		cmp	r3, #0
- 1001 0072 FBD0     		beq	.L72
- 181:Src/motion.c  ****     //out straight
- 182:Src/motion.c  ****     Straight_Calc_fb(OFFSET,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY,ACCEL);
- 1002              		.loc 1 182 0
- 1003 0074 4FF47A63 		mov	r3, #4000
- 1004 0078 0093     		str	r3, [sp]
- 1005 007a 4FF4C873 		mov	r3, #400
- 1006 007e 1A46     		mov	r2, r3
- 1007 0080 1946     		mov	r1, r3
- 1008 0082 0520     		movs	r0, #5
- 1009 0084 FFF7FEFF 		bl	Straight_Calc_fb
- 1010              	.LVL57:
- 183:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 1011              		.loc 1 183 0
- 1012 0088 0020     		movs	r0, #0
- 1013 008a 0090     		str	r0, [sp]
- 1014 008c 0346     		mov	r3, r0
- 1015 008e 0246     		mov	r2, r0
- 1016 0090 0146     		mov	r1, r0
- 1017 0092 FFF7FEFF 		bl	Yawrate_Calc_fb
- 1018              	.LVL58:
- 1019              	.L73:
- 184:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 1020              		.loc 1 184 0 discriminator 1
- 1021 0096 044B     		ldr	r3, .L75+4
- 1022 0098 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1023 009a 002B     		cmp	r3, #0
- 1024 009c FBD0     		beq	.L73
- 185:Src/motion.c  **** }
- 1025              		.loc 1 185 0
- 1026 009e 03B0     		add	sp, sp, #12
- 1027              	.LCFI37:
- 1028              		.cfi_def_cfa_offset 4
- 1029              		@ sp needed
- 1030 00a0 5DF804FB 		ldr	pc, [sp], #4
- 1031              	.L76:
- 1032              		.align	2
- 1033              	.L75:
- 1034 00a4 00000000 		.word	enc
- 1035 00a8 00000000 		.word	flag_motion_end
- 1036              		.cfi_endproc
- 1037              	.LFE141:
- 1039              		.section	.text.Motion_StartFast,"ax",%progbits
- 1040              		.align	1
- 1041              		.global	Motion_StartFast
- 1042              		.syntax unified
- 1043              		.thumb
- 1044              		.thumb_func
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 22
+ 854              	.LCFI29:
+ 855              		.cfi_def_cfa_offset 4
+ 856              		.cfi_offset 14, -4
+ 857 0002 83B0     		sub	sp, sp, #12
+ 858              	.LCFI30:
+ 859              		.cfi_def_cfa_offset 16
+ 201:Src/motion.c  ****     U_Turn();
+ 860              		.loc 1 201 0
+ 861 0004 FFF7FEFF 		bl	U_Turn
+ 862              	.LVL40:
+ 863              	.L62:
+ 202:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 864              		.loc 1 202 0 discriminator 1
+ 865 0008 1E4B     		ldr	r3, .L66
+ 866 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 867 000c 002B     		cmp	r3, #0
+ 868 000e FBD0     		beq	.L62
+ 203:Src/motion.c  ****     {
+ 204:Src/motion.c  ****     }
+ 205:Src/motion.c  ****     HAL_Delay(500);
+ 869              		.loc 1 205 0
+ 870 0010 4FF4FA70 		mov	r0, #500
+ 871 0014 FFF7FEFF 		bl	HAL_Delay
+ 872              	.LVL41:
+ 206:Src/motion.c  ****     //kabeate
+ 207:Src/motion.c  ****     Straight_Calc_fb(-47, 0, 0, 200, 2000);
+ 873              		.loc 1 207 0
+ 874 0018 4FF4FA63 		mov	r3, #2000
+ 875 001c 0093     		str	r3, [sp]
+ 876 001e C823     		movs	r3, #200
+ 877 0020 0022     		movs	r2, #0
+ 878 0022 1146     		mov	r1, r2
+ 879 0024 6FF02E00 		mvn	r0, #46
+ 880 0028 FFF7FEFF 		bl	Straight_Calc_fb
+ 881              	.LVL42:
+ 208:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 882              		.loc 1 208 0
+ 883 002c 0020     		movs	r0, #0
+ 884 002e 0090     		str	r0, [sp]
+ 885 0030 0346     		mov	r3, r0
+ 886 0032 0246     		mov	r2, r0
+ 887 0034 0146     		mov	r1, r0
+ 888 0036 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 889              	.LVL43:
+ 890              	.L63:
+ 209:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 891              		.loc 1 209 0 discriminator 1
+ 892 003a 124B     		ldr	r3, .L66
+ 893 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 894 003e 002B     		cmp	r3, #0
+ 895 0040 FBD0     		beq	.L63
+ 210:Src/motion.c  ****     {
+ 211:Src/motion.c  ****     }
+ 212:Src/motion.c  ****     enc_sum = 0;
+ 896              		.loc 1 212 0
+ 897 0042 0023     		movs	r3, #0
+ 898 0044 104A     		ldr	r2, .L66+4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 20
 
 
- 1045              		.fpu fpv4-sp-d16
- 1047              	Motion_StartFast:
- 1048              	.LFB142:
- 186:Src/motion.c  **** 
- 187:Src/motion.c  **** //ゲインは500未満
- 188:Src/motion.c  **** void Motion_StartFast(unsigned char step){
- 1049              		.loc 1 188 0
- 1050              		.cfi_startproc
- 1051              		@ args = 0, pretend = 0, frame = 0
- 1052              		@ frame_needed = 0, uses_anonymous_args = 0
- 1053              	.LVL59:
- 1054 0000 10B5     		push	{r4, lr}
- 1055              	.LCFI38:
- 1056              		.cfi_def_cfa_offset 8
- 1057              		.cfi_offset 4, -8
- 1058              		.cfi_offset 14, -4
- 1059 0002 82B0     		sub	sp, sp, #8
- 1060              	.LCFI39:
- 1061              		.cfi_def_cfa_offset 16
- 189:Src/motion.c  ****     Straight_Calc_fb(137+180*step,0,MAX_VELOCITY,MAX_VELOCITY+150*step,ACCEL);
- 1062              		.loc 1 189 0
- 1063 0004 00EB4003 		add	r3, r0, r0, lsl #1
- 1064 0008 C3EB0313 		rsb	r3, r3, r3, lsl #4
- 1065 000c 9A00     		lsls	r2, r3, #2
- 1066 000e 02F18904 		add	r4, r2, #137
- 1067 0012 00EB8000 		add	r0, r0, r0, lsl #2
- 1068              	.LVL60:
- 1069 0016 C0EB0013 		rsb	r3, r0, r0, lsl #4
- 1070 001a 5A00     		lsls	r2, r3, #1
- 1071 001c 02F5C873 		add	r3, r2, #400
- 1072 0020 9BB2     		uxth	r3, r3
- 1073 0022 4FF47A62 		mov	r2, #4000
- 1074 0026 0092     		str	r2, [sp]
- 1075 0028 4FF4C872 		mov	r2, #400
- 1076 002c 0021     		movs	r1, #0
- 1077 002e 20B2     		sxth	r0, r4
- 1078 0030 FFF7FEFF 		bl	Straight_Calc_fb
- 1079              	.LVL61:
- 190:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 1080              		.loc 1 190 0
- 1081 0034 0020     		movs	r0, #0
- 1082 0036 0090     		str	r0, [sp]
- 1083 0038 0346     		mov	r3, r0
- 1084 003a 0246     		mov	r2, r0
- 1085 003c 0146     		mov	r1, r0
- 1086 003e FFF7FEFF 		bl	Yawrate_Calc_fb
- 1087              	.LVL62:
- 1088              	.L78:
- 191:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 1089              		.loc 1 191 0 discriminator 1
- 1090 0042 034B     		ldr	r3, .L80
- 1091 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1092 0046 002B     		cmp	r3, #0
- 1093 0048 FBD0     		beq	.L78
- 192:Src/motion.c  **** }
- 1094              		.loc 1 192 0
- 1095 004a 02B0     		add	sp, sp, #8
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 23
+ 899 0046 1360     		str	r3, [r2]	@ float
+ 213:Src/motion.c  ****     y_sum = 0;
+ 900              		.loc 1 213 0
+ 901 0048 104A     		ldr	r2, .L66+8
+ 902 004a 1360     		str	r3, [r2]	@ float
+ 214:Src/motion.c  ****     HAL_Delay(500);
+ 903              		.loc 1 214 0
+ 904 004c 4FF4FA70 		mov	r0, #500
+ 905 0050 FFF7FEFF 		bl	HAL_Delay
+ 906              	.LVL44:
+ 215:Src/motion.c  ****     Straight_Calc_fb(137, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 907              		.loc 1 215 0
+ 908 0054 4FF47A63 		mov	r3, #4000
+ 909 0058 0093     		str	r3, [sp]
+ 910 005a 4FF4C873 		mov	r3, #400
+ 911 005e 1A46     		mov	r2, r3
+ 912 0060 0021     		movs	r1, #0
+ 913 0062 8920     		movs	r0, #137
+ 914 0064 FFF7FEFF 		bl	Straight_Calc_fb
+ 915              	.LVL45:
+ 216:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 916              		.loc 1 216 0
+ 917 0068 0020     		movs	r0, #0
+ 918 006a 0090     		str	r0, [sp]
+ 919 006c 0346     		mov	r3, r0
+ 920 006e 0246     		mov	r2, r0
+ 921 0070 0146     		mov	r1, r0
+ 922 0072 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 923              	.LVL46:
+ 924              	.L64:
+ 217:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 925              		.loc 1 217 0 discriminator 1
+ 926 0076 034B     		ldr	r3, .L66
+ 927 0078 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 928 007a 002B     		cmp	r3, #0
+ 929 007c FBD0     		beq	.L64
+ 218:Src/motion.c  ****     {
+ 219:Src/motion.c  ****     }
+ 220:Src/motion.c  **** }
+ 930              		.loc 1 220 0
+ 931 007e 03B0     		add	sp, sp, #12
+ 932              	.LCFI31:
+ 933              		.cfi_def_cfa_offset 4
+ 934              		@ sp needed
+ 935 0080 5DF804FB 		ldr	pc, [sp], #4
+ 936              	.L67:
+ 937              		.align	2
+ 938              	.L66:
+ 939 0084 00000000 		.word	flag_motion_end
+ 940 0088 00000000 		.word	enc_sum
+ 941 008c 00000000 		.word	y_sum
+ 942              		.cfi_endproc
+ 943              	.LFE139:
+ 945              		.section	.text.Motion_SlalomLeft,"ax",%progbits
+ 946              		.align	1
+ 947              		.global	Motion_SlalomLeft
+ 948              		.syntax unified
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 21
 
 
- 1096              	.LCFI40:
- 1097              		.cfi_def_cfa_offset 8
- 1098              		@ sp needed
- 1099 004c 10BD     		pop	{r4, pc}
- 1100              	.L81:
- 1101 004e 00BF     		.align	2
- 1102              	.L80:
- 1103 0050 00000000 		.word	flag_motion_end
- 1104              		.cfi_endproc
- 1105              	.LFE142:
- 1107              		.section	.text.Motion_StraightFast,"ax",%progbits
- 1108              		.align	1
- 1109              		.global	Motion_StraightFast
- 1110              		.syntax unified
- 1111              		.thumb
- 1112              		.thumb_func
- 1113              		.fpu fpv4-sp-d16
- 1115              	Motion_StraightFast:
- 1116              	.LFB143:
- 193:Src/motion.c  **** 
- 194:Src/motion.c  **** void Motion_StraightFast(unsigned char step){
- 1117              		.loc 1 194 0
- 1118              		.cfi_startproc
- 1119              		@ args = 0, pretend = 0, frame = 0
- 1120              		@ frame_needed = 0, uses_anonymous_args = 0
- 1121              	.LVL63:
- 1122 0000 00B5     		push	{lr}
- 1123              	.LCFI41:
- 1124              		.cfi_def_cfa_offset 4
- 1125              		.cfi_offset 14, -4
- 1126 0002 83B0     		sub	sp, sp, #12
- 1127              	.LCFI42:
- 1128              		.cfi_def_cfa_offset 16
- 195:Src/motion.c  ****     Straight_Calc_fb(180*step-enc.offset,MAX_VELOCITY,MAX_VELOCITY,MAX_VELOCITY+150*step,ACCEL);
- 1129              		.loc 1 195 0
- 1130 0004 B423     		movs	r3, #180
- 1131 0006 03FB00F3 		mul	r3, r3, r0
- 1132 000a 07EE903A 		vmov	s15, r3	@ int
- 1133 000e 154B     		ldr	r3, .L85
- 1134 0010 93ED027A 		vldr.32	s14, [r3, #8]
- 1135 0014 F8EEE77A 		vcvt.f32.s32	s15, s15
- 1136 0018 77EEC77A 		vsub.f32	s15, s15, s14
- 1137 001c 00EB8000 		add	r0, r0, r0, lsl #2
- 1138              	.LVL64:
- 1139 0020 C0EB0010 		rsb	r0, r0, r0, lsl #4
- 1140 0024 4300     		lsls	r3, r0, #1
- 1141 0026 03F5C873 		add	r3, r3, #400
- 1142 002a 9BB2     		uxth	r3, r3
- 1143 002c FDEEE77A 		vcvt.s32.f32	s15, s15
- 1144 0030 4FF47A62 		mov	r2, #4000
- 1145 0034 0092     		str	r2, [sp]
- 1146 0036 4FF4C872 		mov	r2, #400
- 1147 003a 1146     		mov	r1, r2
- 1148 003c 17EE900A 		vmov	r0, s15	@ int
- 1149 0040 00B2     		sxth	r0, r0
- 1150 0042 FFF7FEFF 		bl	Straight_Calc_fb
- 1151              	.LVL65:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 24
+ 949              		.thumb
+ 950              		.thumb_func
+ 951              		.fpu fpv4-sp-d16
+ 953              	Motion_SlalomLeft:
+ 954              	.LFB140:
+ 221:Src/motion.c  **** 
+ 222:Src/motion.c  **** void Motion_SlalomLeft(void)
+ 223:Src/motion.c  **** {
+ 955              		.loc 1 223 0
+ 956              		.cfi_startproc
+ 957              		@ args = 0, pretend = 0, frame = 0
+ 958              		@ frame_needed = 0, uses_anonymous_args = 0
+ 959 0000 10B5     		push	{r4, lr}
+ 960              	.LCFI32:
+ 961              		.cfi_def_cfa_offset 8
+ 962              		.cfi_offset 4, -8
+ 963              		.cfi_offset 14, -4
+ 964 0002 82B0     		sub	sp, sp, #8
+ 965              	.LCFI33:
+ 966              		.cfi_def_cfa_offset 16
+ 224:Src/motion.c  ****     flag_wall = FALSE;
+ 967              		.loc 1 224 0
+ 968 0004 0024     		movs	r4, #0
+ 969 0006 274B     		ldr	r3, .L73
+ 970 0008 1C70     		strb	r4, [r3]
+ 225:Src/motion.c  ****     //offset
+ 226:Src/motion.c  ****     Straight_Calc_fb(OFFSET_IN - 1 - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 971              		.loc 1 226 0
+ 972 000a 274B     		ldr	r3, .L73+4
+ 973 000c 93ED027A 		vldr.32	s14, [r3, #8]
+ 974 0010 F3EE007A 		vmov.f32	s15, #1.6e+1
+ 975 0014 77EEC77A 		vsub.f32	s15, s15, s14
+ 976 0018 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 977 001c 4FF47A63 		mov	r3, #4000
+ 978 0020 0093     		str	r3, [sp]
+ 979 0022 4FF4C873 		mov	r3, #400
+ 980 0026 1A46     		mov	r2, r3
+ 981 0028 1946     		mov	r1, r3
+ 982 002a 17EE900A 		vmov	r0, s15	@ int
+ 983 002e 00B2     		sxth	r0, r0
+ 984 0030 FFF7FEFF 		bl	Straight_Calc_fb
+ 985              	.LVL47:
+ 227:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 986              		.loc 1 227 0
+ 987 0034 0094     		str	r4, [sp]
+ 988 0036 2346     		mov	r3, r4
+ 989 0038 2246     		mov	r2, r4
+ 990 003a 2146     		mov	r1, r4
+ 991 003c 2046     		mov	r0, r4
+ 992 003e FFF7FEFF 		bl	Yawrate_Calc_fb
+ 993              	.LVL48:
+ 994              	.L69:
+ 228:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 995              		.loc 1 228 0 discriminator 1
+ 996 0042 1A4B     		ldr	r3, .L73+8
+ 997 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 998 0046 002B     		cmp	r3, #0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 22
 
 
- 196:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 1152              		.loc 1 196 0
- 1153 0046 0020     		movs	r0, #0
- 1154 0048 0090     		str	r0, [sp]
- 1155 004a 0346     		mov	r3, r0
- 1156 004c 0246     		mov	r2, r0
- 1157 004e 0146     		mov	r1, r0
- 1158 0050 FFF7FEFF 		bl	Yawrate_Calc_fb
- 1159              	.LVL66:
- 1160              	.L83:
- 197:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 1161              		.loc 1 197 0 discriminator 1
- 1162 0054 044B     		ldr	r3, .L85+4
- 1163 0056 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1164 0058 002B     		cmp	r3, #0
- 1165 005a FBD0     		beq	.L83
- 198:Src/motion.c  **** }
- 1166              		.loc 1 198 0
- 1167 005c 03B0     		add	sp, sp, #12
- 1168              	.LCFI43:
- 1169              		.cfi_def_cfa_offset 4
- 1170              		@ sp needed
- 1171 005e 5DF804FB 		ldr	pc, [sp], #4
- 1172              	.L86:
- 1173 0062 00BF     		.align	2
- 1174              	.L85:
- 1175 0064 00000000 		.word	enc
- 1176 0068 00000000 		.word	flag_motion_end
- 1177              		.cfi_endproc
- 1178              	.LFE143:
- 1180              		.section	.text.Motion_GoalFast,"ax",%progbits
- 1181              		.align	1
- 1182              		.global	Motion_GoalFast
- 1183              		.syntax unified
- 1184              		.thumb
- 1185              		.thumb_func
- 1186              		.fpu fpv4-sp-d16
- 1188              	Motion_GoalFast:
- 1189              	.LFB144:
- 199:Src/motion.c  **** 
- 200:Src/motion.c  **** void Motion_GoalFast(unsigned char step){
- 1190              		.loc 1 200 0
- 1191              		.cfi_startproc
- 1192              		@ args = 0, pretend = 0, frame = 0
- 1193              		@ frame_needed = 0, uses_anonymous_args = 0
- 1194              	.LVL67:
- 1195 0000 00B5     		push	{lr}
- 1196              	.LCFI44:
- 1197              		.cfi_def_cfa_offset 4
- 1198              		.cfi_offset 14, -4
- 1199 0002 83B0     		sub	sp, sp, #12
- 1200              	.LCFI45:
- 1201              		.cfi_def_cfa_offset 16
- 201:Src/motion.c  ****     Straight_Calc_fb(90+180*step-enc.offset,MAX_VELOCITY,0,MAX_VELOCITY+(150*step),ACCEL);
- 1202              		.loc 1 201 0
- 1203 0004 B423     		movs	r3, #180
- 1204 0006 03FB00F3 		mul	r3, r3, r0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 25
+ 999 0048 FBD0     		beq	.L69
+ 229:Src/motion.c  ****     {
+ 230:Src/motion.c  ****     }
+ 231:Src/motion.c  ****     //slalom
+ 232:Src/motion.c  ****     Straight_Calc_fb(154, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 1000              		.loc 1 232 0
+ 1001 004a 4FF47A64 		mov	r4, #4000
+ 1002 004e 0094     		str	r4, [sp]
+ 1003 0050 4FF4C873 		mov	r3, #400
+ 1004 0054 1A46     		mov	r2, r3
+ 1005 0056 1946     		mov	r1, r3
+ 1006 0058 9A20     		movs	r0, #154
+ 1007 005a FFF7FEFF 		bl	Straight_Calc_fb
+ 1008              	.LVL49:
+ 233:Src/motion.c  ****     Yawrate_Calc_fb(90, 0, 0, S_VELOCITY, S_ACCEL);
+ 1009              		.loc 1 233 0
+ 1010 005e 0094     		str	r4, [sp]
+ 1011 0060 4FF4DC73 		mov	r3, #440
+ 1012 0064 0022     		movs	r2, #0
+ 1013 0066 1146     		mov	r1, r2
+ 1014 0068 5A20     		movs	r0, #90
+ 1015 006a FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1016              	.LVL50:
+ 1017              	.L70:
+ 234:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1018              		.loc 1 234 0 discriminator 1
+ 1019 006e 0F4B     		ldr	r3, .L73+8
+ 1020 0070 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1021 0072 002B     		cmp	r3, #0
+ 1022 0074 FBD0     		beq	.L70
+ 235:Src/motion.c  ****     {
+ 236:Src/motion.c  ****     }
+ 237:Src/motion.c  ****     //out straight
+ 238:Src/motion.c  ****     Straight_Calc_fb(OFFSET_OUT, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 1023              		.loc 1 238 0
+ 1024 0076 4FF47A63 		mov	r3, #4000
+ 1025 007a 0093     		str	r3, [sp]
+ 1026 007c 4FF4C873 		mov	r3, #400
+ 1027 0080 1A46     		mov	r2, r3
+ 1028 0082 1946     		mov	r1, r3
+ 1029 0084 0F20     		movs	r0, #15
+ 1030 0086 FFF7FEFF 		bl	Straight_Calc_fb
+ 1031              	.LVL51:
+ 239:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 1032              		.loc 1 239 0
+ 1033 008a 0020     		movs	r0, #0
+ 1034 008c 0090     		str	r0, [sp]
+ 1035 008e 0346     		mov	r3, r0
+ 1036 0090 0246     		mov	r2, r0
+ 1037 0092 0146     		mov	r1, r0
+ 1038 0094 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1039              	.LVL52:
+ 1040              	.L71:
+ 240:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1041              		.loc 1 240 0 discriminator 1
+ 1042 0098 044B     		ldr	r3, .L73+8
+ 1043 009a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 23
 
 
- 1205 000a 5A33     		adds	r3, r3, #90
- 1206 000c 07EE903A 		vmov	s15, r3	@ int
- 1207 0010 144B     		ldr	r3, .L90
- 1208 0012 93ED027A 		vldr.32	s14, [r3, #8]
- 1209 0016 F8EEE77A 		vcvt.f32.s32	s15, s15
- 1210 001a 77EEC77A 		vsub.f32	s15, s15, s14
- 1211 001e 00EB8000 		add	r0, r0, r0, lsl #2
- 1212              	.LVL68:
- 1213 0022 C0EB0010 		rsb	r0, r0, r0, lsl #4
- 1214 0026 4300     		lsls	r3, r0, #1
- 1215 0028 03F5C873 		add	r3, r3, #400
- 1216 002c 9BB2     		uxth	r3, r3
- 1217 002e FDEEE77A 		vcvt.s32.f32	s15, s15
- 1218 0032 4FF47A62 		mov	r2, #4000
- 1219 0036 0092     		str	r2, [sp]
- 1220 0038 0022     		movs	r2, #0
- 1221 003a 4FF4C871 		mov	r1, #400
- 1222 003e 17EE900A 		vmov	r0, s15	@ int
- 1223 0042 00B2     		sxth	r0, r0
- 1224 0044 FFF7FEFF 		bl	Straight_Calc_fb
- 1225              	.LVL69:
- 202:Src/motion.c  ****     Yawrate_Calc_fb(0,0,0,0,0);
- 1226              		.loc 1 202 0
- 1227 0048 0020     		movs	r0, #0
- 1228 004a 0090     		str	r0, [sp]
- 1229 004c 0346     		mov	r3, r0
- 1230 004e 0246     		mov	r2, r0
- 1231 0050 0146     		mov	r1, r0
- 1232 0052 FFF7FEFF 		bl	Yawrate_Calc_fb
- 1233              	.LVL70:
- 1234              	.L88:
- 203:Src/motion.c  ****     while(flag_motion_end==FALSE){}
- 1235              		.loc 1 203 0 discriminator 1
- 1236 0056 044B     		ldr	r3, .L90+4
- 1237 0058 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1238 005a 002B     		cmp	r3, #0
- 1239 005c FBD0     		beq	.L88
- 204:Src/motion.c  **** }...
- 1240              		.loc 1 204 0
- 1241 005e 03B0     		add	sp, sp, #12
- 1242              	.LCFI46:
- 1243              		.cfi_def_cfa_offset 4
- 1244              		@ sp needed
- 1245 0060 5DF804FB 		ldr	pc, [sp], #4
- 1246              	.L91:
- 1247              		.align	2
- 1248              	.L90:
- 1249 0064 00000000 		.word	enc
- 1250 0068 00000000 		.word	flag_motion_end
- 1251              		.cfi_endproc
- 1252              	.LFE144:
- 1254              		.text
- 1255              	.Letext0:
- 1256              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1257              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1258              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 1259              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 26
+ 1044 009c 002B     		cmp	r3, #0
+ 1045 009e FBD0     		beq	.L71
+ 241:Src/motion.c  ****     {
+ 242:Src/motion.c  ****     }
+ 243:Src/motion.c  **** }
+ 1046              		.loc 1 243 0
+ 1047 00a0 02B0     		add	sp, sp, #8
+ 1048              	.LCFI34:
+ 1049              		.cfi_def_cfa_offset 8
+ 1050              		@ sp needed
+ 1051 00a2 10BD     		pop	{r4, pc}
+ 1052              	.L74:
+ 1053              		.align	2
+ 1054              	.L73:
+ 1055 00a4 00000000 		.word	flag_wall
+ 1056 00a8 00000000 		.word	enc
+ 1057 00ac 00000000 		.word	flag_motion_end
+ 1058              		.cfi_endproc
+ 1059              	.LFE140:
+ 1061              		.section	.text.Motion_SlalomRight,"ax",%progbits
+ 1062              		.align	1
+ 1063              		.global	Motion_SlalomRight
+ 1064              		.syntax unified
+ 1065              		.thumb
+ 1066              		.thumb_func
+ 1067              		.fpu fpv4-sp-d16
+ 1069              	Motion_SlalomRight:
+ 1070              	.LFB141:
+ 244:Src/motion.c  **** 
+ 245:Src/motion.c  **** void Motion_SlalomRight(void)
+ 246:Src/motion.c  **** {
+ 1071              		.loc 1 246 0
+ 1072              		.cfi_startproc
+ 1073              		@ args = 0, pretend = 0, frame = 0
+ 1074              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1075 0000 10B5     		push	{r4, lr}
+ 1076              	.LCFI35:
+ 1077              		.cfi_def_cfa_offset 8
+ 1078              		.cfi_offset 4, -8
+ 1079              		.cfi_offset 14, -4
+ 1080 0002 82B0     		sub	sp, sp, #8
+ 1081              	.LCFI36:
+ 1082              		.cfi_def_cfa_offset 16
+ 247:Src/motion.c  ****     flag_wall = FALSE;
+ 1083              		.loc 1 247 0
+ 1084 0004 0024     		movs	r4, #0
+ 1085 0006 284B     		ldr	r3, .L80
+ 1086 0008 1C70     		strb	r4, [r3]
+ 248:Src/motion.c  ****     //offset
+ 249:Src/motion.c  ****     Straight_Calc_fb(OFFSET_IN - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 1087              		.loc 1 249 0
+ 1088 000a 284B     		ldr	r3, .L80+4
+ 1089 000c 93ED027A 		vldr.32	s14, [r3, #8]
+ 1090 0010 F3EE017A 		vmov.f32	s15, #1.7e+1
+ 1091 0014 77EEC77A 		vsub.f32	s15, s15, s14
+ 1092 0018 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 1093 001c 4FF47A63 		mov	r3, #4000
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 24
 
 
- 1260              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 1261              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1262              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1263              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
- 1264              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 1265              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1266              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1267              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1268              		.file 14 "Inc/tim.h"
- 1269              		.file 15 "Inc/control.h"
- 1270              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 27
+ 1094 0020 0093     		str	r3, [sp]
+ 1095 0022 4FF4C873 		mov	r3, #400
+ 1096 0026 1A46     		mov	r2, r3
+ 1097 0028 1946     		mov	r1, r3
+ 1098 002a 17EE900A 		vmov	r0, s15	@ int
+ 1099 002e 00B2     		sxth	r0, r0
+ 1100 0030 FFF7FEFF 		bl	Straight_Calc_fb
+ 1101              	.LVL53:
+ 250:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 1102              		.loc 1 250 0
+ 1103 0034 0094     		str	r4, [sp]
+ 1104 0036 2346     		mov	r3, r4
+ 1105 0038 2246     		mov	r2, r4
+ 1106 003a 2146     		mov	r1, r4
+ 1107 003c 2046     		mov	r0, r4
+ 1108 003e FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1109              	.LVL54:
+ 1110              	.L76:
+ 251:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1111              		.loc 1 251 0 discriminator 1
+ 1112 0042 1B4B     		ldr	r3, .L80+8
+ 1113 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1114 0046 002B     		cmp	r3, #0
+ 1115 0048 FBD0     		beq	.L76
+ 252:Src/motion.c  ****     {
+ 253:Src/motion.c  ****     }
+ 254:Src/motion.c  ****     //slalom
+ 255:Src/motion.c  ****     //flag_wall = FALSE;
+ 256:Src/motion.c  ****     Straight_Calc_fb(154, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 1116              		.loc 1 256 0
+ 1117 004a 4FF47A64 		mov	r4, #4000
+ 1118 004e 0094     		str	r4, [sp]
+ 1119 0050 4FF4C873 		mov	r3, #400
+ 1120 0054 1A46     		mov	r2, r3
+ 1121 0056 1946     		mov	r1, r3
+ 1122 0058 9A20     		movs	r0, #154
+ 1123 005a FFF7FEFF 		bl	Straight_Calc_fb
+ 1124              	.LVL55:
+ 257:Src/motion.c  ****     Yawrate_Calc_fb(-90, 0, 0, S_VELOCITY, S_ACCEL);
+ 1125              		.loc 1 257 0
+ 1126 005e 0094     		str	r4, [sp]
+ 1127 0060 4FF4DC73 		mov	r3, #440
+ 1128 0064 0022     		movs	r2, #0
+ 1129 0066 1146     		mov	r1, r2
+ 1130 0068 6FF05900 		mvn	r0, #89
+ 1131 006c FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1132              	.LVL56:
+ 1133              	.L77:
+ 258:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1134              		.loc 1 258 0 discriminator 1
+ 1135 0070 0F4B     		ldr	r3, .L80+8
+ 1136 0072 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1137 0074 002B     		cmp	r3, #0
+ 1138 0076 FBD0     		beq	.L77
+ 259:Src/motion.c  ****     {
+ 260:Src/motion.c  ****     }
+ 261:Src/motion.c  ****     //out straight
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 25
+
+
+ 262:Src/motion.c  ****     //flag_wall = TRUE;
+ 263:Src/motion.c  ****     Straight_Calc_fb(OFFSET_OUT, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+ 1139              		.loc 1 263 0
+ 1140 0078 4FF47A63 		mov	r3, #4000
+ 1141 007c 0093     		str	r3, [sp]
+ 1142 007e 4FF4C873 		mov	r3, #400
+ 1143 0082 1A46     		mov	r2, r3
+ 1144 0084 1946     		mov	r1, r3
+ 1145 0086 0F20     		movs	r0, #15
+ 1146 0088 FFF7FEFF 		bl	Straight_Calc_fb
+ 1147              	.LVL57:
+ 264:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 1148              		.loc 1 264 0
+ 1149 008c 0020     		movs	r0, #0
+ 1150 008e 0090     		str	r0, [sp]
+ 1151 0090 0346     		mov	r3, r0
+ 1152 0092 0246     		mov	r2, r0
+ 1153 0094 0146     		mov	r1, r0
+ 1154 0096 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1155              	.LVL58:
+ 1156              	.L78:
+ 265:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1157              		.loc 1 265 0 discriminator 1
+ 1158 009a 054B     		ldr	r3, .L80+8
+ 1159 009c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1160 009e 002B     		cmp	r3, #0
+ 1161 00a0 FBD0     		beq	.L78
+ 266:Src/motion.c  ****     {
+ 267:Src/motion.c  ****     }
+ 268:Src/motion.c  **** }
+ 1162              		.loc 1 268 0
+ 1163 00a2 02B0     		add	sp, sp, #8
+ 1164              	.LCFI37:
+ 1165              		.cfi_def_cfa_offset 8
+ 1166              		@ sp needed
+ 1167 00a4 10BD     		pop	{r4, pc}
+ 1168              	.L81:
+ 1169 00a6 00BF     		.align	2
+ 1170              	.L80:
+ 1171 00a8 00000000 		.word	flag_wall
+ 1172 00ac 00000000 		.word	enc
+ 1173 00b0 00000000 		.word	flag_motion_end
+ 1174              		.cfi_endproc
+ 1175              	.LFE141:
+ 1177              		.section	.text.Motion_StartFast,"ax",%progbits
+ 1178              		.align	1
+ 1179              		.global	Motion_StartFast
+ 1180              		.syntax unified
+ 1181              		.thumb
+ 1182              		.thumb_func
+ 1183              		.fpu fpv4-sp-d16
+ 1185              	Motion_StartFast:
+ 1186              	.LFB142:
+ 269:Src/motion.c  **** 
+ 270:Src/motion.c  **** //ゲインは500未満
+ 271:Src/motion.c  **** void Motion_StartFast(unsigned char step)
+ 272:Src/motion.c  **** {
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 26
+
+
+ 1187              		.loc 1 272 0
+ 1188              		.cfi_startproc
+ 1189              		@ args = 0, pretend = 0, frame = 0
+ 1190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1191              	.LVL59:
+ 1192 0000 10B5     		push	{r4, lr}
+ 1193              	.LCFI38:
+ 1194              		.cfi_def_cfa_offset 8
+ 1195              		.cfi_offset 4, -8
+ 1196              		.cfi_offset 14, -4
+ 1197 0002 82B0     		sub	sp, sp, #8
+ 1198              	.LCFI39:
+ 1199              		.cfi_def_cfa_offset 16
+ 273:Src/motion.c  ****     enc_sum = 0;
+ 1200              		.loc 1 273 0
+ 1201 0004 0023     		movs	r3, #0
+ 1202 0006 164A     		ldr	r2, .L85
+ 1203 0008 1360     		str	r3, [r2]	@ float
+ 274:Src/motion.c  ****     y_sum = 0;
+ 1204              		.loc 1 274 0
+ 1205 000a 164A     		ldr	r2, .L85+4
+ 1206 000c 1360     		str	r3, [r2]	@ float
+ 275:Src/motion.c  ****     flag_wall = TRUE;
+ 1207              		.loc 1 275 0
+ 1208 000e 164B     		ldr	r3, .L85+8
+ 1209 0010 0122     		movs	r2, #1
+ 1210 0012 1A70     		strb	r2, [r3]
+ 276:Src/motion.c  ****     Straight_Calc_fb(137 + 180 * step, 0, MAX_VELOCITY, MAX_VELOCITY + 150 * step, ACCEL);
+ 1211              		.loc 1 276 0
+ 1212 0014 00EB4003 		add	r3, r0, r0, lsl #1
+ 1213 0018 C3EB0313 		rsb	r3, r3, r3, lsl #4
+ 1214 001c 9A00     		lsls	r2, r3, #2
+ 1215 001e 02F18904 		add	r4, r2, #137
+ 1216 0022 00EB8000 		add	r0, r0, r0, lsl #2
+ 1217              	.LVL60:
+ 1218 0026 C0EB0013 		rsb	r3, r0, r0, lsl #4
+ 1219 002a 5A00     		lsls	r2, r3, #1
+ 1220 002c 02F5C873 		add	r3, r2, #400
+ 1221 0030 9BB2     		uxth	r3, r3
+ 1222 0032 4FF47A62 		mov	r2, #4000
+ 1223 0036 0092     		str	r2, [sp]
+ 1224 0038 4FF4C872 		mov	r2, #400
+ 1225 003c 0021     		movs	r1, #0
+ 1226 003e 20B2     		sxth	r0, r4
+ 1227 0040 FFF7FEFF 		bl	Straight_Calc_fb
+ 1228              	.LVL61:
+ 277:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 1229              		.loc 1 277 0
+ 1230 0044 0020     		movs	r0, #0
+ 1231 0046 0090     		str	r0, [sp]
+ 1232 0048 0346     		mov	r3, r0
+ 1233 004a 0246     		mov	r2, r0
+ 1234 004c 0146     		mov	r1, r0
+ 1235 004e FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1236              	.LVL62:
+ 1237              	.L83:
+ 278:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 27
+
+
+ 1238              		.loc 1 278 0 discriminator 1
+ 1239 0052 064B     		ldr	r3, .L85+12
+ 1240 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1241 0056 002B     		cmp	r3, #0
+ 1242 0058 FBD0     		beq	.L83
+ 279:Src/motion.c  ****     {
+ 280:Src/motion.c  ****     }
+ 281:Src/motion.c  **** }
+ 1243              		.loc 1 281 0
+ 1244 005a 02B0     		add	sp, sp, #8
+ 1245              	.LCFI40:
+ 1246              		.cfi_def_cfa_offset 8
+ 1247              		@ sp needed
+ 1248 005c 10BD     		pop	{r4, pc}
+ 1249              	.L86:
+ 1250 005e 00BF     		.align	2
+ 1251              	.L85:
+ 1252 0060 00000000 		.word	enc_sum
+ 1253 0064 00000000 		.word	y_sum
+ 1254 0068 00000000 		.word	flag_wall
+ 1255 006c 00000000 		.word	flag_motion_end
+ 1256              		.cfi_endproc
+ 1257              	.LFE142:
+ 1259              		.section	.text.Motion_StraightFast,"ax",%progbits
+ 1260              		.align	1
+ 1261              		.global	Motion_StraightFast
+ 1262              		.syntax unified
+ 1263              		.thumb
+ 1264              		.thumb_func
+ 1265              		.fpu fpv4-sp-d16
+ 1267              	Motion_StraightFast:
+ 1268              	.LFB143:
+ 282:Src/motion.c  **** 
+ 283:Src/motion.c  **** void Motion_StraightFast(unsigned char step)
+ 284:Src/motion.c  **** {
+ 1269              		.loc 1 284 0
+ 1270              		.cfi_startproc
+ 1271              		@ args = 0, pretend = 0, frame = 0
+ 1272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1273              	.LVL63:
+ 1274 0000 00B5     		push	{lr}
+ 1275              	.LCFI41:
+ 1276              		.cfi_def_cfa_offset 4
+ 1277              		.cfi_offset 14, -4
+ 1278 0002 83B0     		sub	sp, sp, #12
+ 1279              	.LCFI42:
+ 1280              		.cfi_def_cfa_offset 16
+ 285:Src/motion.c  ****     flag_wall = TRUE;
+ 1281              		.loc 1 285 0
+ 1282 0004 194B     		ldr	r3, .L90
+ 1283 0006 0122     		movs	r2, #1
+ 1284 0008 1A70     		strb	r2, [r3]
+ 286:Src/motion.c  ****     Straight_Calc_fb(180 * step - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY + 150 * step
+ 1285              		.loc 1 286 0
+ 1286 000a B423     		movs	r3, #180
+ 1287 000c 03FB00F3 		mul	r3, r3, r0
+ 1288 0010 07EE903A 		vmov	s15, r3	@ int
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 28
+
+
+ 1289 0014 164B     		ldr	r3, .L90+4
+ 1290 0016 93ED027A 		vldr.32	s14, [r3, #8]
+ 1291 001a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 1292 001e 77EEC77A 		vsub.f32	s15, s15, s14
+ 1293 0022 00EB8000 		add	r0, r0, r0, lsl #2
+ 1294              	.LVL64:
+ 1295 0026 C0EB0010 		rsb	r0, r0, r0, lsl #4
+ 1296 002a 00FA02F3 		lsl	r3, r0, r2
+ 1297 002e 03F5C873 		add	r3, r3, #400
+ 1298 0032 9BB2     		uxth	r3, r3
+ 1299 0034 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 1300 0038 4FF47A62 		mov	r2, #4000
+ 1301 003c 0092     		str	r2, [sp]
+ 1302 003e 4FF4C872 		mov	r2, #400
+ 1303 0042 1146     		mov	r1, r2
+ 1304 0044 17EE900A 		vmov	r0, s15	@ int
+ 1305 0048 00B2     		sxth	r0, r0
+ 1306 004a FFF7FEFF 		bl	Straight_Calc_fb
+ 1307              	.LVL65:
+ 287:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 1308              		.loc 1 287 0
+ 1309 004e 0020     		movs	r0, #0
+ 1310 0050 0090     		str	r0, [sp]
+ 1311 0052 0346     		mov	r3, r0
+ 1312 0054 0246     		mov	r2, r0
+ 1313 0056 0146     		mov	r1, r0
+ 1314 0058 FFF7FEFF 		bl	Yawrate_Calc_fb
+ 1315              	.LVL66:
+ 1316              	.L88:
+ 288:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1317              		.loc 1 288 0 discriminator 1
+ 1318 005c 054B     		ldr	r3, .L90+8
+ 1319 005e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1320 0060 002B     		cmp	r3, #0
+ 1321 0062 FBD0     		beq	.L88
+ 289:Src/motion.c  ****     {
+ 290:Src/motion.c  ****     }
+ 291:Src/motion.c  **** }
+ 1322              		.loc 1 291 0
+ 1323 0064 03B0     		add	sp, sp, #12
+ 1324              	.LCFI43:
+ 1325              		.cfi_def_cfa_offset 4
+ 1326              		@ sp needed
+ 1327 0066 5DF804FB 		ldr	pc, [sp], #4
+ 1328              	.L91:
+ 1329 006a 00BF     		.align	2
+ 1330              	.L90:
+ 1331 006c 00000000 		.word	flag_wall
+ 1332 0070 00000000 		.word	enc
+ 1333 0074 00000000 		.word	flag_motion_end
+ 1334              		.cfi_endproc
+ 1335              	.LFE143:
+ 1337              		.section	.text.Motion_GoalFast,"ax",%progbits
+ 1338              		.align	1
+ 1339              		.global	Motion_GoalFast
+ 1340              		.syntax unified
+ 1341              		.thumb
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 29
+
+
+ 1342              		.thumb_func
+ 1343              		.fpu fpv4-sp-d16
+ 1345              	Motion_GoalFast:
+ 1346              	.LFB144:
+ 292:Src/motion.c  **** 
+ 293:Src/motion.c  **** void Motion_GoalFast(unsigned char step)
+ 294:Src/motion.c  **** {
+ 1347              		.loc 1 294 0
+ 1348              		.cfi_startproc
+ 1349              		@ args = 0, pretend = 0, frame = 0
+ 1350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1351              	.LVL67:
+ 1352 0000 00B5     		push	{lr}
+ 1353              	.LCFI44:
+ 1354              		.cfi_def_cfa_offset 4
+ 1355              		.cfi_offset 14, -4
+ 1356 0002 83B0     		sub	sp, sp, #12
+ 1357              	.LCFI45:
+ 1358              		.cfi_def_cfa_offset 16
+ 295:Src/motion.c  ****     flag_wall = TRUE;
+ 1359              		.loc 1 295 0
+ 1360 0004 194B     		ldr	r3, .L95
+ 1361 0006 0122     		movs	r2, #1
+ 1362 0008 1A70     		strb	r2, [r3]
+ 296:Src/motion.c  ****     Straight_Calc_fb(90 + 180 * step - enc.offset, MAX_VELOCITY, 0, MAX_VELOCITY + (150 * step), AC
+ 1363              		.loc 1 296 0
+ 1364 000a B423     		movs	r3, #180
+ 1365 000c 03FB00F3 		mul	r3, r3, r0
+ 1366 0010 5A33     		adds	r3, r3, #90
+ 1367 0012 07EE903A 		vmov	s15, r3	@ int
+ 1368 0016 164B     		ldr	r3, .L95+4
+ 1369 0018 93ED027A 		vldr.32	s14, [r3, #8]
+ 1370 001c F8EEE77A 		vcvt.f32.s32	s15, s15
+ 1371 0020 77EEC77A 		vsub.f32	s15, s15, s14
+ 1372 0024 00EB8000 		add	r0, r0, r0, lsl #2
+ 1373              	.LVL68:
+ 1374 0028 C0EB0010 		rsb	r0, r0, r0, lsl #4
+ 1375 002c 00FA02F3 		lsl	r3, r0, r2
+ 1376 0030 03F5C873 		add	r3, r3, #400
+ 1377 0034 9BB2     		uxth	r3, r3
+ 1378 0036 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 1379 003a 4FF47A62 		mov	r2, #4000
+ 1380 003e 0092     		str	r2, [sp]
+ 1381 0040 0022     		movs	r2, #0
+ 1382 0042 4FF4C871 		mov	r1, #400
+ 1383 0046 17EE900A 		vmov	r0, s15	@ int
+ 1384 004a 00B2     		sxth	r0, r0
+ 1385 004c FFF7FEFF 		bl	Straight_Calc_fb
+ 1386              	.LVL69:
+ 297:Src/motion.c  ****     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+ 1387              		.loc 1 297 0
+ 1388 0050 0020     		movs	r0, #0
+ 1389 0052 0090     		str	r0, [sp]
+ 1390 0054 0346     		mov	r3, r0
+ 1391 0056 0246     		mov	r2, r0
+ 1392 0058 0146     		mov	r1, r0
+ 1393 005a FFF7FEFF 		bl	Yawrate_Calc_fb
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 30
+
+
+ 1394              	.LVL70:
+ 1395              	.L93:
+ 298:Src/motion.c  ****     while (flag_motion_end == FALSE)
+ 1396              		.loc 1 298 0 discriminator 1
+ 1397 005e 054B     		ldr	r3, .L95+8
+ 1398 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1399 0062 002B     		cmp	r3, #0
+ 1400 0064 FBD0     		beq	.L93
+ 299:Src/motion.c  ****     {
+ 300:Src/motion.c  ****     }
+ 301:Src/motion.c  **** }...
+ 1401              		.loc 1 301 0
+ 1402 0066 03B0     		add	sp, sp, #12
+ 1403              	.LCFI46:
+ 1404              		.cfi_def_cfa_offset 4
+ 1405              		@ sp needed
+ 1406 0068 5DF804FB 		ldr	pc, [sp], #4
+ 1407              	.L96:
+ 1408              		.align	2
+ 1409              	.L95:
+ 1410 006c 00000000 		.word	flag_wall
+ 1411 0070 00000000 		.word	enc
+ 1412 0074 00000000 		.word	flag_motion_end
+ 1413              		.cfi_endproc
+ 1414              	.LFE144:
+ 1416              		.text
+ 1417              	.Letext0:
+ 1418              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1419              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1420              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1421              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1422              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 1423              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1424              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1425              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 1426              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 1427              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1428              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1429              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1430              		.file 14 "Inc/tim.h"
+ 1431              		.file 15 "Inc/control.h"
+ 1432              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 31
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 motion.c
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:18     .text.Straight_half_accel:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:25     .text.Straight_half_accel:00000000 Straight_half_accel
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:66     .text.Straight_half_stop:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:73     .text.Straight_half_stop:00000000 Straight_half_stop
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:118    .text.Straight_half_stop:00000044 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:124    .text.Straight_const:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:131    .text.Straight_const:00000000 Straight_const
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:176    .text.Straight_const:00000044 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:182    .text.LeftTurn:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:189    .text.LeftTurn:00000000 LeftTurn
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:231    .text.RightTurn:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:238    .text.RightTurn:00000000 RightTurn
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:280    .text.U_Turn:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:287    .text.U_Turn:00000000 U_Turn
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:329    .text.Motion_Start:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:336    .text.Motion_Start:00000000 Motion_Start
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:381    .text.Motion_Start:00000034 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:386    .text.Motion_Straight:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:393    .text.Motion_Straight:00000000 Motion_Straight
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:418    .text.Motion_Straight:00000010 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:423    .text.Motion_Left:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:430    .text.Motion_Left:00000000 Motion_Left
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:481    .text.Motion_Left:00000038 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:486    .text.Motion_Right:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:493    .text.Motion_Right:00000000 Motion_Right
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:544    .text.Motion_Right:00000038 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:549    .text.Motion_Uturn:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:556    .text.Motion_Uturn:00000000 Motion_Uturn
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:607    .text.Motion_Uturn:00000038 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:612    .text.Motion_Kabeate:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:619    .text.Motion_Kabeate:00000000 Motion_Kabeate
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:717    .text.Motion_Kabeate:00000090 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:722    .text.Motion_Goal:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:729    .text.Motion_Goal:00000000 Motion_Goal
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:758    .text.Motion_Goal:00000018 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:764    .text.Motion_FastStraight:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:771    .text.Motion_FastStraight:00000000 Motion_FastStraight
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:832    .text.Motion_Restart:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:839    .text.Motion_Restart:00000000 Motion_Restart
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:924    .text.Motion_Restart:0000007c $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:929    .text.Motion_SlalomLeft:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:936    .text.Motion_SlalomLeft:00000000 Motion_SlalomLeft
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1034   .text.Motion_SlalomLeft:000000a4 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1040   .text.Motion_StartFast:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1047   .text.Motion_StartFast:00000000 Motion_StartFast
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1103   .text.Motion_StartFast:00000050 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1108   .text.Motion_StraightFast:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1115   .text.Motion_StraightFast:00000000 Motion_StraightFast
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1175   .text.Motion_StraightFast:00000064 $d
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1181   .text.Motion_GoalFast:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1188   .text.Motion_GoalFast:00000000 Motion_GoalFast
-C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s:1249   .text.Motion_GoalFast:00000064 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:18     .text.Straight_half_accel:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:25     .text.Straight_half_accel:00000000 Straight_half_accel
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:66     .text.Straight_half_stop:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:73     .text.Straight_half_stop:00000000 Straight_half_stop
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:118    .text.Straight_half_stop:00000044 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:124    .text.Straight_const:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:131    .text.Straight_const:00000000 Straight_const
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:176    .text.Straight_const:00000044 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:182    .text.LeftTurn:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:189    .text.LeftTurn:00000000 LeftTurn
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:231    .text.RightTurn:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:238    .text.RightTurn:00000000 RightTurn
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:280    .text.U_Turn:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:287    .text.U_Turn:00000000 U_Turn
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:329    .text.Motion_Start:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:336    .text.Motion_Start:00000000 Motion_Start
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:388    .text.Motion_Start:00000040 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:395    .text.Motion_Straight:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:402    .text.Motion_Straight:00000000 Motion_Straight
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:431    .text.Motion_Straight:00000018 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:437    .text.Motion_Left:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:444    .text.Motion_Left:00000000 Motion_Left
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:507    .text.Motion_Left:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:513    .text.Motion_Right:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:520    .text.Motion_Right:00000000 Motion_Right
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:583    .text.Motion_Right:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:589    .text.Motion_Uturn:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:596    .text.Motion_Uturn:00000000 Motion_Uturn
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:659    .text.Motion_Uturn:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:665    .text.Motion_Kabeate:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:672    .text.Motion_Kabeate:00000000 Motion_Kabeate
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:785    .text.Motion_Kabeate:000000a4 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:793    .text.Motion_Goal:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:800    .text.Motion_Goal:00000000 Motion_Goal
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:833    .text.Motion_Goal:0000001c $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:840    .text.Motion_Restart:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:847    .text.Motion_Restart:00000000 Motion_Restart
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:939    .text.Motion_Restart:00000084 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:946    .text.Motion_SlalomLeft:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:953    .text.Motion_SlalomLeft:00000000 Motion_SlalomLeft
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1055   .text.Motion_SlalomLeft:000000a4 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1062   .text.Motion_SlalomRight:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1069   .text.Motion_SlalomRight:00000000 Motion_SlalomRight
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1171   .text.Motion_SlalomRight:000000a8 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1178   .text.Motion_StartFast:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1185   .text.Motion_StartFast:00000000 Motion_StartFast
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1252   .text.Motion_StartFast:00000060 $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1260   .text.Motion_StraightFast:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1267   .text.Motion_StraightFast:00000000 Motion_StraightFast
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1331   .text.Motion_StraightFast:0000006c $d
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1338   .text.Motion_GoalFast:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1345   .text.Motion_GoalFast:00000000 Motion_GoalFast
+C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s:1410   .text.Motion_GoalFast:0000006c $d
 
 UNDEFINED SYMBOLS
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9YAo2y.s 			page 32
+
+
 Straight_Calc_fb
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccxc4fnf.s 			page 28
-
-
 Yawrate_Calc_fb
 enc
+enc_sum
+y_sum
 flag_motion_end
+flag_wall
 HAL_Delay

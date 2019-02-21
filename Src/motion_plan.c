@@ -194,8 +194,8 @@ unsigned char Maze_Next_Motion(void)
 	*/
 	unsigned char tmp_step = MAX_STEP; // 歩数
 	unsigned char tmp_dir = UTURN;	 // 方向
-									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
-									   // 迷路外に進むのとゴールがスタートマス以外の場合(0,0)に進むのを阻止
+									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+									 // 迷路外に進むのとゴールがスタートマス以外の場合(0,0)に進むのを阻止
 
 	unsigned char x = position >> 4 & 0b1111;
 	unsigned char y = position & 0b1111;
@@ -236,7 +236,7 @@ unsigned char Maze_Next_Motion(void)
 				}
 			}
 		}
-		if (tmp_step == MAX_STEP)
+		if (tmp_step == MAX_STEP  || maze.step[x][y-1] < tmp_step)
 		{
 			if ((maze.wall_horizontal[y] >> x & 0b1) == FALSE)
 			{
@@ -282,7 +282,7 @@ unsigned char Maze_Next_Motion(void)
 				}
 			}
 		}
-		if (tmp_step == MAX_STEP)
+		if (tmp_step == MAX_STEP || maze.step[x - 1][y] < tmp_step)
 		{
 			if ((maze.wall_vertical[x] >> y & 0b1) == FALSE)
 			{
@@ -328,9 +328,9 @@ unsigned char Maze_Next_Motion(void)
 				}
 			}
 		}
-		if (tmp_step == MAX_STEP)
+		if (tmp_step == MAX_STEP || maze.step[x][y+1] < tmp_step)
 		{
-			if ((maze.wall_horizontal[y - 1] >> x & 0b1) == FALSE)
+			if ((maze.wall_horizontal[y - 1] >> x & 0b1) == FALSE && y>0)
 			{
 				tmp_dir = UTURN;
 			}
@@ -374,9 +374,9 @@ unsigned char Maze_Next_Motion(void)
 				}
 			}
 		}
-		if (tmp_step == MAX_STEP)
+		if (tmp_step == MAX_STEP || maze.step[x + 1][y] < tmp_step)
 		{
-			if ((maze.wall_vertical[x - 1] >> y & 0b1) == FALSE)
+			if ((maze.wall_vertical[x - 1] >> y & 0b1) == FALSE && x>0)
 			{
 				tmp_dir = UTURN;
 			}
@@ -634,8 +634,8 @@ void Plan_Fast(void)
 	{
 	}
 	Output_Buzzer(HZ_G);
+	HAL_Delay(2500);
 	gyro_offset_calc_reset();
-
 	HAL_Delay(2500);
 	flag_motor = TRUE;
 

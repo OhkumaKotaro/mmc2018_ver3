@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
   29:Src/motion_plan.c **** 
   30:Src/motion_plan.c **** extern uint8_t position;
   31:Src/motion_plan.c **** extern uint8_t direction;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 2
 
 
   32:Src/motion_plan.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
   54              		.loc 1 57 0 is_stmt 1
   55 0016 7047     		bx	lr
   56              		.cfi_endproc
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 3
 
 
   57              	.LFE126:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
   99              		.align	1
  100              		.global	deq_motion
  101              		.syntax unified
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 4
 
 
  102              		.thumb
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  147              	.L11:
  148 000a 03       		.byte	(.L10-.L11)/2
  149 000b 2C       		.byte	(.L12-.L11)/2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 5
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 5
 
 
  150 000c 49       		.byte	(.L13-.L11)/2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
   96:Src/motion_plan.c **** 		case SOUTH:
   97:Src/motion_plan.c **** 			position += 1 << 4;
  192              		.loc 1 97 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 6
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 6
 
 
  193 0042 534A     		ldr	r2, .L41+4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  111:Src/motion_plan.c **** 			break;
  234              		.loc 1 111 0
  235 007c 7047     		bx	lr
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 7
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 7
 
 
  236              	.L23:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  274              		.loc 1 127 0
  275 00ac 384A     		ldr	r2, .L41+4
  276 00ae 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 8
 
 
  277 00b0 1033     		adds	r3, r3, #16
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  318 00e8 1A70     		strb	r2, [r3]
  141:Src/motion_plan.c **** 			break;
  319              		.loc 1 141 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 9
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 9
 
 
  320 00ea 7047     		bx	lr
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  359              		.loc 1 156 0
  360 011c 1C4A     		ldr	r2, .L41+4
  361 011e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 10
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 10
 
 
  362 0120 0133     		adds	r3, r3, #1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  402 0154 0D4B     		ldr	r3, .L41
  403 0156 0222     		movs	r2, #2
  404 0158 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 11
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 11
 
 
  171:Src/motion_plan.c **** 			break;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  442              		.loc 1 187 0
  443 018a 7047     		bx	lr
  444              	.L42:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 12
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 12
 
 
  445              		.align	2
@@ -698,12 +698,12 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  194:Src/motion_plan.c **** 	*/
  195:Src/motion_plan.c **** 	unsigned char tmp_step = MAX_STEP; // 歩数
  196:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 197:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 198:Src/motion_plan.c **** 									   // 迷路外に進むのとゴールがスタートマス以外の場合(0,0)に進む�
+ 197:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 198:Src/motion_plan.c **** 									 // 迷路外に進むのとゴールがスタートマス以外の場合(0,0)に進むの
  199:Src/motion_plan.c **** 
  200:Src/motion_plan.c **** 	unsigned char x = position >> 4 & 0b1111;
  475              		.loc 1 200 0
- 476 0002 BC4B     		ldr	r3, .L89
+ 476 0002 A34B     		ldr	r3, .L94
  477 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  478 0006 1909     		lsrs	r1, r3, #4
  479              	.LVL12:
@@ -714,19 +714,19 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  202:Src/motion_plan.c **** 
  203:Src/motion_plan.c **** 	switch (direction)
  483              		.loc 1 203 0
- 484 000c BA4A     		ldr	r2, .L89+4
+ 484 000c A14A     		ldr	r2, .L94+4
  485 000e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
  486 0010 032A     		cmp	r2, #3
- 487 0012 00F26481 		bhi	.L62
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 13
+ 487 0012 00F28F81 		bhi	.L66
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 13
 
 
  488 0016 DFE812F0 		tbh	[pc, r2, lsl #1]
  489              	.L46:
  490 001a 0400     		.2byte	(.L45-.L46)/2
- 491 001c 5C00     		.2byte	(.L47-.L46)/2
- 492 001e B200     		.2byte	(.L48-.L46)/2
- 493 0020 0901     		.2byte	(.L49-.L46)/2
+ 491 001c 6400     		.2byte	(.L47-.L46)/2
+ 492 001e C400     		.2byte	(.L48-.L46)/2
+ 493 0020 2501     		.2byte	(.L49-.L46)/2
  494              		.p2align 1
  495              	.L45:
  204:Src/motion_plan.c **** 	{
@@ -734,36 +734,36 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  206:Src/motion_plan.c **** 		if (maze.step[x][y + 1] < tmp_step)
  496              		.loc 1 206 0
  497 0022 581C     		adds	r0, r3, #1
- 498 0024 B54C     		ldr	r4, .L89+8
+ 498 0024 9C4C     		ldr	r4, .L94+8
  499 0026 04EB0114 		add	r4, r4, r1, lsl #4
  500 002a 2044     		add	r0, r0, r4
- 501 002c 90F80451 		ldrb	r5, [r0, #260]	@ zero_extendqisi2
- 502 0030 FF2D     		cmp	r5, #255
- 503 0032 0ED0     		beq	.L63
+ 501 002c 90F80441 		ldrb	r4, [r0, #260]	@ zero_extendqisi2
+ 502 0030 FF2C     		cmp	r4, #255
+ 503 0032 0ED0     		beq	.L67
  207:Src/motion_plan.c **** 		{
  208:Src/motion_plan.c **** 			if (y < MAZE_SIZE - 1)
  504              		.loc 1 208 0
  505 0034 0E2B     		cmp	r3, #14
- 506 0036 39D8     		bhi	.L64
+ 506 0036 4FD8     		bhi	.L68
  209:Src/motion_plan.c **** 			{
  210:Src/motion_plan.c **** 				if ((maze.wall_horizontal[y] >> x & 0b1) == FALSE)
  507              		.loc 1 210 0
  508 0038 03F11000 		add	r0, r3, #16
- 509 003c AF4C     		ldr	r4, .L89+8
- 510 003e 04EB8000 		add	r0, r4, r0, lsl #2
+ 509 003c 964D     		ldr	r5, .L94+8
+ 510 003e 05EB8000 		add	r0, r5, r0, lsl #2
  511 0042 4068     		ldr	r0, [r0, #4]
  512 0044 C840     		lsrs	r0, r0, r1
  513 0046 10F0010F 		tst	r0, #1
- 514 004a 32D0     		beq	.L65
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 514 004a 48D0     		beq	.L69
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
  515              		.loc 1 196 0
  516 004c 0320     		movs	r0, #3
  195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
  517              		.loc 1 195 0
- 518 004e FF25     		movs	r5, #255
+ 518 004e FF24     		movs	r4, #255
  519 0050 00E0     		b	.L50
- 520              	.L63:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 520              	.L67:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
  521              		.loc 1 196 0
  522 0052 0320     		movs	r0, #3
  523              	.L50:
@@ -777,14 +777,14 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  217:Src/motion_plan.c **** 		if (maze.step[x - 1][y] < tmp_step)
  525              		.loc 1 217 0
  526 0054 4E1E     		subs	r6, r1, #1
- 527 0056 A94C     		ldr	r4, .L89+8
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 14
+ 527 0056 904D     		ldr	r5, .L94+8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 14
 
 
- 528 0058 04EB0614 		add	r4, r4, r6, lsl #4
- 529 005c 1C44     		add	r4, r4, r3
- 530 005e 94F80441 		ldrb	r4, [r4, #260]	@ zero_extendqisi2
- 531 0062 AC42     		cmp	r4, r5
+ 528 0058 05EB0615 		add	r5, r5, r6, lsl #4
+ 529 005c 1D44     		add	r5, r5, r3
+ 530 005e 95F80451 		ldrb	r5, [r5, #260]	@ zero_extendqisi2
+ 531 0062 A542     		cmp	r5, r4
  532 0064 0AD2     		bcs	.L51
  218:Src/motion_plan.c **** 		{
  219:Src/motion_plan.c **** 			if (x > 0)
@@ -793,7 +793,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  220:Src/motion_plan.c **** 			{
  221:Src/motion_plan.c **** 				if ((maze.wall_vertical[x - 1] >> y & 0b1) == FALSE)
  535              		.loc 1 221 0
- 536 0068 A44F     		ldr	r7, .L89+8
+ 536 0068 8B4F     		ldr	r7, .L94+8
  537 006a 07EB8606 		add	r6, r7, r6, lsl #2
  538 006e 7668     		ldr	r6, [r6, #4]
  539 0070 DE40     		lsrs	r6, r6, r3
@@ -807,7 +807,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  544              	.LVL15:
  223:Src/motion_plan.c **** 					tmp_dir = LEFT;
  545              		.loc 1 223 0
- 546 007a 2546     		mov	r5, r4
+ 546 007a 2C46     		mov	r4, r5
  547              	.LVL16:
  548              	.L51:
  225:Src/motion_plan.c **** 				}
@@ -816,11 +816,11 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  228:Src/motion_plan.c **** 		if (maze.step[x + 1][y] < tmp_step)
  549              		.loc 1 228 0
  550 007c 4A1C     		adds	r2, r1, #1
- 551 007e 9F4C     		ldr	r4, .L89+8
- 552 0080 04EB0212 		add	r2, r4, r2, lsl #4
+ 551 007e 864D     		ldr	r5, .L94+8
+ 552 0080 05EB0212 		add	r2, r5, r2, lsl #4
  553 0084 1A44     		add	r2, r2, r3
  554 0086 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
- 555 008a AA42     		cmp	r2, r5
+ 555 008a A242     		cmp	r2, r4
  556 008c 0AD2     		bcs	.L52
  229:Src/motion_plan.c **** 		{
  230:Src/motion_plan.c **** 			if (x < MAZE_SIZE - 1)
@@ -830,18 +830,18 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  231:Src/motion_plan.c **** 			{
  232:Src/motion_plan.c **** 				if ((maze.wall_vertical[x] >> y & 0b1) == FALSE)
  560              		.loc 1 232 0
- 561 0092 04EB8104 		add	r4, r4, r1, lsl #2
- 562 0096 6468     		ldr	r4, [r4, #4]
- 563 0098 DC40     		lsrs	r4, r4, r3
- 564 009a 14F0010F 		tst	r4, #1
+ 561 0092 05EB8105 		add	r5, r5, r1, lsl #2
+ 562 0096 6D68     		ldr	r5, [r5, #4]
+ 563 0098 DD40     		lsrs	r5, r5, r3
+ 564 009a 15F0010F 		tst	r5, #1
  565 009e 01D1     		bne	.L52
  233:Src/motion_plan.c **** 				{
  234:Src/motion_plan.c **** 					tmp_step = maze.step[x + 1][y];
  566              		.loc 1 234 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 15
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 15
 
 
- 567 00a0 1546     		mov	r5, r2
+ 567 00a0 1446     		mov	r4, r2
  568              	.LVL17:
  235:Src/motion_plan.c **** 					tmp_dir = RIGHT;
  569              		.loc 1 235 0
@@ -851,16 +851,37 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  236:Src/motion_plan.c **** 				}
  237:Src/motion_plan.c **** 			}
  238:Src/motion_plan.c **** 		}
- 239:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP)
+ 239:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP  || maze.step[x][y-1] < tmp_step)
  573              		.loc 1 239 0
- 574 00a4 FF2D     		cmp	r5, #255
- 575 00a6 06D0     		beq	.L88
- 576              	.LVL19:
- 577              	.L44:
+ 574 00a4 FF2C     		cmp	r4, #255
+ 575 00a6 08D0     		beq	.L53
+ 576              		.loc 1 239 0 is_stmt 0 discriminator 1
+ 577 00a8 5A1E     		subs	r2, r3, #1
+ 578 00aa 7B4D     		ldr	r5, .L94+8
+ 579 00ac 05EB0115 		add	r5, r5, r1, lsl #4
+ 580 00b0 2A44     		add	r2, r2, r5
+ 581 00b2 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
+ 582 00b6 A242     		cmp	r2, r4
+ 583 00b8 0CD2     		bcs	.L44
+ 584              	.L53:
  240:Src/motion_plan.c **** 		{
  241:Src/motion_plan.c **** 			if ((maze.wall_horizontal[y] >> x & 0b1) == FALSE)
+ 585              		.loc 1 241 0 is_stmt 1
+ 586 00ba 03F11002 		add	r2, r3, #16
+ 587 00be 764B     		ldr	r3, .L94+8
+ 588              	.LVL19:
+ 589 00c0 03EB8203 		add	r3, r3, r2, lsl #2
+ 590 00c4 5B68     		ldr	r3, [r3, #4]
+ 591 00c6 23FA01F1 		lsr	r1, r3, r1
+ 592              	.LVL20:
+ 593 00ca 11F0010F 		tst	r1, #1
+ 594 00ce 40F03381 		bne	.L72
  242:Src/motion_plan.c **** 			{
  243:Src/motion_plan.c **** 				tmp_dir = UTURN;
+ 595              		.loc 1 243 0
+ 596 00d2 0320     		movs	r0, #3
+ 597              	.LVL21:
+ 598              	.L44:
  244:Src/motion_plan.c **** 			}
  245:Src/motion_plan.c **** 			else
  246:Src/motion_plan.c **** 			{
@@ -877,6 +898,9 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  257:Src/motion_plan.c **** 				{
  258:Src/motion_plan.c **** 					tmp_step = maze.step[x + 1][y];
  259:Src/motion_plan.c **** 					tmp_dir = FRONT;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 16
+
+
  260:Src/motion_plan.c **** 				}
  261:Src/motion_plan.c **** 			}
  262:Src/motion_plan.c **** 		}
@@ -898,14 +922,11 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  278:Src/motion_plan.c **** 				if ((maze.wall_horizontal[y - 1] >> x & 0b1) == FALSE)
  279:Src/motion_plan.c **** 				{
  280:Src/motion_plan.c **** 					tmp_step = maze.step[x][y - 1];
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 16
-
-
  281:Src/motion_plan.c **** 					tmp_dir = RIGHT;
  282:Src/motion_plan.c **** 				}
  283:Src/motion_plan.c **** 			}
  284:Src/motion_plan.c **** 		}
- 285:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP)
+ 285:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP || maze.step[x - 1][y] < tmp_step)
  286:Src/motion_plan.c **** 		{
  287:Src/motion_plan.c **** 			if ((maze.wall_vertical[x] >> y & 0b1) == FALSE)
  288:Src/motion_plan.c **** 			{
@@ -937,6 +958,9 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  314:Src/motion_plan.c **** 				{
  315:Src/motion_plan.c **** 					tmp_step = maze.step[x + 1][y];
  316:Src/motion_plan.c **** 					tmp_dir = LEFT;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 17
+
+
  317:Src/motion_plan.c **** 				}
  318:Src/motion_plan.c **** 			}
  319:Src/motion_plan.c **** 		}
@@ -951,16 +975,13 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  328:Src/motion_plan.c **** 				}
  329:Src/motion_plan.c **** 			}
  330:Src/motion_plan.c **** 		}
- 331:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP)
+ 331:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP || maze.step[x][y+1] < tmp_step)
  332:Src/motion_plan.c **** 		{
- 333:Src/motion_plan.c **** 			if ((maze.wall_horizontal[y - 1] >> x & 0b1) == FALSE)
+ 333:Src/motion_plan.c **** 			if ((maze.wall_horizontal[y - 1] >> x & 0b1) == FALSE && y>0)
  334:Src/motion_plan.c **** 			{
  335:Src/motion_plan.c **** 				tmp_dir = UTURN;
  336:Src/motion_plan.c **** 			}
  337:Src/motion_plan.c **** 			else
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 17
-
-
  338:Src/motion_plan.c **** 			{
  339:Src/motion_plan.c **** 				tmp_dir = KABEATE;
  340:Src/motion_plan.c **** 			}
@@ -997,12 +1018,15 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  371:Src/motion_plan.c **** 				{
  372:Src/motion_plan.c **** 					tmp_step = maze.step[x][y + 1];
  373:Src/motion_plan.c **** 					tmp_dir = RIGHT;
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 18
+
+
  374:Src/motion_plan.c **** 				}
  375:Src/motion_plan.c **** 			}
  376:Src/motion_plan.c **** 		}
- 377:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP)
+ 377:Src/motion_plan.c **** 		if (tmp_step == MAX_STEP || maze.step[x + 1][y] < tmp_step)
  378:Src/motion_plan.c **** 		{
- 379:Src/motion_plan.c **** 			if ((maze.wall_vertical[x - 1] >> y & 0b1) == FALSE)
+ 379:Src/motion_plan.c **** 			if ((maze.wall_vertical[x - 1] >> y & 0b1) == FALSE && x>0)
  380:Src/motion_plan.c **** 			{
  381:Src/motion_plan.c **** 				tmp_dir = UTURN;
  382:Src/motion_plan.c **** 			}
@@ -1017,840 +1041,869 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  391:Src/motion_plan.c **** 	}
  392:Src/motion_plan.c **** 	return tmp_dir;
  393:Src/motion_plan.c **** }
- 578              		.loc 1 393 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 18
-
-
- 579 00a8 F0BC     		pop	{r4, r5, r6, r7}
- 580              	.LCFI1:
- 581              		.cfi_remember_state
- 582              		.cfi_restore 7
- 583              		.cfi_restore 6
- 584              		.cfi_restore 5
- 585              		.cfi_restore 4
- 586              		.cfi_def_cfa_offset 0
- 587 00aa 7047     		bx	lr
- 588              	.LVL20:
- 589              	.L64:
- 590              	.LCFI2:
- 591              		.cfi_restore_state
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 592              		.loc 1 196 0
- 593 00ac 0320     		movs	r0, #3
+ 599              		.loc 1 393 0
+ 600 00d4 F0BC     		pop	{r4, r5, r6, r7}
+ 601              	.LCFI1:
+ 602              		.cfi_remember_state
+ 603              		.cfi_restore 7
+ 604              		.cfi_restore 6
+ 605              		.cfi_restore 5
+ 606              		.cfi_restore 4
+ 607              		.cfi_def_cfa_offset 0
+ 608 00d6 7047     		bx	lr
+ 609              	.LVL22:
+ 610              	.L68:
+ 611              	.LCFI2:
+ 612              		.cfi_restore_state
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 613              		.loc 1 196 0
+ 614 00d8 0320     		movs	r0, #3
  195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 594              		.loc 1 195 0
- 595 00ae FF25     		movs	r5, #255
- 596 00b0 D0E7     		b	.L50
- 597              	.L65:
+ 615              		.loc 1 195 0
+ 616 00da FF24     		movs	r4, #255
+ 617 00dc BAE7     		b	.L50
+ 618              	.L69:
  213:Src/motion_plan.c **** 				}
- 598              		.loc 1 213 0
- 599 00b2 0120     		movs	r0, #1
- 600 00b4 CEE7     		b	.L50
- 601              	.LVL21:
- 602              	.L88:
- 241:Src/motion_plan.c **** 			{
- 603              		.loc 1 241 0
- 604 00b6 03F11002 		add	r2, r3, #16
- 605 00ba 904B     		ldr	r3, .L89+8
- 606              	.LVL22:
- 607 00bc 03EB8203 		add	r3, r3, r2, lsl #2
- 608 00c0 5B68     		ldr	r3, [r3, #4]
- 609 00c2 23FA01F1 		lsr	r1, r3, r1
- 610              	.LVL23:
- 611 00c6 11F0010F 		tst	r1, #1
- 612 00ca 40F00A81 		bne	.L68
- 243:Src/motion_plan.c **** 			}
- 613              		.loc 1 243 0
- 614 00ce 0320     		movs	r0, #3
- 615              	.LVL24:
- 616 00d0 EAE7     		b	.L44
- 617              	.LVL25:
- 618              	.L47:
+ 619              		.loc 1 213 0
+ 620 00de 0120     		movs	r0, #1
+ 621 00e0 B8E7     		b	.L50
+ 622              	.L47:
  252:Src/motion_plan.c **** 		{
- 619              		.loc 1 252 0
- 620 00d2 481C     		adds	r0, r1, #1
- 621 00d4 894C     		ldr	r4, .L89+8
- 622 00d6 04EB0010 		add	r0, r4, r0, lsl #4
- 623 00da 1844     		add	r0, r0, r3
- 624 00dc 90F80451 		ldrb	r5, [r0, #260]	@ zero_extendqisi2
- 625 00e0 FF2D     		cmp	r5, #255
- 626 00e2 0BD0     		beq	.L69
+ 623              		.loc 1 252 0
+ 624 00e2 481C     		adds	r0, r1, #1
+ 625 00e4 6C4C     		ldr	r4, .L94+8
+ 626 00e6 04EB0010 		add	r0, r4, r0, lsl #4
+ 627 00ea 1844     		add	r0, r0, r3
+ 628 00ec 90F80441 		ldrb	r4, [r0, #260]	@ zero_extendqisi2
+ 629 00f0 FF2C     		cmp	r4, #255
+ 630 00f2 0CD0     		beq	.L73
  254:Src/motion_plan.c **** 			{
- 627              		.loc 1 254 0
- 628 00e4 0E29     		cmp	r1, #14
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 19
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 19
 
 
- 629 00e6 45D8     		bhi	.L70
+ 631              		.loc 1 254 0
+ 632 00f4 0E29     		cmp	r1, #14
+ 633 00f6 4FD8     		bhi	.L74
  256:Src/motion_plan.c **** 				{
- 630              		.loc 1 256 0
- 631 00e8 04EB8100 		add	r0, r4, r1, lsl #2
- 632 00ec 4068     		ldr	r0, [r0, #4]
- 633 00ee D840     		lsrs	r0, r0, r3
- 634 00f0 10F0010F 		tst	r0, #1
- 635 00f4 41D0     		beq	.L71
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 636              		.loc 1 196 0
- 637 00f6 0320     		movs	r0, #3
+ 634              		.loc 1 256 0
+ 635 00f8 6748     		ldr	r0, .L94+8
+ 636 00fa 00EB8100 		add	r0, r0, r1, lsl #2
+ 637 00fe 4068     		ldr	r0, [r0, #4]
+ 638 0100 D840     		lsrs	r0, r0, r3
+ 639 0102 10F0010F 		tst	r0, #1
+ 640 0106 4AD0     		beq	.L75
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 641              		.loc 1 196 0
+ 642 0108 0320     		movs	r0, #3
  195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 638              		.loc 1 195 0
- 639 00f8 FF25     		movs	r5, #255
- 640 00fa 00E0     		b	.L53
- 641              	.L69:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 642              		.loc 1 196 0
- 643 00fc 0320     		movs	r0, #3
- 644              	.L53:
- 645              	.LVL26:
+ 643              		.loc 1 195 0
+ 644 010a FF24     		movs	r4, #255
+ 645 010c 00E0     		b	.L54
+ 646              	.L73:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 647              		.loc 1 196 0
+ 648 010e 0320     		movs	r0, #3
+ 649              	.L54:
+ 650              	.LVL23:
  263:Src/motion_plan.c **** 		{
- 646              		.loc 1 263 0
- 647 00fe 5A1C     		adds	r2, r3, #1
- 648 0100 7E4C     		ldr	r4, .L89+8
- 649 0102 04EB0114 		add	r4, r4, r1, lsl #4
- 650 0106 2244     		add	r2, r2, r4
- 651 0108 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
- 652 010c AA42     		cmp	r2, r5
- 653 010e 0DD2     		bcs	.L54
+ 651              		.loc 1 263 0
+ 652 0110 5A1C     		adds	r2, r3, #1
+ 653 0112 614D     		ldr	r5, .L94+8
+ 654 0114 05EB0115 		add	r5, r5, r1, lsl #4
+ 655 0118 2A44     		add	r2, r2, r5
+ 656 011a 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
+ 657 011e A242     		cmp	r2, r4
+ 658 0120 0DD2     		bcs	.L55
  265:Src/motion_plan.c **** 			{
- 654              		.loc 1 265 0
- 655 0110 0E2B     		cmp	r3, #14
- 656 0112 0BD8     		bhi	.L54
+ 659              		.loc 1 265 0
+ 660 0122 0E2B     		cmp	r3, #14
+ 661 0124 0BD8     		bhi	.L55
  267:Src/motion_plan.c **** 				{
- 657              		.loc 1 267 0
- 658 0114 03F11004 		add	r4, r3, #16
- 659 0118 784E     		ldr	r6, .L89+8
- 660 011a 06EB8404 		add	r4, r6, r4, lsl #2
- 661 011e 6468     		ldr	r4, [r4, #4]
- 662 0120 CC40     		lsrs	r4, r4, r1
- 663 0122 14F0010F 		tst	r4, #1
- 664 0126 01D1     		bne	.L54
+ 662              		.loc 1 267 0
+ 663 0126 03F11005 		add	r5, r3, #16
+ 664 012a 5B4E     		ldr	r6, .L94+8
+ 665 012c 06EB8505 		add	r5, r6, r5, lsl #2
+ 666 0130 6D68     		ldr	r5, [r5, #4]
+ 667 0132 CD40     		lsrs	r5, r5, r1
+ 668 0134 15F0010F 		tst	r5, #1
+ 669 0138 01D1     		bne	.L55
  269:Src/motion_plan.c **** 					tmp_dir = LEFT;
- 665              		.loc 1 269 0
- 666 0128 1546     		mov	r5, r2
- 667              	.LVL27:
+ 670              		.loc 1 269 0
+ 671 013a 1446     		mov	r4, r2
+ 672              	.LVL24:
  270:Src/motion_plan.c **** 				}
- 668              		.loc 1 270 0
- 669 012a 0020     		movs	r0, #0
- 670              	.LVL28:
- 671              	.L54:
+ 673              		.loc 1 270 0
+ 674 013c 0020     		movs	r0, #0
+ 675              	.LVL25:
+ 676              	.L55:
  274:Src/motion_plan.c **** 		{
- 672              		.loc 1 274 0
- 673 012c 5C1E     		subs	r4, r3, #1
- 674 012e 734A     		ldr	r2, .L89+8
- 675 0130 02EB0112 		add	r2, r2, r1, lsl #4
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 20
+ 677              		.loc 1 274 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 20
 
 
- 676 0134 2244     		add	r2, r2, r4
- 677 0136 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
- 678 013a AA42     		cmp	r2, r5
- 679 013c 0CD2     		bcs	.L55
+ 678 013e 5D1E     		subs	r5, r3, #1
+ 679 0140 554A     		ldr	r2, .L94+8
+ 680 0142 02EB0112 		add	r2, r2, r1, lsl #4
+ 681 0146 2A44     		add	r2, r2, r5
+ 682 0148 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
+ 683 014c A242     		cmp	r2, r4
+ 684 014e 0CD2     		bcs	.L56
  276:Src/motion_plan.c **** 			{
- 680              		.loc 1 276 0
- 681 013e 5BB1     		cbz	r3, .L55
+ 685              		.loc 1 276 0
+ 686 0150 5BB1     		cbz	r3, .L56
  278:Src/motion_plan.c **** 				{
- 682              		.loc 1 278 0
- 683 0140 03F10F04 		add	r4, r3, #15
- 684 0144 6D4E     		ldr	r6, .L89+8
- 685 0146 06EB8404 		add	r4, r6, r4, lsl #2
- 686 014a 6468     		ldr	r4, [r4, #4]
- 687 014c CC40     		lsrs	r4, r4, r1
- 688 014e 14F0010F 		tst	r4, #1
- 689 0152 01D1     		bne	.L55
+ 687              		.loc 1 278 0
+ 688 0152 03F10F05 		add	r5, r3, #15
+ 689 0156 504E     		ldr	r6, .L94+8
+ 690 0158 06EB8505 		add	r5, r6, r5, lsl #2
+ 691 015c 6D68     		ldr	r5, [r5, #4]
+ 692 015e CD40     		lsrs	r5, r5, r1
+ 693 0160 15F0010F 		tst	r5, #1
+ 694 0164 01D1     		bne	.L56
  280:Src/motion_plan.c **** 					tmp_dir = RIGHT;
- 690              		.loc 1 280 0
- 691 0154 1546     		mov	r5, r2
- 692              	.LVL29:
+ 695              		.loc 1 280 0
+ 696 0166 1446     		mov	r4, r2
+ 697              	.LVL26:
  281:Src/motion_plan.c **** 				}
- 693              		.loc 1 281 0
- 694 0156 0220     		movs	r0, #2
- 695              	.LVL30:
- 696              	.L55:
+ 698              		.loc 1 281 0
+ 699 0168 0220     		movs	r0, #2
+ 700              	.LVL27:
+ 701              	.L56:
  285:Src/motion_plan.c **** 		{
- 697              		.loc 1 285 0
- 698 0158 FF2D     		cmp	r5, #255
- 699 015a A5D1     		bne	.L44
+ 702              		.loc 1 285 0
+ 703 016a FF2C     		cmp	r4, #255
+ 704 016c 08D0     		beq	.L57
+ 285:Src/motion_plan.c **** 		{
+ 705              		.loc 1 285 0 is_stmt 0 discriminator 1
+ 706 016e 4A1E     		subs	r2, r1, #1
+ 707 0170 494D     		ldr	r5, .L94+8
+ 708 0172 05EB0212 		add	r2, r5, r2, lsl #4
+ 709 0176 1A44     		add	r2, r2, r3
+ 710 0178 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
+ 711 017c A242     		cmp	r2, r4
+ 712 017e A9D2     		bcs	.L44
+ 713              	.L57:
  287:Src/motion_plan.c **** 			{
- 700              		.loc 1 287 0
- 701 015c 674A     		ldr	r2, .L89+8
- 702 015e 02EB8101 		add	r1, r2, r1, lsl #2
- 703              	.LVL31:
- 704 0162 4A68     		ldr	r2, [r1, #4]
- 705 0164 22FA03F3 		lsr	r3, r2, r3
- 706              	.LVL32:
- 707 0168 13F0010F 		tst	r3, #1
- 708 016c 40F0BB80 		bne	.L74
+ 714              		.loc 1 287 0 is_stmt 1
+ 715 0180 454A     		ldr	r2, .L94+8
+ 716 0182 02EB8101 		add	r1, r2, r1, lsl #2
+ 717              	.LVL28:
+ 718 0186 4A68     		ldr	r2, [r1, #4]
+ 719 0188 22FA03F3 		lsr	r3, r2, r3
+ 720              	.LVL29:
+ 721 018c 13F0010F 		tst	r3, #1
+ 722 0190 40F0D480 		bne	.L78
  289:Src/motion_plan.c **** 			}
- 709              		.loc 1 289 0
- 710 0170 0320     		movs	r0, #3
- 711              	.LVL33:
- 712 0172 99E7     		b	.L44
- 713              	.LVL34:
- 714              	.L70:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 715              		.loc 1 196 0
- 716 0174 0320     		movs	r0, #3
+ 723              		.loc 1 289 0
+ 724 0194 0320     		movs	r0, #3
+ 725              	.LVL30:
+ 726 0196 9DE7     		b	.L44
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 21
+
+
+ 727              	.LVL31:
+ 728              	.L74:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 729              		.loc 1 196 0
+ 730 0198 0320     		movs	r0, #3
  195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 717              		.loc 1 195 0
- 718 0176 FF25     		movs	r5, #255
- 719 0178 C1E7     		b	.L53
- 720              	.L71:
+ 731              		.loc 1 195 0
+ 732 019a FF24     		movs	r4, #255
+ 733 019c B8E7     		b	.L54
+ 734              	.L75:
  259:Src/motion_plan.c **** 				}
- 721              		.loc 1 259 0
- 722 017a 1046     		mov	r0, r2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 21
-
-
- 723 017c BFE7     		b	.L53
- 724              	.L48:
+ 735              		.loc 1 259 0
+ 736 019e 1046     		mov	r0, r2
+ 737 01a0 B6E7     		b	.L54
+ 738              	.L48:
  298:Src/motion_plan.c **** 		{
- 725              		.loc 1 298 0
- 726 017e 5E1E     		subs	r6, r3, #1
- 727 0180 5E48     		ldr	r0, .L89+8
- 728 0182 00EB0110 		add	r0, r0, r1, lsl #4
- 729 0186 3044     		add	r0, r0, r6
- 730 0188 90F80471 		ldrb	r7, [r0, #260]	@ zero_extendqisi2
- 731 018c FF2F     		cmp	r7, #255
- 732 018e 0ED0     		beq	.L75
+ 739              		.loc 1 298 0
+ 740 01a2 5F1E     		subs	r7, r3, #1
+ 741 01a4 3C48     		ldr	r0, .L94+8
+ 742 01a6 00EB0110 		add	r0, r0, r1, lsl #4
+ 743 01aa 3844     		add	r0, r0, r7
+ 744 01ac 90F80441 		ldrb	r4, [r0, #260]	@ zero_extendqisi2
+ 745 01b0 FF2C     		cmp	r4, #255
+ 746 01b2 0ED0     		beq	.L79
  300:Src/motion_plan.c **** 			{
- 733              		.loc 1 300 0
- 734 0190 002B     		cmp	r3, #0
- 735 0192 46D0     		beq	.L76
+ 747              		.loc 1 300 0
+ 748 01b4 002B     		cmp	r3, #0
+ 749 01b6 50D0     		beq	.L80
  302:Src/motion_plan.c **** 				{
- 736              		.loc 1 302 0
- 737 0194 06F11000 		add	r0, r6, #16
- 738 0198 584C     		ldr	r4, .L89+8
- 739 019a 04EB8000 		add	r0, r4, r0, lsl #2
- 740 019e 4068     		ldr	r0, [r0, #4]
- 741 01a0 C840     		lsrs	r0, r0, r1
- 742 01a2 10F0010F 		tst	r0, #1
- 743 01a6 3FD0     		beq	.L77
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 744              		.loc 1 196 0
- 745 01a8 0320     		movs	r0, #3
+ 750              		.loc 1 302 0
+ 751 01b8 07F11000 		add	r0, r7, #16
+ 752 01bc 364D     		ldr	r5, .L94+8
+ 753 01be 05EB8000 		add	r0, r5, r0, lsl #2
+ 754 01c2 4068     		ldr	r0, [r0, #4]
+ 755 01c4 C840     		lsrs	r0, r0, r1
+ 756 01c6 10F0010F 		tst	r0, #1
+ 757 01ca 49D0     		beq	.L81
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 758              		.loc 1 196 0
+ 759 01cc 0320     		movs	r0, #3
  195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 746              		.loc 1 195 0
- 747 01aa FF27     		movs	r7, #255
- 748 01ac 00E0     		b	.L56
- 749              	.L75:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 750              		.loc 1 196 0
- 751 01ae 0320     		movs	r0, #3
- 752              	.L56:
- 753              	.LVL35:
+ 760              		.loc 1 195 0
+ 761 01ce FF24     		movs	r4, #255
+ 762 01d0 00E0     		b	.L58
+ 763              	.L79:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 764              		.loc 1 196 0
+ 765 01d2 0320     		movs	r0, #3
+ 766              	.L58:
+ 767              	.LVL32:
  309:Src/motion_plan.c **** 		{
- 754              		.loc 1 309 0
- 755 01b0 4C1C     		adds	r4, r1, #1
- 756 01b2 524D     		ldr	r5, .L89+8
- 757 01b4 05EB0414 		add	r4, r5, r4, lsl #4
- 758 01b8 1C44     		add	r4, r4, r3
- 759 01ba 94F80441 		ldrb	r4, [r4, #260]	@ zero_extendqisi2
- 760 01be BC42     		cmp	r4, r7
- 761 01c0 0AD2     		bcs	.L57
+ 768              		.loc 1 309 0
+ 769 01d4 4D1C     		adds	r5, r1, #1
+ 770 01d6 304E     		ldr	r6, .L94+8
+ 771 01d8 06EB0515 		add	r5, r6, r5, lsl #4
+ 772 01dc 1D44     		add	r5, r5, r3
+ 773 01de 95F80451 		ldrb	r5, [r5, #260]	@ zero_extendqisi2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 22
+
+
+ 774 01e2 A542     		cmp	r5, r4
+ 775 01e4 0AD2     		bcs	.L59
  311:Src/motion_plan.c **** 			{
- 762              		.loc 1 311 0
- 763 01c2 0E29     		cmp	r1, #14
- 764 01c4 08D8     		bhi	.L57
+ 776              		.loc 1 311 0
+ 777 01e6 0E29     		cmp	r1, #14
+ 778 01e8 08D8     		bhi	.L59
  313:Src/motion_plan.c **** 				{
- 765              		.loc 1 313 0
- 766 01c6 05EB8105 		add	r5, r5, r1, lsl #2
- 767 01ca 6D68     		ldr	r5, [r5, #4]
- 768 01cc DD40     		lsrs	r5, r5, r3
- 769 01ce 15F0010F 		tst	r5, #1
- 770 01d2 01D1     		bne	.L57
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 22
-
-
+ 779              		.loc 1 313 0
+ 780 01ea 06EB8106 		add	r6, r6, r1, lsl #2
+ 781 01ee 7668     		ldr	r6, [r6, #4]
+ 782 01f0 DE40     		lsrs	r6, r6, r3
+ 783 01f2 16F0010F 		tst	r6, #1
+ 784 01f6 01D1     		bne	.L59
  315:Src/motion_plan.c **** 					tmp_dir = LEFT;
- 771              		.loc 1 315 0
- 772 01d4 2746     		mov	r7, r4
- 773              	.LVL36:
+ 785              		.loc 1 315 0
+ 786 01f8 2C46     		mov	r4, r5
+ 787              	.LVL33:
  316:Src/motion_plan.c **** 				}
- 774              		.loc 1 316 0
- 775 01d6 0020     		movs	r0, #0
- 776              	.LVL37:
- 777              	.L57:
+ 788              		.loc 1 316 0
+ 789 01fa 0020     		movs	r0, #0
+ 790              	.LVL34:
+ 791              	.L59:
  320:Src/motion_plan.c **** 		{
- 778              		.loc 1 320 0
- 779 01d8 4D1E     		subs	r5, r1, #1
- 780 01da 484C     		ldr	r4, .L89+8
- 781 01dc 04EB0514 		add	r4, r4, r5, lsl #4
- 782 01e0 1C44     		add	r4, r4, r3
- 783 01e2 94F80441 		ldrb	r4, [r4, #260]	@ zero_extendqisi2
- 784 01e6 BC42     		cmp	r4, r7
- 785 01e8 0CD2     		bcs	.L58
+ 792              		.loc 1 320 0
+ 793 01fc 4E1E     		subs	r6, r1, #1
+ 794 01fe 264D     		ldr	r5, .L94+8
+ 795 0200 05EB0615 		add	r5, r5, r6, lsl #4
+ 796 0204 1D44     		add	r5, r5, r3
+ 797 0206 95F80451 		ldrb	r5, [r5, #260]	@ zero_extendqisi2
+ 798 020a A542     		cmp	r5, r4
+ 799 020c 0BD2     		bcs	.L60
  322:Src/motion_plan.c **** 			{
- 786              		.loc 1 322 0
- 787 01ea 59B1     		cbz	r1, .L58
+ 800              		.loc 1 322 0
+ 801 020e 51B1     		cbz	r1, .L60
  324:Src/motion_plan.c **** 				{
- 788              		.loc 1 324 0
- 789 01ec DFF80CC1 		ldr	ip, .L89+8
- 790 01f0 0CEB8505 		add	r5, ip, r5, lsl #2
- 791 01f4 6D68     		ldr	r5, [r5, #4]
- 792 01f6 25FA03F3 		lsr	r3, r5, r3
- 793              	.LVL38:
- 794 01fa 13F0010F 		tst	r3, #1
- 795 01fe 01D1     		bne	.L58
+ 802              		.loc 1 324 0
+ 803 0210 DFF884C0 		ldr	ip, .L94+8
+ 804 0214 0CEB8606 		add	r6, ip, r6, lsl #2
+ 805 0218 7668     		ldr	r6, [r6, #4]
+ 806 021a DE40     		lsrs	r6, r6, r3
+ 807 021c 16F0010F 		tst	r6, #1
+ 808 0220 01D1     		bne	.L60
  327:Src/motion_plan.c **** 				}
- 796              		.loc 1 327 0
- 797 0200 1046     		mov	r0, r2
- 798              	.LVL39:
+ 809              		.loc 1 327 0
+ 810 0222 1046     		mov	r0, r2
+ 811              	.LVL35:
  326:Src/motion_plan.c **** 					tmp_dir = RIGHT;
- 799              		.loc 1 326 0
- 800 0202 2746     		mov	r7, r4
- 801              	.LVL40:
- 802              	.L58:
+ 812              		.loc 1 326 0
+ 813 0224 2C46     		mov	r4, r5
+ 814              	.LVL36:
+ 815              	.L60:
  331:Src/motion_plan.c **** 		{
- 803              		.loc 1 331 0
- 804 0204 FF2F     		cmp	r7, #255
- 805 0206 7FF44FAF 		bne	.L44
+ 816              		.loc 1 331 0
+ 817 0226 FF2C     		cmp	r4, #255
+ 818 0228 09D0     		beq	.L61
+ 331:Src/motion_plan.c **** 		{
+ 819              		.loc 1 331 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 23
+
+
+ 820 022a 5A1C     		adds	r2, r3, #1
+ 821 022c 1A4D     		ldr	r5, .L94+8
+ 822 022e 05EB0115 		add	r5, r5, r1, lsl #4
+ 823 0232 2A44     		add	r2, r2, r5
+ 824 0234 92F80421 		ldrb	r2, [r2, #260]	@ zero_extendqisi2
+ 825 0238 A242     		cmp	r2, r4
+ 826 023a BFF44BAF 		bcs	.L44
+ 827              	.L61:
  333:Src/motion_plan.c **** 			{
- 806              		.loc 1 333 0
- 807 020a 1036     		adds	r6, r6, #16
- 808              	.LVL41:
- 809 020c 3B4B     		ldr	r3, .L89+8
- 810 020e 03EB8606 		add	r6, r3, r6, lsl #2
- 811              	.LVL42:
- 812 0212 7368     		ldr	r3, [r6, #4]
- 813 0214 23FA01F1 		lsr	r1, r3, r1
- 814              	.LVL43:
- 815 0218 11F0010F 		tst	r1, #1
- 816 021c 65D1     		bne	.L80
- 335:Src/motion_plan.c **** 			}
- 817              		.loc 1 335 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 23
-
-
- 818 021e 0320     		movs	r0, #3
- 819              	.LVL44:
- 820 0220 42E7     		b	.L44
- 821              	.LVL45:
- 822              	.L76:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 823              		.loc 1 196 0
- 824 0222 0320     		movs	r0, #3
- 195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 825              		.loc 1 195 0
- 826 0224 FF27     		movs	r7, #255
- 827 0226 C3E7     		b	.L56
- 828              	.L77:
- 305:Src/motion_plan.c **** 				}
- 829              		.loc 1 305 0
- 830 0228 0120     		movs	r0, #1
- 831 022a C1E7     		b	.L56
- 832              	.L49:
- 344:Src/motion_plan.c **** 		{
- 833              		.loc 1 344 0
- 834 022c 4E1E     		subs	r6, r1, #1
- 835 022e 3348     		ldr	r0, .L89+8
- 836 0230 00EB0610 		add	r0, r0, r6, lsl #4
- 837 0234 1844     		add	r0, r0, r3
- 838 0236 90F80471 		ldrb	r7, [r0, #260]	@ zero_extendqisi2
- 839 023a FF2F     		cmp	r7, #255
- 840 023c 0CD0     		beq	.L81
- 346:Src/motion_plan.c **** 			{
- 841              		.loc 1 346 0
- 842 023e 0029     		cmp	r1, #0
- 843 0240 48D0     		beq	.L82
- 348:Src/motion_plan.c **** 				{
- 844              		.loc 1 348 0
- 845 0242 2E48     		ldr	r0, .L89+8
- 846 0244 00EB8600 		add	r0, r0, r6, lsl #2
- 847 0248 4068     		ldr	r0, [r0, #4]
- 848 024a D840     		lsrs	r0, r0, r3
- 849 024c 10F0010F 		tst	r0, #1
- 850 0250 43D0     		beq	.L83
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 851              		.loc 1 196 0
- 852 0252 1046     		mov	r0, r2
- 195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 853              		.loc 1 195 0
- 854 0254 FF27     		movs	r7, #255
- 855 0256 00E0     		b	.L59
- 856              	.L81:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 857              		.loc 1 196 0
- 858 0258 1046     		mov	r0, r2
- 859              	.L59:
- 860              	.LVL46:
- 355:Src/motion_plan.c **** 		{
- 861              		.loc 1 355 0
- 862 025a 5D1E     		subs	r5, r3, #1
- 863 025c 274C     		ldr	r4, .L89+8
- 864 025e 04EB0114 		add	r4, r4, r1, lsl #4
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 24
-
-
- 865 0262 2C44     		add	r4, r4, r5
- 866 0264 94F80441 		ldrb	r4, [r4, #260]	@ zero_extendqisi2
- 867 0268 BC42     		cmp	r4, r7
- 868 026a 0DD2     		bcs	.L60
- 357:Src/motion_plan.c **** 			{
- 869              		.loc 1 357 0
- 870 026c 63B1     		cbz	r3, .L60
- 359:Src/motion_plan.c **** 				{
- 871              		.loc 1 359 0
- 872 026e 03F10F05 		add	r5, r3, #15
- 873 0272 DFF888C0 		ldr	ip, .L89+8
- 874 0276 0CEB8505 		add	r5, ip, r5, lsl #2
- 875 027a 6D68     		ldr	r5, [r5, #4]
- 876 027c CD40     		lsrs	r5, r5, r1
- 877 027e 15F0010F 		tst	r5, #1
- 878 0282 01D1     		bne	.L60
- 361:Src/motion_plan.c **** 					tmp_dir = LEFT;
- 879              		.loc 1 361 0
- 880 0284 2746     		mov	r7, r4
- 881              	.LVL47:
- 362:Src/motion_plan.c **** 				}
- 882              		.loc 1 362 0
- 883 0286 0020     		movs	r0, #0
- 884              	.LVL48:
- 885              	.L60:
- 366:Src/motion_plan.c **** 		{
- 886              		.loc 1 366 0
- 887 0288 5C1C     		adds	r4, r3, #1
- 888 028a 1C4D     		ldr	r5, .L89+8
- 889 028c 05EB0115 		add	r5, r5, r1, lsl #4
- 890 0290 2C44     		add	r4, r4, r5
- 891 0292 94F80441 		ldrb	r4, [r4, #260]	@ zero_extendqisi2
- 892 0296 BC42     		cmp	r4, r7
- 893 0298 0ED2     		bcs	.L61
- 368:Src/motion_plan.c **** 			{
- 894              		.loc 1 368 0
- 895 029a 0E2B     		cmp	r3, #14
- 896 029c 0CD8     		bhi	.L61
- 370:Src/motion_plan.c **** 				{
- 897              		.loc 1 370 0
- 898 029e 03F1100C 		add	ip, r3, #16
- 899 02a2 164D     		ldr	r5, .L89+8
- 900 02a4 05EB8C05 		add	r5, r5, ip, lsl #2
- 901 02a8 6D68     		ldr	r5, [r5, #4]
- 902 02aa 25FA01F1 		lsr	r1, r5, r1
- 903              	.LVL49:
- 904 02ae 11F0010F 		tst	r1, #1
- 905 02b2 01D1     		bne	.L61
- 372:Src/motion_plan.c **** 					tmp_dir = RIGHT;
- 906              		.loc 1 372 0
- 907 02b4 2746     		mov	r7, r4
- 908              	.LVL50:
- 373:Src/motion_plan.c **** 				}
- 909              		.loc 1 373 0
- 910 02b6 0220     		movs	r0, #2
- 911              	.LVL51:
- 912              	.L61:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 25
-
-
- 377:Src/motion_plan.c **** 		{
- 913              		.loc 1 377 0
- 914 02b8 FF2F     		cmp	r7, #255
- 915 02ba 7FF4F5AE 		bne	.L44
- 379:Src/motion_plan.c **** 			{
- 916              		.loc 1 379 0
- 917 02be 0F49     		ldr	r1, .L89+8
- 918 02c0 01EB8606 		add	r6, r1, r6, lsl #2
- 919              	.LVL52:
- 920 02c4 7168     		ldr	r1, [r6, #4]
- 921 02c6 21FA03F3 		lsr	r3, r1, r3
- 922              	.LVL53:
- 923 02ca 13F0010F 		tst	r3, #1
- 924 02ce 0ED1     		bne	.L86
- 381:Src/motion_plan.c **** 			}
- 925              		.loc 1 381 0
- 926 02d0 1046     		mov	r0, r2
- 927              	.LVL54:
- 928 02d2 E9E6     		b	.L44
- 929              	.LVL55:
- 930              	.L82:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 931              		.loc 1 196 0
- 932 02d4 1046     		mov	r0, r2
- 195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
- 933              		.loc 1 195 0
- 934 02d6 FF27     		movs	r7, #255
- 935 02d8 BFE7     		b	.L59
- 936              	.L83:
- 351:Src/motion_plan.c **** 				}
- 937              		.loc 1 351 0
- 938 02da 0120     		movs	r0, #1
- 939 02dc BDE7     		b	.L59
- 940              	.L62:
- 196:Src/motion_plan.c **** 									   // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
- 941              		.loc 1 196 0
- 942 02de 0320     		movs	r0, #3
- 943 02e0 E2E6     		b	.L44
- 944              	.LVL56:
- 945              	.L68:
- 247:Src/motion_plan.c **** 			}
- 946              		.loc 1 247 0
- 947 02e2 0420     		movs	r0, #4
- 948              	.LVL57:
- 949 02e4 E0E6     		b	.L44
- 950              	.LVL58:
- 951              	.L74:
- 293:Src/motion_plan.c **** 			}
- 952              		.loc 1 293 0
- 953 02e6 0420     		movs	r0, #4
- 954              	.LVL59:
- 955 02e8 DEE6     		b	.L44
- 956              	.LVL60:
- 957              	.L80:
+ 828              		.loc 1 333 0 is_stmt 1
+ 829 023e 1037     		adds	r7, r7, #16
+ 830 0240 154A     		ldr	r2, .L94+8
+ 831 0242 02EB8707 		add	r7, r2, r7, lsl #2
+ 832 0246 7A68     		ldr	r2, [r7, #4]
+ 833 0248 22FA01F1 		lsr	r1, r2, r1
+ 834              	.LVL37:
+ 835 024c 11F0010F 		tst	r1, #1
+ 836 0250 76D1     		bne	.L84
+ 333:Src/motion_plan.c **** 			{
+ 837              		.loc 1 333 0 is_stmt 0 discriminator 1
+ 838 0252 002B     		cmp	r3, #0
+ 839 0254 76D1     		bne	.L85
  339:Src/motion_plan.c **** 			}
- 958              		.loc 1 339 0
- 959 02ea 0420     		movs	r0, #4
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 26
+ 840              		.loc 1 339 0 is_stmt 1
+ 841 0256 0420     		movs	r0, #4
+ 842              	.LVL38:
+ 843 0258 3CE7     		b	.L44
+ 844              	.LVL39:
+ 845              	.L80:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 846              		.loc 1 196 0
+ 847 025a 0320     		movs	r0, #3
+ 195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
+ 848              		.loc 1 195 0
+ 849 025c FF24     		movs	r4, #255
+ 850 025e B9E7     		b	.L58
+ 851              	.L81:
+ 305:Src/motion_plan.c **** 				}
+ 852              		.loc 1 305 0
+ 853 0260 0120     		movs	r0, #1
+ 854 0262 B7E7     		b	.L58
+ 855              	.L49:
+ 344:Src/motion_plan.c **** 		{
+ 856              		.loc 1 344 0
+ 857 0264 4F1E     		subs	r7, r1, #1
+ 858 0266 0C48     		ldr	r0, .L94+8
+ 859 0268 00EB0710 		add	r0, r0, r7, lsl #4
+ 860 026c 1844     		add	r0, r0, r3
+ 861 026e 90F80441 		ldrb	r4, [r0, #260]	@ zero_extendqisi2
+ 862 0272 FF2C     		cmp	r4, #255
+ 863 0274 12D0     		beq	.L86
+ 346:Src/motion_plan.c **** 			{
+ 864              		.loc 1 346 0
+ 865 0276 0029     		cmp	r1, #0
+ 866 0278 57D0     		beq	.L87
+ 348:Src/motion_plan.c **** 				{
+ 867              		.loc 1 348 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 24
 
 
- 960              	.LVL61:
- 961 02ec DCE6     		b	.L44
- 962              	.LVL62:
- 963              	.L86:
+ 868 027a 0748     		ldr	r0, .L94+8
+ 869 027c 00EB8700 		add	r0, r0, r7, lsl #2
+ 870 0280 4068     		ldr	r0, [r0, #4]
+ 871 0282 D840     		lsrs	r0, r0, r3
+ 872 0284 10F0010F 		tst	r0, #1
+ 873 0288 52D0     		beq	.L88
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 874              		.loc 1 196 0
+ 875 028a 1046     		mov	r0, r2
+ 195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
+ 876              		.loc 1 195 0
+ 877 028c FF24     		movs	r4, #255
+ 878 028e 06E0     		b	.L62
+ 879              	.L95:
+ 880              		.align	2
+ 881              	.L94:
+ 882 0290 00000000 		.word	position
+ 883 0294 00000000 		.word	direction
+ 884 0298 00000000 		.word	maze
+ 885              	.L86:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 886              		.loc 1 196 0
+ 887 029c 1046     		mov	r0, r2
+ 888              	.L62:
+ 889              	.LVL40:
+ 355:Src/motion_plan.c **** 		{
+ 890              		.loc 1 355 0
+ 891 029e 5E1E     		subs	r6, r3, #1
+ 892 02a0 2B4D     		ldr	r5, .L96
+ 893 02a2 05EB0115 		add	r5, r5, r1, lsl #4
+ 894 02a6 3544     		add	r5, r5, r6
+ 895 02a8 95F80451 		ldrb	r5, [r5, #260]	@ zero_extendqisi2
+ 896 02ac A542     		cmp	r5, r4
+ 897 02ae 0DD2     		bcs	.L63
+ 357:Src/motion_plan.c **** 			{
+ 898              		.loc 1 357 0
+ 899 02b0 63B1     		cbz	r3, .L63
+ 359:Src/motion_plan.c **** 				{
+ 900              		.loc 1 359 0
+ 901 02b2 03F10F06 		add	r6, r3, #15
+ 902 02b6 DFF898C0 		ldr	ip, .L96
+ 903 02ba 0CEB8606 		add	r6, ip, r6, lsl #2
+ 904 02be 7668     		ldr	r6, [r6, #4]
+ 905 02c0 CE40     		lsrs	r6, r6, r1
+ 906 02c2 16F0010F 		tst	r6, #1
+ 907 02c6 01D1     		bne	.L63
+ 361:Src/motion_plan.c **** 					tmp_dir = LEFT;
+ 908              		.loc 1 361 0
+ 909 02c8 2C46     		mov	r4, r5
+ 910              	.LVL41:
+ 362:Src/motion_plan.c **** 				}
+ 911              		.loc 1 362 0
+ 912 02ca 0020     		movs	r0, #0
+ 913              	.LVL42:
+ 914              	.L63:
+ 366:Src/motion_plan.c **** 		{
+ 915              		.loc 1 366 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 25
+
+
+ 916 02cc 5D1C     		adds	r5, r3, #1
+ 917 02ce 204E     		ldr	r6, .L96
+ 918 02d0 06EB0116 		add	r6, r6, r1, lsl #4
+ 919 02d4 3544     		add	r5, r5, r6
+ 920 02d6 95F80451 		ldrb	r5, [r5, #260]	@ zero_extendqisi2
+ 921 02da A542     		cmp	r5, r4
+ 922 02dc 0DD2     		bcs	.L64
+ 368:Src/motion_plan.c **** 			{
+ 923              		.loc 1 368 0
+ 924 02de 0E2B     		cmp	r3, #14
+ 925 02e0 0BD8     		bhi	.L64
+ 370:Src/motion_plan.c **** 				{
+ 926              		.loc 1 370 0
+ 927 02e2 03F1100C 		add	ip, r3, #16
+ 928 02e6 1A4E     		ldr	r6, .L96
+ 929 02e8 06EB8C06 		add	r6, r6, ip, lsl #2
+ 930 02ec 7668     		ldr	r6, [r6, #4]
+ 931 02ee CE40     		lsrs	r6, r6, r1
+ 932 02f0 16F0010F 		tst	r6, #1
+ 933 02f4 01D1     		bne	.L64
+ 372:Src/motion_plan.c **** 					tmp_dir = RIGHT;
+ 934              		.loc 1 372 0
+ 935 02f6 2C46     		mov	r4, r5
+ 936              	.LVL43:
+ 373:Src/motion_plan.c **** 				}
+ 937              		.loc 1 373 0
+ 938 02f8 0220     		movs	r0, #2
+ 939              	.LVL44:
+ 940              	.L64:
+ 377:Src/motion_plan.c **** 		{
+ 941              		.loc 1 377 0
+ 942 02fa FF2C     		cmp	r4, #255
+ 943 02fc 09D0     		beq	.L65
+ 377:Src/motion_plan.c **** 		{
+ 944              		.loc 1 377 0 is_stmt 0 discriminator 1
+ 945 02fe 4D1C     		adds	r5, r1, #1
+ 946 0300 134E     		ldr	r6, .L96
+ 947 0302 06EB0515 		add	r5, r6, r5, lsl #4
+ 948 0306 1D44     		add	r5, r5, r3
+ 949 0308 95F80451 		ldrb	r5, [r5, #260]	@ zero_extendqisi2
+ 950 030c A542     		cmp	r5, r4
+ 951 030e BFF4E1AE 		bcs	.L44
+ 952              	.L65:
+ 379:Src/motion_plan.c **** 			{
+ 953              		.loc 1 379 0 is_stmt 1
+ 954 0312 0F48     		ldr	r0, .L96
+ 955              	.LVL45:
+ 956 0314 00EB8707 		add	r7, r0, r7, lsl #2
+ 957 0318 7868     		ldr	r0, [r7, #4]
+ 958 031a 20FA03F3 		lsr	r3, r0, r3
+ 959              	.LVL46:
+ 960 031e 13F0010F 		tst	r3, #1
+ 961 0322 11D1     		bne	.L91
+ 379:Src/motion_plan.c **** 			{
+ 962              		.loc 1 379 0 is_stmt 0 discriminator 1
+ 963 0324 91B9     		cbnz	r1, .L92
  385:Src/motion_plan.c **** 			}
- 964              		.loc 1 385 0
- 965 02ee 0420     		movs	r0, #4
- 966              	.LVL63:
- 967 02f0 DAE6     		b	.L44
- 968              	.L90:
- 969 02f2 00BF     		.align	2
- 970              	.L89:
- 971 02f4 00000000 		.word	position
- 972 02f8 00000000 		.word	direction
- 973 02fc 00000000 		.word	maze
- 974              		.cfi_endproc
- 975              	.LFE130:
- 977              		.section	.text.Plan_Adachi,"ax",%progbits
- 978              		.align	1
- 979              		.global	Plan_Adachi
- 980              		.syntax unified
- 981              		.thumb
- 982              		.thumb_func
- 983              		.fpu fpv4-sp-d16
- 985              	Plan_Adachi:
- 986              	.LFB131:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 26
+
+
+ 964              		.loc 1 385 0 is_stmt 1
+ 965 0326 0420     		movs	r0, #4
+ 966 0328 D4E6     		b	.L44
+ 967              	.LVL47:
+ 968              	.L87:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 969              		.loc 1 196 0
+ 970 032a 1046     		mov	r0, r2
+ 195:Src/motion_plan.c **** 	unsigned char tmp_dir = UTURN;	 // 方向
+ 971              		.loc 1 195 0
+ 972 032c FF24     		movs	r4, #255
+ 973 032e B6E7     		b	.L62
+ 974              	.L88:
+ 351:Src/motion_plan.c **** 				}
+ 975              		.loc 1 351 0
+ 976 0330 0120     		movs	r0, #1
+ 977 0332 B4E7     		b	.L62
+ 978              	.L66:
+ 196:Src/motion_plan.c **** 									 // 現在の向きに応じて場合分けし、 歩数が少ない方向を判断
+ 979              		.loc 1 196 0
+ 980 0334 0320     		movs	r0, #3
+ 981 0336 CDE6     		b	.L44
+ 982              	.LVL48:
+ 983              	.L72:
+ 247:Src/motion_plan.c **** 			}
+ 984              		.loc 1 247 0
+ 985 0338 0420     		movs	r0, #4
+ 986              	.LVL49:
+ 987 033a CBE6     		b	.L44
+ 988              	.LVL50:
+ 989              	.L78:
+ 293:Src/motion_plan.c **** 			}
+ 990              		.loc 1 293 0
+ 991 033c 0420     		movs	r0, #4
+ 992              	.LVL51:
+ 993 033e C9E6     		b	.L44
+ 994              	.LVL52:
+ 995              	.L84:
+ 339:Src/motion_plan.c **** 			}
+ 996              		.loc 1 339 0
+ 997 0340 0420     		movs	r0, #4
+ 998              	.LVL53:
+ 999 0342 C7E6     		b	.L44
+ 1000              	.LVL54:
+ 1001              	.L85:
+ 335:Src/motion_plan.c **** 			}
+ 1002              		.loc 1 335 0
+ 1003 0344 0320     		movs	r0, #3
+ 1004              	.LVL55:
+ 1005 0346 C5E6     		b	.L44
+ 1006              	.LVL56:
+ 1007              	.L91:
+ 385:Src/motion_plan.c **** 			}
+ 1008              		.loc 1 385 0
+ 1009 0348 0420     		movs	r0, #4
+ 1010 034a C3E6     		b	.L44
+ 1011              	.L92:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 27
+
+
+ 381:Src/motion_plan.c **** 			}
+ 1012              		.loc 1 381 0
+ 1013 034c 1046     		mov	r0, r2
+ 1014 034e C1E6     		b	.L44
+ 1015              	.L97:
+ 1016              		.align	2
+ 1017              	.L96:
+ 1018 0350 00000000 		.word	maze
+ 1019              		.cfi_endproc
+ 1020              	.LFE130:
+ 1022              		.section	.text.Plan_Adachi,"ax",%progbits
+ 1023              		.align	1
+ 1024              		.global	Plan_Adachi
+ 1025              		.syntax unified
+ 1026              		.thumb
+ 1027              		.thumb_func
+ 1028              		.fpu fpv4-sp-d16
+ 1030              	Plan_Adachi:
+ 1031              	.LFB131:
  394:Src/motion_plan.c **** 
  395:Src/motion_plan.c **** void Plan_Adachi(void)
  396:Src/motion_plan.c **** {
- 987              		.loc 1 396 0
- 988              		.cfi_startproc
- 989              		@ args = 0, pretend = 0, frame = 0
- 990              		@ frame_needed = 0, uses_anonymous_args = 0
- 991 0000 70B5     		push	{r4, r5, r6, lr}
- 992              	.LCFI3:
- 993              		.cfi_def_cfa_offset 16
- 994              		.cfi_offset 4, -16
- 995              		.cfi_offset 5, -12
- 996              		.cfi_offset 6, -8
- 997              		.cfi_offset 14, -4
- 998              	.LVL64:
+ 1032              		.loc 1 396 0
+ 1033              		.cfi_startproc
+ 1034              		@ args = 0, pretend = 0, frame = 0
+ 1035              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1036 0000 70B5     		push	{r4, r5, r6, lr}
+ 1037              	.LCFI3:
+ 1038              		.cfi_def_cfa_offset 16
+ 1039              		.cfi_offset 4, -16
+ 1040              		.cfi_offset 5, -12
+ 1041              		.cfi_offset 6, -8
+ 1042              		.cfi_offset 14, -4
+ 1043              	.LVL57:
  397:Src/motion_plan.c **** 	unsigned char flag_goal_is = FALSE;
  398:Src/motion_plan.c **** 	unsigned char next_dir;
  399:Src/motion_plan.c **** 
  400:Src/motion_plan.c **** 	adcStart();
- 999              		.loc 1 400 0
- 1000 0002 FFF7FEFF 		bl	adcStart
- 1001              	.LVL65:
- 1002              	.L92:
+ 1044              		.loc 1 400 0
+ 1045 0002 FFF7FEFF 		bl	adcStart
+ 1046              	.LVL58:
+ 1047              	.L99:
  401:Src/motion_plan.c **** 	while (sen_front.is_wall == FALSE)
- 1003              		.loc 1 401 0 discriminator 1
- 1004 0006 2B4B     		ldr	r3, .L107
- 1005 0008 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
- 1006 000a 002B     		cmp	r3, #0
- 1007 000c FBD0     		beq	.L92
+ 1048              		.loc 1 401 0 discriminator 1
+ 1049 0006 2B4B     		ldr	r3, .L114
+ 1050 0008 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1051 000a 002B     		cmp	r3, #0
+ 1052 000c FBD0     		beq	.L99
  402:Src/motion_plan.c **** 	{
  403:Src/motion_plan.c **** 	}
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 27
-
-
  404:Src/motion_plan.c **** 	Output_Buzzer(HZ_G);
- 1008              		.loc 1 404 0
- 1009 000e 6620     		movs	r0, #102
- 1010 0010 FFF7FEFF 		bl	Output_Buzzer
- 1011              	.LVL66:
+ 1053              		.loc 1 404 0
+ 1054 000e 6620     		movs	r0, #102
+ 1055 0010 FFF7FEFF 		bl	Output_Buzzer
+ 1056              	.LVL59:
  405:Src/motion_plan.c **** 	HAL_Delay(2500);
- 1012              		.loc 1 405 0
- 1013 0014 40F6C410 		movw	r0, #2500
- 1014 0018 FFF7FEFF 		bl	HAL_Delay
- 1015              	.LVL67:
+ 1057              		.loc 1 405 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 28
+
+
+ 1058 0014 40F6C410 		movw	r0, #2500
+ 1059 0018 FFF7FEFF 		bl	HAL_Delay
+ 1060              	.LVL60:
  406:Src/motion_plan.c **** 	gyro_offset_calc_reset();
- 1016              		.loc 1 406 0
- 1017 001c FFF7FEFF 		bl	gyro_offset_calc_reset
- 1018              	.LVL68:
+ 1061              		.loc 1 406 0
+ 1062 001c FFF7FEFF 		bl	gyro_offset_calc_reset
+ 1063              	.LVL61:
  407:Src/motion_plan.c **** 	HAL_Delay(2500);
- 1019              		.loc 1 407 0
- 1020 0020 40F6C410 		movw	r0, #2500
- 1021 0024 FFF7FEFF 		bl	HAL_Delay
- 1022              	.LVL69:
+ 1064              		.loc 1 407 0
+ 1065 0020 40F6C410 		movw	r0, #2500
+ 1066 0024 FFF7FEFF 		bl	HAL_Delay
+ 1067              	.LVL62:
  408:Src/motion_plan.c **** 
  409:Src/motion_plan.c **** 	Maze_Init(&maze);
- 1023              		.loc 1 409 0
- 1024 0028 2348     		ldr	r0, .L107+4
- 1025 002a FFF7FEFF 		bl	Maze_Init
- 1026              	.LVL70:
+ 1068              		.loc 1 409 0
+ 1069 0028 2348     		ldr	r0, .L114+4
+ 1070 002a FFF7FEFF 		bl	Maze_Init
+ 1071              	.LVL63:
  410:Src/motion_plan.c **** 
  411:Src/motion_plan.c **** 	flag_motor = TRUE;
- 1027              		.loc 1 411 0
- 1028 002e 0123     		movs	r3, #1
- 1029 0030 224A     		ldr	r2, .L107+8
- 1030 0032 1370     		strb	r3, [r2]
+ 1072              		.loc 1 411 0
+ 1073 002e 0123     		movs	r3, #1
+ 1074 0030 224A     		ldr	r2, .L114+8
+ 1075 0032 1370     		strb	r3, [r2]
  412:Src/motion_plan.c **** 
  413:Src/motion_plan.c **** 	position = 0b1;
- 1031              		.loc 1 413 0
- 1032 0034 224A     		ldr	r2, .L107+12
- 1033 0036 1370     		strb	r3, [r2]
+ 1076              		.loc 1 413 0
+ 1077 0034 224A     		ldr	r2, .L114+12
+ 1078 0036 1370     		strb	r3, [r2]
  414:Src/motion_plan.c **** 	direction = NORTH;
- 1034              		.loc 1 414 0
- 1035 0038 0026     		movs	r6, #0
- 1036 003a 224B     		ldr	r3, .L107+16
- 1037 003c 1E70     		strb	r6, [r3]
+ 1079              		.loc 1 414 0
+ 1080 0038 0026     		movs	r6, #0
+ 1081 003a 224B     		ldr	r3, .L114+16
+ 1082 003c 1E70     		strb	r6, [r3]
  415:Src/motion_plan.c **** 	Maze_Set();
- 1038              		.loc 1 415 0
- 1039 003e FFF7FEFF 		bl	Maze_Set
- 1040              	.LVL71:
+ 1083              		.loc 1 415 0
+ 1084 003e FFF7FEFF 		bl	Maze_Set
+ 1085              	.LVL64:
  416:Src/motion_plan.c **** 
  417:Src/motion_plan.c **** 	Motion_Start();
- 1041              		.loc 1 417 0
- 1042 0042 FFF7FEFF 		bl	Motion_Start
- 1043              	.LVL72:
- 1044              	.L93:
+ 1086              		.loc 1 417 0
+ 1087 0042 FFF7FEFF 		bl	Motion_Start
+ 1088              	.LVL65:
+ 1089              	.L100:
  418:Src/motion_plan.c **** 
  419:Src/motion_plan.c **** 	while (flag_goal_is == FALSE)
- 1045              		.loc 1 419 0
- 1046 0046 6EBB     		cbnz	r6, .L105
+ 1090              		.loc 1 419 0
+ 1091 0046 6EBB     		cbnz	r6, .L112
  420:Src/motion_plan.c **** 	{
  421:Src/motion_plan.c **** 		enc.offset = 0;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 28
-
-
- 1047              		.loc 1 421 0
- 1048 0048 1F4B     		ldr	r3, .L107+20
- 1049 004a 0022     		movs	r2, #0
- 1050 004c 9A60     		str	r2, [r3, #8]	@ float
+ 1092              		.loc 1 421 0
+ 1093 0048 1F4B     		ldr	r3, .L114+20
+ 1094 004a 0022     		movs	r2, #0
+ 1095 004c 9A60     		str	r2, [r3, #8]	@ float
  422:Src/motion_plan.c **** 		Maze_Get_Wall();
- 1051              		.loc 1 422 0
- 1052 004e FFF7FEFF 		bl	Maze_Get_Wall
- 1053              	.LVL73:
+ 1096              		.loc 1 422 0
+ 1097 004e FFF7FEFF 		bl	Maze_Get_Wall
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 29
+
+
+ 1098              	.LVL66:
  423:Src/motion_plan.c **** 		Maze_CreateMap(&maze);
- 1054              		.loc 1 423 0
- 1055 0052 194C     		ldr	r4, .L107+4
- 1056 0054 2046     		mov	r0, r4
- 1057 0056 FFF7FEFF 		bl	Maze_CreateMap
- 1058              	.LVL74:
+ 1099              		.loc 1 423 0
+ 1100 0052 194C     		ldr	r4, .L114+4
+ 1101 0054 2046     		mov	r0, r4
+ 1102 0056 FFF7FEFF 		bl	Maze_CreateMap
+ 1103              	.LVL67:
  424:Src/motion_plan.c **** 		next_dir = Maze_Next_Motion();
- 1059              		.loc 1 424 0
- 1060 005a FFF7FEFF 		bl	Maze_Next_Motion
- 1061              	.LVL75:
- 1062 005e 0546     		mov	r5, r0
- 1063              	.LVL76:
+ 1104              		.loc 1 424 0
+ 1105 005a FFF7FEFF 		bl	Maze_Next_Motion
+ 1106              	.LVL68:
+ 1107 005e 0546     		mov	r5, r0
+ 1108              	.LVL69:
  425:Src/motion_plan.c **** 		Update_Position(next_dir);
- 1064              		.loc 1 425 0
- 1065 0060 FFF7FEFF 		bl	Update_Position
- 1066              	.LVL77:
+ 1109              		.loc 1 425 0
+ 1110 0060 FFF7FEFF 		bl	Update_Position
+ 1111              	.LVL70:
  426:Src/motion_plan.c **** 		if (position == (maze.goal_x << 4 | maze.goal_y))
- 1067              		.loc 1 426 0
- 1068 0064 164B     		ldr	r3, .L107+12
- 1069 0066 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
- 1070 0068 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
- 1071 006a 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
- 1072 006c 43EA0113 		orr	r3, r3, r1, lsl #4
- 1073 0070 9A42     		cmp	r2, r3
- 1074 0072 06D0     		beq	.L106
- 1075              	.LVL78:
- 1076              	.L94:
+ 1112              		.loc 1 426 0
+ 1113 0064 164B     		ldr	r3, .L114+12
+ 1114 0066 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1115 0068 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ 1116 006a 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 1117 006c 43EA0113 		orr	r3, r3, r1, lsl #4
+ 1118 0070 9A42     		cmp	r2, r3
+ 1119 0072 06D0     		beq	.L113
+ 1120              	.LVL71:
+ 1121              	.L101:
  427:Src/motion_plan.c **** 		{
  428:Src/motion_plan.c **** 			flag_goal_is = TRUE;
  429:Src/motion_plan.c **** 		}
  430:Src/motion_plan.c **** 
  431:Src/motion_plan.c **** 		switch (next_dir)
- 1077              		.loc 1 431 0
- 1078 0074 042D     		cmp	r5, #4
- 1079 0076 E6D8     		bhi	.L93
- 1080 0078 DFE805F0 		tbb	[pc, r5]
- 1081              	.L97:
- 1082 007c 05       		.byte	(.L96-.L97)/2
- 1083 007d 08       		.byte	(.L98-.L97)/2
- 1084 007e 0B       		.byte	(.L99-.L97)/2
- 1085 007f 0E       		.byte	(.L100-.L97)/2
- 1086 0080 11       		.byte	(.L101-.L97)/2
- 1087 0081 00       		.p2align 1
- 1088              	.L106:
+ 1122              		.loc 1 431 0
+ 1123 0074 042D     		cmp	r5, #4
+ 1124 0076 E6D8     		bhi	.L100
+ 1125 0078 DFE805F0 		tbb	[pc, r5]
+ 1126              	.L104:
+ 1127 007c 05       		.byte	(.L103-.L104)/2
+ 1128 007d 08       		.byte	(.L105-.L104)/2
+ 1129 007e 0B       		.byte	(.L106-.L104)/2
+ 1130 007f 0E       		.byte	(.L107-.L104)/2
+ 1131 0080 11       		.byte	(.L108-.L104)/2
+ 1132 0081 00       		.p2align 1
+ 1133              	.L113:
  428:Src/motion_plan.c **** 		}
- 1089              		.loc 1 428 0
- 1090 0082 0126     		movs	r6, #1
- 1091              	.LVL79:
- 1092 0084 F6E7     		b	.L94
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 29
-
-
- 1093              	.LVL80:
- 1094              	.L96:
+ 1134              		.loc 1 428 0
+ 1135 0082 0126     		movs	r6, #1
+ 1136              	.LVL72:
+ 1137 0084 F6E7     		b	.L101
+ 1138              	.LVL73:
+ 1139              	.L103:
  432:Src/motion_plan.c **** 		{
  433:Src/motion_plan.c **** 		case LEFT:
  434:Src/motion_plan.c **** 			//Motion_Left();
  435:Src/motion_plan.c **** 			Motion_SlalomLeft();
- 1095              		.loc 1 435 0
- 1096 0086 FFF7FEFF 		bl	Motion_SlalomLeft
- 1097              	.LVL81:
+ 1140              		.loc 1 435 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 30
+
+
+ 1141 0086 FFF7FEFF 		bl	Motion_SlalomLeft
+ 1142              	.LVL74:
  436:Src/motion_plan.c **** 			break;
- 1098              		.loc 1 436 0
- 1099 008a DCE7     		b	.L93
- 1100              	.L98:
+ 1143              		.loc 1 436 0
+ 1144 008a DCE7     		b	.L100
+ 1145              	.L105:
  437:Src/motion_plan.c **** 
  438:Src/motion_plan.c **** 		case FRONT:
  439:Src/motion_plan.c **** 			Motion_Straight();
- 1101              		.loc 1 439 0
- 1102 008c FFF7FEFF 		bl	Motion_Straight
- 1103              	.LVL82:
+ 1146              		.loc 1 439 0
+ 1147 008c FFF7FEFF 		bl	Motion_Straight
+ 1148              	.LVL75:
  440:Src/motion_plan.c **** 			break;
- 1104              		.loc 1 440 0
- 1105 0090 D9E7     		b	.L93
- 1106              	.L99:
+ 1149              		.loc 1 440 0
+ 1150 0090 D9E7     		b	.L100
+ 1151              	.L106:
  441:Src/motion_plan.c **** 
  442:Src/motion_plan.c **** 		case RIGHT:
  443:Src/motion_plan.c **** 			//Motion_Right();
  444:Src/motion_plan.c **** 			Motion_SlalomRight();
- 1107              		.loc 1 444 0
- 1108 0092 FFF7FEFF 		bl	Motion_SlalomRight
- 1109              	.LVL83:
+ 1152              		.loc 1 444 0
+ 1153 0092 FFF7FEFF 		bl	Motion_SlalomRight
+ 1154              	.LVL76:
  445:Src/motion_plan.c **** 			break;
- 1110              		.loc 1 445 0
- 1111 0096 D6E7     		b	.L93
- 1112              	.L100:
+ 1155              		.loc 1 445 0
+ 1156 0096 D6E7     		b	.L100
+ 1157              	.L107:
  446:Src/motion_plan.c **** 
  447:Src/motion_plan.c **** 		case UTURN:
  448:Src/motion_plan.c **** 			Motion_Uturn();
- 1113              		.loc 1 448 0
- 1114 0098 FFF7FEFF 		bl	Motion_Uturn
- 1115              	.LVL84:
+ 1158              		.loc 1 448 0
+ 1159 0098 FFF7FEFF 		bl	Motion_Uturn
+ 1160              	.LVL77:
  449:Src/motion_plan.c **** 			break;
- 1116              		.loc 1 449 0
- 1117 009c D3E7     		b	.L93
- 1118              	.L101:
+ 1161              		.loc 1 449 0
+ 1162 009c D3E7     		b	.L100
+ 1163              	.L108:
  450:Src/motion_plan.c **** 
  451:Src/motion_plan.c **** 		case KABEATE:
  452:Src/motion_plan.c **** 			Motion_Kabeate();
- 1119              		.loc 1 452 0
- 1120 009e FFF7FEFF 		bl	Motion_Kabeate
- 1121              	.LVL85:
+ 1164              		.loc 1 452 0
+ 1165 009e FFF7FEFF 		bl	Motion_Kabeate
+ 1166              	.LVL78:
  453:Src/motion_plan.c **** 			break;
- 1122              		.loc 1 453 0
- 1123 00a2 D0E7     		b	.L93
- 1124              	.LVL86:
- 1125              	.L105:
+ 1167              		.loc 1 453 0
+ 1168 00a2 D0E7     		b	.L100
+ 1169              	.LVL79:
+ 1170              	.L112:
  454:Src/motion_plan.c **** 		}
  455:Src/motion_plan.c **** 	}
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 30
-
-
  456:Src/motion_plan.c **** 	Maze_Get_Wall();
- 1126              		.loc 1 456 0
- 1127 00a4 FFF7FEFF 		bl	Maze_Get_Wall
- 1128              	.LVL87:
+ 1171              		.loc 1 456 0
+ 1172 00a4 FFF7FEFF 		bl	Maze_Get_Wall
+ 1173              	.LVL80:
  457:Src/motion_plan.c **** 	Motion_Goal();
- 1129              		.loc 1 457 0
- 1130 00a8 FFF7FEFF 		bl	Motion_Goal
- 1131              	.LVL88:
+ 1174              		.loc 1 457 0
+ 1175 00a8 FFF7FEFF 		bl	Motion_Goal
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 31
+
+
+ 1176              	.LVL81:
  458:Src/motion_plan.c **** 	flag_motor = FALSE;
- 1132              		.loc 1 458 0
- 1133 00ac 034B     		ldr	r3, .L107+8
- 1134 00ae 0022     		movs	r2, #0
- 1135 00b0 1A70     		strb	r2, [r3]
+ 1177              		.loc 1 458 0
+ 1178 00ac 034B     		ldr	r3, .L114+8
+ 1179 00ae 0022     		movs	r2, #0
+ 1180 00b0 1A70     		strb	r2, [r3]
  459:Src/motion_plan.c **** }
- 1136              		.loc 1 459 0
- 1137 00b2 70BD     		pop	{r4, r5, r6, pc}
- 1138              	.LVL89:
- 1139              	.L108:
- 1140              		.align	2
- 1141              	.L107:
- 1142 00b4 00000000 		.word	sen_front
- 1143 00b8 00000000 		.word	maze
- 1144 00bc 00000000 		.word	flag_motor
- 1145 00c0 00000000 		.word	position
- 1146 00c4 00000000 		.word	direction
- 1147 00c8 00000000 		.word	enc
- 1148              		.cfi_endproc
- 1149              	.LFE131:
- 1151              		.section	.text.Plan_AllSearch,"ax",%progbits
- 1152              		.align	1
- 1153              		.global	Plan_AllSearch
- 1154              		.syntax unified
- 1155              		.thumb
- 1156              		.thumb_func
- 1157              		.fpu fpv4-sp-d16
- 1159              	Plan_AllSearch:
- 1160              	.LFB132:
+ 1181              		.loc 1 459 0
+ 1182 00b2 70BD     		pop	{r4, r5, r6, pc}
+ 1183              	.LVL82:
+ 1184              	.L115:
+ 1185              		.align	2
+ 1186              	.L114:
+ 1187 00b4 00000000 		.word	sen_front
+ 1188 00b8 00000000 		.word	maze
+ 1189 00bc 00000000 		.word	flag_motor
+ 1190 00c0 00000000 		.word	position
+ 1191 00c4 00000000 		.word	direction
+ 1192 00c8 00000000 		.word	enc
+ 1193              		.cfi_endproc
+ 1194              	.LFE131:
+ 1196              		.section	.text.Plan_AllSearch,"ax",%progbits
+ 1197              		.align	1
+ 1198              		.global	Plan_AllSearch
+ 1199              		.syntax unified
+ 1200              		.thumb
+ 1201              		.thumb_func
+ 1202              		.fpu fpv4-sp-d16
+ 1204              	Plan_AllSearch:
+ 1205              	.LFB132:
  460:Src/motion_plan.c **** 
  461:Src/motion_plan.c **** void Plan_AllSearch(void)
  462:Src/motion_plan.c **** {
- 1161              		.loc 1 462 0
- 1162              		.cfi_startproc
- 1163              		@ args = 0, pretend = 0, frame = 0
- 1164              		@ frame_needed = 0, uses_anonymous_args = 0
- 1165 0000 10B5     		push	{r4, lr}
- 1166              	.LCFI4:
- 1167              		.cfi_def_cfa_offset 8
- 1168              		.cfi_offset 4, -8
- 1169              		.cfi_offset 14, -4
- 1170              	.LVL90:
+ 1206              		.loc 1 462 0
+ 1207              		.cfi_startproc
+ 1208              		@ args = 0, pretend = 0, frame = 0
+ 1209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1210 0000 10B5     		push	{r4, lr}
+ 1211              	.LCFI4:
+ 1212              		.cfi_def_cfa_offset 8
+ 1213              		.cfi_offset 4, -8
+ 1214              		.cfi_offset 14, -4
+ 1215              	.LVL83:
  463:Src/motion_plan.c **** 	unsigned char end_flag = 0;
  464:Src/motion_plan.c **** 
  465:Src/motion_plan.c **** 	Output_Buzzer(HZ_G);
- 1171              		.loc 1 465 0
- 1172 0002 6620     		movs	r0, #102
- 1173 0004 FFF7FEFF 		bl	Output_Buzzer
- 1174              	.LVL91:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 31
-
-
+ 1216              		.loc 1 465 0
+ 1217 0002 6620     		movs	r0, #102
+ 1218 0004 FFF7FEFF 		bl	Output_Buzzer
+ 1219              	.LVL84:
  466:Src/motion_plan.c **** 	flag_motor = TRUE;
- 1175              		.loc 1 466 0
- 1176 0008 324B     		ldr	r3, .L130
- 1177 000a 0122     		movs	r2, #1
- 1178 000c 1A70     		strb	r2, [r3]
+ 1220              		.loc 1 466 0
+ 1221 0008 324B     		ldr	r3, .L137
+ 1222 000a 0122     		movs	r2, #1
+ 1223 000c 1A70     		strb	r2, [r3]
  467:Src/motion_plan.c **** 
  468:Src/motion_plan.c **** 	if (sen_front.is_wall == FALSE)
- 1179              		.loc 1 468 0
- 1180 000e 324B     		ldr	r3, .L130+4
- 1181 0010 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
- 1182 0012 3BB1     		cbz	r3, .L129
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 32
+
+
+ 1224              		.loc 1 468 0
+ 1225 000e 324B     		ldr	r3, .L137+4
+ 1226 0010 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1227 0012 3BB1     		cbz	r3, .L136
  469:Src/motion_plan.c **** 	{
  470:Src/motion_plan.c **** 		Straight_half_accel();
  471:Src/motion_plan.c **** 	}
  472:Src/motion_plan.c **** 	else
  473:Src/motion_plan.c **** 	{
  474:Src/motion_plan.c **** 		switch (direction)
- 1183              		.loc 1 474 0
- 1184 0014 314B     		ldr	r3, .L130+8
- 1185 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1186 0018 032B     		cmp	r3, #3
- 1187 001a 0DD8     		bhi	.L112
- 1188 001c DFE803F0 		tbb	[pc, r3]
- 1189              	.L114:
- 1190 0020 05       		.byte	(.L113-.L114)/2
- 1191 0021 17       		.byte	(.L115-.L114)/2
- 1192 0022 0F       		.byte	(.L116-.L114)/2
- 1193 0023 1F       		.byte	(.L117-.L114)/2
- 1194              		.p2align 1
- 1195              	.L129:
+ 1228              		.loc 1 474 0
+ 1229 0014 314B     		ldr	r3, .L137+8
+ 1230 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1231 0018 032B     		cmp	r3, #3
+ 1232 001a 0DD8     		bhi	.L119
+ 1233 001c DFE803F0 		tbb	[pc, r3]
+ 1234              	.L121:
+ 1235 0020 05       		.byte	(.L120-.L121)/2
+ 1236 0021 17       		.byte	(.L122-.L121)/2
+ 1237 0022 0F       		.byte	(.L123-.L121)/2
+ 1238 0023 1F       		.byte	(.L124-.L121)/2
+ 1239              		.p2align 1
+ 1240              	.L136:
  470:Src/motion_plan.c **** 	}
- 1196              		.loc 1 470 0
- 1197 0024 FFF7FEFF 		bl	Straight_half_accel
- 1198              	.LVL92:
- 1199 0028 23E0     		b	.L119
- 1200              	.L113:
+ 1241              		.loc 1 470 0
+ 1242 0024 FFF7FEFF 		bl	Straight_half_accel
+ 1243              	.LVL85:
+ 1244 0028 23E0     		b	.L126
+ 1245              	.L120:
  475:Src/motion_plan.c **** 		{
  476:Src/motion_plan.c **** 		case NORTH:
  477:Src/motion_plan.c **** 			direction = SOUTH;
- 1201              		.loc 1 477 0
- 1202 002a 2C4B     		ldr	r3, .L130+8
- 1203 002c 0222     		movs	r2, #2
- 1204 002e 1A70     		strb	r2, [r3]
+ 1246              		.loc 1 477 0
+ 1247 002a 2C4B     		ldr	r3, .L137+8
+ 1248 002c 0222     		movs	r2, #2
+ 1249 002e 1A70     		strb	r2, [r3]
  478:Src/motion_plan.c **** 			position--;
- 1205              		.loc 1 478 0
- 1206 0030 2B4A     		ldr	r2, .L130+12
- 1207 0032 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 1208 0034 013B     		subs	r3, r3, #1
- 1209 0036 1370     		strb	r3, [r2]
- 1210              	.L112:
+ 1250              		.loc 1 478 0
+ 1251 0030 2B4A     		ldr	r2, .L137+12
+ 1252 0032 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 1253 0034 013B     		subs	r3, r3, #1
+ 1254 0036 1370     		strb	r3, [r2]
+ 1255              	.L119:
  479:Src/motion_plan.c **** 			break;
  480:Src/motion_plan.c **** 		case SOUTH:
  481:Src/motion_plan.c **** 			direction = NORTH;
@@ -1858,9 +1911,6 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  483:Src/motion_plan.c **** 			break;
  484:Src/motion_plan.c **** 		case EAST:
  485:Src/motion_plan.c **** 			direction = WEST;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 32
-
-
  486:Src/motion_plan.c **** 			position = position - (0b1 << 4);
  487:Src/motion_plan.c **** 			break;
  488:Src/motion_plan.c **** 		case WEST:
@@ -1868,66 +1918,69 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  490:Src/motion_plan.c **** 			position = position + (0b1 << 4);
  491:Src/motion_plan.c **** 			break;
  492:Src/motion_plan.c **** 		default:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 33
+
+
  493:Src/motion_plan.c **** 			break;
  494:Src/motion_plan.c **** 		}
  495:Src/motion_plan.c **** 		Motion_Restart();
- 1211              		.loc 1 495 0
- 1212 0038 FFF7FEFF 		bl	Motion_Restart
- 1213              	.LVL93:
- 1214 003c 19E0     		b	.L119
- 1215              	.L116:
+ 1256              		.loc 1 495 0
+ 1257 0038 FFF7FEFF 		bl	Motion_Restart
+ 1258              	.LVL86:
+ 1259 003c 19E0     		b	.L126
+ 1260              	.L123:
  481:Src/motion_plan.c **** 			position++;
- 1216              		.loc 1 481 0
- 1217 003e 274B     		ldr	r3, .L130+8
- 1218 0040 0022     		movs	r2, #0
- 1219 0042 1A70     		strb	r2, [r3]
+ 1261              		.loc 1 481 0
+ 1262 003e 274B     		ldr	r3, .L137+8
+ 1263 0040 0022     		movs	r2, #0
+ 1264 0042 1A70     		strb	r2, [r3]
  482:Src/motion_plan.c **** 			break;
- 1220              		.loc 1 482 0
- 1221 0044 264A     		ldr	r2, .L130+12
- 1222 0046 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 1223 0048 0133     		adds	r3, r3, #1
- 1224 004a 1370     		strb	r3, [r2]
+ 1265              		.loc 1 482 0
+ 1266 0044 264A     		ldr	r2, .L137+12
+ 1267 0046 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 1268 0048 0133     		adds	r3, r3, #1
+ 1269 004a 1370     		strb	r3, [r2]
  483:Src/motion_plan.c **** 		case EAST:
- 1225              		.loc 1 483 0
- 1226 004c F4E7     		b	.L112
- 1227              	.L115:
+ 1270              		.loc 1 483 0
+ 1271 004c F4E7     		b	.L119
+ 1272              	.L122:
  485:Src/motion_plan.c **** 			position = position - (0b1 << 4);
- 1228              		.loc 1 485 0
- 1229 004e 234B     		ldr	r3, .L130+8
- 1230 0050 0322     		movs	r2, #3
- 1231 0052 1A70     		strb	r2, [r3]
+ 1273              		.loc 1 485 0
+ 1274 004e 234B     		ldr	r3, .L137+8
+ 1275 0050 0322     		movs	r2, #3
+ 1276 0052 1A70     		strb	r2, [r3]
  486:Src/motion_plan.c **** 			break;
- 1232              		.loc 1 486 0
- 1233 0054 224A     		ldr	r2, .L130+12
- 1234 0056 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 1235 0058 103B     		subs	r3, r3, #16
- 1236 005a 1370     		strb	r3, [r2]
+ 1277              		.loc 1 486 0
+ 1278 0054 224A     		ldr	r2, .L137+12
+ 1279 0056 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 1280 0058 103B     		subs	r3, r3, #16
+ 1281 005a 1370     		strb	r3, [r2]
  487:Src/motion_plan.c **** 		case WEST:
- 1237              		.loc 1 487 0
- 1238 005c ECE7     		b	.L112
- 1239              	.L117:
+ 1282              		.loc 1 487 0
+ 1283 005c ECE7     		b	.L119
+ 1284              	.L124:
  489:Src/motion_plan.c **** 			position = position + (0b1 << 4);
- 1240              		.loc 1 489 0
- 1241 005e 1F4B     		ldr	r3, .L130+8
- 1242 0060 0122     		movs	r2, #1
- 1243 0062 1A70     		strb	r2, [r3]
+ 1285              		.loc 1 489 0
+ 1286 005e 1F4B     		ldr	r3, .L137+8
+ 1287 0060 0122     		movs	r2, #1
+ 1288 0062 1A70     		strb	r2, [r3]
  490:Src/motion_plan.c **** 			break;
- 1244              		.loc 1 490 0
- 1245 0064 1E4A     		ldr	r2, .L130+12
- 1246 0066 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 1247 0068 1033     		adds	r3, r3, #16
- 1248 006a 1370     		strb	r3, [r2]
+ 1289              		.loc 1 490 0
+ 1290 0064 1E4A     		ldr	r2, .L137+12
+ 1291 0066 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 1292 0068 1033     		adds	r3, r3, #16
+ 1293 006a 1370     		strb	r3, [r2]
  491:Src/motion_plan.c **** 		default:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 33
-
-
- 1249              		.loc 1 491 0
- 1250 006c E4E7     		b	.L112
- 1251              	.LVL94:
- 1252              	.L121:
- 1253              	.LBB2:
+ 1294              		.loc 1 491 0
+ 1295 006c E4E7     		b	.L119
+ 1296              	.LVL87:
+ 1297              	.L128:
+ 1298              	.LBB2:
  496:Src/motion_plan.c **** 	}
  497:Src/motion_plan.c **** 
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 34
+
+
  498:Src/motion_plan.c **** 	while (1)
  499:Src/motion_plan.c **** 	{
  500:Src/motion_plan.c **** 		enc.offset = 0;
@@ -1945,418 +1998,418 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  512:Src/motion_plan.c **** 		case LEFT:
  513:Src/motion_plan.c **** 			//Motion_Left();
  514:Src/motion_plan.c **** 			Motion_SlalomLeft();
- 1254              		.loc 1 514 0
- 1255 006e FFF7FEFF 		bl	Motion_SlalomLeft
- 1256              	.LVL95:
- 1257              	.L119:
+ 1299              		.loc 1 514 0
+ 1300 006e FFF7FEFF 		bl	Motion_SlalomLeft
+ 1301              	.LVL88:
+ 1302              	.L126:
  500:Src/motion_plan.c **** 		unsigned char next_dir;
- 1258              		.loc 1 500 0
- 1259 0072 1C4B     		ldr	r3, .L130+16
- 1260 0074 0022     		movs	r2, #0
- 1261 0076 9A60     		str	r2, [r3, #8]	@ float
+ 1303              		.loc 1 500 0
+ 1304 0072 1C4B     		ldr	r3, .L137+16
+ 1305 0074 0022     		movs	r2, #0
+ 1306 0076 9A60     		str	r2, [r3, #8]	@ float
  502:Src/motion_plan.c **** 		end_flag = Maze_CreateAllMap(&maze);
- 1262              		.loc 1 502 0
- 1263 0078 FFF7FEFF 		bl	Maze_Get_Wall
- 1264              	.LVL96:
+ 1307              		.loc 1 502 0
+ 1308 0078 FFF7FEFF 		bl	Maze_Get_Wall
+ 1309              	.LVL89:
  503:Src/motion_plan.c **** 		if (end_flag == 1)
- 1265              		.loc 1 503 0
- 1266 007c 1A48     		ldr	r0, .L130+20
- 1267 007e FFF7FEFF 		bl	Maze_CreateAllMap
- 1268              	.LVL97:
+ 1310              		.loc 1 503 0
+ 1311 007c 1A48     		ldr	r0, .L137+20
+ 1312 007e FFF7FEFF 		bl	Maze_CreateAllMap
+ 1313              	.LVL90:
  504:Src/motion_plan.c **** 		{
- 1269              		.loc 1 504 0
- 1270 0082 0128     		cmp	r0, #1
- 1271 0084 20D0     		beq	.L120
+ 1314              		.loc 1 504 0
+ 1315 0082 0128     		cmp	r0, #1
+ 1316 0084 20D0     		beq	.L127
  508:Src/motion_plan.c **** 		Update_Position(next_dir);
- 1272              		.loc 1 508 0
- 1273 0086 FFF7FEFF 		bl	Maze_Next_Motion
- 1274              	.LVL98:
- 1275 008a 0446     		mov	r4, r0
- 1276              	.LVL99:
+ 1317              		.loc 1 508 0
+ 1318 0086 FFF7FEFF 		bl	Maze_Next_Motion
+ 1319              	.LVL91:
+ 1320 008a 0446     		mov	r4, r0
+ 1321              	.LVL92:
  509:Src/motion_plan.c **** 		switch (next_dir)
- 1277              		.loc 1 509 0
- 1278 008c FFF7FEFF 		bl	Update_Position
- 1279              	.LVL100:
+ 1322              		.loc 1 509 0
+ 1323 008c FFF7FEFF 		bl	Update_Position
+ 1324              	.LVL93:
  510:Src/motion_plan.c **** 		{
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 34
+ 1325              		.loc 1 510 0
+ 1326 0090 042C     		cmp	r4, #4
+ 1327 0092 EED8     		bhi	.L126
+ 1328 0094 01A3     		adr	r3, .L129
+ 1329 0096 53F824F0 		ldr	pc, [r3, r4, lsl #2]
+ 1330 009a 00BF     		.p2align 2
+ 1331              	.L129:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 35
 
 
- 1280              		.loc 1 510 0
- 1281 0090 042C     		cmp	r4, #4
- 1282 0092 EED8     		bhi	.L119
- 1283 0094 01A3     		adr	r3, .L122
- 1284 0096 53F824F0 		ldr	pc, [r3, r4, lsl #2]
- 1285 009a 00BF     		.p2align 2
- 1286              	.L122:
- 1287 009c 6F000000 		.word	.L121+1
- 1288 00a0 B1000000 		.word	.L123+1
- 1289 00a4 B7000000 		.word	.L124+1
- 1290 00a8 BD000000 		.word	.L125+1
- 1291 00ac C3000000 		.word	.L126+1
- 1292              		.p2align 1
- 1293              	.L123:
+ 1332 009c 6F000000 		.word	.L128+1
+ 1333 00a0 B1000000 		.word	.L130+1
+ 1334 00a4 B7000000 		.word	.L131+1
+ 1335 00a8 BD000000 		.word	.L132+1
+ 1336 00ac C3000000 		.word	.L133+1
+ 1337              		.p2align 1
+ 1338              	.L130:
  515:Src/motion_plan.c **** 			break;
  516:Src/motion_plan.c **** 
  517:Src/motion_plan.c **** 		case FRONT:
  518:Src/motion_plan.c **** 			Motion_Straight();
- 1294              		.loc 1 518 0
- 1295 00b0 FFF7FEFF 		bl	Motion_Straight
- 1296              	.LVL101:
+ 1339              		.loc 1 518 0
+ 1340 00b0 FFF7FEFF 		bl	Motion_Straight
+ 1341              	.LVL94:
  519:Src/motion_plan.c **** 			break;
- 1297              		.loc 1 519 0
- 1298 00b4 DDE7     		b	.L119
- 1299              	.L124:
+ 1342              		.loc 1 519 0
+ 1343 00b4 DDE7     		b	.L126
+ 1344              	.L131:
  520:Src/motion_plan.c **** 
  521:Src/motion_plan.c **** 		case RIGHT:
  522:Src/motion_plan.c **** 			//Motion_Right();
  523:Src/motion_plan.c **** 			Motion_SlalomRight();
- 1300              		.loc 1 523 0
- 1301 00b6 FFF7FEFF 		bl	Motion_SlalomRight
- 1302              	.LVL102:
+ 1345              		.loc 1 523 0
+ 1346 00b6 FFF7FEFF 		bl	Motion_SlalomRight
+ 1347              	.LVL95:
  524:Src/motion_plan.c **** 			break;
- 1303              		.loc 1 524 0
- 1304 00ba DAE7     		b	.L119
- 1305              	.L125:
+ 1348              		.loc 1 524 0
+ 1349 00ba DAE7     		b	.L126
+ 1350              	.L132:
  525:Src/motion_plan.c **** 
  526:Src/motion_plan.c **** 		case UTURN:
  527:Src/motion_plan.c **** 			Motion_Uturn();
- 1306              		.loc 1 527 0
- 1307 00bc FFF7FEFF 		bl	Motion_Uturn
- 1308              	.LVL103:
+ 1351              		.loc 1 527 0
+ 1352 00bc FFF7FEFF 		bl	Motion_Uturn
+ 1353              	.LVL96:
  528:Src/motion_plan.c **** 			break;
- 1309              		.loc 1 528 0
- 1310 00c0 D7E7     		b	.L119
- 1311              	.L126:
+ 1354              		.loc 1 528 0
+ 1355 00c0 D7E7     		b	.L126
+ 1356              	.L133:
  529:Src/motion_plan.c **** 
  530:Src/motion_plan.c **** 		case KABEATE:
  531:Src/motion_plan.c **** 			Motion_Kabeate();
- 1312              		.loc 1 531 0
- 1313 00c2 FFF7FEFF 		bl	Motion_Kabeate
- 1314              	.LVL104:
+ 1357              		.loc 1 531 0
+ 1358 00c2 FFF7FEFF 		bl	Motion_Kabeate
+ 1359              	.LVL97:
  532:Src/motion_plan.c **** 			break;
- 1315              		.loc 1 532 0
- 1316 00c6 D4E7     		b	.L119
- 1317              	.LVL105:
- 1318              	.L120:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 35
-
-
- 1319              	.LBE2:
+ 1360              		.loc 1 532 0
+ 1361 00c6 D4E7     		b	.L126
+ 1362              	.LVL98:
+ 1363              	.L127:
+ 1364              	.LBE2:
  533:Src/motion_plan.c **** 		}
  534:Src/motion_plan.c **** 	}
  535:Src/motion_plan.c **** 	Motion_Goal();
- 1320              		.loc 1 535 0
- 1321 00c8 FFF7FEFF 		bl	Motion_Goal
- 1322              	.LVL106:
+ 1365              		.loc 1 535 0
+ 1366 00c8 FFF7FEFF 		bl	Motion_Goal
+ 1367              	.LVL99:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 36
+
+
  536:Src/motion_plan.c **** 	flag_motor = FALSE;
- 1323              		.loc 1 536 0
- 1324 00cc 014B     		ldr	r3, .L130
- 1325 00ce 0022     		movs	r2, #0
- 1326 00d0 1A70     		strb	r2, [r3]
+ 1368              		.loc 1 536 0
+ 1369 00cc 014B     		ldr	r3, .L137
+ 1370 00ce 0022     		movs	r2, #0
+ 1371 00d0 1A70     		strb	r2, [r3]
  537:Src/motion_plan.c **** }
- 1327              		.loc 1 537 0
- 1328 00d2 10BD     		pop	{r4, pc}
- 1329              	.L131:
- 1330              		.align	2
- 1331              	.L130:
- 1332 00d4 00000000 		.word	flag_motor
- 1333 00d8 00000000 		.word	sen_front
- 1334 00dc 00000000 		.word	direction
- 1335 00e0 00000000 		.word	position
- 1336 00e4 00000000 		.word	enc
- 1337 00e8 00000000 		.word	maze
- 1338              		.cfi_endproc
- 1339              	.LFE132:
- 1341              		.section	.text.Plan_Root,"ax",%progbits
- 1342              		.align	1
- 1343              		.global	Plan_Root
- 1344              		.syntax unified
- 1345              		.thumb
- 1346              		.thumb_func
- 1347              		.fpu fpv4-sp-d16
- 1349              	Plan_Root:
- 1350              	.LFB133:
+ 1372              		.loc 1 537 0
+ 1373 00d2 10BD     		pop	{r4, pc}
+ 1374              	.L138:
+ 1375              		.align	2
+ 1376              	.L137:
+ 1377 00d4 00000000 		.word	flag_motor
+ 1378 00d8 00000000 		.word	sen_front
+ 1379 00dc 00000000 		.word	direction
+ 1380 00e0 00000000 		.word	position
+ 1381 00e4 00000000 		.word	enc
+ 1382 00e8 00000000 		.word	maze
+ 1383              		.cfi_endproc
+ 1384              	.LFE132:
+ 1386              		.section	.text.Plan_Root,"ax",%progbits
+ 1387              		.align	1
+ 1388              		.global	Plan_Root
+ 1389              		.syntax unified
+ 1390              		.thumb
+ 1391              		.thumb_func
+ 1392              		.fpu fpv4-sp-d16
+ 1394              	Plan_Root:
+ 1395              	.LFB133:
  538:Src/motion_plan.c **** 
  539:Src/motion_plan.c **** void Plan_Root(void)
  540:Src/motion_plan.c **** {
- 1351              		.loc 1 540 0
- 1352              		.cfi_startproc
- 1353              		@ args = 0, pretend = 0, frame = 0
- 1354              		@ frame_needed = 0, uses_anonymous_args = 0
- 1355 0000 10B5     		push	{r4, lr}
- 1356              	.LCFI5:
- 1357              		.cfi_def_cfa_offset 8
- 1358              		.cfi_offset 4, -8
- 1359              		.cfi_offset 14, -4
- 1360              	.LVL107:
+ 1396              		.loc 1 540 0
+ 1397              		.cfi_startproc
+ 1398              		@ args = 0, pretend = 0, frame = 0
+ 1399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1400 0000 10B5     		push	{r4, lr}
+ 1401              	.LCFI5:
+ 1402              		.cfi_def_cfa_offset 8
+ 1403              		.cfi_offset 4, -8
+ 1404              		.cfi_offset 14, -4
+ 1405              	.LVL100:
  541:Src/motion_plan.c **** 	unsigned char flag_goal_is = FALSE;
  542:Src/motion_plan.c **** 
  543:Src/motion_plan.c **** 	Maze_CreateFastMap(&maze);
- 1361              		.loc 1 543 0
- 1362 0002 1448     		ldr	r0, .L137
- 1363 0004 FFF7FEFF 		bl	Maze_CreateFastMap
- 1364              	.LVL108:
+ 1406              		.loc 1 543 0
+ 1407 0002 1448     		ldr	r0, .L144
+ 1408 0004 FFF7FEFF 		bl	Maze_CreateFastMap
+ 1409              	.LVL101:
  544:Src/motion_plan.c **** 
  545:Src/motion_plan.c **** 	Que_init_motion(&q_motion);
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 36
-
-
- 1365              		.loc 1 545 0
- 1366 0008 134C     		ldr	r4, .L137+4
- 1367 000a 2046     		mov	r0, r4
- 1368 000c FFF7FEFF 		bl	Que_init_motion
- 1369              	.LVL109:
+ 1410              		.loc 1 545 0
+ 1411 0008 134C     		ldr	r4, .L144+4
+ 1412 000a 2046     		mov	r0, r4
+ 1413 000c FFF7FEFF 		bl	Que_init_motion
+ 1414              	.LVL102:
  546:Src/motion_plan.c **** 	position = 0b1;
- 1370              		.loc 1 546 0
- 1371 0010 124B     		ldr	r3, .L137+8
- 1372 0012 0122     		movs	r2, #1
- 1373 0014 1A70     		strb	r2, [r3]
+ 1415              		.loc 1 546 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 37
+
+
+ 1416 0010 124B     		ldr	r3, .L144+8
+ 1417 0012 0122     		movs	r2, #1
+ 1418 0014 1A70     		strb	r2, [r3]
  547:Src/motion_plan.c **** 	direction = NORTH;
- 1374              		.loc 1 547 0
- 1375 0016 124B     		ldr	r3, .L137+12
- 1376 0018 0022     		movs	r2, #0
- 1377 001a 1A70     		strb	r2, [r3]
+ 1419              		.loc 1 547 0
+ 1420 0016 124B     		ldr	r3, .L144+12
+ 1421 0018 0022     		movs	r2, #0
+ 1422 001a 1A70     		strb	r2, [r3]
  548:Src/motion_plan.c **** 	enq_motion(&q_motion, START);
- 1378              		.loc 1 548 0
- 1379 001c 0521     		movs	r1, #5
- 1380 001e 2046     		mov	r0, r4
- 1381 0020 FFF7FEFF 		bl	enq_motion
- 1382              	.LVL110:
- 1383              	.L133:
- 1384              	.LBB3:
+ 1423              		.loc 1 548 0
+ 1424 001c 0521     		movs	r1, #5
+ 1425 001e 2046     		mov	r0, r4
+ 1426 0020 FFF7FEFF 		bl	enq_motion
+ 1427              	.LVL103:
+ 1428              	.L140:
+ 1429              	.LBB3:
  549:Src/motion_plan.c **** 	while (flag_goal_is == FALSE)
  550:Src/motion_plan.c **** 	{
  551:Src/motion_plan.c **** 		unsigned char tmp;
  552:Src/motion_plan.c **** 		tmp = Maze_Next_Motion();
- 1385              		.loc 1 552 0
- 1386 0024 FFF7FEFF 		bl	Maze_Next_Motion
- 1387              	.LVL111:
- 1388 0028 0446     		mov	r4, r0
- 1389              	.LVL112:
+ 1430              		.loc 1 552 0
+ 1431 0024 FFF7FEFF 		bl	Maze_Next_Motion
+ 1432              	.LVL104:
+ 1433 0028 0446     		mov	r4, r0
+ 1434              	.LVL105:
  553:Src/motion_plan.c **** 		Update_Position(tmp);
- 1390              		.loc 1 553 0
- 1391 002a FFF7FEFF 		bl	Update_Position
- 1392              	.LVL113:
+ 1435              		.loc 1 553 0
+ 1436 002a FFF7FEFF 		bl	Update_Position
+ 1437              	.LVL106:
  554:Src/motion_plan.c **** 		enq_motion(&q_motion, tmp);
- 1393              		.loc 1 554 0
- 1394 002e 2146     		mov	r1, r4
- 1395 0030 0948     		ldr	r0, .L137+4
- 1396 0032 FFF7FEFF 		bl	enq_motion
- 1397              	.LVL114:
+ 1438              		.loc 1 554 0
+ 1439 002e 2146     		mov	r1, r4
+ 1440 0030 0948     		ldr	r0, .L144+4
+ 1441 0032 FFF7FEFF 		bl	enq_motion
+ 1442              	.LVL107:
  555:Src/motion_plan.c **** 		if (position == (maze.goal_x << 4 | maze.goal_y))
- 1398              		.loc 1 555 0
- 1399 0036 094B     		ldr	r3, .L137+8
- 1400 0038 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
- 1401 003a 064A     		ldr	r2, .L137
- 1402 003c 1078     		ldrb	r0, [r2]	@ zero_extendqisi2
- 1403 003e 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
- 1404 0040 43EA0013 		orr	r3, r3, r0, lsl #4
- 1405 0044 9942     		cmp	r1, r3
- 1406 0046 EDD1     		bne	.L133
- 1407              	.LVL115:
+ 1443              		.loc 1 555 0
+ 1444 0036 094B     		ldr	r3, .L144+8
+ 1445 0038 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 1446 003a 064A     		ldr	r2, .L144
+ 1447 003c 1078     		ldrb	r0, [r2]	@ zero_extendqisi2
+ 1448 003e 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 1449 0040 43EA0013 		orr	r3, r3, r0, lsl #4
+ 1450 0044 9942     		cmp	r1, r3
+ 1451 0046 EDD1     		bne	.L140
+ 1452              	.LVL108:
  556:Src/motion_plan.c **** 		{
  557:Src/motion_plan.c **** 			flag_goal_is = TRUE;
  558:Src/motion_plan.c **** 			enq_motion(&q_motion, GOAL);
- 1408              		.loc 1 558 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 37
-
-
- 1409 0048 0621     		movs	r1, #6
- 1410 004a 0348     		ldr	r0, .L137+4
- 1411 004c FFF7FEFF 		bl	enq_motion
- 1412              	.LVL116:
- 1413              	.LBE3:
+ 1453              		.loc 1 558 0
+ 1454 0048 0621     		movs	r1, #6
+ 1455 004a 0348     		ldr	r0, .L144+4
+ 1456 004c FFF7FEFF 		bl	enq_motion
+ 1457              	.LVL109:
+ 1458              	.LBE3:
  559:Src/motion_plan.c **** 		}
  560:Src/motion_plan.c **** 	}
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 38
+
+
  561:Src/motion_plan.c **** }
- 1414              		.loc 1 561 0
- 1415 0050 10BD     		pop	{r4, pc}
- 1416              	.LVL117:
- 1417              	.L138:
- 1418 0052 00BF     		.align	2
- 1419              	.L137:
- 1420 0054 00000000 		.word	maze
- 1421 0058 00000000 		.word	q_motion
- 1422 005c 00000000 		.word	position
- 1423 0060 00000000 		.word	direction
- 1424              		.cfi_endproc
- 1425              	.LFE133:
- 1427              		.section	.text.Plan_Compress,"ax",%progbits
- 1428              		.align	1
- 1429              		.global	Plan_Compress
- 1430              		.syntax unified
- 1431              		.thumb
- 1432              		.thumb_func
- 1433              		.fpu fpv4-sp-d16
- 1435              	Plan_Compress:
- 1436              	.LFB134:
+ 1459              		.loc 1 561 0
+ 1460 0050 10BD     		pop	{r4, pc}
+ 1461              	.LVL110:
+ 1462              	.L145:
+ 1463 0052 00BF     		.align	2
+ 1464              	.L144:
+ 1465 0054 00000000 		.word	maze
+ 1466 0058 00000000 		.word	q_motion
+ 1467 005c 00000000 		.word	position
+ 1468 0060 00000000 		.word	direction
+ 1469              		.cfi_endproc
+ 1470              	.LFE133:
+ 1472              		.section	.text.Plan_Compress,"ax",%progbits
+ 1473              		.align	1
+ 1474              		.global	Plan_Compress
+ 1475              		.syntax unified
+ 1476              		.thumb
+ 1477              		.thumb_func
+ 1478              		.fpu fpv4-sp-d16
+ 1480              	Plan_Compress:
+ 1481              	.LFB134:
  562:Src/motion_plan.c **** 
  563:Src/motion_plan.c **** void Plan_Compress(void)
  564:Src/motion_plan.c **** {
- 1437              		.loc 1 564 0
- 1438              		.cfi_startproc
- 1439              		@ args = 0, pretend = 0, frame = 264
- 1440              		@ frame_needed = 0, uses_anonymous_args = 0
- 1441 0000 30B5     		push	{r4, r5, lr}
- 1442              	.LCFI6:
- 1443              		.cfi_def_cfa_offset 12
- 1444              		.cfi_offset 4, -12
- 1445              		.cfi_offset 5, -8
- 1446              		.cfi_offset 14, -4
- 1447 0002 C3B0     		sub	sp, sp, #268
- 1448              	.LCFI7:
- 1449              		.cfi_def_cfa_offset 280
+ 1482              		.loc 1 564 0
+ 1483              		.cfi_startproc
+ 1484              		@ args = 0, pretend = 0, frame = 264
+ 1485              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1486 0000 30B5     		push	{r4, r5, lr}
+ 1487              	.LCFI6:
+ 1488              		.cfi_def_cfa_offset 12
+ 1489              		.cfi_offset 4, -12
+ 1490              		.cfi_offset 5, -8
+ 1491              		.cfi_offset 14, -4
+ 1492 0002 C3B0     		sub	sp, sp, #268
+ 1493              	.LCFI7:
+ 1494              		.cfi_def_cfa_offset 280
  565:Src/motion_plan.c **** 	queue_motion_t q_buff;
  566:Src/motion_plan.c **** 	unsigned motion;
  567:Src/motion_plan.c **** 
  568:Src/motion_plan.c **** 	Que_init_motion(&q_buff);
- 1450              		.loc 1 568 0
- 1451 0004 6846     		mov	r0, sp
- 1452 0006 FFF7FEFF 		bl	Que_init_motion
- 1453              	.LVL118:
+ 1495              		.loc 1 568 0
+ 1496 0004 6846     		mov	r0, sp
+ 1497 0006 FFF7FEFF 		bl	Que_init_motion
+ 1498              	.LVL111:
  569:Src/motion_plan.c **** 	motion = deq_motion(&q_motion);
- 1454              		.loc 1 569 0
- 1455 000a 3E48     		ldr	r0, .L159
- 1456 000c FFF7FEFF 		bl	deq_motion
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 38
-
-
- 1457              	.LVL119:
- 1458 0010 0446     		mov	r4, r0
- 1459              	.LVL120:
+ 1499              		.loc 1 569 0
+ 1500 000a 3E48     		ldr	r0, .L166
+ 1501 000c FFF7FEFF 		bl	deq_motion
+ 1502              	.LVL112:
+ 1503 0010 0446     		mov	r4, r0
+ 1504              	.LVL113:
  570:Src/motion_plan.c **** 
  571:Src/motion_plan.c **** 	while (q_motion.head != q_motion.tail)
- 1460              		.loc 1 571 0
- 1461 0012 19E0     		b	.L141
- 1462              	.LVL121:
- 1463              	.L146:
- 1464              	.LBB4:
+ 1505              		.loc 1 571 0
+ 1506 0012 19E0     		b	.L148
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 39
+
+
+ 1507              	.LVL114:
+ 1508              	.L153:
+ 1509              	.LBB4:
  572:Src/motion_plan.c **** 	{
  573:Src/motion_plan.c **** 		unsigned char buff = 0;
  574:Src/motion_plan.c **** 		switch (motion)
  575:Src/motion_plan.c **** 		{
  576:Src/motion_plan.c **** 		case START: //5
  577:Src/motion_plan.c **** 			motion = deq_motion(&q_motion);
- 1465              		.loc 1 577 0
- 1466 0014 3B48     		ldr	r0, .L159
- 1467 0016 FFF7FEFF 		bl	deq_motion
- 1468              	.LVL122:
- 1469 001a 0446     		mov	r4, r0
- 1470              	.LVL123:
+ 1510              		.loc 1 577 0
+ 1511 0014 3B48     		ldr	r0, .L166
+ 1512 0016 FFF7FEFF 		bl	deq_motion
+ 1513              	.LVL115:
+ 1514 001a 0446     		mov	r4, r0
+ 1515              	.LVL116:
  573:Src/motion_plan.c **** 		switch (motion)
- 1471              		.loc 1 573 0
- 1472 001c 0025     		movs	r5, #0
+ 1516              		.loc 1 573 0
+ 1517 001c 0025     		movs	r5, #0
  578:Src/motion_plan.c **** 			while (motion == FRONT && q_motion.head != q_motion.tail)
- 1473              		.loc 1 578 0
- 1474 001e 05E0     		b	.L147
- 1475              	.LVL124:
- 1476              	.L149:
+ 1518              		.loc 1 578 0
+ 1519 001e 05E0     		b	.L154
+ 1520              	.LVL117:
+ 1521              	.L156:
  579:Src/motion_plan.c **** 			{
  580:Src/motion_plan.c **** 				buff++;
- 1477              		.loc 1 580 0
- 1478 0020 0135     		adds	r5, r5, #1
- 1479              	.LVL125:
- 1480 0022 EDB2     		uxtb	r5, r5
- 1481              	.LVL126:
+ 1522              		.loc 1 580 0
+ 1523 0020 0135     		adds	r5, r5, #1
+ 1524              	.LVL118:
+ 1525 0022 EDB2     		uxtb	r5, r5
+ 1526              	.LVL119:
  581:Src/motion_plan.c **** 				motion = deq_motion(&q_motion);
- 1482              		.loc 1 581 0
- 1483 0024 3748     		ldr	r0, .L159
- 1484 0026 FFF7FEFF 		bl	deq_motion
- 1485              	.LVL127:
- 1486 002a 0446     		mov	r4, r0
- 1487              	.LVL128:
- 1488              	.L147:
+ 1527              		.loc 1 581 0
+ 1528 0024 3748     		ldr	r0, .L166
+ 1529 0026 FFF7FEFF 		bl	deq_motion
+ 1530              	.LVL120:
+ 1531 002a 0446     		mov	r4, r0
+ 1532              	.LVL121:
+ 1533              	.L154:
  578:Src/motion_plan.c **** 			while (motion == FRONT && q_motion.head != q_motion.tail)
- 1489              		.loc 1 578 0
- 1490 002c 012C     		cmp	r4, #1
- 1491 002e 06D1     		bne	.L148
+ 1534              		.loc 1 578 0
+ 1535 002c 012C     		cmp	r4, #1
+ 1536 002e 06D1     		bne	.L155
  578:Src/motion_plan.c **** 			while (motion == FRONT && q_motion.head != q_motion.tail)
- 1492              		.loc 1 578 0 is_stmt 0 discriminator 1
- 1493 0030 344B     		ldr	r3, .L159
- 1494 0032 D3F80021 		ldr	r2, [r3, #256]
- 1495 0036 D3F80431 		ldr	r3, [r3, #260]
- 1496 003a 9A42     		cmp	r2, r3
- 1497 003c F0D1     		bne	.L149
- 1498              	.L148:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 39
-
-
- 1499              	.LVL129:
+ 1537              		.loc 1 578 0 is_stmt 0 discriminator 1
+ 1538 0030 344B     		ldr	r3, .L166
+ 1539 0032 D3F80021 		ldr	r2, [r3, #256]
+ 1540 0036 D3F80431 		ldr	r3, [r3, #260]
+ 1541 003a 9A42     		cmp	r2, r3
+ 1542 003c F0D1     		bne	.L156
+ 1543              	.L155:
+ 1544              	.LVL122:
  582:Src/motion_plan.c **** 			}
  583:Src/motion_plan.c **** 			buff = START << 4 | buff;
  584:Src/motion_plan.c **** 			enq_motion(&q_buff, buff);
- 1500              		.loc 1 584 0 is_stmt 1
- 1501 003e 45F05001 		orr	r1, r5, #80
- 1502 0042 6846     		mov	r0, sp
- 1503 0044 FFF7FEFF 		bl	enq_motion
- 1504              	.LVL130:
- 1505              	.L141:
- 1506              	.LBE4:
+ 1545              		.loc 1 584 0 is_stmt 1
+ 1546 003e 45F05001 		orr	r1, r5, #80
+ 1547 0042 6846     		mov	r0, sp
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 40
+
+
+ 1548 0044 FFF7FEFF 		bl	enq_motion
+ 1549              	.LVL123:
+ 1550              	.L148:
+ 1551              	.LBE4:
  571:Src/motion_plan.c **** 	{
- 1507              		.loc 1 571 0
- 1508 0048 2E4B     		ldr	r3, .L159
- 1509 004a D3F80021 		ldr	r2, [r3, #256]
- 1510 004e D3F80431 		ldr	r3, [r3, #260]
- 1511 0052 9A42     		cmp	r2, r3
- 1512 0054 4DD0     		beq	.L157
- 1513              	.LVL131:
- 1514              	.LBB5:
+ 1552              		.loc 1 571 0
+ 1553 0048 2E4B     		ldr	r3, .L166
+ 1554 004a D3F80021 		ldr	r2, [r3, #256]
+ 1555 004e D3F80431 		ldr	r3, [r3, #260]
+ 1556 0052 9A42     		cmp	r2, r3
+ 1557 0054 4DD0     		beq	.L164
+ 1558              	.LVL124:
+ 1559              	.LBB5:
  574:Src/motion_plan.c **** 		{
- 1515              		.loc 1 574 0
- 1516 0056 052C     		cmp	r4, #5
- 1517 0058 F6D8     		bhi	.L141
- 1518 005a 01A3     		adr	r3, .L143
- 1519 005c 53F824F0 		ldr	pc, [r3, r4, lsl #2]
- 1520              		.p2align 2
- 1521              	.L143:
- 1522 0060 B7000000 		.word	.L142+1
- 1523 0064 A7000000 		.word	.L155+1
- 1524 0068 D5000000 		.word	.L145+1
- 1525 006c 49000000 		.word	.L141+1
- 1526 0070 49000000 		.word	.L141+1
- 1527 0074 15000000 		.word	.L146+1
- 1528              	.LVL132:
- 1529              		.p2align 1
- 1530              	.L152:
+ 1560              		.loc 1 574 0
+ 1561 0056 052C     		cmp	r4, #5
+ 1562 0058 F6D8     		bhi	.L148
+ 1563 005a 01A3     		adr	r3, .L150
+ 1564 005c 53F824F0 		ldr	pc, [r3, r4, lsl #2]
+ 1565              		.p2align 2
+ 1566              	.L150:
+ 1567 0060 B7000000 		.word	.L149+1
+ 1568 0064 A7000000 		.word	.L162+1
+ 1569 0068 D5000000 		.word	.L152+1
+ 1570 006c 49000000 		.word	.L148+1
+ 1571 0070 49000000 		.word	.L148+1
+ 1572 0074 15000000 		.word	.L153+1
+ 1573              	.LVL125:
+ 1574              		.p2align 1
+ 1575              	.L159:
  585:Src/motion_plan.c **** 			break;
  586:Src/motion_plan.c **** 		case FRONT:
  587:Src/motion_plan.c **** 			while (motion == FRONT && q_motion.head != q_motion.tail)
  588:Src/motion_plan.c **** 			{
  589:Src/motion_plan.c **** 				buff++;
- 1531              		.loc 1 589 0
- 1532 0078 0135     		adds	r5, r5, #1
- 1533              	.LVL133:
- 1534 007a EDB2     		uxtb	r5, r5
- 1535              	.LVL134:
+ 1576              		.loc 1 589 0
+ 1577 0078 0135     		adds	r5, r5, #1
+ 1578              	.LVL126:
+ 1579 007a EDB2     		uxtb	r5, r5
+ 1580              	.LVL127:
  590:Src/motion_plan.c **** 				motion = deq_motion(&q_motion);
- 1536              		.loc 1 590 0
- 1537 007c 2148     		ldr	r0, .L159
- 1538 007e FFF7FEFF 		bl	deq_motion
- 1539              	.LVL135:
- 1540 0082 0446     		mov	r4, r0
- 1541              	.LVL136:
- 1542              	.L144:
+ 1581              		.loc 1 590 0
+ 1582 007c 2148     		ldr	r0, .L166
+ 1583 007e FFF7FEFF 		bl	deq_motion
+ 1584              	.LVL128:
+ 1585 0082 0446     		mov	r4, r0
+ 1586              	.LVL129:
+ 1587              	.L151:
  587:Src/motion_plan.c **** 			{
- 1543              		.loc 1 587 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 40
+ 1588              		.loc 1 587 0
+ 1589 0084 012C     		cmp	r4, #1
+ 1590 0086 06D1     		bne	.L158
+ 587:Src/motion_plan.c **** 			{
+ 1591              		.loc 1 587 0 is_stmt 0 discriminator 1
+ 1592 0088 1E4B     		ldr	r3, .L166
+ 1593 008a D3F80021 		ldr	r2, [r3, #256]
+ 1594 008e D3F80431 		ldr	r3, [r3, #260]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 41
 
 
- 1544 0084 012C     		cmp	r4, #1
- 1545 0086 06D1     		bne	.L151
- 587:Src/motion_plan.c **** 			{
- 1546              		.loc 1 587 0 is_stmt 0 discriminator 1
- 1547 0088 1E4B     		ldr	r3, .L159
- 1548 008a D3F80021 		ldr	r2, [r3, #256]
- 1549 008e D3F80431 		ldr	r3, [r3, #260]
- 1550 0092 9A42     		cmp	r2, r3
- 1551 0094 F0D1     		bne	.L152
- 1552              	.L151:
+ 1595 0092 9A42     		cmp	r2, r3
+ 1596 0094 F0D1     		bne	.L159
+ 1597              	.L158:
  591:Src/motion_plan.c **** 			}
  592:Src/motion_plan.c **** 			if (motion == GOAL)
- 1553              		.loc 1 592 0 is_stmt 1
- 1554 0096 062C     		cmp	r4, #6
- 1555 0098 07D0     		beq	.L158
- 1556              	.LVL137:
+ 1598              		.loc 1 592 0 is_stmt 1
+ 1599 0096 062C     		cmp	r4, #6
+ 1600 0098 07D0     		beq	.L165
+ 1601              	.LVL130:
  593:Src/motion_plan.c **** 			{
  594:Src/motion_plan.c **** 				buff = GOAL << 4 | buff;
  595:Src/motion_plan.c **** 				enq_motion(&q_buff, buff);
@@ -2365,102 +2418,99 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  598:Src/motion_plan.c **** 			{
  599:Src/motion_plan.c **** 				buff = FRONT << 4 | buff;
  600:Src/motion_plan.c **** 				enq_motion(&q_buff, buff);
- 1557              		.loc 1 600 0
- 1558 009a 45F01001 		orr	r1, r5, #16
- 1559 009e 6846     		mov	r0, sp
- 1560 00a0 FFF7FEFF 		bl	enq_motion
- 1561              	.LVL138:
- 1562 00a4 D0E7     		b	.L141
- 1563              	.LVL139:
- 1564              	.L155:
+ 1602              		.loc 1 600 0
+ 1603 009a 45F01001 		orr	r1, r5, #16
+ 1604 009e 6846     		mov	r0, sp
+ 1605 00a0 FFF7FEFF 		bl	enq_motion
+ 1606              	.LVL131:
+ 1607 00a4 D0E7     		b	.L148
+ 1608              	.LVL132:
+ 1609              	.L162:
  573:Src/motion_plan.c **** 		switch (motion)
- 1565              		.loc 1 573 0
- 1566 00a6 0025     		movs	r5, #0
- 1567 00a8 ECE7     		b	.L144
- 1568              	.LVL140:
- 1569              	.L158:
+ 1610              		.loc 1 573 0
+ 1611 00a6 0025     		movs	r5, #0
+ 1612 00a8 ECE7     		b	.L151
+ 1613              	.LVL133:
+ 1614              	.L165:
  595:Src/motion_plan.c **** 			}
- 1570              		.loc 1 595 0
- 1571 00aa 45F06001 		orr	r1, r5, #96
- 1572 00ae 6846     		mov	r0, sp
- 1573 00b0 FFF7FEFF 		bl	enq_motion
- 1574              	.LVL141:
- 1575 00b4 C8E7     		b	.L141
- 1576              	.LVL142:
- 1577              	.L142:
+ 1615              		.loc 1 595 0
+ 1616 00aa 45F06001 		orr	r1, r5, #96
+ 1617 00ae 6846     		mov	r0, sp
+ 1618 00b0 FFF7FEFF 		bl	enq_motion
+ 1619              	.LVL134:
+ 1620 00b4 C8E7     		b	.L148
+ 1621              	.LVL135:
+ 1622              	.L149:
  601:Src/motion_plan.c **** 			}
  602:Src/motion_plan.c **** 			break;
  603:Src/motion_plan.c **** 		case LEFT:
  604:Src/motion_plan.c **** 			buff = LEFT << 4;
  605:Src/motion_plan.c **** 			enq_motion(&q_buff, buff);
- 1578              		.loc 1 605 0
- 1579 00b6 0021     		movs	r1, #0
- 1580 00b8 6846     		mov	r0, sp
- 1581 00ba FFF7FEFF 		bl	enq_motion
- 1582              	.LVL143:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 41
-
-
+ 1623              		.loc 1 605 0
+ 1624 00b6 0021     		movs	r1, #0
+ 1625 00b8 6846     		mov	r0, sp
+ 1626 00ba FFF7FEFF 		bl	enq_motion
+ 1627              	.LVL136:
  606:Src/motion_plan.c **** 			motion = deq_motion(&q_motion);
- 1583              		.loc 1 606 0
- 1584 00be 1148     		ldr	r0, .L159
- 1585 00c0 FFF7FEFF 		bl	deq_motion
- 1586              	.LVL144:
- 1587 00c4 0446     		mov	r4, r0
- 1588              	.LVL145:
+ 1628              		.loc 1 606 0
+ 1629 00be 1148     		ldr	r0, .L166
+ 1630 00c0 FFF7FEFF 		bl	deq_motion
+ 1631              	.LVL137:
+ 1632 00c4 0446     		mov	r4, r0
+ 1633              	.LVL138:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 42
+
+
  607:Src/motion_plan.c **** 			if(motion==GOAL){
- 1589              		.loc 1 607 0
- 1590 00c6 0628     		cmp	r0, #6
- 1591 00c8 BED1     		bne	.L141
- 1592              	.LVL146:
+ 1634              		.loc 1 607 0
+ 1635 00c6 0628     		cmp	r0, #6
+ 1636 00c8 BED1     		bne	.L148
+ 1637              	.LVL139:
  608:Src/motion_plan.c **** 				buff = GOAL << 4;
  609:Src/motion_plan.c **** 				enq_motion(&q_buff, buff);
- 1593              		.loc 1 609 0
- 1594 00ca 6021     		movs	r1, #96
- 1595 00cc 6846     		mov	r0, sp
- 1596              	.LVL147:
- 1597 00ce FFF7FEFF 		bl	enq_motion
- 1598              	.LVL148:
- 1599 00d2 B9E7     		b	.L141
- 1600              	.LVL149:
- 1601              	.L145:
+ 1638              		.loc 1 609 0
+ 1639 00ca 6021     		movs	r1, #96
+ 1640 00cc 6846     		mov	r0, sp
+ 1641              	.LVL140:
+ 1642 00ce FFF7FEFF 		bl	enq_motion
+ 1643              	.LVL141:
+ 1644 00d2 B9E7     		b	.L148
+ 1645              	.LVL142:
+ 1646              	.L152:
  610:Src/motion_plan.c **** 			}
  611:Src/motion_plan.c **** 			break;
  612:Src/motion_plan.c **** 		case RIGHT:
  613:Src/motion_plan.c **** 			buff = RIGHT << 4;
  614:Src/motion_plan.c **** 			enq_motion(&q_buff, buff);
- 1602              		.loc 1 614 0
- 1603 00d4 2021     		movs	r1, #32
- 1604 00d6 6846     		mov	r0, sp
- 1605 00d8 FFF7FEFF 		bl	enq_motion
- 1606              	.LVL150:
+ 1647              		.loc 1 614 0
+ 1648 00d4 2021     		movs	r1, #32
+ 1649 00d6 6846     		mov	r0, sp
+ 1650 00d8 FFF7FEFF 		bl	enq_motion
+ 1651              	.LVL143:
  615:Src/motion_plan.c **** 			motion = deq_motion(&q_motion);
- 1607              		.loc 1 615 0
- 1608 00dc 0948     		ldr	r0, .L159
- 1609 00de FFF7FEFF 		bl	deq_motion
- 1610              	.LVL151:
- 1611 00e2 0446     		mov	r4, r0
- 1612              	.LVL152:
+ 1652              		.loc 1 615 0
+ 1653 00dc 0948     		ldr	r0, .L166
+ 1654 00de FFF7FEFF 		bl	deq_motion
+ 1655              	.LVL144:
+ 1656 00e2 0446     		mov	r4, r0
+ 1657              	.LVL145:
  616:Src/motion_plan.c **** 			if(motion==GOAL){
- 1613              		.loc 1 616 0
- 1614 00e4 0628     		cmp	r0, #6
- 1615 00e6 AFD1     		bne	.L141
- 1616              	.LVL153:
+ 1658              		.loc 1 616 0
+ 1659 00e4 0628     		cmp	r0, #6
+ 1660 00e6 AFD1     		bne	.L148
+ 1661              	.LVL146:
  617:Src/motion_plan.c **** 				buff = GOAL << 4;
  618:Src/motion_plan.c **** 				enq_motion(&q_buff, buff);
- 1617              		.loc 1 618 0
- 1618 00e8 6021     		movs	r1, #96
- 1619 00ea 6846     		mov	r0, sp
- 1620              	.LVL154:
- 1621 00ec FFF7FEFF 		bl	enq_motion
- 1622              	.LVL155:
- 1623 00f0 AAE7     		b	.L141
- 1624              	.LVL156:
- 1625              	.L157:
- 1626              	.LBE5:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 42
-
-
+ 1662              		.loc 1 618 0
+ 1663 00e8 6021     		movs	r1, #96
+ 1664 00ea 6846     		mov	r0, sp
+ 1665              	.LVL147:
+ 1666 00ec FFF7FEFF 		bl	enq_motion
+ 1667              	.LVL148:
+ 1668 00f0 AAE7     		b	.L148
+ 1669              	.LVL149:
+ 1670              	.L164:
+ 1671              	.LBE5:
  619:Src/motion_plan.c **** 			}
  620:Src/motion_plan.c **** 			break;
  621:Src/motion_plan.c **** 		default:
@@ -2468,91 +2518,98 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  623:Src/motion_plan.c **** 		}
  624:Src/motion_plan.c **** 	}
  625:Src/motion_plan.c **** 	q_motion = q_buff;
- 1627              		.loc 1 625 0
- 1628 00f2 4FF48472 		mov	r2, #264
- 1629 00f6 6946     		mov	r1, sp
- 1630 00f8 0248     		ldr	r0, .L159
- 1631 00fa FFF7FEFF 		bl	memcpy
- 1632              	.LVL157:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 43
+
+
+ 1672              		.loc 1 625 0
+ 1673 00f2 4FF48472 		mov	r2, #264
+ 1674 00f6 6946     		mov	r1, sp
+ 1675 00f8 0248     		ldr	r0, .L166
+ 1676 00fa FFF7FEFF 		bl	memcpy
+ 1677              	.LVL150:
  626:Src/motion_plan.c **** }
- 1633              		.loc 1 626 0
- 1634 00fe 43B0     		add	sp, sp, #268
- 1635              	.LCFI8:
- 1636              		.cfi_def_cfa_offset 12
- 1637              		@ sp needed
- 1638 0100 30BD     		pop	{r4, r5, pc}
- 1639              	.LVL158:
- 1640              	.L160:
- 1641 0102 00BF     		.align	2
- 1642              	.L159:
- 1643 0104 00000000 		.word	q_motion
- 1644              		.cfi_endproc
- 1645              	.LFE134:
- 1647              		.section	.text.Plan_Fast,"ax",%progbits
- 1648              		.align	1
- 1649              		.global	Plan_Fast
- 1650              		.syntax unified
- 1651              		.thumb
- 1652              		.thumb_func
- 1653              		.fpu fpv4-sp-d16
- 1655              	Plan_Fast:
- 1656              	.LFB135:
+ 1678              		.loc 1 626 0
+ 1679 00fe 43B0     		add	sp, sp, #268
+ 1680              	.LCFI8:
+ 1681              		.cfi_def_cfa_offset 12
+ 1682              		@ sp needed
+ 1683 0100 30BD     		pop	{r4, r5, pc}
+ 1684              	.LVL151:
+ 1685              	.L167:
+ 1686 0102 00BF     		.align	2
+ 1687              	.L166:
+ 1688 0104 00000000 		.word	q_motion
+ 1689              		.cfi_endproc
+ 1690              	.LFE134:
+ 1692              		.section	.text.Plan_Fast,"ax",%progbits
+ 1693              		.align	1
+ 1694              		.global	Plan_Fast
+ 1695              		.syntax unified
+ 1696              		.thumb
+ 1697              		.thumb_func
+ 1698              		.fpu fpv4-sp-d16
+ 1700              	Plan_Fast:
+ 1701              	.LFB135:
  627:Src/motion_plan.c **** 
  628:Src/motion_plan.c **** void Plan_Fast(void)
  629:Src/motion_plan.c **** {
- 1657              		.loc 1 629 0
- 1658              		.cfi_startproc
- 1659              		@ args = 0, pretend = 0, frame = 0
- 1660              		@ frame_needed = 0, uses_anonymous_args = 0
- 1661 0000 08B5     		push	{r3, lr}
- 1662              	.LCFI9:
- 1663              		.cfi_def_cfa_offset 8
- 1664              		.cfi_offset 3, -8
- 1665              		.cfi_offset 14, -4
+ 1702              		.loc 1 629 0
+ 1703              		.cfi_startproc
+ 1704              		@ args = 0, pretend = 0, frame = 0
+ 1705              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1706 0000 08B5     		push	{r3, lr}
+ 1707              	.LCFI9:
+ 1708              		.cfi_def_cfa_offset 8
+ 1709              		.cfi_offset 3, -8
+ 1710              		.cfi_offset 14, -4
  630:Src/motion_plan.c **** 	unsigned char motion_h, motion_l;
  631:Src/motion_plan.c **** 
  632:Src/motion_plan.c **** 	adcStart();
- 1666              		.loc 1 632 0
- 1667 0002 FFF7FEFF 		bl	adcStart
- 1668              	.LVL159:
- 1669              	.L162:
+ 1711              		.loc 1 632 0
+ 1712 0002 FFF7FEFF 		bl	adcStart
+ 1713              	.LVL152:
+ 1714              	.L169:
  633:Src/motion_plan.c **** 	while (sen_front.is_wall == FALSE)
- 1670              		.loc 1 633 0 discriminator 1
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 43
-
-
- 1671 0006 254B     		ldr	r3, .L175
- 1672 0008 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
- 1673 000a 002B     		cmp	r3, #0
- 1674 000c FBD0     		beq	.L162
+ 1715              		.loc 1 633 0 discriminator 1
+ 1716 0006 274B     		ldr	r3, .L182
+ 1717 0008 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1718 000a 002B     		cmp	r3, #0
+ 1719 000c FBD0     		beq	.L169
  634:Src/motion_plan.c **** 	{
  635:Src/motion_plan.c **** 	}
  636:Src/motion_plan.c **** 	Output_Buzzer(HZ_G);
- 1675              		.loc 1 636 0
- 1676 000e 6620     		movs	r0, #102
- 1677 0010 FFF7FEFF 		bl	Output_Buzzer
- 1678              	.LVL160:
- 637:Src/motion_plan.c **** 	gyro_offset_calc_reset();
- 1679              		.loc 1 637 0
- 1680 0014 FFF7FEFF 		bl	gyro_offset_calc_reset
- 1681              	.LVL161:
- 638:Src/motion_plan.c **** 
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 44
+
+
+ 1720              		.loc 1 636 0
+ 1721 000e 6620     		movs	r0, #102
+ 1722 0010 FFF7FEFF 		bl	Output_Buzzer
+ 1723              	.LVL153:
+ 637:Src/motion_plan.c **** 	HAL_Delay(2500);
+ 1724              		.loc 1 637 0
+ 1725 0014 40F6C410 		movw	r0, #2500
+ 1726 0018 FFF7FEFF 		bl	HAL_Delay
+ 1727              	.LVL154:
+ 638:Src/motion_plan.c **** 	gyro_offset_calc_reset();
+ 1728              		.loc 1 638 0
+ 1729 001c FFF7FEFF 		bl	gyro_offset_calc_reset
+ 1730              	.LVL155:
  639:Src/motion_plan.c **** 	HAL_Delay(2500);
- 1682              		.loc 1 639 0
- 1683 0018 40F6C410 		movw	r0, #2500
- 1684 001c FFF7FEFF 		bl	HAL_Delay
- 1685              	.LVL162:
+ 1731              		.loc 1 639 0
+ 1732 0020 40F6C410 		movw	r0, #2500
+ 1733 0024 FFF7FEFF 		bl	HAL_Delay
+ 1734              	.LVL156:
  640:Src/motion_plan.c **** 	flag_motor = TRUE;
- 1686              		.loc 1 640 0
- 1687 0020 1F4B     		ldr	r3, .L175+4
- 1688 0022 0122     		movs	r2, #1
- 1689 0024 1A70     		strb	r2, [r3]
+ 1735              		.loc 1 640 0
+ 1736 0028 1F4B     		ldr	r3, .L182+4
+ 1737 002a 0122     		movs	r2, #1
+ 1738 002c 1A70     		strb	r2, [r3]
  641:Src/motion_plan.c **** 
  642:Src/motion_plan.c **** 	while (q_motion.head != q_motion.tail)
- 1690              		.loc 1 642 0
- 1691 0026 02E0     		b	.L164
- 1692              	.LVL163:
- 1693              	.L169:
+ 1739              		.loc 1 642 0
+ 1740 002e 02E0     		b	.L171
+ 1741              	.LVL157:
+ 1742              	.L176:
  643:Src/motion_plan.c **** 	{
  644:Src/motion_plan.c **** 		enc.offset = 0;
  645:Src/motion_plan.c **** 		motion_h = deq_motion(&q_motion);
@@ -2563,216 +2620,218 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 1
  650:Src/motion_plan.c **** 		{
  651:Src/motion_plan.c **** 		case START:
  652:Src/motion_plan.c **** 			Motion_StartFast(motion_l);
- 1694              		.loc 1 652 0
- 1695 0028 1046     		mov	r0, r2
- 1696 002a FFF7FEFF 		bl	Motion_StartFast
- 1697              	.LVL164:
- 1698              	.L164:
+ 1743              		.loc 1 652 0
+ 1744 0030 1046     		mov	r0, r2
+ 1745 0032 FFF7FEFF 		bl	Motion_StartFast
+ 1746              	.LVL158:
+ 1747              	.L171:
  642:Src/motion_plan.c **** 	{
- 1699              		.loc 1 642 0
- 1700 002e 1D4B     		ldr	r3, .L175+8
- 1701 0030 D3F80021 		ldr	r2, [r3, #256]
- 1702 0034 D3F80431 		ldr	r3, [r3, #260]
- 1703 0038 9A42     		cmp	r2, r3
- 1704 003a 2BD0     		beq	.L174
+ 1748              		.loc 1 642 0
+ 1749 0036 1D4B     		ldr	r3, .L182+8
+ 1750 0038 D3F80021 		ldr	r2, [r3, #256]
+ 1751 003c D3F80431 		ldr	r3, [r3, #260]
+ 1752 0040 9A42     		cmp	r2, r3
+ 1753 0042 2BD0     		beq	.L181
  644:Src/motion_plan.c **** 		motion_h = deq_motion(&q_motion);
- 1705              		.loc 1 644 0
- 1706 003c 1A4B     		ldr	r3, .L175+12
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 44
-
-
- 1707 003e 0022     		movs	r2, #0
- 1708 0040 9A60     		str	r2, [r3, #8]	@ float
+ 1754              		.loc 1 644 0
+ 1755 0044 1A4B     		ldr	r3, .L182+12
+ 1756 0046 0022     		movs	r2, #0
+ 1757 0048 9A60     		str	r2, [r3, #8]	@ float
  645:Src/motion_plan.c **** 		motion_l = motion_h & 0b1111;
- 1709              		.loc 1 645 0
- 1710 0042 1848     		ldr	r0, .L175+8
- 1711 0044 FFF7FEFF 		bl	deq_motion
- 1712              	.LVL165:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 45
+
+
+ 1758              		.loc 1 645 0
+ 1759 004a 1848     		ldr	r0, .L182+8
+ 1760 004c FFF7FEFF 		bl	deq_motion
+ 1761              	.LVL159:
  646:Src/motion_plan.c **** 		motion_h = motion_h >> 4;
- 1713              		.loc 1 646 0
- 1714 0048 00F00F02 		and	r2, r0, #15
- 1715              	.LVL166:
+ 1762              		.loc 1 646 0
+ 1763 0050 00F00F02 		and	r2, r0, #15
+ 1764              	.LVL160:
  647:Src/motion_plan.c **** 
- 1716              		.loc 1 647 0
- 1717 004c C0F30713 		ubfx	r3, r0, #4, #8
- 1718              	.LVL167:
+ 1765              		.loc 1 647 0
+ 1766 0054 C0F30713 		ubfx	r3, r0, #4, #8
+ 1767              	.LVL161:
  649:Src/motion_plan.c **** 		{
- 1719              		.loc 1 649 0
- 1720 0050 062B     		cmp	r3, #6
- 1721 0052 ECD8     		bhi	.L164
- 1722 0054 01A1     		adr	r1, .L166
- 1723 0056 51F823F0 		ldr	pc, [r1, r3, lsl #2]
- 1724 005a 00BF     		.p2align 2
- 1725              	.L166:
- 1726 005c 79000000 		.word	.L165+1
- 1727 0060 7F000000 		.word	.L167+1
- 1728 0064 87000000 		.word	.L168+1
- 1729 0068 2F000000 		.word	.L164+1
- 1730 006c 2F000000 		.word	.L164+1
- 1731 0070 29000000 		.word	.L169+1
- 1732 0074 8D000000 		.word	.L170+1
- 1733              		.p2align 1
- 1734              	.L165:
+ 1768              		.loc 1 649 0
+ 1769 0058 062B     		cmp	r3, #6
+ 1770 005a ECD8     		bhi	.L171
+ 1771 005c 01A1     		adr	r1, .L173
+ 1772 005e 51F823F0 		ldr	pc, [r1, r3, lsl #2]
+ 1773 0062 00BF     		.p2align 2
+ 1774              	.L173:
+ 1775 0064 81000000 		.word	.L172+1
+ 1776 0068 87000000 		.word	.L174+1
+ 1777 006c 8F000000 		.word	.L175+1
+ 1778 0070 37000000 		.word	.L171+1
+ 1779 0074 37000000 		.word	.L171+1
+ 1780 0078 31000000 		.word	.L176+1
+ 1781 007c 95000000 		.word	.L177+1
+ 1782              		.p2align 1
+ 1783              	.L172:
  653:Src/motion_plan.c **** 			break;
  654:Src/motion_plan.c **** 		case LEFT:
  655:Src/motion_plan.c **** 			Motion_SlalomLeft();
- 1735              		.loc 1 655 0
- 1736 0078 FFF7FEFF 		bl	Motion_SlalomLeft
- 1737              	.LVL168:
+ 1784              		.loc 1 655 0
+ 1785 0080 FFF7FEFF 		bl	Motion_SlalomLeft
+ 1786              	.LVL162:
  656:Src/motion_plan.c **** 			break;
- 1738              		.loc 1 656 0
- 1739 007c D7E7     		b	.L164
- 1740              	.LVL169:
- 1741              	.L167:
+ 1787              		.loc 1 656 0
+ 1788 0084 D7E7     		b	.L171
+ 1789              	.LVL163:
+ 1790              	.L174:
  657:Src/motion_plan.c **** 		case FRONT:
  658:Src/motion_plan.c **** 			Motion_StraightFast(motion_l);
- 1742              		.loc 1 658 0
- 1743 007e 1046     		mov	r0, r2
- 1744 0080 FFF7FEFF 		bl	Motion_StraightFast
- 1745              	.LVL170:
+ 1791              		.loc 1 658 0
+ 1792 0086 1046     		mov	r0, r2
+ 1793 0088 FFF7FEFF 		bl	Motion_StraightFast
+ 1794              	.LVL164:
  659:Src/motion_plan.c **** 			break;
- 1746              		.loc 1 659 0
- 1747 0084 D3E7     		b	.L164
- 1748              	.LVL171:
- 1749              	.L168:
+ 1795              		.loc 1 659 0
+ 1796 008c D3E7     		b	.L171
+ 1797              	.LVL165:
+ 1798              	.L175:
  660:Src/motion_plan.c **** 		case RIGHT:
  661:Src/motion_plan.c **** 			Motion_SlalomRight();
- 1750              		.loc 1 661 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 45
-
-
- 1751 0086 FFF7FEFF 		bl	Motion_SlalomRight
- 1752              	.LVL172:
+ 1799              		.loc 1 661 0
+ 1800 008e FFF7FEFF 		bl	Motion_SlalomRight
+ 1801              	.LVL166:
  662:Src/motion_plan.c **** 			break;
- 1753              		.loc 1 662 0
- 1754 008a D0E7     		b	.L164
- 1755              	.LVL173:
- 1756              	.L170:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 46
+
+
+ 1802              		.loc 1 662 0
+ 1803 0092 D0E7     		b	.L171
+ 1804              	.LVL167:
+ 1805              	.L177:
  663:Src/motion_plan.c **** 		case GOAL:
  664:Src/motion_plan.c **** 			Motion_GoalFast(motion_l);
- 1757              		.loc 1 664 0
- 1758 008c 1046     		mov	r0, r2
- 1759 008e FFF7FEFF 		bl	Motion_GoalFast
- 1760              	.LVL174:
+ 1806              		.loc 1 664 0
+ 1807 0094 1046     		mov	r0, r2
+ 1808 0096 FFF7FEFF 		bl	Motion_GoalFast
+ 1809              	.LVL168:
  665:Src/motion_plan.c **** 			break;
- 1761              		.loc 1 665 0
- 1762 0092 CCE7     		b	.L164
- 1763              	.L174:
+ 1810              		.loc 1 665 0
+ 1811 009a CCE7     		b	.L171
+ 1812              	.L181:
  666:Src/motion_plan.c **** 		}
  667:Src/motion_plan.c **** 	}
  668:Src/motion_plan.c **** 	flag_motor = FALSE;
- 1764              		.loc 1 668 0
- 1765 0094 024B     		ldr	r3, .L175+4
- 1766 0096 0022     		movs	r2, #0
- 1767 0098 1A70     		strb	r2, [r3]
+ 1813              		.loc 1 668 0
+ 1814 009c 024B     		ldr	r3, .L182+4
+ 1815 009e 0022     		movs	r2, #0
+ 1816 00a0 1A70     		strb	r2, [r3]
  669:Src/motion_plan.c **** }...
- 1768              		.loc 1 669 0
- 1769 009a 08BD     		pop	{r3, pc}
- 1770              	.L176:
- 1771              		.align	2
- 1772              	.L175:
- 1773 009c 00000000 		.word	sen_front
- 1774 00a0 00000000 		.word	flag_motor
- 1775 00a4 00000000 		.word	q_motion
- 1776 00a8 00000000 		.word	enc
- 1777              		.cfi_endproc
- 1778              	.LFE135:
- 1780              		.comm	q_motion,264,4
- 1781              		.global	flag_search
- 1782              		.section	.bss.flag_search,"aw",%nobits
- 1785              	flag_search:
- 1786 0000 00       		.space	1
- 1787              		.text
- 1788              	.Letext0:
- 1789              		.file 2 "Inc/maze_info.h"
- 1790              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1791              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1792              		.file 5 "Inc/filter.h"
- 1793              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
- 1794              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 1795              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 1796              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1797              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 1798              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eab
- 1799              		.file 12 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 1800              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1801              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1802              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 46
+ 1817              		.loc 1 669 0
+ 1818 00a2 08BD     		pop	{r3, pc}
+ 1819              	.L183:
+ 1820              		.align	2
+ 1821              	.L182:
+ 1822 00a4 00000000 		.word	sen_front
+ 1823 00a8 00000000 		.word	flag_motor
+ 1824 00ac 00000000 		.word	q_motion
+ 1825 00b0 00000000 		.word	enc
+ 1826              		.cfi_endproc
+ 1827              	.LFE135:
+ 1829              		.comm	q_motion,264,4
+ 1830              		.global	flag_search
+ 1831              		.section	.bss.flag_search,"aw",%nobits
+ 1834              	flag_search:
+ 1835 0000 00       		.space	1
+ 1836              		.text
+ 1837              	.Letext0:
+ 1838              		.file 2 "Inc/maze_info.h"
+ 1839              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1840              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1841              		.file 5 "Inc/filter.h"
+ 1842              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+ 1843              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1844              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 1845              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1846              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 1847              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eab
+ 1848              		.file 12 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 1849              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1850              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1851              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1852              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1853              		.file 17 "Inc/spi.h"
+ 1854              		.file 18 "Inc/tim.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 47
 
 
- 1803              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1804              		.file 17 "Inc/spi.h"
- 1805              		.file 18 "Inc/tim.h"
- 1806              		.file 19 "Inc/interface.h"
- 1807              		.file 20 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 1808              		.file 21 "Inc/motion.h"
- 1809              		.file 22 "Inc/maze_analysis.h"
- 1810              		.file 23 "<built-in>"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 47
+ 1855              		.file 19 "Inc/interface.h"
+ 1856              		.file 20 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1857              		.file 21 "Inc/motion.h"
+ 1858              		.file 22 "Inc/maze_analysis.h"
+ 1859              		.file 23 "<built-in>"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 48
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 motion_plan.c
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:18     .text.Que_init_motion:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:25     .text.Que_init_motion:00000000 Que_init_motion
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:60     .text.enq_motion:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:67     .text.enq_motion:00000000 enq_motion
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:99     .text.deq_motion:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:106    .text.deq_motion:00000000 deq_motion
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:128    .text.Update_Position:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:135    .text.Update_Position:00000000 Update_Position
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:148    .text.Update_Position:0000000a $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:162    .text.Update_Position:0000001e $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:166    .text.Update_Position:00000022 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:223    .text.Update_Position:00000070 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:227    .text.Update_Position:00000074 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:268    .text.Update_Position:000000a8 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:272    .text.Update_Position:000000ac $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:329    .text.Update_Position:000000f8 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:333    .text.Update_Position:000000fc $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:390    .text.Update_Position:00000148 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:394    .text.Update_Position:0000014c $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:447    .text.Update_Position:0000018c $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:453    .text.Maze_Next_Motion:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:460    .text.Maze_Next_Motion:00000000 Maze_Next_Motion
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:490    .text.Maze_Next_Motion:0000001a $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:494    .text.Maze_Next_Motion:00000022 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:971    .text.Maze_Next_Motion:000002f4 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:978    .text.Plan_Adachi:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:985    .text.Plan_Adachi:00000000 Plan_Adachi
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1082   .text.Plan_Adachi:0000007c $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1142   .text.Plan_Adachi:000000b4 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1152   .text.Plan_AllSearch:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1159   .text.Plan_AllSearch:00000000 Plan_AllSearch
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1190   .text.Plan_AllSearch:00000020 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1194   .text.Plan_AllSearch:00000024 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1287   .text.Plan_AllSearch:0000009c $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1292   .text.Plan_AllSearch:000000b0 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1332   .text.Plan_AllSearch:000000d4 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1342   .text.Plan_Root:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1349   .text.Plan_Root:00000000 Plan_Root
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1420   .text.Plan_Root:00000054 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:18     .text.Que_init_motion:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:25     .text.Que_init_motion:00000000 Que_init_motion
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:60     .text.enq_motion:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:67     .text.enq_motion:00000000 enq_motion
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:99     .text.deq_motion:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:106    .text.deq_motion:00000000 deq_motion
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:128    .text.Update_Position:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:135    .text.Update_Position:00000000 Update_Position
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:148    .text.Update_Position:0000000a $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:162    .text.Update_Position:0000001e $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:166    .text.Update_Position:00000022 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:223    .text.Update_Position:00000070 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:227    .text.Update_Position:00000074 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:268    .text.Update_Position:000000a8 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:272    .text.Update_Position:000000ac $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:329    .text.Update_Position:000000f8 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:333    .text.Update_Position:000000fc $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:390    .text.Update_Position:00000148 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:394    .text.Update_Position:0000014c $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:447    .text.Update_Position:0000018c $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:453    .text.Maze_Next_Motion:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:460    .text.Maze_Next_Motion:00000000 Maze_Next_Motion
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:490    .text.Maze_Next_Motion:0000001a $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:494    .text.Maze_Next_Motion:00000022 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:882    .text.Maze_Next_Motion:00000290 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:887    .text.Maze_Next_Motion:0000029c $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1018   .text.Maze_Next_Motion:00000350 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1023   .text.Plan_Adachi:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1030   .text.Plan_Adachi:00000000 Plan_Adachi
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1127   .text.Plan_Adachi:0000007c $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1187   .text.Plan_Adachi:000000b4 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1197   .text.Plan_AllSearch:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1204   .text.Plan_AllSearch:00000000 Plan_AllSearch
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1235   .text.Plan_AllSearch:00000020 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1239   .text.Plan_AllSearch:00000024 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1332   .text.Plan_AllSearch:0000009c $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1337   .text.Plan_AllSearch:000000b0 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1377   .text.Plan_AllSearch:000000d4 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1387   .text.Plan_Root:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1394   .text.Plan_Root:00000000 Plan_Root
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1465   .text.Plan_Root:00000054 $d
                             *COM*:00000108 q_motion
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1428   .text.Plan_Compress:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1435   .text.Plan_Compress:00000000 Plan_Compress
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1522   .text.Plan_Compress:00000060 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1529   .text.Plan_Compress:00000078 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1643   .text.Plan_Compress:00000104 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1648   .text.Plan_Fast:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1655   .text.Plan_Fast:00000000 Plan_Fast
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1726   .text.Plan_Fast:0000005c $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1733   .text.Plan_Fast:00000078 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1773   .text.Plan_Fast:0000009c $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1785   .bss.flag_search:00000000 flag_search
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1786   .bss.flag_search:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:153    .text.Update_Position:0000000f $d
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:153    .text.Update_Position:00000010 $t
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1087   .text.Plan_Adachi:00000081 $d
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s 			page 48
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1473   .text.Plan_Compress:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1480   .text.Plan_Compress:00000000 Plan_Compress
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1567   .text.Plan_Compress:00000060 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1574   .text.Plan_Compress:00000078 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1688   .text.Plan_Compress:00000104 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1693   .text.Plan_Fast:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1700   .text.Plan_Fast:00000000 Plan_Fast
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1775   .text.Plan_Fast:00000064 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1782   .text.Plan_Fast:00000080 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1822   .text.Plan_Fast:000000a4 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1834   .bss.flag_search:00000000 flag_search
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1835   .bss.flag_search:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:153    .text.Update_Position:0000000f $d
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s 			page 49
 
 
-C:\Users\kotaro\AppData\Local\Temp\ccwVjtcO.s:1087   .text.Plan_Adachi:00000082 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:153    .text.Update_Position:00000010 $t
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1132   .text.Plan_Adachi:00000081 $d
+C:\Users\kotaro\AppData\Local\Temp\cc8ibi6v.s:1132   .text.Plan_Adachi:00000082 $t
 
 UNDEFINED SYMBOLS
 direction

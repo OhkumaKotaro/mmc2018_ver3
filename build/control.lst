@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
   25:Src/control.c **** {
   26:Src/control.c ****     uint16_t up;
   27:Src/control.c ****     uint16_t cons;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 2
 
 
   28:Src/control.c ****     uint16_t down;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
   51              		.cfi_offset 82, -32
   52              		.cfi_offset 83, -28
   53 0006 0546     		mov	r5, r0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 3
 
 
   54 0008 0C46     		mov	r4, r1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
   95              		.loc 1 75 0
   96 005c 38EE800A 		vadd.f32	s0, s17, s0
   97              	.LVL11:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 4
 
 
   76:Src/control.c **** }
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
   88:Src/control.c ****     enc_before = 0;
  141              		.loc 1 88 0
  142 0006 0025     		movs	r5, #0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 5
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 5
 
 
  143 0008 354E     		ldr	r6, .L12
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  176              	.LVL17:
  177              	.L7:
  108:Src/control.c ****     }
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 6
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 6
 
 
  109:Src/control.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  222              		.loc 1 118 0
  223 00a2 65EE877A 		vmul.f32	s15, s11, s14
  224              	.LVL27:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 7
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 7
 
 
  119:Src/control.c ****     t3 *= 1000;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  102:Src/control.c ****         v_max = 1;
  268              		.loc 1 102 0
  269 00da 0124     		movs	r4, #1
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 8
 
 
  103:Src/control.c ****     }
@@ -451,8 +451,9 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  132:Src/control.c ****  * argument : degree[degree],v_start[degree/s],v_end[degree/s]
  133:Src/control.c ****  * return   : void
  134:Src/control.c **** ********************************************************************************************/
- 135:Src/control.c **** void Yawrate_Calc_fb(int16_t degree,int16_t v_start,int16_t v_end,int16_t v_max,int16_t accel){
- 295              		.loc 1 135 0
+ 135:Src/control.c **** void Yawrate_Calc_fb(int16_t degree, int16_t v_start, int16_t v_end, int16_t v_max, int16_t accel)
+ 136:Src/control.c **** {
+ 295              		.loc 1 136 0
  296              		.cfi_startproc
  297              		@ args = 4, pretend = 0, frame = 0
  298              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -466,91 +467,96 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  306              		.cfi_offset 6, -4
  307 0002 BDF90C40 		ldrsh	r4, [sp, #12]
  308              	.LVL37:
- 136:Src/control.c ****     float t1=0,t2=0,t3=0;
- 137:Src/control.c ****     float constant_L;
- 138:Src/control.c **** 
- 139:Src/control.c ****     enc_before = 0;
- 309              		.loc 1 139 0
+ 137:Src/control.c ****     float t1 = 0, t2 = 0, t3 = 0;
+ 138:Src/control.c ****     float constant_L;
+ 139:Src/control.c **** 
+ 140:Src/control.c ****     enc_before = 0;
+ 309              		.loc 1 140 0
  310 0006 0025     		movs	r5, #0
  311 0008 354E     		ldr	r6, .L21
  312 000a 3560     		str	r5, [r6]	@ float
- 140:Src/control.c ****     y_before = 0;
- 313              		.loc 1 140 0
+ 141:Src/control.c ****     y_before = 0;
+ 313              		.loc 1 141 0
  314 000c 354E     		ldr	r6, .L21+4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 9
+
+
  315 000e 3560     		str	r5, [r6]	@ float
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 9
-
-
- 141:Src/control.c **** 
- 142:Src/control.c ****     yawrate_tgt.velocity = v_start;
- 316              		.loc 1 142 0
+ 142:Src/control.c **** 
+ 143:Src/control.c ****     yawrate_tgt.velocity = v_start;
+ 316              		.loc 1 143 0
  317 0010 354D     		ldr	r5, .L21+8
  318 0012 2980     		strh	r1, [r5]	@ movhi
- 143:Src/control.c ****     yawrate_tgt.accel = accel;
- 319              		.loc 1 143 0
+ 144:Src/control.c ****     yawrate_tgt.accel = accel;
+ 319              		.loc 1 144 0
  320 0014 6C80     		strh	r4, [r5, #2]	@ movhi
- 144:Src/control.c **** 
- 145:Src/control.c ****     if(degree<0){
- 321              		.loc 1 145 0
+ 145:Src/control.c **** 
+ 146:Src/control.c ****     if (degree < 0)
+ 321              		.loc 1 146 0
  322 0016 0028     		cmp	r0, #0
  323              	.LVL38:
  324 0018 07DB     		blt	.L19
- 146:Src/control.c ****         degree = -1*degree;
- 147:Src/control.c ****         yawrate_tgt.dir = -1;
- 148:Src/control.c ****     }else if(degree == 0){
- 325              		.loc 1 148 0
+ 147:Src/control.c ****     {
+ 148:Src/control.c ****         degree = -1 * degree;
+ 149:Src/control.c ****         yawrate_tgt.dir = -1;
+ 150:Src/control.c ****     }
+ 151:Src/control.c ****     else if (degree == 0)
+ 325              		.loc 1 151 0
  326 001a 0028     		cmp	r0, #0
  327 001c 5AD0     		beq	.L20
- 149:Src/control.c ****         yawrate_tgt.dir = 0;
- 150:Src/control.c ****         accel = 1;
- 151:Src/control.c ****         v_max = 1;
- 152:Src/control.c ****     }else if(degree > 0){
- 328              		.loc 1 152 0
+ 152:Src/control.c ****     {
+ 153:Src/control.c ****         yawrate_tgt.dir = 0;
+ 154:Src/control.c ****         accel = 1;
+ 155:Src/control.c ****         v_max = 1;
+ 156:Src/control.c ****     }
+ 157:Src/control.c ****     else if (degree > 0)
+ 328              		.loc 1 157 0
  329 001e 0028     		cmp	r0, #0
  330 0020 07DD     		ble	.L16
- 153:Src/control.c ****         yawrate_tgt.dir = 1; 
- 331              		.loc 1 153 0
+ 158:Src/control.c ****     {
+ 159:Src/control.c ****         yawrate_tgt.dir = 1;
+ 331              		.loc 1 159 0
  332 0022 314D     		ldr	r5, .L21+8
  333 0024 0126     		movs	r6, #1
  334 0026 2E71     		strb	r6, [r5, #4]
  335 0028 03E0     		b	.L16
  336              	.L19:
- 146:Src/control.c ****         degree = -1*degree;
- 337              		.loc 1 146 0
+ 148:Src/control.c ****         yawrate_tgt.dir = -1;
+ 337              		.loc 1 148 0
  338 002a 4042     		negs	r0, r0
  339 002c 00B2     		sxth	r0, r0
  340              	.LVL39:
- 147:Src/control.c ****     }else if(degree == 0){
- 341              		.loc 1 147 0
+ 149:Src/control.c ****     }
+ 341              		.loc 1 149 0
  342 002e FF26     		movs	r6, #255
  343 0030 2E71     		strb	r6, [r5, #4]
  344              	.LVL40:
  345              	.L16:
- 154:Src/control.c ****     }
- 155:Src/control.c **** 
- 156:Src/control.c ****     t1 = (float)(v_max - v_start) / accel;
- 346              		.loc 1 156 0
+ 160:Src/control.c ****     }
+ 161:Src/control.c **** 
+ 162:Src/control.c ****     t1 = (float)(v_max - v_start) / accel;
+ 346              		.loc 1 162 0
  347 0032 5D1A     		subs	r5, r3, r1
  348 0034 07EE105A 		vmov	s14, r5	@ int
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 10
+
+
  349 0038 B8EEC77A 		vcvt.f32.s32	s14, s14
  350 003c 07EE904A 		vmov	s15, r4	@ int
  351 0040 F8EEE77A 		vcvt.f32.s32	s15, s15
  352 0044 87EE276A 		vdiv.f32	s12, s14, s15
  353              	.LVL41:
- 157:Src/control.c ****     t3 = (float)(v_max - v_end) / accel;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 10
-
-
- 354              		.loc 1 157 0
+ 163:Src/control.c ****     t3 = (float)(v_max - v_end) / accel;
+ 354              		.loc 1 163 0
  355 0048 9C1A     		subs	r4, r3, r2
  356              	.LVL42:
  357 004a 07EE104A 		vmov	s14, r4	@ int
  358 004e B8EEC77A 		vcvt.f32.s32	s14, s14
  359 0052 C7EE276A 		vdiv.f32	s13, s14, s15
  360              	.LVL43:
- 158:Src/control.c **** 
- 159:Src/control.c ****     constant_L = (float)degree - (v_max + v_start) * t1 / 2 - (v_max + v_end) * t3 / 2;
- 361              		.loc 1 159 0
+ 164:Src/control.c **** 
+ 165:Src/control.c ****     constant_L = (float)degree - (v_max + v_start) * t1 / 2 - (v_max + v_end) * t3 / 2;
+ 361              		.loc 1 165 0
  362 0056 07EE900A 		vmov	s15, r0	@ int
  363 005a B8EEE77A 		vcvt.f32.s32	s14, s15
  364 005e 5918     		adds	r1, r3, r1
@@ -569,60 +575,60 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  377 0086 27EE257A 		vmul.f32	s14, s14, s11
  378 008a 37EEC77A 		vsub.f32	s14, s15, s14
  379              	.LVL46:
- 160:Src/control.c ****     
- 161:Src/control.c ****     t2 = constant_L / v_max;
- 380              		.loc 1 161 0
+ 166:Src/control.c **** 
+ 167:Src/control.c ****     t2 = constant_L / v_max;
+ 380              		.loc 1 167 0
  381 008e 07EE903A 		vmov	s15, r3	@ int
  382 0092 F8EEE77A 		vcvt.f32.s32	s15, s15
  383 0096 C7EE275A 		vdiv.f32	s11, s14, s15
  384              	.LVL47:
- 162:Src/control.c **** 
- 163:Src/control.c ****     t1 *= 1000;
- 385              		.loc 1 163 0
+ 168:Src/control.c **** 
+ 169:Src/control.c ****     t1 *= 1000;
+ 385              		.loc 1 169 0
  386 009a 9FED147A 		vldr.32	s14, .L21+12
  387              	.LVL48:
  388 009e 26EE076A 		vmul.f32	s12, s12, s14
  389              	.LVL49:
- 164:Src/control.c ****     t2 *= 1000;
- 390              		.loc 1 164 0
+ 170:Src/control.c ****     t2 *= 1000;
+ 390              		.loc 1 170 0
  391 00a2 65EE877A 		vmul.f32	s15, s11, s14
  392              	.LVL50:
- 165:Src/control.c ****     t3 *= 1000;
- 393              		.loc 1 165 0
+ 171:Src/control.c ****     t3 *= 1000;
+ 393              		.loc 1 171 0
  394 00a6 66EE876A 		vmul.f32	s13, s13, s14
  395              	.LVL51:
- 166:Src/control.c **** 
- 167:Src/control.c ****     yawrate_tim.up = t1;
- 396              		.loc 1 167 0
+ 172:Src/control.c **** 
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 11
+
+
+ 173:Src/control.c ****     yawrate_tim.up = t1;
+ 396              		.loc 1 173 0
  397 00aa 114B     		ldr	r3, .L21+16
  398              	.LVL52:
  399 00ac BCEEC66A 		vcvt.u32.f32	s12, s12
  400              	.LVL53:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 11
-
-
  401 00b0 16EE102A 		vmov	r2, s12	@ int
  402 00b4 1A80     		strh	r2, [r3]	@ movhi
- 168:Src/control.c ****     yawrate_tim.cons = t2;
- 403              		.loc 1 168 0
+ 174:Src/control.c ****     yawrate_tim.cons = t2;
+ 403              		.loc 1 174 0
  404 00b6 FCEEE77A 		vcvt.u32.f32	s15, s15
  405              	.LVL54:
  406 00ba 17EE902A 		vmov	r2, s15	@ int
  407 00be 5A80     		strh	r2, [r3, #2]	@ movhi
- 169:Src/control.c ****     yawrate_tim.down = t3;
- 408              		.loc 1 169 0
+ 175:Src/control.c ****     yawrate_tim.down = t3;
+ 408              		.loc 1 175 0
  409 00c0 FCEEE66A 		vcvt.u32.f32	s13, s13
  410              	.LVL55:
  411 00c4 16EE902A 		vmov	r2, s13	@ int
  412 00c8 9A80     		strh	r2, [r3, #4]	@ movhi
- 170:Src/control.c **** 
- 171:Src/control.c ****     flag_motion_end = FALSE;
- 413              		.loc 1 171 0
+ 176:Src/control.c **** 
+ 177:Src/control.c ****     flag_motion_end = FALSE;
+ 413              		.loc 1 177 0
  414 00ca 0A4B     		ldr	r3, .L21+20
  415 00cc 0022     		movs	r2, #0
  416 00ce 1A70     		strb	r2, [r3]
- 172:Src/control.c **** }
- 417              		.loc 1 172 0
+ 178:Src/control.c **** }
+ 417              		.loc 1 178 0
  418 00d0 70BC     		pop	{r4, r5, r6}
  419              	.LCFI7:
  420              		.cfi_remember_state
@@ -635,32 +641,32 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  427              	.L20:
  428              	.LCFI8:
  429              		.cfi_restore_state
- 149:Src/control.c ****         accel = 1;
- 430              		.loc 1 149 0
+ 153:Src/control.c ****         accel = 1;
+ 430              		.loc 1 153 0
  431 00d4 044B     		ldr	r3, .L21+8
  432              	.LVL57:
  433 00d6 0024     		movs	r4, #0
  434 00d8 1C71     		strb	r4, [r3, #4]
  435              	.LVL58:
- 150:Src/control.c ****         v_max = 1;
- 436              		.loc 1 150 0
+ 154:Src/control.c ****         v_max = 1;
+ 436              		.loc 1 154 0
  437 00da 0124     		movs	r4, #1
- 151:Src/control.c ****     }else if(degree > 0){
- 438              		.loc 1 151 0
+ 155:Src/control.c ****     }
+ 438              		.loc 1 155 0
  439 00dc 2346     		mov	r3, r4
  440 00de A8E7     		b	.L16
  441              	.L22:
  442              		.align	2
  443              	.L21:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 12
+
+
  444 00e0 00000000 		.word	.LANCHOR0
  445 00e4 00000000 		.word	.LANCHOR1
  446 00e8 00000000 		.word	yawrate_tgt
  447 00ec 00007A44 		.word	1148846080
  448 00f0 00000000 		.word	yawrate_tim
  449 00f4 00000000 		.word	flag_motion_end
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 12
-
-
  450              		.cfi_endproc
  451              	.LFE128:
  453              		.global	__aeabi_i2d
@@ -675,15 +681,15 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  462              		.fpu fpv4-sp-d16
  464              	Control_encoder:
  465              	.LFB129:
- 173:Src/control.c **** 
- 174:Src/control.c **** /****************************************************************************************
- 175:Src/control.c ****  * outline  : output pwm for trapezoid accele straight by feadbuck control
- 176:Src/control.c ****  * argument : void
- 177:Src/control.c ****  * return   : void
- 178:Src/control.c **** ********************************************************************************************/
- 179:Src/control.c **** float Control_encoder(void)
- 180:Src/control.c **** {
- 466              		.loc 1 180 0
+ 179:Src/control.c **** 
+ 180:Src/control.c **** /****************************************************************************************
+ 181:Src/control.c ****  * outline  : output pwm for trapezoid accele straight by feadbuck control
+ 182:Src/control.c ****  * argument : void
+ 183:Src/control.c ****  * return   : void
+ 184:Src/control.c **** ********************************************************************************************/
+ 185:Src/control.c **** float Control_encoder(void)
+ 186:Src/control.c **** {
+ 466              		.loc 1 186 0
  467              		.cfi_startproc
  468              		@ args = 0, pretend = 0, frame = 0
  469              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -697,58 +703,58 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  477              		.cfi_offset 9, -8
  478              		.cfi_offset 14, -4
  479              	.LVL59:
- 181:Src/control.c ****     float target = 0;
- 182:Src/control.c ****     if (straight_tgt.dir == 0)
- 480              		.loc 1 182 0
+ 187:Src/control.c ****     float target = 0;
+ 188:Src/control.c ****     if (straight_tgt.dir == 0)
+ 480              		.loc 1 188 0
  481 0004 364B     		ldr	r3, .L32+8
  482 0006 93F90440 		ldrsb	r4, [r3, #4]
  483 000a 44B3     		cbz	r4, .L24
- 183:Src/control.c ****     {
- 184:Src/control.c ****     }
- 185:Src/control.c ****     else
- 186:Src/control.c ****     {
- 187:Src/control.c ****         if (straight_tim.up > 0)
- 484              		.loc 1 187 0
+ 189:Src/control.c ****     {
+ 190:Src/control.c ****     }
+ 191:Src/control.c ****     else
+ 192:Src/control.c ****     {
+ 193:Src/control.c ****         if (straight_tim.up > 0)
+ 484              		.loc 1 193 0
  485 000c 354B     		ldr	r3, .L32+12
  486 000e 1D88     		ldrh	r5, [r3]
  487 0010 5DB9     		cbnz	r5, .L29
- 188:Src/control.c ****         {
- 189:Src/control.c ****             straight_tgt.velocity += straight_tgt.accel * dt;
- 190:Src/control.c ****             straight_tim.up--;
- 191:Src/control.c ****         }
- 192:Src/control.c ****         else if (straight_tim.cons > 0)
- 488              		.loc 1 192 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 13
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 13
 
 
+ 194:Src/control.c ****         {
+ 195:Src/control.c ****             straight_tgt.velocity += straight_tgt.accel * dt;
+ 196:Src/control.c ****             straight_tim.up--;
+ 197:Src/control.c ****         }
+ 198:Src/control.c ****         else if (straight_tim.cons > 0)
+ 488              		.loc 1 198 0
  489 0012 344B     		ldr	r3, .L32+12
  490 0014 5B88     		ldrh	r3, [r3, #2]
  491 0016 002B     		cmp	r3, #0
  492 0018 3DD1     		bne	.L30
- 193:Src/control.c ****         {
- 194:Src/control.c ****             straight_tim.cons--;
- 195:Src/control.c ****         }
- 196:Src/control.c ****         else if (straight_tim.down > 0)
- 493              		.loc 1 196 0
+ 199:Src/control.c ****         {
+ 200:Src/control.c ****             straight_tim.cons--;
+ 201:Src/control.c ****         }
+ 202:Src/control.c ****         else if (straight_tim.down > 0)
+ 493              		.loc 1 202 0
  494 001a 324B     		ldr	r3, .L32+12
  495 001c 9D88     		ldrh	r5, [r3, #4]
  496 001e 002D     		cmp	r5, #0
  497 0020 3DD1     		bne	.L31
- 197:Src/control.c ****         {
- 198:Src/control.c ****             straight_tgt.velocity -= straight_tgt.accel * dt;
- 199:Src/control.c ****             straight_tim.down--;
- 200:Src/control.c ****         }
- 201:Src/control.c ****         else
- 202:Src/control.c ****         {
- 203:Src/control.c ****             flag_motion_end = TRUE;
- 498              		.loc 1 203 0
+ 203:Src/control.c ****         {
+ 204:Src/control.c ****             straight_tgt.velocity -= straight_tgt.accel * dt;
+ 205:Src/control.c ****             straight_tim.down--;
+ 206:Src/control.c ****         }
+ 207:Src/control.c ****         else
+ 208:Src/control.c ****         {
+ 209:Src/control.c ****             flag_motion_end = TRUE;
+ 498              		.loc 1 209 0
  499 0022 314B     		ldr	r3, .L32+16
  500 0024 0122     		movs	r2, #1
  501 0026 1A70     		strb	r2, [r3]
  502 0028 19E0     		b	.L24
  503              	.L29:
- 189:Src/control.c ****             straight_tim.up--;
- 504              		.loc 1 189 0
+ 195:Src/control.c ****             straight_tim.up--;
+ 504              		.loc 1 195 0
  505 002a 2D4E     		ldr	r6, .L32+8
  506 002c B6F90200 		ldrsh	r0, [r6, #2]
  507 0030 FFF7FEFF 		bl	__aeabi_i2d
@@ -769,20 +775,20 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  522 0052 FFF7FEFF 		bl	__aeabi_d2iz
  523              	.LVL64:
  524 0056 3080     		strh	r0, [r6]	@ movhi
- 190:Src/control.c ****         }
- 525              		.loc 1 190 0
+ 196:Src/control.c ****         }
+ 525              		.loc 1 196 0
  526 0058 013D     		subs	r5, r5, #1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 14
+
+
  527 005a 224B     		ldr	r3, .L32+12
  528 005c 1D80     		strh	r5, [r3]	@ movhi
  529              	.L24:
- 204:Src/control.c ****         }
- 205:Src/control.c ****     }
- 206:Src/control.c **** 
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 14
-
-
- 207:Src/control.c ****     target = (float)straight_tgt.dir * straight_tgt.velocity;
- 530              		.loc 1 207 0
+ 210:Src/control.c ****         }
+ 211:Src/control.c ****     }
+ 212:Src/control.c **** 
+ 213:Src/control.c ****     target = (float)straight_tgt.dir * straight_tgt.velocity;
+ 530              		.loc 1 213 0
  531 005e 07EE904A 		vmov	s15, r4	@ int
  532 0062 F8EEE77A 		vcvt.f32.s32	s15, s15
  533 0066 1E4B     		ldr	r3, .L32+8
@@ -790,9 +796,9 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  535 006c 00EE103A 		vmov	s0, r3	@ int
  536 0070 B8EEC00A 		vcvt.f32.s32	s0, s0
  537              	.LVL65:
- 208:Src/control.c **** 
- 209:Src/control.c ****     return PID_value(target, enc.velocity, &enc_sum, &enc_before, 4.0f, 10.0f, 0);
- 538              		.loc 1 209 0
+ 214:Src/control.c **** 
+ 215:Src/control.c ****     return PID_value(target, enc.velocity, &enc_sum, &enc_before, 4.0f, 10.0f, 0);
+ 538              		.loc 1 215 0
  539 0074 9FED1D2A 		vldr.32	s4, .L32+20
  540 0078 F2EE041A 		vmov.f32	s3, #1.0e+1
  541 007c B1EE001A 		vmov.f32	s2, #4.0e+0
@@ -804,20 +810,20 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  547              	.LVL66:
  548 008e FFF7FEFF 		bl	PID_value
  549              	.LVL67:
- 210:Src/control.c **** }
- 550              		.loc 1 210 0
+ 216:Src/control.c **** }
+ 550              		.loc 1 216 0
  551 0092 BDE87083 		pop	{r4, r5, r6, r8, r9, pc}
  552              	.LVL68:
  553              	.L30:
- 194:Src/control.c ****         }
- 554              		.loc 1 194 0
+ 200:Src/control.c ****         }
+ 554              		.loc 1 200 0
  555 0096 013B     		subs	r3, r3, #1
  556 0098 124A     		ldr	r2, .L32+12
  557 009a 5380     		strh	r3, [r2, #2]	@ movhi
  558 009c DFE7     		b	.L24
  559              	.L31:
- 198:Src/control.c ****             straight_tim.down--;
- 560              		.loc 1 198 0
+ 204:Src/control.c ****             straight_tim.down--;
+ 560              		.loc 1 204 0
  561 009e 104E     		ldr	r6, .L32+8
  562 00a0 B6F90200 		ldrsh	r0, [r6, #2]
  563 00a4 FFF7FEFF 		bl	__aeabi_i2d
@@ -832,17 +838,17 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  572 00ba FFF7FEFF 		bl	__aeabi_i2d
  573              	.LVL71:
  574 00be 4246     		mov	r2, r8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 15
+
+
  575 00c0 4B46     		mov	r3, r9
  576 00c2 FFF7FEFF 		bl	__aeabi_dsub
  577              	.LVL72:
  578 00c6 FFF7FEFF 		bl	__aeabi_d2iz
  579              	.LVL73:
  580 00ca 3080     		strh	r0, [r6]	@ movhi
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 15
-
-
- 199:Src/control.c ****         }
- 581              		.loc 1 199 0
+ 205:Src/control.c ****         }
+ 581              		.loc 1 205 0
  582 00cc 013D     		subs	r5, r5, #1
  583 00ce 054B     		ldr	r3, .L32+12
  584 00d0 9D80     		strh	r5, [r3, #4]	@ movhi
@@ -870,784 +876,778 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 1
  607              		.fpu fpv4-sp-d16
  609              	Control_Side_Wall:
  610              	.LFB130:
- 211:Src/control.c **** 
- 212:Src/control.c **** float Control_Side_Wall(void)
- 213:Src/control.c **** {
- 611              		.loc 1 213 0
+ 217:Src/control.c **** 
+ 218:Src/control.c **** float Control_Side_Wall(void)
+ 219:Src/control.c **** {
+ 611              		.loc 1 219 0
  612              		.cfi_startproc
  613              		@ args = 0, pretend = 0, frame = 0
  614              		@ frame_needed = 0, uses_anonymous_args = 0
  615              		@ link register save eliminated.
  616              	.LVL74:
- 214:Src/control.c ****     float wall_dif = 0;
- 215:Src/control.c ****     if(flag_wall==TRUE){
- 617              		.loc 1 215 0
- 618 0000 3E4B     		ldr	r3, .L51
- 619 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 220:Src/control.c ****     float wall_dif = 0;
+ 221:Src/control.c ****     float kp = 0.15f;
+ 222:Src/control.c **** 
+ 223:Src/control.c ****     if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
+ 617              		.loc 1 223 0
+ 618 0000 3C4B     		ldr	r3, .L50
+ 619 0002 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
  620 0004 012B     		cmp	r3, #1
- 621 0006 02D0     		beq	.L46
- 214:Src/control.c ****     float wall_dif = 0;
- 622              		.loc 1 214 0
- 623 0008 9FED3D0A 		vldr.32	s0, .L51+4
- 624 000c 7047     		bx	lr
- 625              	.L46:
- 626              	.LVL75:
- 627              	.LBB2:
- 216:Src/control.c ****         float kp=0.15f;
- 217:Src/control.c **** 
- 218:Src/control.c ****         if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
- 628              		.loc 1 218 0
- 629 000e 3D4B     		ldr	r3, .L51+8
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 16
+ 621 0006 14D0     		beq	.L46
+ 622              	.L35:
+ 224:Src/control.c ****     {
+ 225:Src/control.c ****         if (sen_l.diff > -200 && sen_r.diff > -200)
+ 226:Src/control.c ****         {
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 16
 
 
- 630 0010 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
- 631 0012 012B     		cmp	r3, #1
- 632 0014 14D0     		beq	.L47
- 633              	.L36:
- 219:Src/control.c ****         {
- 220:Src/control.c ****             if(sen_l.diff>-200 && sen_r.diff>-200){
- 221:Src/control.c ****                 wall_dif = kp*((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
- 222:Src/control.c ****             }
- 223:Src/control.c ****         }
- 224:Src/control.c ****         else if (sen_l.is_wall == TRUE)
- 634              		.loc 1 224 0
- 635 0016 012B     		cmp	r3, #1
- 636 0018 38D0     		beq	.L48
- 225:Src/control.c ****         {
- 226:Src/control.c ****             if(sen_l.diff_1ms > -20){
- 227:Src/control.c ****                 wall_dif = 2 * kp *(sen_l.now - sen_l.reference);
- 228:Src/control.c ****             }
- 229:Src/control.c ****         }
- 230:Src/control.c ****         else if (sen_r.is_wall == TRUE)
- 637              		.loc 1 230 0
- 638 001a 3B4B     		ldr	r3, .L51+12
- 639 001c 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
- 640 001e 012B     		cmp	r3, #1
- 641 0020 49D0     		beq	.L49
- 231:Src/control.c ****         {
- 232:Src/control.c ****             if(sen_r.diff_1ms > -20){
- 233:Src/control.c ****                 wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
- 234:Src/control.c ****             }
+ 227:Src/control.c ****             wall_dif = kp * ((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
+ 228:Src/control.c ****         }
+ 229:Src/control.c ****     }
+ 230:Src/control.c ****     else if (sen_l.is_wall == TRUE)
+ 623              		.loc 1 230 0
+ 624 0008 012B     		cmp	r3, #1
+ 625 000a 38D0     		beq	.L47
+ 231:Src/control.c ****     {
+ 232:Src/control.c ****         if (sen_l.diff_1ms > -20)
+ 233:Src/control.c ****         {
+ 234:Src/control.c ****             wall_dif = 2 * kp * (sen_l.now - sen_l.reference);
  235:Src/control.c ****         }
- 236:Src/control.c ****         else
- 237:Src/control.c ****         {
- 238:Src/control.c ****             wall_dif = 0;
- 642              		.loc 1 238 0
- 643 0022 9FED370A 		vldr.32	s0, .L51+4
- 644              	.LVL76:
- 645              	.L37:
- 239:Src/control.c ****         }
- 240:Src/control.c **** 
- 241:Src/control.c ****         if (enc.velocity<300)
- 646              		.loc 1 241 0
- 647 0026 394B     		ldr	r3, .L51+16
- 648 0028 93ED017A 		vldr.32	s14, [r3, #4]
- 649 002c DFED387A 		vldr.32	s15, .L51+20
- 650 0030 B4EEE77A 		vcmpe.f32	s14, s15
- 651 0034 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 652 0038 5ED5     		bpl	.L50
- 242:Src/control.c ****         {
- 243:Src/control.c ****             wall_dif = 0;
- 653              		.loc 1 243 0
- 654 003a 9FED310A 		vldr.32	s0, .L51+4
- 655              	.LVL77:
- 656              	.LBE2:
- 244:Src/control.c ****         }
- 245:Src/control.c ****     }
- 246:Src/control.c **** 
- 247:Src/control.c ****     return wall_dif;
- 248:Src/control.c **** }
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 17
+ 236:Src/control.c ****     }
+ 237:Src/control.c ****     else if (sen_r.is_wall == TRUE)
+ 626              		.loc 1 237 0
+ 627 000c 3A4B     		ldr	r3, .L50+4
+ 628 000e 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 629 0010 012B     		cmp	r3, #1
+ 630 0012 49D0     		beq	.L48
+ 238:Src/control.c ****     {
+ 239:Src/control.c ****         if (sen_r.diff_1ms > -20)
+ 240:Src/control.c ****         {
+ 241:Src/control.c ****             wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
+ 242:Src/control.c ****         }
+ 243:Src/control.c ****     }
+ 244:Src/control.c ****     else
+ 245:Src/control.c ****     {
+ 246:Src/control.c ****         wall_dif = 0;
+ 631              		.loc 1 246 0
+ 632 0014 9FED390A 		vldr.32	s0, .L50+8
+ 633              	.LVL75:
+ 634              	.L36:
+ 247:Src/control.c ****     }
+ 248:Src/control.c **** 
+ 249:Src/control.c ****     if(yawrate_tgt.dir!=0 || straight_tgt.velocity==0){
+ 635              		.loc 1 249 0
+ 636 0018 394B     		ldr	r3, .L50+12
+ 637 001a 93F90430 		ldrsb	r3, [r3, #4]
+ 638 001e 002B     		cmp	r3, #0
+ 639 0020 64D1     		bne	.L44
+ 640              		.loc 1 249 0 is_stmt 0 discriminator 1
+ 641 0022 384B     		ldr	r3, .L50+16
+ 642 0024 B3F90030 		ldrsh	r3, [r3]
+ 643 0028 002B     		cmp	r3, #0
+ 644 002a 5ED1     		bne	.L49
+ 250:Src/control.c ****         wall_dif = 0;
+ 645              		.loc 1 250 0 is_stmt 1
+ 646 002c 9FED330A 		vldr.32	s0, .L50+8
+ 647              	.LVL76:
+ 251:Src/control.c ****     }
+ 252:Src/control.c **** 
+ 253:Src/control.c ****     return wall_dif;
+ 254:Src/control.c **** }
+ 648              		.loc 1 254 0
+ 649 0030 7047     		bx	lr
+ 650              	.L46:
+ 223:Src/control.c ****     {
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 17
 
 
- 657              		.loc 1 248 0
- 658 003e 7047     		bx	lr
- 659              	.L47:
- 660              	.LBB3:
- 218:Src/control.c ****         {
- 661              		.loc 1 218 0 discriminator 1
- 662 0040 314A     		ldr	r2, .L51+12
- 663 0042 127B     		ldrb	r2, [r2, #12]	@ zero_extendqisi2
- 664 0044 012A     		cmp	r2, #1
- 665 0046 E6D1     		bne	.L36
- 220:Src/control.c ****                 wall_dif = kp*((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
- 666              		.loc 1 220 0
- 667 0048 2E4B     		ldr	r3, .L51+8
- 668 004a B3F90830 		ldrsh	r3, [r3, #8]
- 669 004e 13F1C70F 		cmn	r3, #199
- 670 0052 45DB     		blt	.L40
- 220:Src/control.c ****                 wall_dif = kp*((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
- 671              		.loc 1 220 0 is_stmt 0 discriminator 1
- 672 0054 2C4B     		ldr	r3, .L51+12
- 673 0056 B3F90830 		ldrsh	r3, [r3, #8]
- 674 005a 13F1C70F 		cmn	r3, #199
- 675 005e 42DB     		blt	.L41
- 221:Src/control.c ****             }
- 676              		.loc 1 221 0 is_stmt 1
- 677 0060 284A     		ldr	r2, .L51+8
- 678 0062 B2F90030 		ldrsh	r3, [r2]
- 679 0066 B2F90420 		ldrsh	r2, [r2, #4]
- 680 006a 9B1A     		subs	r3, r3, r2
- 681 006c 2649     		ldr	r1, .L51+12
- 682 006e B1F90020 		ldrsh	r2, [r1]
- 683 0072 B1F90410 		ldrsh	r1, [r1, #4]
- 684 0076 521A     		subs	r2, r2, r1
- 685 0078 9B1A     		subs	r3, r3, r2
- 686 007a 00EE103A 		vmov	s0, r3	@ int
- 687 007e B8EEC00A 		vcvt.f32.s32	s0, s0
- 688 0082 DFED247A 		vldr.32	s15, .L51+24
- 689 0086 20EE270A 		vmul.f32	s0, s0, s15
- 690              	.LVL78:
- 691 008a CCE7     		b	.L37
- 692              	.LVL79:
- 693              	.L48:
- 226:Src/control.c ****                 wall_dif = 2 * kp *(sen_l.now - sen_l.reference);
- 694              		.loc 1 226 0
- 695 008c 1D4B     		ldr	r3, .L51+8
- 696 008e B3F90A30 		ldrsh	r3, [r3, #10]
- 697 0092 13F1130F 		cmn	r3, #19
- 698 0096 29DB     		blt	.L42
- 227:Src/control.c ****             }
- 699              		.loc 1 227 0
- 700 0098 1A4A     		ldr	r2, .L51+8
- 701 009a B2F90030 		ldrsh	r3, [r2]
- 702 009e B2F90420 		ldrsh	r2, [r2, #4]
- 703 00a2 9B1A     		subs	r3, r3, r2
- 704 00a4 00EE103A 		vmov	s0, r3	@ int
- 705 00a8 B8EEC00A 		vcvt.f32.s32	s0, s0
- 706 00ac DFED1A7A 		vldr.32	s15, .L51+28
- 707 00b0 20EE270A 		vmul.f32	s0, s0, s15
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 18
+ 651              		.loc 1 223 0 discriminator 1
+ 652 0032 314A     		ldr	r2, .L50+4
+ 653 0034 127B     		ldrb	r2, [r2, #12]	@ zero_extendqisi2
+ 654 0036 012A     		cmp	r2, #1
+ 655 0038 E6D1     		bne	.L35
+ 225:Src/control.c ****         {
+ 656              		.loc 1 225 0
+ 657 003a 2E4B     		ldr	r3, .L50
+ 658 003c B3F90830 		ldrsh	r3, [r3, #8]
+ 659 0040 13F1C70F 		cmn	r3, #199
+ 660 0044 45DB     		blt	.L39
+ 225:Src/control.c ****         {
+ 661              		.loc 1 225 0 is_stmt 0 discriminator 1
+ 662 0046 2C4B     		ldr	r3, .L50+4
+ 663 0048 B3F90830 		ldrsh	r3, [r3, #8]
+ 664 004c 13F1C70F 		cmn	r3, #199
+ 665 0050 42DB     		blt	.L40
+ 227:Src/control.c ****         }
+ 666              		.loc 1 227 0 is_stmt 1
+ 667 0052 284A     		ldr	r2, .L50
+ 668 0054 B2F90030 		ldrsh	r3, [r2]
+ 669 0058 B2F90420 		ldrsh	r2, [r2, #4]
+ 670 005c 9B1A     		subs	r3, r3, r2
+ 671 005e 2649     		ldr	r1, .L50+4
+ 672 0060 B1F90020 		ldrsh	r2, [r1]
+ 673 0064 B1F90410 		ldrsh	r1, [r1, #4]
+ 674 0068 521A     		subs	r2, r2, r1
+ 675 006a 9B1A     		subs	r3, r3, r2
+ 676 006c 00EE103A 		vmov	s0, r3	@ int
+ 677 0070 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 678 0074 DFED247A 		vldr.32	s15, .L50+20
+ 679 0078 20EE270A 		vmul.f32	s0, s0, s15
+ 680              	.LVL77:
+ 681 007c CCE7     		b	.L36
+ 682              	.LVL78:
+ 683              	.L47:
+ 232:Src/control.c ****         {
+ 684              		.loc 1 232 0
+ 685 007e 1D4B     		ldr	r3, .L50
+ 686 0080 B3F90A30 		ldrsh	r3, [r3, #10]
+ 687 0084 13F1130F 		cmn	r3, #19
+ 688 0088 29DB     		blt	.L41
+ 234:Src/control.c ****         }
+ 689              		.loc 1 234 0
+ 690 008a 1A4A     		ldr	r2, .L50
+ 691 008c B2F90030 		ldrsh	r3, [r2]
+ 692 0090 B2F90420 		ldrsh	r2, [r2, #4]
+ 693 0094 9B1A     		subs	r3, r3, r2
+ 694 0096 00EE103A 		vmov	s0, r3	@ int
+ 695 009a B8EEC00A 		vcvt.f32.s32	s0, s0
+ 696 009e DFED1B7A 		vldr.32	s15, .L50+24
+ 697 00a2 20EE270A 		vmul.f32	s0, s0, s15
+ 698              	.LVL79:
+ 699 00a6 B7E7     		b	.L36
+ 700              	.LVL80:
+ 701              	.L48:
+ 239:Src/control.c ****         {
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 18
 
 
- 708              	.LVL80:
- 709 00b4 B7E7     		b	.L37
- 710              	.LVL81:
- 711              	.L49:
- 232:Src/control.c ****                 wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
- 712              		.loc 1 232 0
- 713 00b6 144B     		ldr	r3, .L51+12
- 714 00b8 B3F90A30 		ldrsh	r3, [r3, #10]
- 715 00bc 13F1130F 		cmn	r3, #19
- 716 00c0 17DB     		blt	.L44
- 233:Src/control.c ****             }
- 717              		.loc 1 233 0
- 718 00c2 114A     		ldr	r2, .L51+12
- 719 00c4 B2F90030 		ldrsh	r3, [r2]
- 720 00c8 B2F90420 		ldrsh	r2, [r2, #4]
- 721 00cc 9B1A     		subs	r3, r3, r2
- 722 00ce 00EE103A 		vmov	s0, r3	@ int
- 723 00d2 B8EEC00A 		vcvt.f32.s32	s0, s0
- 724 00d6 DFED117A 		vldr.32	s15, .L51+32
- 725 00da 20EE270A 		vmul.f32	s0, s0, s15
- 726              	.LVL82:
- 727 00de A2E7     		b	.L37
- 728              	.LVL83:
- 729              	.L40:
- 730              	.LBE3:
- 214:Src/control.c ****     if(flag_wall==TRUE){
- 731              		.loc 1 214 0
- 732 00e0 9FED070A 		vldr.32	s0, .L51+4
- 733 00e4 9FE7     		b	.L37
- 734              	.L41:
- 735 00e6 9FED060A 		vldr.32	s0, .L51+4
- 736 00ea 9CE7     		b	.L37
- 737              	.L42:
- 738 00ec 9FED040A 		vldr.32	s0, .L51+4
- 739 00f0 99E7     		b	.L37
- 740              	.L44:
- 741 00f2 9FED030A 		vldr.32	s0, .L51+4
- 742 00f6 96E7     		b	.L37
- 743              	.LVL84:
- 744              	.L50:
- 745              	.LBB4:
- 746 00f8 7047     		bx	lr
- 747              	.L52:
- 748 00fa 00BF     		.align	2
- 749              	.L51:
- 750 00fc 00000000 		.word	flag_wall
- 751 0100 00000000 		.word	0
- 752 0104 00000000 		.word	sen_l
- 753 0108 00000000 		.word	sen_r
- 754 010c 00000000 		.word	enc
- 755 0110 00009643 		.word	1133903872
- 756 0114 9A99193E 		.word	1041865114
- 757 0118 9A99993E 		.word	1050253722
- 758 011c 9A9999BE 		.word	-1097229926
- 759              	.LBE4:
- 760              		.cfi_endproc
- 761              	.LFE130:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 19
+ 702              		.loc 1 239 0
+ 703 00a8 134B     		ldr	r3, .L50+4
+ 704 00aa B3F90A30 		ldrsh	r3, [r3, #10]
+ 705 00ae 13F1130F 		cmn	r3, #19
+ 706 00b2 17DB     		blt	.L43
+ 241:Src/control.c ****         }
+ 707              		.loc 1 241 0
+ 708 00b4 104A     		ldr	r2, .L50+4
+ 709 00b6 B2F90030 		ldrsh	r3, [r2]
+ 710 00ba B2F90420 		ldrsh	r2, [r2, #4]
+ 711 00be 9B1A     		subs	r3, r3, r2
+ 712 00c0 00EE103A 		vmov	s0, r3	@ int
+ 713 00c4 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 714 00c8 DFED117A 		vldr.32	s15, .L50+28
+ 715 00cc 20EE270A 		vmul.f32	s0, s0, s15
+ 716              	.LVL81:
+ 717 00d0 A2E7     		b	.L36
+ 718              	.LVL82:
+ 719              	.L39:
+ 220:Src/control.c ****     float kp = 0.15f;
+ 720              		.loc 1 220 0
+ 721 00d2 9FED0A0A 		vldr.32	s0, .L50+8
+ 722 00d6 9FE7     		b	.L36
+ 723              	.L40:
+ 724 00d8 9FED080A 		vldr.32	s0, .L50+8
+ 725 00dc 9CE7     		b	.L36
+ 726              	.L41:
+ 727 00de 9FED070A 		vldr.32	s0, .L50+8
+ 728 00e2 99E7     		b	.L36
+ 729              	.L43:
+ 730 00e4 9FED050A 		vldr.32	s0, .L50+8
+ 731 00e8 96E7     		b	.L36
+ 732              	.LVL83:
+ 733              	.L49:
+ 734 00ea 7047     		bx	lr
+ 735              	.L44:
+ 250:Src/control.c ****     }
+ 736              		.loc 1 250 0
+ 737 00ec 9FED030A 		vldr.32	s0, .L50+8
+ 738              	.LVL84:
+ 739 00f0 7047     		bx	lr
+ 740              	.L51:
+ 741 00f2 00BF     		.align	2
+ 742              	.L50:
+ 743 00f4 00000000 		.word	sen_l
+ 744 00f8 00000000 		.word	sen_r
+ 745 00fc 00000000 		.word	0
+ 746 0100 00000000 		.word	yawrate_tgt
+ 747 0104 00000000 		.word	straight_tgt
+ 748 0108 9A99193E 		.word	1041865114
+ 749 010c 9A99993E 		.word	1050253722
+ 750 0110 9A9999BE 		.word	-1097229926
+ 751              		.cfi_endproc
+ 752              	.LFE130:
+ 754              		.section	.text.Control_gyro,"ax",%progbits
+ 755              		.align	1
+ 756              		.global	Control_gyro
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 19
 
 
- 763              		.section	.text.Control_gyro,"ax",%progbits
- 764              		.align	1
- 765              		.global	Control_gyro
- 766              		.syntax unified
- 767              		.thumb
- 768              		.thumb_func
- 769              		.fpu fpv4-sp-d16
- 771              	Control_gyro:
- 772              	.LFB131:
- 249:Src/control.c **** 
- 250:Src/control.c **** /****************************************************************************************
- 251:Src/control.c ****  * outline  : call 1ms (control yawrate by feadbuck)
- 252:Src/control.c ****  * argument : void
- 253:Src/control.c ****  * return   : void
- 254:Src/control.c **** ********************************************************************************************/
- 255:Src/control.c **** float Control_gyro(void)
- 256:Src/control.c **** {
- 773              		.loc 1 256 0
- 774              		.cfi_startproc
- 775              		@ args = 0, pretend = 0, frame = 0
- 776              		@ frame_needed = 0, uses_anonymous_args = 0
- 777 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 778              	.LCFI10:
- 779              		.cfi_def_cfa_offset 24
- 780              		.cfi_offset 3, -24
- 781              		.cfi_offset 4, -20
- 782              		.cfi_offset 5, -16
- 783              		.cfi_offset 6, -12
- 784              		.cfi_offset 7, -8
- 785              		.cfi_offset 14, -4
- 786 0002 2DED028B 		vpush.64	{d8}
- 787              	.LCFI11:
- 788              		.cfi_def_cfa_offset 32
- 789              		.cfi_offset 80, -32
- 790              		.cfi_offset 81, -28
- 791              	.LVL85:
- 257:Src/control.c ****     float target = 0;
- 258:Src/control.c **** 
- 259:Src/control.c ****     if (yawrate_tgt.dir == 0)
- 792              		.loc 1 259 0
- 793 0006 3E4B     		ldr	r3, .L64+8
- 794 0008 93F90430 		ldrsb	r3, [r3, #4]
- 795 000c 93B1     		cbz	r3, .L60
- 260:Src/control.c ****     {
- 261:Src/control.c ****         yawrate_tgt.velocity = 0;
- 262:Src/control.c ****     }
- 263:Src/control.c ****     else if (yawrate_tim.up > 0)
- 796              		.loc 1 263 0
- 797 000e 3D4B     		ldr	r3, .L64+12
- 798 0010 1C88     		ldrh	r4, [r3]
- 799 0012 002C     		cmp	r4, #0
- 800 0014 34D1     		bne	.L61
- 264:Src/control.c ****     {
- 265:Src/control.c ****         yawrate_tgt.velocity += yawrate_tgt.accel * dt;
- 266:Src/control.c ****         yawrate_tim.up--;
+ 757              		.syntax unified
+ 758              		.thumb
+ 759              		.thumb_func
+ 760              		.fpu fpv4-sp-d16
+ 762              	Control_gyro:
+ 763              	.LFB131:
+ 255:Src/control.c **** 
+ 256:Src/control.c **** /****************************************************************************************
+ 257:Src/control.c ****  * outline  : call 1ms (control yawrate by feadbuck)
+ 258:Src/control.c ****  * argument : void
+ 259:Src/control.c ****  * return   : void
+ 260:Src/control.c **** ********************************************************************************************/
+ 261:Src/control.c **** float Control_gyro(void)
+ 262:Src/control.c **** {
+ 764              		.loc 1 262 0
+ 765              		.cfi_startproc
+ 766              		@ args = 0, pretend = 0, frame = 0
+ 767              		@ frame_needed = 0, uses_anonymous_args = 0
+ 768 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 769              	.LCFI10:
+ 770              		.cfi_def_cfa_offset 24
+ 771              		.cfi_offset 3, -24
+ 772              		.cfi_offset 4, -20
+ 773              		.cfi_offset 5, -16
+ 774              		.cfi_offset 6, -12
+ 775              		.cfi_offset 7, -8
+ 776              		.cfi_offset 14, -4
+ 777 0002 2DED028B 		vpush.64	{d8}
+ 778              	.LCFI11:
+ 779              		.cfi_def_cfa_offset 32
+ 780              		.cfi_offset 80, -32
+ 781              		.cfi_offset 81, -28
+ 782              	.LVL85:
+ 263:Src/control.c ****     float target = 0;
+ 264:Src/control.c **** 
+ 265:Src/control.c ****     if (yawrate_tgt.dir == 0)
+ 783              		.loc 1 265 0
+ 784 0006 3E4B     		ldr	r3, .L63+8
+ 785 0008 93F90430 		ldrsb	r3, [r3, #4]
+ 786 000c 93B1     		cbz	r3, .L59
+ 266:Src/control.c ****     {
+ 267:Src/control.c ****         yawrate_tgt.velocity = 0;
+ 268:Src/control.c ****     }
+ 269:Src/control.c ****     else if (yawrate_tim.up > 0)
+ 787              		.loc 1 269 0
+ 788 000e 3D4B     		ldr	r3, .L63+12
+ 789 0010 1C88     		ldrh	r4, [r3]
+ 790 0012 002C     		cmp	r4, #0
+ 791 0014 34D1     		bne	.L60
+ 270:Src/control.c ****     {
+ 271:Src/control.c ****         yawrate_tgt.velocity += yawrate_tgt.accel * dt;
+ 272:Src/control.c ****         yawrate_tim.up--;
+ 273:Src/control.c ****     }
+ 274:Src/control.c ****     else if (yawrate_tim.cons > 0)
+ 792              		.loc 1 274 0
+ 793 0016 3B4B     		ldr	r3, .L63+12
+ 794 0018 5B88     		ldrh	r3, [r3, #2]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 20
+
+
+ 795 001a 002B     		cmp	r3, #0
+ 796 001c 4BD1     		bne	.L61
+ 275:Src/control.c ****     {
+ 276:Src/control.c ****         yawrate_tim.cons--;
+ 277:Src/control.c ****     }
+ 278:Src/control.c ****     else if (yawrate_tim.down > 0)
+ 797              		.loc 1 278 0
+ 798 001e 394B     		ldr	r3, .L63+12
+ 799 0020 9C88     		ldrh	r4, [r3, #4]
+ 800 0022 002C     		cmp	r4, #0
+ 801 0024 4BD1     		bne	.L62
+ 279:Src/control.c ****     {
+ 280:Src/control.c ****         yawrate_tgt.velocity -= yawrate_tgt.accel * dt;
+ 281:Src/control.c ****         yawrate_tim.down--;
+ 282:Src/control.c ****     }
+ 283:Src/control.c ****     else
+ 284:Src/control.c ****     {
+ 285:Src/control.c ****         yawrate_tgt.velocity = 0;
+ 802              		.loc 1 285 0
+ 803 0026 364B     		ldr	r3, .L63+8
+ 804 0028 0022     		movs	r2, #0
+ 805 002a 1A80     		strh	r2, [r3]	@ movhi
+ 286:Src/control.c ****         flag_motion_end = TRUE;
+ 806              		.loc 1 286 0
+ 807 002c 364B     		ldr	r3, .L63+16
+ 808 002e 0122     		movs	r2, #1
+ 809 0030 1A70     		strb	r2, [r3]
+ 810 0032 02E0     		b	.L54
+ 811              	.L59:
  267:Src/control.c ****     }
- 268:Src/control.c ****     else if (yawrate_tim.cons > 0)
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 20
-
-
- 801              		.loc 1 268 0
- 802 0016 3B4B     		ldr	r3, .L64+12
- 803 0018 5B88     		ldrh	r3, [r3, #2]
- 804 001a 002B     		cmp	r3, #0
- 805 001c 4BD1     		bne	.L62
- 269:Src/control.c ****     {
- 270:Src/control.c ****         yawrate_tim.cons--;
- 271:Src/control.c ****     }
- 272:Src/control.c ****     else if (yawrate_tim.down > 0)
- 806              		.loc 1 272 0
- 807 001e 394B     		ldr	r3, .L64+12
- 808 0020 9C88     		ldrh	r4, [r3, #4]
- 809 0022 002C     		cmp	r4, #0
- 810 0024 4BD1     		bne	.L63
- 273:Src/control.c ****     {
- 274:Src/control.c ****         yawrate_tgt.velocity -= yawrate_tgt.accel * dt;
- 275:Src/control.c ****         yawrate_tim.down--;
- 276:Src/control.c ****     }
- 277:Src/control.c ****     else
- 278:Src/control.c ****     {
- 279:Src/control.c ****         yawrate_tgt.velocity = 0;
- 811              		.loc 1 279 0
- 812 0026 364B     		ldr	r3, .L64+8
- 813 0028 0022     		movs	r2, #0
- 814 002a 1A80     		strh	r2, [r3]	@ movhi
- 280:Src/control.c ****         flag_motion_end = TRUE;
- 815              		.loc 1 280 0
- 816 002c 364B     		ldr	r3, .L64+16
- 817 002e 0122     		movs	r2, #1
- 818 0030 1A70     		strb	r2, [r3]
- 819 0032 02E0     		b	.L55
- 820              	.L60:
- 261:Src/control.c ****     }
- 821              		.loc 1 261 0
- 822 0034 324B     		ldr	r3, .L64+8
- 823 0036 0022     		movs	r2, #0
- 824 0038 1A80     		strh	r2, [r3]	@ movhi
- 825              	.L55:
- 281:Src/control.c ****     }
- 282:Src/control.c **** 
- 283:Src/control.c ****     target = (float)yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall();
- 826              		.loc 1 283 0
- 827 003a 314B     		ldr	r3, .L64+8
- 828 003c 93F90420 		ldrsb	r2, [r3, #4]
- 829 0040 08EE102A 		vmov	s16, r2	@ int
- 830 0044 F8EEC87A 		vcvt.f32.s32	s15, s16
- 831 0048 B3F90030 		ldrsh	r3, [r3]
- 832 004c 08EE103A 		vmov	s16, r3	@ int
- 833 0050 B8EEC88A 		vcvt.f32.s32	s16, s16
- 834 0054 28EE278A 		vmul.f32	s16, s16, s15
- 835 0058 FFF7FEFF 		bl	Control_Side_Wall
- 836              	.LVL86:
- 284:Src/control.c **** 
- 285:Src/control.c ****     return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.92f, 17.0f, 4.0f);//2.0f, 20.0f, 4
- 837              		.loc 1 285 0
- 838 005c B1EE002A 		vmov.f32	s4, #4.0e+0
- 839 0060 F3EE011A 		vmov.f32	s3, #1.7e+1
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 21
-
-
- 840 0064 9FED291A 		vldr.32	s2, .L64+20
- 841 0068 2949     		ldr	r1, .L64+24
- 842 006a 2A48     		ldr	r0, .L64+28
- 843 006c 2A4B     		ldr	r3, .L64+32
- 844 006e D3ED000A 		vldr.32	s1, [r3]
- 845 0072 38EE400A 		vsub.f32	s0, s16, s0
- 846              	.LVL87:
- 847 0076 FFF7FEFF 		bl	PID_value
- 848              	.LVL88:
- 286:Src/control.c **** }
- 849              		.loc 1 286 0
- 850 007a BDEC028B 		vldm	sp!, {d8}
- 851              	.LCFI12:
- 852              		.cfi_remember_state
- 853              		.cfi_restore 80
- 854              		.cfi_restore 81
- 855              		.cfi_def_cfa_offset 24
- 856 007e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 857              	.LVL89:
- 858              	.L61:
- 859              	.LCFI13:
- 860              		.cfi_restore_state
- 265:Src/control.c ****         yawrate_tim.up--;
- 861              		.loc 1 265 0
- 862 0080 1F4D     		ldr	r5, .L64+8
- 863 0082 B5F90200 		ldrsh	r0, [r5, #2]
- 864 0086 FFF7FEFF 		bl	__aeabi_i2d
- 865              	.LVL90:
- 866 008a 1BA3     		adr	r3, .L64
- 867 008c D3E90023 		ldrd	r2, [r3]
- 868 0090 FFF7FEFF 		bl	__aeabi_dmul
- 869              	.LVL91:
- 870 0094 0646     		mov	r6, r0
- 871 0096 0F46     		mov	r7, r1
- 872 0098 B5F90000 		ldrsh	r0, [r5]
- 873 009c FFF7FEFF 		bl	__aeabi_i2d
- 874              	.LVL92:
- 875 00a0 3246     		mov	r2, r6
- 876 00a2 3B46     		mov	r3, r7
- 877 00a4 FFF7FEFF 		bl	__aeabi_dadd
- 878              	.LVL93:
- 879 00a8 FFF7FEFF 		bl	__aeabi_d2iz
- 880              	.LVL94:
- 881 00ac 2880     		strh	r0, [r5]	@ movhi
- 266:Src/control.c ****     }
- 882              		.loc 1 266 0
- 883 00ae 013C     		subs	r4, r4, #1
- 884 00b0 144B     		ldr	r3, .L64+12
- 885 00b2 1C80     		strh	r4, [r3]	@ movhi
- 886 00b4 C1E7     		b	.L55
- 887              	.L62:
- 270:Src/control.c ****     }
- 888              		.loc 1 270 0
- 889 00b6 013B     		subs	r3, r3, #1
- 890 00b8 124A     		ldr	r2, .L64+12
- 891 00ba 5380     		strh	r3, [r2, #2]	@ movhi
- 892 00bc BDE7     		b	.L55
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 22
-
-
- 893              	.L63:
- 274:Src/control.c ****         yawrate_tim.down--;
- 894              		.loc 1 274 0
- 895 00be 104D     		ldr	r5, .L64+8
- 896 00c0 B5F90200 		ldrsh	r0, [r5, #2]
- 897 00c4 FFF7FEFF 		bl	__aeabi_i2d
- 898              	.LVL95:
- 899 00c8 0BA3     		adr	r3, .L64
- 900 00ca D3E90023 		ldrd	r2, [r3]
- 901 00ce FFF7FEFF 		bl	__aeabi_dmul
- 902              	.LVL96:
- 903 00d2 0646     		mov	r6, r0
- 904 00d4 0F46     		mov	r7, r1
- 905 00d6 B5F90000 		ldrsh	r0, [r5]
- 906 00da FFF7FEFF 		bl	__aeabi_i2d
- 907              	.LVL97:
- 908 00de 3246     		mov	r2, r6
- 909 00e0 3B46     		mov	r3, r7
- 910 00e2 FFF7FEFF 		bl	__aeabi_dsub
- 911              	.LVL98:
- 912 00e6 FFF7FEFF 		bl	__aeabi_d2iz
- 913              	.LVL99:
- 914 00ea 2880     		strh	r0, [r5]	@ movhi
- 275:Src/control.c ****     }
- 915              		.loc 1 275 0
- 916 00ec 013C     		subs	r4, r4, #1
- 917 00ee 054B     		ldr	r3, .L64+12
- 918 00f0 9C80     		strh	r4, [r3, #4]	@ movhi
- 919 00f2 A2E7     		b	.L55
- 920              	.L65:
- 921 00f4 AFF30080 		.align	3
- 922              	.L64:
- 923 00f8 FCA9F1D2 		.word	-755914244
- 924 00fc 4D62503F 		.word	1062232653
- 925 0100 00000000 		.word	yawrate_tgt
- 926 0104 00000000 		.word	yawrate_tim
- 927 0108 00000000 		.word	flag_motion_end
- 928 010c 1F856B3F 		.word	1064011039
- 929 0110 00000000 		.word	.LANCHOR1
- 930 0114 00000000 		.word	y_sum
- 931 0118 00000000 		.word	gyro
- 932              		.cfi_endproc
- 933              	.LFE131:
- 935              		.section	.text.Control_Front_Wall,"ax",%progbits
- 936              		.align	1
- 937              		.global	Control_Front_Wall
- 938              		.syntax unified
- 939              		.thumb
- 940              		.thumb_func
- 941              		.fpu fpv4-sp-d16
- 943              	Control_Front_Wall:
- 944              	.LFB132:
- 287:Src/control.c **** 
+ 812              		.loc 1 267 0
+ 813 0034 324B     		ldr	r3, .L63+8
+ 814 0036 0022     		movs	r2, #0
+ 815 0038 1A80     		strh	r2, [r3]	@ movhi
+ 816              	.L54:
+ 287:Src/control.c ****     }
  288:Src/control.c **** 
- 289:Src/control.c **** float Control_Front_Wall(void)
- 290:Src/control.c **** {
- 945              		.loc 1 290 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 23
+ 289:Src/control.c ****     target = (float)yawrate_tgt.dir * yawrate_tgt.velocity- Control_Side_Wall();
+ 817              		.loc 1 289 0
+ 818 003a 314B     		ldr	r3, .L63+8
+ 819 003c 93F90420 		ldrsb	r2, [r3, #4]
+ 820 0040 08EE102A 		vmov	s16, r2	@ int
+ 821 0044 F8EEC87A 		vcvt.f32.s32	s15, s16
+ 822 0048 B3F90030 		ldrsh	r3, [r3]
+ 823 004c 08EE103A 		vmov	s16, r3	@ int
+ 824 0050 B8EEC88A 		vcvt.f32.s32	s16, s16
+ 825 0054 28EE278A 		vmul.f32	s16, s16, s15
+ 826 0058 FFF7FEFF 		bl	Control_Side_Wall
+ 827              	.LVL86:
+ 290:Src/control.c **** 
+ 291:Src/control.c ****     return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.98f, 18.0f, 4.5f); //2.0f, 20.0f, 
+ 828              		.loc 1 291 0
+ 829 005c B1EE022A 		vmov.f32	s4, #4.5e+0
+ 830 0060 F3EE021A 		vmov.f32	s3, #1.8e+1
+ 831 0064 9FED291A 		vldr.32	s2, .L63+20
+ 832 0068 2949     		ldr	r1, .L63+24
+ 833 006a 2A48     		ldr	r0, .L63+28
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 21
 
 
- 946              		.cfi_startproc
- 947              		@ args = 0, pretend = 0, frame = 0
- 948              		@ frame_needed = 0, uses_anonymous_args = 0
- 949              		@ link register save eliminated.
- 950              	.LVL100:
- 291:Src/control.c ****     float pid = 0;
- 292:Src/control.c ****     if (sen_front.is_wall == TRUE)
- 951              		.loc 1 292 0
- 952 0000 0D4B     		ldr	r3, .L71
- 953 0002 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
- 954 0004 012B     		cmp	r3, #1
- 955 0006 02D0     		beq	.L70
- 293:Src/control.c ****     {
- 294:Src/control.c ****         if (sen_front.reference > sen_front.now)
- 295:Src/control.c ****         {
- 296:Src/control.c ****             pid = 0.2f * (sen_front.reference - sen_front.now);
- 297:Src/control.c ****             //front_wall_pid=(int16_t)PID_value((float)sen_front.reference,(float)sen_front.adc,&fr
- 298:Src/control.c ****         }
- 299:Src/control.c ****     }
- 300:Src/control.c ****     else
- 301:Src/control.c ****     {
- 302:Src/control.c ****         pid = 0;
- 956              		.loc 1 302 0
- 957 0008 9FED0C0A 		vldr.32	s0, .L71+4
- 958 000c 7047     		bx	lr
- 959              	.L70:
- 294:Src/control.c ****         {
- 960              		.loc 1 294 0
- 961 000e 0A4A     		ldr	r2, .L71
- 962 0010 B2F90430 		ldrsh	r3, [r2, #4]
- 963 0014 B2F90020 		ldrsh	r2, [r2]
- 964 0018 9342     		cmp	r3, r2
- 965 001a 09DD     		ble	.L69
- 296:Src/control.c ****             //front_wall_pid=(int16_t)PID_value((float)sen_front.reference,(float)sen_front.adc,&fr
- 966              		.loc 1 296 0
- 967 001c 9B1A     		subs	r3, r3, r2
- 968 001e 00EE103A 		vmov	s0, r3	@ int
- 969 0022 B8EEC00A 		vcvt.f32.s32	s0, s0
- 970 0026 DFED067A 		vldr.32	s15, .L71+8
- 971 002a 20EE270A 		vmul.f32	s0, s0, s15
- 972              	.LVL101:
- 973 002e 7047     		bx	lr
- 974              	.LVL102:
- 975              	.L69:
- 291:Src/control.c ****     if (sen_front.is_wall == TRUE)
- 976              		.loc 1 291 0
- 977 0030 9FED020A 		vldr.32	s0, .L71+4
- 303:Src/control.c ****     }
- 304:Src/control.c ****     return pid;
- 305:Src/control.c **** }
- 978              		.loc 1 305 0
- 979 0034 7047     		bx	lr
- 980              	.L72:
- 981 0036 00BF     		.align	2
- 982              	.L71:
- 983 0038 00000000 		.word	sen_front
- 984 003c 00000000 		.word	0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 24
+ 834 006c 2A4B     		ldr	r3, .L63+32
+ 835 006e D3ED000A 		vldr.32	s1, [r3]
+ 836 0072 38EE400A 		vsub.f32	s0, s16, s0
+ 837              	.LVL87:
+ 838 0076 FFF7FEFF 		bl	PID_value
+ 839              	.LVL88:
+ 292:Src/control.c **** }
+ 840              		.loc 1 292 0
+ 841 007a BDEC028B 		vldm	sp!, {d8}
+ 842              	.LCFI12:
+ 843              		.cfi_remember_state
+ 844              		.cfi_restore 80
+ 845              		.cfi_restore 81
+ 846              		.cfi_def_cfa_offset 24
+ 847 007e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 848              	.LVL89:
+ 849              	.L60:
+ 850              	.LCFI13:
+ 851              		.cfi_restore_state
+ 271:Src/control.c ****         yawrate_tim.up--;
+ 852              		.loc 1 271 0
+ 853 0080 1F4D     		ldr	r5, .L63+8
+ 854 0082 B5F90200 		ldrsh	r0, [r5, #2]
+ 855 0086 FFF7FEFF 		bl	__aeabi_i2d
+ 856              	.LVL90:
+ 857 008a 1BA3     		adr	r3, .L63
+ 858 008c D3E90023 		ldrd	r2, [r3]
+ 859 0090 FFF7FEFF 		bl	__aeabi_dmul
+ 860              	.LVL91:
+ 861 0094 0646     		mov	r6, r0
+ 862 0096 0F46     		mov	r7, r1
+ 863 0098 B5F90000 		ldrsh	r0, [r5]
+ 864 009c FFF7FEFF 		bl	__aeabi_i2d
+ 865              	.LVL92:
+ 866 00a0 3246     		mov	r2, r6
+ 867 00a2 3B46     		mov	r3, r7
+ 868 00a4 FFF7FEFF 		bl	__aeabi_dadd
+ 869              	.LVL93:
+ 870 00a8 FFF7FEFF 		bl	__aeabi_d2iz
+ 871              	.LVL94:
+ 872 00ac 2880     		strh	r0, [r5]	@ movhi
+ 272:Src/control.c ****     }
+ 873              		.loc 1 272 0
+ 874 00ae 013C     		subs	r4, r4, #1
+ 875 00b0 144B     		ldr	r3, .L63+12
+ 876 00b2 1C80     		strh	r4, [r3]	@ movhi
+ 877 00b4 C1E7     		b	.L54
+ 878              	.L61:
+ 276:Src/control.c ****     }
+ 879              		.loc 1 276 0
+ 880 00b6 013B     		subs	r3, r3, #1
+ 881 00b8 124A     		ldr	r2, .L63+12
+ 882 00ba 5380     		strh	r3, [r2, #2]	@ movhi
+ 883 00bc BDE7     		b	.L54
+ 884              	.L62:
+ 280:Src/control.c ****         yawrate_tim.down--;
+ 885              		.loc 1 280 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 22
 
 
- 985 0040 CDCC4C3E 		.word	1045220557
- 986              		.cfi_endproc
- 987              	.LFE132:
- 989              		.section	.text.Control_pwm,"ax",%progbits
- 990              		.align	1
- 991              		.global	Control_pwm
- 992              		.syntax unified
- 993              		.thumb
- 994              		.thumb_func
- 995              		.fpu fpv4-sp-d16
- 997              	Control_pwm:
- 998              	.LFB133:
- 306:Src/control.c **** 
- 307:Src/control.c **** void Control_pwm(void)
- 308:Src/control.c **** {
- 999              		.loc 1 308 0
- 1000              		.cfi_startproc
- 1001              		@ args = 0, pretend = 0, frame = 0
- 1002              		@ frame_needed = 0, uses_anonymous_args = 0
- 1003 0000 10B5     		push	{r4, lr}
- 1004              	.LCFI14:
- 1005              		.cfi_def_cfa_offset 8
- 1006              		.cfi_offset 4, -8
- 1007              		.cfi_offset 14, -4
- 309:Src/control.c ****     if (flag_motor==TRUE)
- 1008              		.loc 1 309 0
- 1009 0002 0F4B     		ldr	r3, .L78
- 1010 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1011 0006 012B     		cmp	r3, #1
- 1012 0008 04D0     		beq	.L77
- 310:Src/control.c ****     {
- 311:Src/control.c ****         int16_t straight_pid = 0;
- 312:Src/control.c ****         int16_t yawrate_pid = 0;
- 313:Src/control.c **** 
- 314:Src/control.c ****         straight_pid = (int16_t)Control_encoder(); //+ Control_Front_Wall();
- 315:Src/control.c ****         yawrate_pid = (int16_t)Control_gyro();     //+ Control_Side_Wall();
- 316:Src/control.c **** 
- 317:Src/control.c ****         Motor_pwm(straight_pid - yawrate_pid, straight_pid + yawrate_pid);
- 318:Src/control.c ****     }else{
- 319:Src/control.c ****         Motor_pwm(0,0);
- 1013              		.loc 1 319 0
- 1014 000a 0021     		movs	r1, #0
- 1015 000c 0846     		mov	r0, r1
- 1016 000e FFF7FEFF 		bl	Motor_pwm
- 1017              	.LVL103:
- 1018              	.L73:
- 320:Src/control.c ****     }
- 321:Src/control.c **** }
- 1019              		.loc 1 321 0
- 1020 0012 10BD     		pop	{r4, pc}
- 1021              	.L77:
- 1022              	.LVL104:
- 1023              	.LBB5:
- 314:Src/control.c ****         yawrate_pid = (int16_t)Control_gyro();     //+ Control_Side_Wall();
- 1024              		.loc 1 314 0
- 1025 0014 FFF7FEFF 		bl	Control_encoder
- 1026              	.LVL105:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 25
+ 886 00be 104D     		ldr	r5, .L63+8
+ 887 00c0 B5F90200 		ldrsh	r0, [r5, #2]
+ 888 00c4 FFF7FEFF 		bl	__aeabi_i2d
+ 889              	.LVL95:
+ 890 00c8 0BA3     		adr	r3, .L63
+ 891 00ca D3E90023 		ldrd	r2, [r3]
+ 892 00ce FFF7FEFF 		bl	__aeabi_dmul
+ 893              	.LVL96:
+ 894 00d2 0646     		mov	r6, r0
+ 895 00d4 0F46     		mov	r7, r1
+ 896 00d6 B5F90000 		ldrsh	r0, [r5]
+ 897 00da FFF7FEFF 		bl	__aeabi_i2d
+ 898              	.LVL97:
+ 899 00de 3246     		mov	r2, r6
+ 900 00e0 3B46     		mov	r3, r7
+ 901 00e2 FFF7FEFF 		bl	__aeabi_dsub
+ 902              	.LVL98:
+ 903 00e6 FFF7FEFF 		bl	__aeabi_d2iz
+ 904              	.LVL99:
+ 905 00ea 2880     		strh	r0, [r5]	@ movhi
+ 281:Src/control.c ****     }
+ 906              		.loc 1 281 0
+ 907 00ec 013C     		subs	r4, r4, #1
+ 908 00ee 054B     		ldr	r3, .L63+12
+ 909 00f0 9C80     		strh	r4, [r3, #4]	@ movhi
+ 910 00f2 A2E7     		b	.L54
+ 911              	.L64:
+ 912 00f4 AFF30080 		.align	3
+ 913              	.L63:
+ 914 00f8 FCA9F1D2 		.word	-755914244
+ 915 00fc 4D62503F 		.word	1062232653
+ 916 0100 00000000 		.word	yawrate_tgt
+ 917 0104 00000000 		.word	yawrate_tim
+ 918 0108 00000000 		.word	flag_motion_end
+ 919 010c 48E17A3F 		.word	1065017672
+ 920 0110 00000000 		.word	.LANCHOR1
+ 921 0114 00000000 		.word	y_sum
+ 922 0118 00000000 		.word	gyro
+ 923              		.cfi_endproc
+ 924              	.LFE131:
+ 926              		.section	.text.Control_Front_Wall,"ax",%progbits
+ 927              		.align	1
+ 928              		.global	Control_Front_Wall
+ 929              		.syntax unified
+ 930              		.thumb
+ 931              		.thumb_func
+ 932              		.fpu fpv4-sp-d16
+ 934              	Control_Front_Wall:
+ 935              	.LFB132:
+ 293:Src/control.c **** 
+ 294:Src/control.c **** float Control_Front_Wall(void)
+ 295:Src/control.c **** {
+ 936              		.loc 1 295 0
+ 937              		.cfi_startproc
+ 938              		@ args = 0, pretend = 0, frame = 0
+ 939              		@ frame_needed = 0, uses_anonymous_args = 0
+ 940              		@ link register save eliminated.
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 23
 
 
- 1027 0018 BDEEC00A 		vcvt.s32.f32	s0, s0
- 1028 001c 10EE103A 		vmov	r3, s0	@ int
- 1029 0020 1CB2     		sxth	r4, r3
- 1030              	.LVL106:
- 315:Src/control.c **** 
- 1031              		.loc 1 315 0
- 1032 0022 FFF7FEFF 		bl	Control_gyro
- 1033              	.LVL107:
- 1034 0026 BDEEC00A 		vcvt.s32.f32	s0, s0
- 1035              	.LVL108:
- 317:Src/control.c ****     }else{
- 1036              		.loc 1 317 0
- 1037 002a A1B2     		uxth	r1, r4
- 1038 002c 10EE103A 		vmov	r3, s0	@ int
- 1039 0030 9BB2     		uxth	r3, r3
- 1040 0032 C81A     		subs	r0, r1, r3
- 1041 0034 1944     		add	r1, r1, r3
- 1042 0036 09B2     		sxth	r1, r1
- 1043 0038 00B2     		sxth	r0, r0
- 1044 003a FFF7FEFF 		bl	Motor_pwm
- 1045              	.LVL109:
- 1046              	.LBE5:
- 1047 003e E8E7     		b	.L73
- 1048              	.L79:
- 1049              		.align	2
- 1050              	.L78:
- 1051 0040 00000000 		.word	flag_motor
- 1052              		.cfi_endproc
- 1053              	.LFE133:
- 1055              		.section	.text.Control_EmergencyStop,"ax",%progbits
- 1056              		.align	1
- 1057              		.global	Control_EmergencyStop
- 1058              		.syntax unified
- 1059              		.thumb
- 1060              		.thumb_func
- 1061              		.fpu fpv4-sp-d16
- 1063              	Control_EmergencyStop:
- 1064              	.LFB134:
- 322:Src/control.c **** 
- 323:Src/control.c **** void Control_EmergencyStop(unsigned short diff_yaw){
- 1065              		.loc 1 323 0
- 1066              		.cfi_startproc
- 1067              		@ args = 0, pretend = 0, frame = 0
- 1068              		@ frame_needed = 0, uses_anonymous_args = 0
- 1069              	.LVL110:
- 1070 0000 38B5     		push	{r3, r4, r5, lr}
- 1071              	.LCFI15:
- 1072              		.cfi_def_cfa_offset 16
- 1073              		.cfi_offset 3, -16
- 1074              		.cfi_offset 4, -12
- 1075              		.cfi_offset 5, -8
- 1076              		.cfi_offset 14, -4
- 1077 0002 0546     		mov	r5, r0
- 324:Src/control.c ****     int buff_yaw=yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall()-gyro.velocity;
- 1078              		.loc 1 324 0
- 1079 0004 104A     		ldr	r2, .L84
- 1080 0006 92F90440 		ldrsb	r4, [r2, #4]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 26
+ 941              	.LVL100:
+ 296:Src/control.c ****     float pid = 0;
+ 297:Src/control.c ****     if (sen_front.is_wall == TRUE)
+ 942              		.loc 1 297 0
+ 943 0000 0D4B     		ldr	r3, .L70
+ 944 0002 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 945 0004 012B     		cmp	r3, #1
+ 946 0006 02D0     		beq	.L69
+ 298:Src/control.c ****     {
+ 299:Src/control.c ****         if (sen_front.reference > sen_front.now)
+ 300:Src/control.c ****         {
+ 301:Src/control.c ****             pid = 0.2f * (sen_front.reference - sen_front.now);
+ 302:Src/control.c ****             //front_wall_pid=(int16_t)PID_value((float)sen_front.reference,(float)sen_front.adc,&fr
+ 303:Src/control.c ****         }
+ 304:Src/control.c ****     }
+ 305:Src/control.c ****     else
+ 306:Src/control.c ****     {
+ 307:Src/control.c ****         pid = 0;
+ 947              		.loc 1 307 0
+ 948 0008 9FED0C0A 		vldr.32	s0, .L70+4
+ 949 000c 7047     		bx	lr
+ 950              	.L69:
+ 299:Src/control.c ****         {
+ 951              		.loc 1 299 0
+ 952 000e 0A4A     		ldr	r2, .L70
+ 953 0010 B2F90430 		ldrsh	r3, [r2, #4]
+ 954 0014 B2F90020 		ldrsh	r2, [r2]
+ 955 0018 9342     		cmp	r3, r2
+ 956 001a 09DD     		ble	.L68
+ 301:Src/control.c ****             //front_wall_pid=(int16_t)PID_value((float)sen_front.reference,(float)sen_front.adc,&fr
+ 957              		.loc 1 301 0
+ 958 001c 9B1A     		subs	r3, r3, r2
+ 959 001e 00EE103A 		vmov	s0, r3	@ int
+ 960 0022 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 961 0026 DFED067A 		vldr.32	s15, .L70+8
+ 962 002a 20EE270A 		vmul.f32	s0, s0, s15
+ 963              	.LVL101:
+ 964 002e 7047     		bx	lr
+ 965              	.LVL102:
+ 966              	.L68:
+ 296:Src/control.c ****     if (sen_front.is_wall == TRUE)
+ 967              		.loc 1 296 0
+ 968 0030 9FED020A 		vldr.32	s0, .L70+4
+ 308:Src/control.c ****     }
+ 309:Src/control.c ****     return pid;
+ 310:Src/control.c **** }
+ 969              		.loc 1 310 0
+ 970 0034 7047     		bx	lr
+ 971              	.L71:
+ 972 0036 00BF     		.align	2
+ 973              	.L70:
+ 974 0038 00000000 		.word	sen_front
+ 975 003c 00000000 		.word	0
+ 976 0040 CDCC4C3E 		.word	1045220557
+ 977              		.cfi_endproc
+ 978              	.LFE132:
+ 980              		.section	.text.Control_pwm,"ax",%progbits
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 24
 
 
- 1081 000a B2F90030 		ldrsh	r3, [r2]
- 1082 000e 03FB04F4 		mul	r4, r3, r4
- 1083 0012 FFF7FEFF 		bl	Control_Side_Wall
- 1084              	.LVL111:
- 1085 0016 07EE904A 		vmov	s15, r4	@ int
- 1086 001a F8EEE77A 		vcvt.f32.s32	s15, s15
- 1087 001e 37EEC00A 		vsub.f32	s0, s15, s0
- 1088 0022 0A4B     		ldr	r3, .L84+4
- 1089 0024 D3ED007A 		vldr.32	s15, [r3]
- 1090 0028 30EE670A 		vsub.f32	s0, s0, s15
- 1091 002c FDEEC07A 		vcvt.s32.f32	s15, s0
- 1092 0030 17EE903A 		vmov	r3, s15	@ int
- 1093              	.LVL112:
- 325:Src/control.c ****     //yawrate
- 326:Src/control.c ****     if(buff_yaw>diff_yaw || buff_yaw<-diff_yaw){
- 1094              		.loc 1 326 0
- 1095 0034 9D42     		cmp	r5, r3
- 1096 0036 02DB     		blt	.L81
- 1097              		.loc 1 326 0 is_stmt 0 discriminator 1
- 1098 0038 6D42     		negs	r5, r5
- 1099 003a 9D42     		cmp	r5, r3
- 1100 003c 02DD     		ble	.L80
- 1101              	.L81:
- 327:Src/control.c ****         flag_motor=FALSE;
- 1102              		.loc 1 327 0 is_stmt 1
- 1103 003e 044B     		ldr	r3, .L84+8
- 1104              	.LVL113:
- 1105 0040 0022     		movs	r2, #0
- 1106 0042 1A70     		strb	r2, [r3]
- 1107              	.L80:
- 328:Src/control.c ****     }
- 329:Src/control.c **** }...
- 1108              		.loc 1 329 0
- 1109 0044 38BD     		pop	{r3, r4, r5, pc}
- 1110              	.L85:
- 1111 0046 00BF     		.align	2
- 1112              	.L84:
- 1113 0048 00000000 		.word	yawrate_tgt
- 1114 004c 00000000 		.word	gyro
- 1115 0050 00000000 		.word	flag_motor
- 1116              		.cfi_endproc
- 1117              	.LFE134:
- 1119              		.comm	flag_wall,1,1
- 1120              		.comm	flag_motor,1,1
- 1121              		.comm	flag_motion_end,1,1
- 1122              		.global	front_wall_before
- 1123              		.global	front_wall_sum
- 1124              		.comm	si_wall_bef,4,4
- 1125              		.comm	si_wall_sum,4,4
- 1126              		.global	y_before
- 1127              		.comm	y_sum,4,4
- 1128              		.global	enc_before
- 1129              		.comm	enc_sum,4,4
- 1130              		.comm	yawrate_tim,6,4
- 1131              		.comm	straight_tim,6,4
- 1132              		.comm	yawrate_tgt,6,4
- 1133              		.comm	straight_tgt,6,4
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 27
+ 981              		.align	1
+ 982              		.global	Control_pwm
+ 983              		.syntax unified
+ 984              		.thumb
+ 985              		.thumb_func
+ 986              		.fpu fpv4-sp-d16
+ 988              	Control_pwm:
+ 989              	.LFB133:
+ 311:Src/control.c **** 
+ 312:Src/control.c **** void Control_pwm(void)
+ 313:Src/control.c **** {
+ 990              		.loc 1 313 0
+ 991              		.cfi_startproc
+ 992              		@ args = 0, pretend = 0, frame = 0
+ 993              		@ frame_needed = 0, uses_anonymous_args = 0
+ 994 0000 10B5     		push	{r4, lr}
+ 995              	.LCFI14:
+ 996              		.cfi_def_cfa_offset 8
+ 997              		.cfi_offset 4, -8
+ 998              		.cfi_offset 14, -4
+ 314:Src/control.c ****     if (flag_motor == TRUE)
+ 999              		.loc 1 314 0
+ 1000 0002 0F4B     		ldr	r3, .L77
+ 1001 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1002 0006 012B     		cmp	r3, #1
+ 1003 0008 04D0     		beq	.L76
+ 315:Src/control.c ****     {
+ 316:Src/control.c ****         int16_t straight_pid = 0;
+ 317:Src/control.c ****         int16_t yawrate_pid = 0;
+ 318:Src/control.c **** 
+ 319:Src/control.c ****         straight_pid = (int16_t)Control_encoder();
+ 320:Src/control.c ****         yawrate_pid = (int16_t)Control_gyro();
+ 321:Src/control.c **** 
+ 322:Src/control.c ****         Motor_pwm(straight_pid - yawrate_pid, straight_pid + yawrate_pid);
+ 323:Src/control.c ****     }
+ 324:Src/control.c ****     else
+ 325:Src/control.c ****     {
+ 326:Src/control.c ****         Motor_pwm(0, 0);
+ 1004              		.loc 1 326 0
+ 1005 000a 0021     		movs	r1, #0
+ 1006 000c 0846     		mov	r0, r1
+ 1007 000e FFF7FEFF 		bl	Motor_pwm
+ 1008              	.LVL103:
+ 1009              	.L72:
+ 327:Src/control.c ****     }
+ 328:Src/control.c **** }
+ 1010              		.loc 1 328 0
+ 1011 0012 10BD     		pop	{r4, pc}
+ 1012              	.L76:
+ 1013              	.LVL104:
+ 1014              	.LBB2:
+ 319:Src/control.c ****         yawrate_pid = (int16_t)Control_gyro();
+ 1015              		.loc 1 319 0
+ 1016 0014 FFF7FEFF 		bl	Control_encoder
+ 1017              	.LVL105:
+ 1018 0018 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 1019 001c 10EE103A 		vmov	r3, s0	@ int
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 25
 
 
- 1134              		.section	.bss.enc_before,"aw",%nobits
- 1135              		.align	2
- 1136              		.set	.LANCHOR0,. + 0
- 1139              	enc_before:
- 1140 0000 00000000 		.space	4
- 1141              		.section	.bss.front_wall_before,"aw",%nobits
- 1142              		.align	2
- 1145              	front_wall_before:
- 1146 0000 00000000 		.space	4
- 1147              		.section	.bss.front_wall_sum,"aw",%nobits
- 1148              		.align	2
- 1151              	front_wall_sum:
- 1152 0000 00000000 		.space	4
- 1153              		.section	.bss.y_before,"aw",%nobits
- 1154              		.align	2
- 1155              		.set	.LANCHOR1,. + 0
- 1158              	y_before:
- 1159 0000 00000000 		.space	4
- 1160              		.text
- 1161              	.Letext0:
- 1162              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1163              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1164              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 1165              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 1166              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 1167              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1168              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 1169              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
- 1170              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 1171              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1172              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1173              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
- 1174              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1175              		.file 15 "Inc/tim.h"
- 1176              		.file 16 "Inc/filter.h"
- 1177              		.file 17 "Inc/spi.h"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 28
+ 1020 0020 1CB2     		sxth	r4, r3
+ 1021              	.LVL106:
+ 320:Src/control.c **** 
+ 1022              		.loc 1 320 0
+ 1023 0022 FFF7FEFF 		bl	Control_gyro
+ 1024              	.LVL107:
+ 1025 0026 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 1026              	.LVL108:
+ 322:Src/control.c ****     }
+ 1027              		.loc 1 322 0
+ 1028 002a A1B2     		uxth	r1, r4
+ 1029 002c 10EE103A 		vmov	r3, s0	@ int
+ 1030 0030 9BB2     		uxth	r3, r3
+ 1031 0032 C81A     		subs	r0, r1, r3
+ 1032 0034 1944     		add	r1, r1, r3
+ 1033 0036 09B2     		sxth	r1, r1
+ 1034 0038 00B2     		sxth	r0, r0
+ 1035 003a FFF7FEFF 		bl	Motor_pwm
+ 1036              	.LVL109:
+ 1037              	.LBE2:
+ 1038 003e E8E7     		b	.L72
+ 1039              	.L78:
+ 1040              		.align	2
+ 1041              	.L77:
+ 1042 0040 00000000 		.word	flag_motor
+ 1043              		.cfi_endproc
+ 1044              	.LFE133:
+ 1046              		.section	.text.Control_EmergencyStop,"ax",%progbits
+ 1047              		.align	1
+ 1048              		.global	Control_EmergencyStop
+ 1049              		.syntax unified
+ 1050              		.thumb
+ 1051              		.thumb_func
+ 1052              		.fpu fpv4-sp-d16
+ 1054              	Control_EmergencyStop:
+ 1055              	.LFB134:
+ 329:Src/control.c **** 
+ 330:Src/control.c **** void Control_EmergencyStop(unsigned short diff_yaw)
+ 331:Src/control.c **** {
+ 1056              		.loc 1 331 0
+ 1057              		.cfi_startproc
+ 1058              		@ args = 0, pretend = 0, frame = 0
+ 1059              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1060              	.LVL110:
+ 1061 0000 38B5     		push	{r3, r4, r5, lr}
+ 1062              	.LCFI15:
+ 1063              		.cfi_def_cfa_offset 16
+ 1064              		.cfi_offset 3, -16
+ 1065              		.cfi_offset 4, -12
+ 1066              		.cfi_offset 5, -8
+ 1067              		.cfi_offset 14, -4
+ 1068 0002 0546     		mov	r5, r0
+ 332:Src/control.c ****     int buff_yaw = yawrate_tgt.dir * yawrate_tgt.velocity - Control_Side_Wall() - gyro.velocity;
+ 1069              		.loc 1 332 0
+ 1070 0004 104A     		ldr	r2, .L83
+ 1071 0006 92F90440 		ldrsb	r4, [r2, #4]
+ 1072 000a B2F90030 		ldrsh	r3, [r2]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 26
+
+
+ 1073 000e 03FB04F4 		mul	r4, r3, r4
+ 1074 0012 FFF7FEFF 		bl	Control_Side_Wall
+ 1075              	.LVL111:
+ 1076 0016 07EE904A 		vmov	s15, r4	@ int
+ 1077 001a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 1078 001e 37EEC00A 		vsub.f32	s0, s15, s0
+ 1079 0022 0A4B     		ldr	r3, .L83+4
+ 1080 0024 D3ED007A 		vldr.32	s15, [r3]
+ 1081 0028 30EE670A 		vsub.f32	s0, s0, s15
+ 1082 002c FDEEC07A 		vcvt.s32.f32	s15, s0
+ 1083 0030 17EE903A 		vmov	r3, s15	@ int
+ 1084              	.LVL112:
+ 333:Src/control.c ****     //yawrate
+ 334:Src/control.c ****     if (buff_yaw > diff_yaw || buff_yaw < -diff_yaw)
+ 1085              		.loc 1 334 0
+ 1086 0034 9D42     		cmp	r5, r3
+ 1087 0036 02DB     		blt	.L80
+ 1088              		.loc 1 334 0 is_stmt 0 discriminator 1
+ 1089 0038 6D42     		negs	r5, r5
+ 1090 003a 9D42     		cmp	r5, r3
+ 1091 003c 02DD     		ble	.L79
+ 1092              	.L80:
+ 335:Src/control.c ****     {
+ 336:Src/control.c ****         flag_motor = FALSE;
+ 1093              		.loc 1 336 0 is_stmt 1
+ 1094 003e 044B     		ldr	r3, .L83+8
+ 1095              	.LVL113:
+ 1096 0040 0022     		movs	r2, #0
+ 1097 0042 1A70     		strb	r2, [r3]
+ 1098              	.L79:
+ 337:Src/control.c ****     }
+ 338:Src/control.c **** }...
+ 1099              		.loc 1 338 0
+ 1100 0044 38BD     		pop	{r3, r4, r5, pc}
+ 1101              	.L84:
+ 1102 0046 00BF     		.align	2
+ 1103              	.L83:
+ 1104 0048 00000000 		.word	yawrate_tgt
+ 1105 004c 00000000 		.word	gyro
+ 1106 0050 00000000 		.word	flag_motor
+ 1107              		.cfi_endproc
+ 1108              	.LFE134:
+ 1110              		.comm	flag_wall,1,1
+ 1111              		.comm	flag_motor,1,1
+ 1112              		.comm	flag_motion_end,1,1
+ 1113              		.global	front_wall_before
+ 1114              		.global	front_wall_sum
+ 1115              		.comm	si_wall_bef,4,4
+ 1116              		.comm	si_wall_sum,4,4
+ 1117              		.global	y_before
+ 1118              		.comm	y_sum,4,4
+ 1119              		.global	enc_before
+ 1120              		.comm	enc_sum,4,4
+ 1121              		.comm	yawrate_tim,6,4
+ 1122              		.comm	straight_tim,6,4
+ 1123              		.comm	yawrate_tgt,6,4
+ 1124              		.comm	straight_tgt,6,4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 27
+
+
+ 1125              		.section	.bss.enc_before,"aw",%nobits
+ 1126              		.align	2
+ 1127              		.set	.LANCHOR0,. + 0
+ 1130              	enc_before:
+ 1131 0000 00000000 		.space	4
+ 1132              		.section	.bss.front_wall_before,"aw",%nobits
+ 1133              		.align	2
+ 1136              	front_wall_before:
+ 1137 0000 00000000 		.space	4
+ 1138              		.section	.bss.front_wall_sum,"aw",%nobits
+ 1139              		.align	2
+ 1142              	front_wall_sum:
+ 1143 0000 00000000 		.space	4
+ 1144              		.section	.bss.y_before,"aw",%nobits
+ 1145              		.align	2
+ 1146              		.set	.LANCHOR1,. + 0
+ 1149              	y_before:
+ 1150 0000 00000000 		.space	4
+ 1151              		.text
+ 1152              	.Letext0:
+ 1153              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1154              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1155              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1156              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1157              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 1158              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1159              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1160              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 1161              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 1162              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1163              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1164              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1165              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1166              		.file 15 "Inc/tim.h"
+ 1167              		.file 16 "Inc/filter.h"
+ 1168              		.file 17 "Inc/spi.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 control.c
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:22     .text.PID_value:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:29     .text.PID_value:00000000 PID_value
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:113    .text.PID_value:00000070 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:119    .text.Straight_Calc_fb:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:126    .text.Straight_Calc_fb:00000000 Straight_Calc_fb
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:276    .text.Straight_Calc_fb:000000e0 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:22     .text.PID_value:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:29     .text.PID_value:00000000 PID_value
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:113    .text.PID_value:00000070 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:119    .text.Straight_Calc_fb:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:126    .text.Straight_Calc_fb:00000000 Straight_Calc_fb
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:276    .text.Straight_Calc_fb:000000e0 $d
                             *COM*:00000006 straight_tgt
                             *COM*:00000006 straight_tim
                             *COM*:00000001 flag_motion_end
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:286    .text.Yawrate_Calc_fb:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:293    .text.Yawrate_Calc_fb:00000000 Yawrate_Calc_fb
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:444    .text.Yawrate_Calc_fb:000000e0 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:286    .text.Yawrate_Calc_fb:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:293    .text.Yawrate_Calc_fb:00000000 Yawrate_Calc_fb
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:444    .text.Yawrate_Calc_fb:000000e0 $d
                             *COM*:00000006 yawrate_tgt
                             *COM*:00000006 yawrate_tim
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:457    .text.Control_encoder:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:464    .text.Control_encoder:00000000 Control_encoder
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:589    .text.Control_encoder:000000d8 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:457    .text.Control_encoder:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:464    .text.Control_encoder:00000000 Control_encoder
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:589    .text.Control_encoder:000000d8 $d
                             *COM*:00000004 enc_sum
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:602    .text.Control_Side_Wall:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:609    .text.Control_Side_Wall:00000000 Control_Side_Wall
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:750    .text.Control_Side_Wall:000000fc $d
-                            *COM*:00000001 flag_wall
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:764    .text.Control_gyro:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:771    .text.Control_gyro:00000000 Control_gyro
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:923    .text.Control_gyro:000000f8 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:602    .text.Control_Side_Wall:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:609    .text.Control_Side_Wall:00000000 Control_Side_Wall
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:743    .text.Control_Side_Wall:000000f4 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:755    .text.Control_gyro:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:762    .text.Control_gyro:00000000 Control_gyro
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:914    .text.Control_gyro:000000f8 $d
                             *COM*:00000004 y_sum
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:936    .text.Control_Front_Wall:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:943    .text.Control_Front_Wall:00000000 Control_Front_Wall
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:983    .text.Control_Front_Wall:00000038 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:990    .text.Control_pwm:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:997    .text.Control_pwm:00000000 Control_pwm
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1051   .text.Control_pwm:00000040 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:927    .text.Control_Front_Wall:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:934    .text.Control_Front_Wall:00000000 Control_Front_Wall
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:974    .text.Control_Front_Wall:00000038 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:981    .text.Control_pwm:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:988    .text.Control_pwm:00000000 Control_pwm
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1042   .text.Control_pwm:00000040 $d
                             *COM*:00000001 flag_motor
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1056   .text.Control_EmergencyStop:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1063   .text.Control_EmergencyStop:00000000 Control_EmergencyStop
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1113   .text.Control_EmergencyStop:00000048 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1145   .bss.front_wall_before:00000000 front_wall_before
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1151   .bss.front_wall_sum:00000000 front_wall_sum
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1047   .text.Control_EmergencyStop:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1054   .text.Control_EmergencyStop:00000000 Control_EmergencyStop
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1104   .text.Control_EmergencyStop:00000048 $d
+                            *COM*:00000001 flag_wall
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1136   .bss.front_wall_before:00000000 front_wall_before
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1142   .bss.front_wall_sum:00000000 front_wall_sum
                             *COM*:00000004 si_wall_bef
                             *COM*:00000004 si_wall_sum
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1158   .bss.y_before:00000000 y_before
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1139   .bss.enc_before:00000000 enc_before
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1135   .bss.enc_before:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1142   .bss.front_wall_before:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1148   .bss.front_wall_sum:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s:1154   .bss.y_before:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1149   .bss.y_before:00000000 y_before
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1130   .bss.enc_before:00000000 enc_before
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1126   .bss.enc_before:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1133   .bss.front_wall_before:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1139   .bss.front_wall_sum:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s:1145   .bss.y_before:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d
@@ -1657,7 +1657,7 @@ __aeabi_d2f
 __aeabi_i2d
 __aeabi_d2iz
 __aeabi_dsub
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc9V3H6B.s 			page 29
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccdDJ87z.s 			page 29
 
 
 enc

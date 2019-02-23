@@ -132,8 +132,9 @@ void Straight_Calc_fb(int16_t distant, int16_t v_start, int16_t v_end, uint16_t 
  * argument : degree[degree],v_start[degree/s],v_end[degree/s]
  * return   : void
 ********************************************************************************************/
-void Yawrate_Calc_fb(int16_t degree,int16_t v_start,int16_t v_end,int16_t v_max,int16_t accel){
-    float t1=0,t2=0,t3=0;
+void Yawrate_Calc_fb(int16_t degree, int16_t v_start, int16_t v_end, int16_t v_max, int16_t accel)
+{
+    float t1 = 0, t2 = 0, t3 = 0;
     float constant_L;
 
     enc_before = 0;
@@ -142,22 +143,27 @@ void Yawrate_Calc_fb(int16_t degree,int16_t v_start,int16_t v_end,int16_t v_max,
     yawrate_tgt.velocity = v_start;
     yawrate_tgt.accel = accel;
 
-    if(degree<0){
-        degree = -1*degree;
+    if (degree < 0)
+    {
+        degree = -1 * degree;
         yawrate_tgt.dir = -1;
-    }else if(degree == 0){
+    }
+    else if (degree == 0)
+    {
         yawrate_tgt.dir = 0;
         accel = 1;
         v_max = 1;
-    }else if(degree > 0){
-        yawrate_tgt.dir = 1; 
+    }
+    else if (degree > 0)
+    {
+        yawrate_tgt.dir = 1;
     }
 
     t1 = (float)(v_max - v_start) / accel;
     t3 = (float)(v_max - v_end) / accel;
 
     constant_L = (float)degree - (v_max + v_start) * t1 / 2 - (v_max + v_end) * t3 / 2;
-    
+
     t2 = constant_L / v_max;
 
     t1 *= 1000;
@@ -212,36 +218,36 @@ float Control_encoder(void)
 float Control_Side_Wall(void)
 {
     float wall_dif = 0;
-    if(flag_wall==TRUE){
-        float kp=0.15f;
+    float kp = 0.15f;
 
-        if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
+    if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
+    {
+        if (sen_l.diff > -200 && sen_r.diff > -200)
         {
-            if(sen_l.diff>-200 && sen_r.diff>-200){
-                wall_dif = kp*((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
-            }
+            wall_dif = kp * ((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
         }
-        else if (sen_l.is_wall == TRUE)
+    }
+    else if (sen_l.is_wall == TRUE)
+    {
+        if (sen_l.diff_1ms > -20)
         {
-            if(sen_l.diff_1ms > -20){
-                wall_dif = 2 * kp *(sen_l.now - sen_l.reference);
-            }
+            wall_dif = 2 * kp * (sen_l.now - sen_l.reference);
         }
-        else if (sen_r.is_wall == TRUE)
+    }
+    else if (sen_r.is_wall == TRUE)
+    {
+        if (sen_r.diff_1ms > -20)
         {
-            if(sen_r.diff_1ms > -20){
-                wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
-            }
+            wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
         }
-        else
-        {
-            wall_dif = 0;
-        }
+    }
+    else
+    {
+        wall_dif = 0;
+    }
 
-        if (enc.velocity<300)
-        {
-            wall_dif = 0;
-        }
+    if(yawrate_tgt.dir!=0 || straight_tgt.velocity==0){
+        wall_dif = 0;
     }
 
     return wall_dif;
@@ -280,11 +286,10 @@ float Control_gyro(void)
         flag_motion_end = TRUE;
     }
 
-    target = (float)yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall();
+    target = (float)yawrate_tgt.dir * yawrate_tgt.velocity- Control_Side_Wall();
 
-    return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.92f, 17.0f, 4.0f);//2.0f, 20.0f, 4.0f
+    return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.98f, 18.0f, 4.5f); //2.0f, 20.0f, 4.0f//0.92f, 17.0f, 4.0f
 }
-
 
 float Control_Front_Wall(void)
 {
@@ -306,24 +311,28 @@ float Control_Front_Wall(void)
 
 void Control_pwm(void)
 {
-    if (flag_motor==TRUE)
+    if (flag_motor == TRUE)
     {
         int16_t straight_pid = 0;
         int16_t yawrate_pid = 0;
 
-        straight_pid = (int16_t)Control_encoder(); //+ Control_Front_Wall();
-        yawrate_pid = (int16_t)Control_gyro();     //+ Control_Side_Wall();
+        straight_pid = (int16_t)Control_encoder();
+        yawrate_pid = (int16_t)Control_gyro();
 
         Motor_pwm(straight_pid - yawrate_pid, straight_pid + yawrate_pid);
-    }else{
-        Motor_pwm(0,0);
+    }
+    else
+    {
+        Motor_pwm(0, 0);
     }
 }
 
-void Control_EmergencyStop(unsigned short diff_yaw){
-    int buff_yaw=yawrate_tgt.dir * yawrate_tgt.velocity-Control_Side_Wall()-gyro.velocity;
+void Control_EmergencyStop(unsigned short diff_yaw)
+{
+    int buff_yaw = yawrate_tgt.dir * yawrate_tgt.velocity - Control_Side_Wall() - gyro.velocity;
     //yawrate
-    if(buff_yaw>diff_yaw || buff_yaw<-diff_yaw){
-        flag_motor=FALSE;
+    if (buff_yaw > diff_yaw || buff_yaw < -diff_yaw)
+    {
+        flag_motor = FALSE;
     }
 }

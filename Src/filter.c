@@ -33,13 +33,13 @@ int16_t adc_counter;
 
 void setSensorConstant(void)
 {
-  sen_l.reference = 504;
-  sen_l.threshold = 430;
+  sen_l.reference = 560;
+  sen_l.threshold = 480;
 
   sen_front.reference = 340;
   sen_front.threshold = 310;
 
-  sen_r.reference = 618;
+  sen_r.reference = 654;
   sen_r.threshold = 555;
 }
 
@@ -113,11 +113,11 @@ void getADSensor(void)
 
     HAL_GPIO_WritePin(paluse2_GPIO_Port, paluse2_Pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(paluse3_GPIO_Port, paluse3_Pin, GPIO_PIN_SET);
-    /*
+    
     for (i = 0; i < 100; i++)
     {
     }
-    */
+    
     adc_counter = LEFT_VALUE;
 
     HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADCBuff,ADC_CONVERT_DATA_SIZE);
@@ -163,11 +163,11 @@ void getADSensor(void)
 
     sen_r.diff = sen_r.now - (ADCOntData[1] - ADCOffData[1]);
     sen_r.now = ADCOntData[1] - ADCOffData[1];
-    /*
+    
     for (i = 0; i < 100; i++)
     {
     }
-    */
+    
     adc_counter = FINISH_CONVERT;
     break;
 

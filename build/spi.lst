@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
   29:Src/spi.c     ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   30:Src/spi.c     ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:Src/spi.c     ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 2
 
 
   32:Src/spi.c     ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
   40 0006 0360     		str	r3, [r0]
   74:Src/spi.c     ****   hspi2.Init.Mode = SPI_MODE_MASTER;
   41              		.loc 1 74 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 3
 
 
   42 0008 4FF48273 		mov	r3, #260
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
   79              	.LVL1:
   80              		.loc 1 90 0
   81 003a F9E7     		b	.L1
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 4
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 4
 
 
   82              	.L6:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  125 0012 03F50033 		add	r3, r3, #131072
  126 0016 1A6C     		ldr	r2, [r3, #64]
  127 0018 42F48042 		orr	r2, r2, #16384
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 5
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 5
 
 
  128 001c 1A64     		str	r2, [r3, #64]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  164 0050 00040240 		.word	1073873920
  165              		.cfi_endproc
  166              	.LFE127:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 6
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 6
 
 
  168              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  131:Src/spi.c     ****   
  199              		.loc 1 131 0
  200 000c 064A     		ldr	r2, .L20+4
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 7
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 7
 
 
  201 000e 136C     		ldr	r3, [r2, #64]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  246              		.loc 1 154 0
  247 0006 114D     		ldr	r5, .L24
  248 0008 0022     		movs	r2, #0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 8
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 8
 
 
  249 000a 4FF48051 		mov	r1, #4096
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  297              		.thumb
  298              		.thumb_func
  299              		.fpu fpv4-sp-d16
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 9
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 9
 
 
  301              	read_shift_byte:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  340 002e 0DF10601 		add	r1, sp, #6
  341 0032 2046     		mov	r0, r4
  342 0034 FFF7FEFF 		bl	HAL_SPI_Receive
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 10
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 10
 
 
  343              	.LVL20:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  387              	.LCFI11:
  388              		.cfi_def_cfa_offset 16
  389              		.cfi_offset 4, -16
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 11
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 11
 
 
  390              		.cfi_offset 5, -12
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  437              	.L33:
  438              		.align	2
  439              	.L32:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 12
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 12
 
 
  440 004c 00040240 		.word	1073873920
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  482 0012 0848     		ldr	r0, .L38
  483              	.LVL35:
  484 0014 FFF7FEFF 		bl	printf
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 13
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 13
 
 
  485              	.LVL36:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  221:Src/spi.c     ****   int16_t gyro_z;
  222:Src/spi.c     ****   gyro_z = (int16_t)(read_shift_byte(GYRO_OUT_Z_H) | read_byte(GYRO_OUT_Z_L));
  529              		.loc 1 222 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 14
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 14
 
 
  530 0002 4720     		movs	r0, #71
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  234:Src/spi.c     **** 
  235:Src/spi.c     ****   gyro_z = (int16_t)(read_shift_byte(GYRO_OUT_Z_H) | read_byte(GYRO_OUT_Z_L));
  575              		.loc 1 235 0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 15
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 15
 
 
  576 0002 4720     		movs	r0, #71
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  619 0046 F6E7     		b	.L44
  620              	.L50:
  621              		.align	2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 16
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 16
 
 
  622              	.L49:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  669              	.L55:
  670              	.LCFI20:
  671              		.cfi_restore_state
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 17
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 17
 
 
  248:Src/spi.c     ****     gyro.velocity = (float)get_gyro()/GYRO_FACTOR;
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  719 0000 044B     		ldr	r3, .L59
  720 0002 0022     		movs	r2, #0
  721 0004 DA60     		str	r2, [r3, #12]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 18
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 18
 
 
  261:Src/spi.c     ****   gyro.offset_cnt = 0;
@@ -1077,49 +1077,49 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 1
  766              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
  767              		.file 15 "Inc/spi.h"
  768              		.file 16 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s 			page 19
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:18     .text.MX_SPI2_Init:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:25     .text.MX_SPI2_Init:00000000 MX_SPI2_Init
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:85     .text.MX_SPI2_Init:0000003c $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:18     .text.MX_SPI2_Init:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:25     .text.MX_SPI2_Init:00000000 MX_SPI2_Init
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:85     .text.MX_SPI2_Init:0000003c $d
                             *COM*:00000058 hspi2
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:92     .text.HAL_SPI_MspInit:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:99     .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:163    .text.HAL_SPI_MspInit:0000004c $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:169    .text.HAL_SPI_MspDeInit:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:176    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:215    .text.HAL_SPI_MspDeInit:00000024 $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:222    .text.read_byte:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:229    .text.read_byte:00000000 read_byte
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:288    .text.read_byte:0000004c $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:294    .text.read_shift_byte:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:301    .text.read_shift_byte:00000000 read_shift_byte
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:366    .text.read_shift_byte:00000054 $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:372    .text.write_byte:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:379    .text.write_byte:00000000 write_byte
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:440    .text.write_byte:0000004c $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:446    .text.set_mpu6500:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:453    .text.set_mpu6500:00000000 set_mpu6500
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:506    .text.set_mpu6500:00000034 $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:511    .text.get_gyro:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:518    .text.get_gyro:00000000 get_gyro
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:552    .text.get_gyro:00000020 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:92     .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:99     .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:163    .text.HAL_SPI_MspInit:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:169    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:176    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:215    .text.HAL_SPI_MspDeInit:00000024 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:222    .text.read_byte:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:229    .text.read_byte:00000000 read_byte
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:288    .text.read_byte:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:294    .text.read_shift_byte:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:301    .text.read_shift_byte:00000000 read_shift_byte
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:366    .text.read_shift_byte:00000054 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:372    .text.write_byte:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:379    .text.write_byte:00000000 write_byte
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:440    .text.write_byte:0000004c $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:446    .text.set_mpu6500:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:453    .text.set_mpu6500:00000000 set_mpu6500
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:506    .text.set_mpu6500:00000034 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:511    .text.get_gyro:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:518    .text.get_gyro:00000000 get_gyro
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:552    .text.get_gyro:00000020 $d
                             *COM*:00000010 gyro
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:557    .text.gyro_offset_calc:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:564    .text.gyro_offset_calc:00000000 gyro_offset_calc
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:623    .text.gyro_offset_calc:00000048 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:557    .text.gyro_offset_calc:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:564    .text.gyro_offset_calc:00000000 gyro_offset_calc
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:623    .text.gyro_offset_calc:00000048 $d
                             *COM*:00000001 flag_gyro_calc
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:630    .text.Update_gyro:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:637    .text.Update_gyro:00000000 Update_gyro
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:696    .text.Update_gyro:00000058 $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:704    .text.gyro_offset_calc_reset:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:711    .text.gyro_offset_calc_reset:00000000 gyro_offset_calc_reset
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:736    .text.gyro_offset_calc_reset:00000014 $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:745    .rodata.MX_SPI2_Init.str1.4:00000000 $d
-C:\Users\kotaro\AppData\Local\Temp\cc2Jot6O.s:749    .rodata.set_mpu6500.str1.4:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:630    .text.Update_gyro:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:637    .text.Update_gyro:00000000 Update_gyro
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:696    .text.Update_gyro:00000058 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:704    .text.gyro_offset_calc_reset:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:711    .text.gyro_offset_calc_reset:00000000 gyro_offset_calc_reset
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:736    .text.gyro_offset_calc_reset:00000014 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:745    .rodata.MX_SPI2_Init.str1.4:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\cc47Hoh5.s:749    .rodata.set_mpu6500.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_SPI_Init

@@ -10,17 +10,16 @@
 #define ACCEL 4000       //[mm/s^2]
 #define MAX_VELOCITY 400 //[mm/s]
 //fast
-#define FAST_VELOCITY 500    //[mm/s]
-#define FASTEST_VELOCITY 700 //[mm/s]
+#define FAST_ACCEL 6000    //[mm/s]
 
 //yawrate
 #define Y_ACCEL 2000       //[degree/s^2]//2000
 #define Y_MAX_VELOCITY 380 //[degree/s]
 //slalom
-#define S_ACCEL 4000
-#define S_VELOCITY 440
-#define OFFSET_IN 17
-#define OFFSET_OUT 15 //10
+#define S_ACCEL 5000
+#define S_VELOCITY 500
+#define OFFSET_IN 32
+#define OFFSET_OUT 21
 
 extern volatile unsigned char flag_motion_end;
 extern enc_t enc;
@@ -36,7 +35,7 @@ void Straight_half_accel(void)
 
 void Straight_half_stop(void)
 {
-    Straight_Calc_fb(90 - enc.offset, MAX_VELOCITY, 0, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(90, MAX_VELOCITY, 0, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
 }
 
@@ -66,15 +65,9 @@ void U_Turn(void)
 
 void Motion_Start(void)
 {
-    /*
-    Straight_Calc_fb(-55,0,0,200,2000);
-    Yawrate_Calc_fb(0,0,0,0,0);
-    while(flag_motion_end==FALSE){}
-    HAL_Delay(500);
-    */
     enc_sum = 0;
     y_sum = 0;
-    Straight_Calc_fb(137, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(130, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {
@@ -83,7 +76,6 @@ void Motion_Start(void)
 
 void Motion_Straight(void)
 {
-    flag_wall = TRUE;
     Straight_const();
     while (flag_motion_end == FALSE)
     {
@@ -134,19 +126,16 @@ void Motion_Right(void)
 
 void Motion_Uturn(void)
 {
-    flag_wall = TRUE;
     Straight_half_stop();
     while (flag_motion_end == FALSE)
     {
     }
     HAL_Delay(500);
-    flag_wall = FALSE;
     U_Turn();
     while (flag_motion_end == FALSE)
     {
     }
     HAL_Delay(500);
-    flag_wall = TRUE;
     Straight_half_accel();
     while (flag_motion_end == FALSE)
     {
@@ -176,10 +165,11 @@ void Motion_Kabeate(void)
     while (flag_motion_end == FALSE)
     {
     }
+    flag_wall = TRUE;
     enc_sum = 0;
     y_sum = 0;
     HAL_Delay(500);
-    Straight_Calc_fb(137, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(130, 0, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {
@@ -188,8 +178,6 @@ void Motion_Kabeate(void)
 
 void Motion_Goal(void)
 {
-    enc.offset = 0;
-    flag_wall = TRUE;
     Straight_half_stop();
     while (flag_motion_end == FALSE)
     {
@@ -202,6 +190,7 @@ void Motion_Restart(void)
     while (flag_motion_end == FALSE)
     {
     }
+    flag_wall = FALSE;
     HAL_Delay(500);
     //kabeate
     Straight_Calc_fb(-47, 0, 0, 200, 2000);
@@ -209,6 +198,7 @@ void Motion_Restart(void)
     while (flag_motion_end == FALSE)
     {
     }
+    flag_wall = TRUE;
     enc_sum = 0;
     y_sum = 0;
     HAL_Delay(500);
@@ -221,22 +211,22 @@ void Motion_Restart(void)
 
 void Motion_SlalomLeft(void)
 {
-    flag_wall = FALSE;
     //offset
-    Straight_Calc_fb(OFFSET_IN - 1 - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(OFFSET_IN -4 - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {
     }
     //slalom
-    Straight_Calc_fb(154, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(112, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(90, 0, 0, S_VELOCITY, S_ACCEL);
     while (flag_motion_end == FALSE)
     {
     }
     //out straight
-    Straight_Calc_fb(OFFSET_OUT, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(OFFSET_OUT -1, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+    enc_sum=0;
     while (flag_motion_end == FALSE)
     {
     }
@@ -244,24 +234,22 @@ void Motion_SlalomLeft(void)
 
 void Motion_SlalomRight(void)
 {
-    flag_wall = FALSE;
     //offset
-    Straight_Calc_fb(OFFSET_IN - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(OFFSET_IN -4 - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {
     }
     //slalom
-    //flag_wall = FALSE;
-    Straight_Calc_fb(154, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(112, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(-90, 0, 0, S_VELOCITY, S_ACCEL);
     while (flag_motion_end == FALSE)
     {
     }
     //out straight
-    //flag_wall = TRUE;
-    Straight_Calc_fb(OFFSET_OUT, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
+    Straight_Calc_fb(OFFSET_OUT +3, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY, ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
+    enc_sum=0;
     while (flag_motion_end == FALSE)
     {
     }
@@ -270,10 +258,13 @@ void Motion_SlalomRight(void)
 //ゲインは500未満
 void Motion_StartFast(unsigned char step)
 {
+    unsigned int velo=MAX_VELOCITY + 150 * step;
+    if(velo>2000){
+        velo=2000;
+    }
     enc_sum = 0;
     y_sum = 0;
-    flag_wall = TRUE;
-    Straight_Calc_fb(137 + 180 * step, 0, MAX_VELOCITY, MAX_VELOCITY + 150 * step, ACCEL);
+    Straight_Calc_fb(137 + 180 * step, 0, MAX_VELOCITY, velo, FAST_ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {
@@ -282,8 +273,11 @@ void Motion_StartFast(unsigned char step)
 
 void Motion_StraightFast(unsigned char step)
 {
-    flag_wall = TRUE;
-    Straight_Calc_fb(180 * step - enc.offset, MAX_VELOCITY, MAX_VELOCITY, MAX_VELOCITY + 150 * step, ACCEL);
+    unsigned int velo=MAX_VELOCITY + 150 * step;
+    if(velo>2000){
+        velo=2000;
+    }
+    Straight_Calc_fb(180 * step - enc.offset, MAX_VELOCITY, MAX_VELOCITY, velo, FAST_ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {
@@ -292,8 +286,11 @@ void Motion_StraightFast(unsigned char step)
 
 void Motion_GoalFast(unsigned char step)
 {
-    flag_wall = TRUE;
-    Straight_Calc_fb(90 + 180 * step - enc.offset, MAX_VELOCITY, 0, MAX_VELOCITY + (150 * step), ACCEL);
+    unsigned int velo=MAX_VELOCITY + 150 * step;
+    if(velo>2000){
+        velo=2000;
+    }
+    Straight_Calc_fb(90 + 180 * step - enc.offset, MAX_VELOCITY, 0, velo, FAST_ACCEL);
     Yawrate_Calc_fb(0, 0, 0, 0, 0);
     while (flag_motion_end == FALSE)
     {

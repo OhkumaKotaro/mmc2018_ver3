@@ -29,7 +29,7 @@ extern uint8_t flag_motor;
 extern maze_t maze;
 
 void Mode_Run(unsigned char flag_search);
-void Mode_Adjust(void);
+void Mode_Adjust(unsigned char mode);
 
 /****************************************************************************************
  * outline  : wright mode 
@@ -47,7 +47,7 @@ void Mode_Mouse(int8_t mode)
         Mode_Run(TRUE);
         break;
     case 2:
-        Mode_Adjust();
+        Mode_Adjust(Mode_Select());
         break;
     case 3:
         HAL_Delay(5000);
@@ -198,7 +198,7 @@ void Mode_Run(unsigned char flag_search)
         HAL_Delay(500);
         writeMaze();
     }
-    else if(flag_search==TRUE)
+    else if (flag_search == TRUE)
     {
         loadMaze();
         Plan_Root();
@@ -207,24 +207,70 @@ void Mode_Run(unsigned char flag_search)
     }
 }
 
-void Mode_Adjust(void){
+extern gyro_t gyro;
+void Mode_Adjust(unsigned char motion)
+{
     adcStart();
-	while (sen_front.is_wall == FALSE)
-	{
-	}
-	Output_Buzzer(HZ_G);
+    while (sen_front.is_wall == FALSE)
+    {
+    }
+    Output_Buzzer(HZ_G);
     HAL_Delay(2500);
-	gyro_offset_calc_reset();
-	HAL_Delay(2500);
-	flag_motor = TRUE;
+    gyro_offset_calc_reset();
+    HAL_Delay(2500);
+    flag_motor = TRUE;
 
-    Straight_half_accel();
-    while(flag_motion_end==FALSE){}
-    enc.offset=0;
-    //Motion_SlalomRight();
-    Motion_SlalomLeft();
-    enc.offset=0;
-    Straight_half_stop();
-    while(flag_motion_end==FALSE){}
+    switch (motion)
+    {
+    case 0:
+        Straight_half_accel();
+        while (flag_motion_end == FALSE) {} 
+        enc.offset = 0;
+        Motion_SlalomLeft();
+        enc.offset = 0;
+        Straight_half_stop();
+        while (flag_motion_end == FALSE) {} 
+        
+        break;
+    case 1:
+        Straight_half_accel();
+        while (flag_motion_end == FALSE) {} 
+        enc.offset = 0;
+        Motion_SlalomRight();
+        enc.offset = 0;
+        Straight_half_stop();
+        while (flag_motion_end == FALSE) {} 
+
+        break;
+    case 2:
+        Straight_half_accel();
+        while (flag_motion_end == FALSE) {}
+        enc.offset = 0;
+        Motion_Uturn();
+        enc.offset = 0;
+        Motion_Uturn();
+        enc.offset = 0;
+        Straight_half_stop();
+        while (flag_motion_end == FALSE) {} 
+        break;
+    case 3:
+        Motion_Start();
+        enc.offset = 0;
+        Motion_Straight();
+        enc.offset = 0;
+        Motion_Straight();
+        enc.offset = 0;
+        Motion_Straight();
+        enc.offset = 0;
+        Motion_Straight();
+        enc.offset = 0;
+        Motion_Straight();
+        enc.offset = 0;
+        Motion_Straight();
+        Motion_Goal();
+        break;
+    default:
+        break;
+    }
     flag_motor = FALSE;
 }

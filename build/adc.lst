@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -39,7 +39,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   10:Src/adc.c     ****   * inserted by the user or by software development tools
   11:Src/adc.c     ****   * are owned by their respective copyright owners.
   12:Src/adc.c     ****   *
-  13:Src/adc.c     ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  13:Src/adc.c     ****   * COPYRIGHT(c) 2019 STMicroelectronics
   14:Src/adc.c     ****   *
   15:Src/adc.c     ****   * Redistribution and use in source and binary forms, with or without modification,
   16:Src/adc.c     ****   * are permitted provided that the following conditions are met:
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   29:Src/adc.c     ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   30:Src/adc.c     ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:Src/adc.c     ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 2
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 2
 
 
   32:Src/adc.c     ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
@@ -103,8 +103,8 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   60:Src/adc.c     ****     */
   61:Src/adc.c     ****   hadc1.Instance = ADC1;
   39              		.loc 1 61 0
-  40 0004 2D48     		ldr	r0, .L13
-  41 0006 2E4B     		ldr	r3, .L13+4
+  40 0004 2C48     		ldr	r0, .L13
+  41 0006 2D4B     		ldr	r3, .L13+4
   42 0008 0360     		str	r3, [r0]
   62:Src/adc.c     ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   43              		.loc 1 62 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   49              		.loc 1 64 0
   50 0016 0123     		movs	r3, #1
   51 0018 0361     		str	r3, [r0, #16]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 3
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 3
 
 
   65:Src/adc.c     ****   hadc1.Init.ContinuousConvMode = ENABLE;
@@ -133,7 +133,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   58 0020 C262     		str	r2, [r0, #44]
   68:Src/adc.c     ****   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   59              		.loc 1 68 0
-  60 0022 2849     		ldr	r1, .L13+8
+  60 0022 2749     		ldr	r1, .L13+8
   61 0024 8162     		str	r1, [r0, #40]
   69:Src/adc.c     ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   62              		.loc 1 69 0
@@ -152,7 +152,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   71              		.loc 1 73 0
   72 0030 FFF7FEFF 		bl	HAL_ADC_Init
   73              	.LVL0:
-  74 0034 40BB     		cbnz	r0, .L8
+  74 0034 38BB     		cbnz	r0, .L8
   75              	.L2:
   74:Src/adc.c     ****   {
   75:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
@@ -166,23 +166,22 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   78 0038 0093     		str	r3, [sp]
   81:Src/adc.c     ****   sConfig.Rank = 1;
   79              		.loc 1 81 0
-  80 003a 0123     		movs	r3, #1
-  81 003c 0193     		str	r3, [sp, #4]
-  82:Src/adc.c     ****   sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+  80 003a 0122     		movs	r2, #1
+  81 003c 0192     		str	r2, [sp, #4]
+  82:Src/adc.c     ****   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
   82              		.loc 1 82 0
-  83 003e 0223     		movs	r3, #2
-  84 0040 0293     		str	r3, [sp, #8]
+  83 003e 0293     		str	r3, [sp, #8]
   83:Src/adc.c     ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  85              		.loc 1 83 0
-  86 0042 6946     		mov	r1, sp
-  87 0044 1D48     		ldr	r0, .L13
-  88 0046 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
-  89              	.LVL1:
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 4
+  84              		.loc 1 83 0
+  85 0040 6946     		mov	r1, sp
+  86 0042 1D48     		ldr	r0, .L13
+  87 0044 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+  88              	.LVL1:
+  89 0048 10BB     		cbnz	r0, .L9
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 4
 
 
-  90 004a 10BB     		cbnz	r0, .L9
-  91              	.L3:
+  90              	.L3:
   84:Src/adc.c     ****   {
   85:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
   86:Src/adc.c     ****   }
@@ -190,21 +189,21 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   88:Src/adc.c     ****     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and i
   89:Src/adc.c     ****     */
   90:Src/adc.c     ****   sConfig.Channel = ADC_CHANNEL_1;
-  92              		.loc 1 90 0
-  93 004c 0123     		movs	r3, #1
-  94 004e 0093     		str	r3, [sp]
+  91              		.loc 1 90 0
+  92 004a 0123     		movs	r3, #1
+  93 004c 0093     		str	r3, [sp]
   91:Src/adc.c     ****   sConfig.Rank = 2;
-  95              		.loc 1 91 0
-  96 0050 0223     		movs	r3, #2
-  97 0052 0193     		str	r3, [sp, #4]
+  94              		.loc 1 91 0
+  95 004e 0223     		movs	r3, #2
+  96 0050 0193     		str	r3, [sp, #4]
   92:Src/adc.c     ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  98              		.loc 1 92 0
-  99 0054 6946     		mov	r1, sp
- 100 0056 1948     		ldr	r0, .L13
- 101 0058 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
- 102              	.LVL2:
- 103 005c F0B9     		cbnz	r0, .L10
- 104              	.L4:
+  97              		.loc 1 92 0
+  98 0052 6946     		mov	r1, sp
+  99 0054 1848     		ldr	r0, .L13
+ 100 0056 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 101              	.LVL2:
+ 102 005a F0B9     		cbnz	r0, .L10
+ 103              	.L4:
   93:Src/adc.c     ****   {
   94:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
   95:Src/adc.c     ****   }
@@ -212,21 +211,21 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
   97:Src/adc.c     ****     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and i
   98:Src/adc.c     ****     */
   99:Src/adc.c     ****   sConfig.Channel = ADC_CHANNEL_2;
- 105              		.loc 1 99 0
- 106 005e 0223     		movs	r3, #2
- 107 0060 0093     		str	r3, [sp]
+ 104              		.loc 1 99 0
+ 105 005c 0223     		movs	r3, #2
+ 106 005e 0093     		str	r3, [sp]
  100:Src/adc.c     ****   sConfig.Rank = 3;
- 108              		.loc 1 100 0
- 109 0062 0323     		movs	r3, #3
- 110 0064 0193     		str	r3, [sp, #4]
+ 107              		.loc 1 100 0
+ 108 0060 0323     		movs	r3, #3
+ 109 0062 0193     		str	r3, [sp, #4]
  101:Src/adc.c     ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
- 111              		.loc 1 101 0
- 112 0066 6946     		mov	r1, sp
- 113 0068 1448     		ldr	r0, .L13
- 114 006a FFF7FEFF 		bl	HAL_ADC_ConfigChannel
- 115              	.LVL3:
- 116 006e D0B9     		cbnz	r0, .L11
- 117              	.L5:
+ 110              		.loc 1 101 0
+ 111 0064 6946     		mov	r1, sp
+ 112 0066 1448     		ldr	r0, .L13
+ 113 0068 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 114              	.LVL3:
+ 115 006c D0B9     		cbnz	r0, .L11
+ 116              	.L5:
  102:Src/adc.c     ****   {
  103:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
  104:Src/adc.c     ****   }
@@ -234,169 +233,169 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  106:Src/adc.c     ****     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and i
  107:Src/adc.c     ****     */
  108:Src/adc.c     ****   sConfig.Channel = ADC_CHANNEL_3;
- 118              		.loc 1 108 0
- 119 0070 0323     		movs	r3, #3
- 120 0072 0093     		str	r3, [sp]
+ 117              		.loc 1 108 0
+ 118 006e 0323     		movs	r3, #3
+ 119 0070 0093     		str	r3, [sp]
  109:Src/adc.c     ****   sConfig.Rank = 4;
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 5
+ 120              		.loc 1 109 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 5
 
 
- 121              		.loc 1 109 0
- 122 0074 0423     		movs	r3, #4
- 123 0076 0193     		str	r3, [sp, #4]
+ 121 0072 0423     		movs	r3, #4
+ 122 0074 0193     		str	r3, [sp, #4]
  110:Src/adc.c     ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
- 124              		.loc 1 110 0
- 125 0078 6946     		mov	r1, sp
- 126 007a 1048     		ldr	r0, .L13
- 127 007c FFF7FEFF 		bl	HAL_ADC_ConfigChannel
- 128              	.LVL4:
- 129 0080 B0B9     		cbnz	r0, .L12
- 130              	.L1:
+ 123              		.loc 1 110 0
+ 124 0076 6946     		mov	r1, sp
+ 125 0078 0F48     		ldr	r0, .L13
+ 126 007a FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 127              	.LVL4:
+ 128 007e B0B9     		cbnz	r0, .L12
+ 129              	.L1:
  111:Src/adc.c     ****   {
  112:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
  113:Src/adc.c     ****   }
  114:Src/adc.c     **** 
  115:Src/adc.c     **** }
- 131              		.loc 1 115 0
- 132 0082 05B0     		add	sp, sp, #20
- 133              	.LCFI2:
- 134              		.cfi_remember_state
- 135              		.cfi_def_cfa_offset 4
- 136              		@ sp needed
- 137 0084 5DF804FB 		ldr	pc, [sp], #4
- 138              	.L8:
- 139              	.LCFI3:
- 140              		.cfi_restore_state
+ 130              		.loc 1 115 0
+ 131 0080 05B0     		add	sp, sp, #20
+ 132              	.LCFI2:
+ 133              		.cfi_remember_state
+ 134              		.cfi_def_cfa_offset 4
+ 135              		@ sp needed
+ 136 0082 5DF804FB 		ldr	pc, [sp], #4
+ 137              	.L8:
+ 138              	.LCFI3:
+ 139              		.cfi_restore_state
   75:Src/adc.c     ****   }
- 141              		.loc 1 75 0
- 142 0088 4B21     		movs	r1, #75
- 143 008a 0F48     		ldr	r0, .L13+12
- 144 008c FFF7FEFF 		bl	_Error_Handler
- 145              	.LVL5:
- 146 0090 D1E7     		b	.L2
- 147              	.L9:
+ 140              		.loc 1 75 0
+ 141 0086 4B21     		movs	r1, #75
+ 142 0088 0E48     		ldr	r0, .L13+12
+ 143 008a FFF7FEFF 		bl	_Error_Handler
+ 144              	.LVL5:
+ 145 008e D2E7     		b	.L2
+ 146              	.L9:
   85:Src/adc.c     ****   }
- 148              		.loc 1 85 0
- 149 0092 5521     		movs	r1, #85
- 150 0094 0C48     		ldr	r0, .L13+12
- 151 0096 FFF7FEFF 		bl	_Error_Handler
- 152              	.LVL6:
- 153 009a D7E7     		b	.L3
- 154              	.L10:
+ 147              		.loc 1 85 0
+ 148 0090 5521     		movs	r1, #85
+ 149 0092 0C48     		ldr	r0, .L13+12
+ 150 0094 FFF7FEFF 		bl	_Error_Handler
+ 151              	.LVL6:
+ 152 0098 D7E7     		b	.L3
+ 153              	.L10:
   94:Src/adc.c     ****   }
- 155              		.loc 1 94 0
- 156 009c 5E21     		movs	r1, #94
- 157 009e 0A48     		ldr	r0, .L13+12
- 158 00a0 FFF7FEFF 		bl	_Error_Handler
- 159              	.LVL7:
- 160 00a4 DBE7     		b	.L4
- 161              	.L11:
+ 154              		.loc 1 94 0
+ 155 009a 5E21     		movs	r1, #94
+ 156 009c 0948     		ldr	r0, .L13+12
+ 157 009e FFF7FEFF 		bl	_Error_Handler
+ 158              	.LVL7:
+ 159 00a2 DBE7     		b	.L4
+ 160              	.L11:
  103:Src/adc.c     ****   }
- 162              		.loc 1 103 0
- 163 00a6 6721     		movs	r1, #103
- 164 00a8 0748     		ldr	r0, .L13+12
- 165 00aa FFF7FEFF 		bl	_Error_Handler
- 166              	.LVL8:
- 167 00ae DFE7     		b	.L5
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 6
+ 161              		.loc 1 103 0
+ 162 00a4 6721     		movs	r1, #103
+ 163 00a6 0748     		ldr	r0, .L13+12
+ 164 00a8 FFF7FEFF 		bl	_Error_Handler
+ 165              	.LVL8:
+ 166 00ac DFE7     		b	.L5
+ 167              	.L12:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 6
 
 
- 168              	.L12:
  112:Src/adc.c     ****   }
- 169              		.loc 1 112 0
- 170 00b0 7021     		movs	r1, #112
- 171 00b2 0548     		ldr	r0, .L13+12
- 172 00b4 FFF7FEFF 		bl	_Error_Handler
- 173              	.LVL9:
- 174              		.loc 1 115 0
- 175 00b8 E3E7     		b	.L1
- 176              	.L14:
- 177 00ba 00BF     		.align	2
- 178              	.L13:
- 179 00bc 00000000 		.word	hadc1
- 180 00c0 00200140 		.word	1073815552
- 181 00c4 0100000F 		.word	251658241
- 182 00c8 00000000 		.word	.LC0
- 183              		.cfi_endproc
- 184              	.LFE126:
- 186              		.section	.text.MX_ADC2_Init,"ax",%progbits
- 187              		.align	1
- 188              		.global	MX_ADC2_Init
- 189              		.syntax unified
- 190              		.thumb
- 191              		.thumb_func
- 192              		.fpu fpv4-sp-d16
- 194              	MX_ADC2_Init:
- 195              	.LFB127:
+ 168              		.loc 1 112 0
+ 169 00ae 7021     		movs	r1, #112
+ 170 00b0 0448     		ldr	r0, .L13+12
+ 171 00b2 FFF7FEFF 		bl	_Error_Handler
+ 172              	.LVL9:
+ 173              		.loc 1 115 0
+ 174 00b6 E3E7     		b	.L1
+ 175              	.L14:
+ 176              		.align	2
+ 177              	.L13:
+ 178 00b8 00000000 		.word	hadc1
+ 179 00bc 00200140 		.word	1073815552
+ 180 00c0 0100000F 		.word	251658241
+ 181 00c4 00000000 		.word	.LC0
+ 182              		.cfi_endproc
+ 183              	.LFE126:
+ 185              		.section	.text.MX_ADC2_Init,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	MX_ADC2_Init
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu fpv4-sp-d16
+ 193              	MX_ADC2_Init:
+ 194              	.LFB127:
  116:Src/adc.c     **** /* ADC2 init function */
  117:Src/adc.c     **** void MX_ADC2_Init(void)
  118:Src/adc.c     **** {
- 196              		.loc 1 118 0
- 197              		.cfi_startproc
- 198              		@ args = 0, pretend = 0, frame = 16
- 199              		@ frame_needed = 0, uses_anonymous_args = 0
- 200 0000 00B5     		push	{lr}
- 201              	.LCFI4:
- 202              		.cfi_def_cfa_offset 4
- 203              		.cfi_offset 14, -4
- 204 0002 85B0     		sub	sp, sp, #20
- 205              	.LCFI5:
- 206              		.cfi_def_cfa_offset 24
+ 195              		.loc 1 118 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 16
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 00B5     		push	{lr}
+ 200              	.LCFI4:
+ 201              		.cfi_def_cfa_offset 4
+ 202              		.cfi_offset 14, -4
+ 203 0002 85B0     		sub	sp, sp, #20
+ 204              	.LCFI5:
+ 205              		.cfi_def_cfa_offset 24
  119:Src/adc.c     ****   ADC_ChannelConfTypeDef sConfig;
  120:Src/adc.c     **** 
  121:Src/adc.c     ****     /**Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of co
  122:Src/adc.c     ****     */
  123:Src/adc.c     ****   hadc2.Instance = ADC2;
- 207              		.loc 1 123 0
- 208 0004 1648     		ldr	r0, .L21
- 209 0006 174B     		ldr	r3, .L21+4
- 210 0008 0360     		str	r3, [r0]
+ 206              		.loc 1 123 0
+ 207 0004 1648     		ldr	r0, .L21
+ 208 0006 174B     		ldr	r3, .L21+4
+ 209 0008 0360     		str	r3, [r0]
  124:Src/adc.c     ****   hadc2.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
- 211              		.loc 1 124 0
- 212 000a 4FF48033 		mov	r3, #65536
- 213 000e 4360     		str	r3, [r0, #4]
+ 210              		.loc 1 124 0
+ 211 000a 4FF48033 		mov	r3, #65536
+ 212 000e 4360     		str	r3, [r0, #4]
  125:Src/adc.c     ****   hadc2.Init.Resolution = ADC_RESOLUTION_12B;
- 214              		.loc 1 125 0
- 215 0010 0023     		movs	r3, #0
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 7
+ 213              		.loc 1 125 0
+ 214 0010 0023     		movs	r3, #0
+ 215 0012 8360     		str	r3, [r0, #8]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 7
 
 
- 216 0012 8360     		str	r3, [r0, #8]
  126:Src/adc.c     ****   hadc2.Init.ScanConvMode = DISABLE;
- 217              		.loc 1 126 0
- 218 0014 0361     		str	r3, [r0, #16]
+ 216              		.loc 1 126 0
+ 217 0014 0361     		str	r3, [r0, #16]
  127:Src/adc.c     ****   hadc2.Init.ContinuousConvMode = DISABLE;
- 219              		.loc 1 127 0
- 220 0016 8361     		str	r3, [r0, #24]
+ 218              		.loc 1 127 0
+ 219 0016 8361     		str	r3, [r0, #24]
  128:Src/adc.c     ****   hadc2.Init.DiscontinuousConvMode = DISABLE;
- 221              		.loc 1 128 0
- 222 0018 0362     		str	r3, [r0, #32]
+ 220              		.loc 1 128 0
+ 221 0018 0362     		str	r3, [r0, #32]
  129:Src/adc.c     ****   hadc2.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
- 223              		.loc 1 129 0
- 224 001a C362     		str	r3, [r0, #44]
+ 222              		.loc 1 129 0
+ 223 001a C362     		str	r3, [r0, #44]
  130:Src/adc.c     ****   hadc2.Init.ExternalTrigConv = ADC_SOFTWARE_START;
- 225              		.loc 1 130 0
- 226 001c 124A     		ldr	r2, .L21+8
- 227 001e 8262     		str	r2, [r0, #40]
+ 224              		.loc 1 130 0
+ 225 001c 124A     		ldr	r2, .L21+8
+ 226 001e 8262     		str	r2, [r0, #40]
  131:Src/adc.c     ****   hadc2.Init.DataAlign = ADC_DATAALIGN_RIGHT;
- 228              		.loc 1 131 0
- 229 0020 C360     		str	r3, [r0, #12]
+ 227              		.loc 1 131 0
+ 228 0020 C360     		str	r3, [r0, #12]
  132:Src/adc.c     ****   hadc2.Init.NbrOfConversion = 1;
- 230              		.loc 1 132 0
- 231 0022 0122     		movs	r2, #1
- 232 0024 C261     		str	r2, [r0, #28]
+ 229              		.loc 1 132 0
+ 230 0022 0122     		movs	r2, #1
+ 231 0024 C261     		str	r2, [r0, #28]
  133:Src/adc.c     ****   hadc2.Init.DMAContinuousRequests = DISABLE;
- 233              		.loc 1 133 0
- 234 0026 0363     		str	r3, [r0, #48]
+ 232              		.loc 1 133 0
+ 233 0026 0363     		str	r3, [r0, #48]
  134:Src/adc.c     ****   hadc2.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
- 235              		.loc 1 134 0
- 236 0028 4261     		str	r2, [r0, #20]
+ 234              		.loc 1 134 0
+ 235 0028 4261     		str	r2, [r0, #20]
  135:Src/adc.c     ****   if (HAL_ADC_Init(&hadc2) != HAL_OK)
- 237              		.loc 1 135 0
- 238 002a FFF7FEFF 		bl	HAL_ADC_Init
- 239              	.LVL10:
- 240 002e 68B9     		cbnz	r0, .L19
- 241              	.L16:
+ 236              		.loc 1 135 0
+ 237 002a FFF7FEFF 		bl	HAL_ADC_Init
+ 238              	.LVL10:
+ 239 002e 68B9     		cbnz	r0, .L19
+ 240              	.L16:
  136:Src/adc.c     ****   {
  137:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
  138:Src/adc.c     ****   }
@@ -404,105 +403,105 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  140:Src/adc.c     ****     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and i
  141:Src/adc.c     ****     */
  142:Src/adc.c     ****   sConfig.Channel = ADC_CHANNEL_4;
- 242              		.loc 1 142 0
- 243 0030 0423     		movs	r3, #4
- 244 0032 0093     		str	r3, [sp]
+ 241              		.loc 1 142 0
+ 242 0030 0423     		movs	r3, #4
+ 243 0032 0093     		str	r3, [sp]
  143:Src/adc.c     ****   sConfig.Rank = 1;
- 245              		.loc 1 143 0
- 246 0034 0123     		movs	r3, #1
- 247 0036 0193     		str	r3, [sp, #4]
+ 244              		.loc 1 143 0
+ 245 0034 0123     		movs	r3, #1
+ 246 0036 0193     		str	r3, [sp, #4]
  144:Src/adc.c     ****   sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
- 248              		.loc 1 144 0
- 249 0038 0223     		movs	r3, #2
- 250 003a 0293     		str	r3, [sp, #8]
+ 247              		.loc 1 144 0
+ 248 0038 0223     		movs	r3, #2
+ 249 003a 0293     		str	r3, [sp, #8]
  145:Src/adc.c     ****   if (HAL_ADC_ConfigChannel(&hadc2, &sConfig) != HAL_OK)
- 251              		.loc 1 145 0
- 252 003c 6946     		mov	r1, sp
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 8
+ 250              		.loc 1 145 0
+ 251 003c 6946     		mov	r1, sp
+ 252 003e 0848     		ldr	r0, .L21
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 8
 
 
- 253 003e 0848     		ldr	r0, .L21
- 254 0040 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
- 255              	.LVL11:
- 256 0044 38B9     		cbnz	r0, .L20
- 257              	.L15:
+ 253 0040 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 254              	.LVL11:
+ 255 0044 38B9     		cbnz	r0, .L20
+ 256              	.L15:
  146:Src/adc.c     ****   {
  147:Src/adc.c     ****     _Error_Handler(__FILE__, __LINE__);
  148:Src/adc.c     ****   }
  149:Src/adc.c     **** 
  150:Src/adc.c     **** }
- 258              		.loc 1 150 0
- 259 0046 05B0     		add	sp, sp, #20
- 260              	.LCFI6:
- 261              		.cfi_remember_state
- 262              		.cfi_def_cfa_offset 4
- 263              		@ sp needed
- 264 0048 5DF804FB 		ldr	pc, [sp], #4
- 265              	.L19:
- 266              	.LCFI7:
- 267              		.cfi_restore_state
+ 257              		.loc 1 150 0
+ 258 0046 05B0     		add	sp, sp, #20
+ 259              	.LCFI6:
+ 260              		.cfi_remember_state
+ 261              		.cfi_def_cfa_offset 4
+ 262              		@ sp needed
+ 263 0048 5DF804FB 		ldr	pc, [sp], #4
+ 264              	.L19:
+ 265              	.LCFI7:
+ 266              		.cfi_restore_state
  137:Src/adc.c     ****   }
- 268              		.loc 1 137 0
- 269 004c 8921     		movs	r1, #137
- 270 004e 0748     		ldr	r0, .L21+12
- 271 0050 FFF7FEFF 		bl	_Error_Handler
- 272              	.LVL12:
- 273 0054 ECE7     		b	.L16
- 274              	.L20:
+ 267              		.loc 1 137 0
+ 268 004c 8921     		movs	r1, #137
+ 269 004e 0748     		ldr	r0, .L21+12
+ 270 0050 FFF7FEFF 		bl	_Error_Handler
+ 271              	.LVL12:
+ 272 0054 ECE7     		b	.L16
+ 273              	.L20:
  147:Src/adc.c     ****   }
- 275              		.loc 1 147 0
- 276 0056 9321     		movs	r1, #147
- 277 0058 0448     		ldr	r0, .L21+12
- 278 005a FFF7FEFF 		bl	_Error_Handler
- 279              	.LVL13:
- 280              		.loc 1 150 0
- 281 005e F2E7     		b	.L15
- 282              	.L22:
- 283              		.align	2
- 284              	.L21:
- 285 0060 00000000 		.word	hadc2
- 286 0064 00210140 		.word	1073815808
- 287 0068 0100000F 		.word	251658241
- 288 006c 00000000 		.word	.LC0
- 289              		.cfi_endproc
- 290              	.LFE127:
- 292              		.section	.text.HAL_ADC_MspInit,"ax",%progbits
- 293              		.align	1
- 294              		.global	HAL_ADC_MspInit
- 295              		.syntax unified
- 296              		.thumb
- 297              		.thumb_func
- 298              		.fpu fpv4-sp-d16
- 300              	HAL_ADC_MspInit:
- 301              	.LFB128:
+ 274              		.loc 1 147 0
+ 275 0056 9321     		movs	r1, #147
+ 276 0058 0448     		ldr	r0, .L21+12
+ 277 005a FFF7FEFF 		bl	_Error_Handler
+ 278              	.LVL13:
+ 279              		.loc 1 150 0
+ 280 005e F2E7     		b	.L15
+ 281              	.L22:
+ 282              		.align	2
+ 283              	.L21:
+ 284 0060 00000000 		.word	hadc2
+ 285 0064 00210140 		.word	1073815808
+ 286 0068 0100000F 		.word	251658241
+ 287 006c 00000000 		.word	.LC0
+ 288              		.cfi_endproc
+ 289              	.LFE127:
+ 291              		.section	.text.HAL_ADC_MspInit,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	HAL_ADC_MspInit
+ 294              		.syntax unified
+ 295              		.thumb
+ 296              		.thumb_func
+ 297              		.fpu fpv4-sp-d16
+ 299              	HAL_ADC_MspInit:
+ 300              	.LFB128:
  151:Src/adc.c     **** 
  152:Src/adc.c     **** void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
  153:Src/adc.c     **** {
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 9
+ 301              		.loc 1 153 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 9
 
 
- 302              		.loc 1 153 0
- 303              		.cfi_startproc
- 304              		@ args = 0, pretend = 0, frame = 32
- 305              		@ frame_needed = 0, uses_anonymous_args = 0
- 306              	.LVL14:
- 307 0000 30B5     		push	{r4, r5, lr}
- 308              	.LCFI8:
- 309              		.cfi_def_cfa_offset 12
- 310              		.cfi_offset 4, -12
- 311              		.cfi_offset 5, -8
- 312              		.cfi_offset 14, -4
- 313 0002 89B0     		sub	sp, sp, #36
- 314              	.LCFI9:
- 315              		.cfi_def_cfa_offset 48
+ 302              		.cfi_startproc
+ 303              		@ args = 0, pretend = 0, frame = 32
+ 304              		@ frame_needed = 0, uses_anonymous_args = 0
+ 305              	.LVL14:
+ 306 0000 30B5     		push	{r4, r5, lr}
+ 307              	.LCFI8:
+ 308              		.cfi_def_cfa_offset 12
+ 309              		.cfi_offset 4, -12
+ 310              		.cfi_offset 5, -8
+ 311              		.cfi_offset 14, -4
+ 312 0002 89B0     		sub	sp, sp, #36
+ 313              	.LCFI9:
+ 314              		.cfi_def_cfa_offset 48
  154:Src/adc.c     **** 
  155:Src/adc.c     ****   GPIO_InitTypeDef GPIO_InitStruct;
  156:Src/adc.c     ****   if(adcHandle->Instance==ADC1)
- 316              		.loc 1 156 0
- 317 0004 0368     		ldr	r3, [r0]
- 318 0006 2A4A     		ldr	r2, .L31
- 319 0008 9342     		cmp	r3, r2
- 320 000a 04D0     		beq	.L28
+ 315              		.loc 1 156 0
+ 316 0004 0368     		ldr	r3, [r0]
+ 317 0006 2A4A     		ldr	r2, .L31
+ 318 0008 9342     		cmp	r3, r2
+ 319 000a 04D0     		beq	.L28
  157:Src/adc.c     ****   {
  158:Src/adc.c     ****   /* USER CODE BEGIN ADC1_MspInit 0 */
  159:Src/adc.c     **** 
@@ -523,7 +522,7 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  174:Src/adc.c     **** 
  175:Src/adc.c     ****     /* ADC1 DMA Init */
  176:Src/adc.c     ****     /* ADC1 Init */
- 177:Src/adc.c     ****     hdma_adc1.Instance = DMA2_Stream0;
+ 177:Src/adc.c     ****     hdma_adc1.Instance = DMA2_Stream4;
  178:Src/adc.c     ****     hdma_adc1.Init.Channel = DMA_CHANNEL_0;
  179:Src/adc.c     ****     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
  180:Src/adc.c     ****     hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
@@ -538,22 +537,22 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  189:Src/adc.c     ****       _Error_Handler(__FILE__, __LINE__);
  190:Src/adc.c     ****     }
  191:Src/adc.c     **** 
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 10
-
-
  192:Src/adc.c     ****     __HAL_LINKDMA(adcHandle,DMA_Handle,hdma_adc1);
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 10
+
+
  193:Src/adc.c     **** 
  194:Src/adc.c     ****   /* USER CODE BEGIN ADC1_MspInit 1 */
  195:Src/adc.c     **** 
  196:Src/adc.c     ****   /* USER CODE END ADC1_MspInit 1 */
  197:Src/adc.c     ****   }
  198:Src/adc.c     ****   else if(adcHandle->Instance==ADC2)
- 321              		.loc 1 198 0
- 322 000c 294A     		ldr	r2, .L31+4
- 323 000e 9342     		cmp	r3, r2
- 324 0010 37D0     		beq	.L29
- 325              	.LVL15:
- 326              	.L23:
+ 320              		.loc 1 198 0
+ 321 000c 294A     		ldr	r2, .L31+4
+ 322 000e 9342     		cmp	r3, r2
+ 323 0010 37D0     		beq	.L29
+ 324              	.LVL15:
+ 325              	.L23:
  199:Src/adc.c     ****   {
  200:Src/adc.c     ****   /* USER CODE BEGIN ADC2_MspInit 0 */
  201:Src/adc.c     **** 
@@ -574,192 +573,192 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  216:Src/adc.c     ****   /* USER CODE END ADC2_MspInit 1 */
  217:Src/adc.c     ****   }
  218:Src/adc.c     **** }
- 327              		.loc 1 218 0
- 328 0012 09B0     		add	sp, sp, #36
- 329              	.LCFI10:
- 330              		.cfi_remember_state
- 331              		.cfi_def_cfa_offset 12
- 332              		@ sp needed
- 333 0014 30BD     		pop	{r4, r5, pc}
- 334              	.LVL16:
- 335              	.L28:
- 336              	.LCFI11:
- 337              		.cfi_restore_state
- 338 0016 0446     		mov	r4, r0
- 339              	.LBB2:
+ 326              		.loc 1 218 0
+ 327 0012 09B0     		add	sp, sp, #36
+ 328              	.LCFI10:
+ 329              		.cfi_remember_state
+ 330              		.cfi_def_cfa_offset 12
+ 331              		@ sp needed
+ 332 0014 30BD     		pop	{r4, r5, pc}
+ 333              	.LVL16:
+ 334              	.L28:
+ 335              	.LCFI11:
+ 336              		.cfi_restore_state
+ 337 0016 0446     		mov	r4, r0
+ 338              	.LBB2:
  162:Src/adc.c     ****   
- 340              		.loc 1 162 0
- 341 0018 0025     		movs	r5, #0
- 342 001a 0195     		str	r5, [sp, #4]
- 343 001c 264B     		ldr	r3, .L31+8
- 344 001e 5A6C     		ldr	r2, [r3, #68]
- 345 0020 42F48072 		orr	r2, r2, #256
- 346 0024 5A64     		str	r2, [r3, #68]
- 347 0026 5B6C     		ldr	r3, [r3, #68]
- 348 0028 03F48073 		and	r3, r3, #256
- 349 002c 0193     		str	r3, [sp, #4]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 11
+ 339              		.loc 1 162 0
+ 340 0018 0025     		movs	r5, #0
+ 341 001a 0195     		str	r5, [sp, #4]
+ 342 001c 264B     		ldr	r3, .L31+8
+ 343 001e 5A6C     		ldr	r2, [r3, #68]
+ 344 0020 42F48072 		orr	r2, r2, #256
+ 345 0024 5A64     		str	r2, [r3, #68]
+ 346 0026 5B6C     		ldr	r3, [r3, #68]
+ 347 0028 03F48073 		and	r3, r3, #256
+ 348 002c 0193     		str	r3, [sp, #4]
+ 349 002e 019B     		ldr	r3, [sp, #4]
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 11
 
 
- 350 002e 019B     		ldr	r3, [sp, #4]
- 351              	.LBE2:
+ 350              	.LBE2:
  170:Src/adc.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
- 352              		.loc 1 170 0
- 353 0030 0F23     		movs	r3, #15
- 354 0032 0393     		str	r3, [sp, #12]
+ 351              		.loc 1 170 0
+ 352 0030 0F23     		movs	r3, #15
+ 353 0032 0393     		str	r3, [sp, #12]
  171:Src/adc.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 355              		.loc 1 171 0
- 356 0034 0323     		movs	r3, #3
- 357 0036 0493     		str	r3, [sp, #16]
+ 354              		.loc 1 171 0
+ 355 0034 0323     		movs	r3, #3
+ 356 0036 0493     		str	r3, [sp, #16]
  172:Src/adc.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 358              		.loc 1 172 0
- 359 0038 0595     		str	r5, [sp, #20]
+ 357              		.loc 1 172 0
+ 358 0038 0595     		str	r5, [sp, #20]
  173:Src/adc.c     **** 
- 360              		.loc 1 173 0
- 361 003a 03A9     		add	r1, sp, #12
- 362 003c 1F48     		ldr	r0, .L31+12
- 363              	.LVL17:
- 364 003e FFF7FEFF 		bl	HAL_GPIO_Init
- 365              	.LVL18:
+ 359              		.loc 1 173 0
+ 360 003a 03A9     		add	r1, sp, #12
+ 361 003c 1F48     		ldr	r0, .L31+12
+ 362              	.LVL17:
+ 363 003e FFF7FEFF 		bl	HAL_GPIO_Init
+ 364              	.LVL18:
  177:Src/adc.c     ****     hdma_adc1.Init.Channel = DMA_CHANNEL_0;
- 366              		.loc 1 177 0
- 367 0042 1F48     		ldr	r0, .L31+16
- 368 0044 1F4B     		ldr	r3, .L31+20
- 369 0046 0360     		str	r3, [r0]
+ 365              		.loc 1 177 0
+ 366 0042 1F48     		ldr	r0, .L31+16
+ 367 0044 1F4B     		ldr	r3, .L31+20
+ 368 0046 0360     		str	r3, [r0]
  178:Src/adc.c     ****     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 370              		.loc 1 178 0
- 371 0048 4560     		str	r5, [r0, #4]
+ 369              		.loc 1 178 0
+ 370 0048 4560     		str	r5, [r0, #4]
  179:Src/adc.c     ****     hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
- 372              		.loc 1 179 0
- 373 004a 8560     		str	r5, [r0, #8]
+ 371              		.loc 1 179 0
+ 372 004a 8560     		str	r5, [r0, #8]
  180:Src/adc.c     ****     hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
- 374              		.loc 1 180 0
- 375 004c C560     		str	r5, [r0, #12]
+ 373              		.loc 1 180 0
+ 374 004c C560     		str	r5, [r0, #12]
  181:Src/adc.c     ****     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
- 376              		.loc 1 181 0
- 377 004e 4FF48063 		mov	r3, #1024
- 378 0052 0361     		str	r3, [r0, #16]
+ 375              		.loc 1 181 0
+ 376 004e 4FF48063 		mov	r3, #1024
+ 377 0052 0361     		str	r3, [r0, #16]
  182:Src/adc.c     ****     hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
- 379              		.loc 1 182 0
- 380 0054 4FF40063 		mov	r3, #2048
- 381 0058 4361     		str	r3, [r0, #20]
+ 378              		.loc 1 182 0
+ 379 0054 4FF40063 		mov	r3, #2048
+ 380 0058 4361     		str	r3, [r0, #20]
  183:Src/adc.c     ****     hdma_adc1.Init.Mode = DMA_NORMAL;
- 382              		.loc 1 183 0
- 383 005a 4FF40053 		mov	r3, #8192
- 384 005e 8361     		str	r3, [r0, #24]
+ 381              		.loc 1 183 0
+ 382 005a 4FF40053 		mov	r3, #8192
+ 383 005e 8361     		str	r3, [r0, #24]
  184:Src/adc.c     ****     hdma_adc1.Init.Priority = DMA_PRIORITY_HIGH;
- 385              		.loc 1 184 0
- 386 0060 C561     		str	r5, [r0, #28]
+ 384              		.loc 1 184 0
+ 385 0060 C561     		str	r5, [r0, #28]
  185:Src/adc.c     ****     hdma_adc1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
- 387              		.loc 1 185 0
- 388 0062 4FF40033 		mov	r3, #131072
- 389 0066 0362     		str	r3, [r0, #32]
+ 386              		.loc 1 185 0
+ 387 0062 4FF40033 		mov	r3, #131072
+ 388 0066 0362     		str	r3, [r0, #32]
  186:Src/adc.c     ****     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
- 390              		.loc 1 186 0
- 391 0068 4562     		str	r5, [r0, #36]
+ 389              		.loc 1 186 0
+ 390 0068 4562     		str	r5, [r0, #36]
  187:Src/adc.c     ****     {
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 12
+ 391              		.loc 1 187 0
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 12
 
 
- 392              		.loc 1 187 0
- 393 006a FFF7FEFF 		bl	HAL_DMA_Init
- 394              	.LVL19:
- 395 006e 18B9     		cbnz	r0, .L30
- 396              	.L25:
+ 392 006a FFF7FEFF 		bl	HAL_DMA_Init
+ 393              	.LVL19:
+ 394 006e 18B9     		cbnz	r0, .L30
+ 395              	.L25:
  192:Src/adc.c     **** 
- 397              		.loc 1 192 0
- 398 0070 134B     		ldr	r3, .L31+16
- 399 0072 A363     		str	r3, [r4, #56]
- 400 0074 9C63     		str	r4, [r3, #56]
- 401 0076 CCE7     		b	.L23
- 402              	.L30:
+ 396              		.loc 1 192 0
+ 397 0070 134B     		ldr	r3, .L31+16
+ 398 0072 A363     		str	r3, [r4, #56]
+ 399 0074 9C63     		str	r4, [r3, #56]
+ 400 0076 CCE7     		b	.L23
+ 401              	.L30:
  189:Src/adc.c     ****     }
- 403              		.loc 1 189 0
- 404 0078 BD21     		movs	r1, #189
- 405 007a 1348     		ldr	r0, .L31+24
- 406 007c FFF7FEFF 		bl	_Error_Handler
- 407              	.LVL20:
- 408 0080 F6E7     		b	.L25
- 409              	.LVL21:
- 410              	.L29:
- 411              	.LBB3:
+ 402              		.loc 1 189 0
+ 403 0078 BD21     		movs	r1, #189
+ 404 007a 1348     		ldr	r0, .L31+24
+ 405 007c FFF7FEFF 		bl	_Error_Handler
+ 406              	.LVL20:
+ 407 0080 F6E7     		b	.L25
+ 408              	.LVL21:
+ 409              	.L29:
+ 410              	.LBB3:
  204:Src/adc.c     ****   
- 412              		.loc 1 204 0
- 413 0082 0021     		movs	r1, #0
- 414 0084 0291     		str	r1, [sp, #8]
- 415 0086 0C4B     		ldr	r3, .L31+8
- 416 0088 5A6C     		ldr	r2, [r3, #68]
- 417 008a 42F40072 		orr	r2, r2, #512
- 418 008e 5A64     		str	r2, [r3, #68]
- 419 0090 5B6C     		ldr	r3, [r3, #68]
- 420 0092 03F40073 		and	r3, r3, #512
- 421 0096 0293     		str	r3, [sp, #8]
- 422 0098 029B     		ldr	r3, [sp, #8]
- 423              	.LBE3:
+ 411              		.loc 1 204 0
+ 412 0082 0021     		movs	r1, #0
+ 413 0084 0291     		str	r1, [sp, #8]
+ 414 0086 0C4B     		ldr	r3, .L31+8
+ 415 0088 5A6C     		ldr	r2, [r3, #68]
+ 416 008a 42F40072 		orr	r2, r2, #512
+ 417 008e 5A64     		str	r2, [r3, #68]
+ 418 0090 5B6C     		ldr	r3, [r3, #68]
+ 419 0092 03F40073 		and	r3, r3, #512
+ 420 0096 0293     		str	r3, [sp, #8]
+ 421 0098 029B     		ldr	r3, [sp, #8]
+ 422              	.LBE3:
  209:Src/adc.c     ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
- 424              		.loc 1 209 0
- 425 009a 1023     		movs	r3, #16
- 426 009c 0393     		str	r3, [sp, #12]
+ 423              		.loc 1 209 0
+ 424 009a 1023     		movs	r3, #16
+ 425 009c 0393     		str	r3, [sp, #12]
  210:Src/adc.c     ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 427              		.loc 1 210 0
- 428 009e 0323     		movs	r3, #3
- 429 00a0 0493     		str	r3, [sp, #16]
+ 426              		.loc 1 210 0
+ 427 009e 0323     		movs	r3, #3
+ 428 00a0 0493     		str	r3, [sp, #16]
  211:Src/adc.c     ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 430              		.loc 1 211 0
- 431 00a2 0591     		str	r1, [sp, #20]
+ 429              		.loc 1 211 0
+ 430 00a2 0591     		str	r1, [sp, #20]
  212:Src/adc.c     **** 
- 432              		.loc 1 212 0
- 433 00a4 03A9     		add	r1, sp, #12
- 434 00a6 0548     		ldr	r0, .L31+12
- 435              	.LVL22:
- 436 00a8 FFF7FEFF 		bl	HAL_GPIO_Init
- 437              	.LVL23:
- 438              		.loc 1 218 0
- 439 00ac B1E7     		b	.L23
- 440              	.L32:
- 441 00ae 00BF     		.align	2
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 13
+ 431              		.loc 1 212 0
+ 432 00a4 03A9     		add	r1, sp, #12
+ 433 00a6 0548     		ldr	r0, .L31+12
+ 434              	.LVL22:
+ 435 00a8 FFF7FEFF 		bl	HAL_GPIO_Init
+ 436              	.LVL23:
+ 437              		.loc 1 218 0
+ 438 00ac B1E7     		b	.L23
+ 439              	.L32:
+ 440 00ae 00BF     		.align	2
+ 441              	.L31:
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 13
 
 
- 442              	.L31:
- 443 00b0 00200140 		.word	1073815552
- 444 00b4 00210140 		.word	1073815808
- 445 00b8 00380240 		.word	1073887232
- 446 00bc 00000240 		.word	1073872896
- 447 00c0 00000000 		.word	hdma_adc1
- 448 00c4 10640240 		.word	1073898512
- 449 00c8 00000000 		.word	.LC0
- 450              		.cfi_endproc
- 451              	.LFE128:
- 453              		.section	.text.HAL_ADC_MspDeInit,"ax",%progbits
- 454              		.align	1
- 455              		.global	HAL_ADC_MspDeInit
- 456              		.syntax unified
- 457              		.thumb
- 458              		.thumb_func
- 459              		.fpu fpv4-sp-d16
- 461              	HAL_ADC_MspDeInit:
- 462              	.LFB129:
+ 442 00b0 00200140 		.word	1073815552
+ 443 00b4 00210140 		.word	1073815808
+ 444 00b8 00380240 		.word	1073887232
+ 445 00bc 00000240 		.word	1073872896
+ 446 00c0 00000000 		.word	hdma_adc1
+ 447 00c4 70640240 		.word	1073898608
+ 448 00c8 00000000 		.word	.LC0
+ 449              		.cfi_endproc
+ 450              	.LFE128:
+ 452              		.section	.text.HAL_ADC_MspDeInit,"ax",%progbits
+ 453              		.align	1
+ 454              		.global	HAL_ADC_MspDeInit
+ 455              		.syntax unified
+ 456              		.thumb
+ 457              		.thumb_func
+ 458              		.fpu fpv4-sp-d16
+ 460              	HAL_ADC_MspDeInit:
+ 461              	.LFB129:
  219:Src/adc.c     **** 
  220:Src/adc.c     **** void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
  221:Src/adc.c     **** {
- 463              		.loc 1 221 0
- 464              		.cfi_startproc
- 465              		@ args = 0, pretend = 0, frame = 0
- 466              		@ frame_needed = 0, uses_anonymous_args = 0
- 467              	.LVL24:
- 468 0000 10B5     		push	{r4, lr}
- 469              	.LCFI12:
- 470              		.cfi_def_cfa_offset 8
- 471              		.cfi_offset 4, -8
- 472              		.cfi_offset 14, -4
+ 462              		.loc 1 221 0
+ 463              		.cfi_startproc
+ 464              		@ args = 0, pretend = 0, frame = 0
+ 465              		@ frame_needed = 0, uses_anonymous_args = 0
+ 466              	.LVL24:
+ 467 0000 10B5     		push	{r4, lr}
+ 468              	.LCFI12:
+ 469              		.cfi_def_cfa_offset 8
+ 470              		.cfi_offset 4, -8
+ 471              		.cfi_offset 14, -4
  222:Src/adc.c     **** 
  223:Src/adc.c     ****   if(adcHandle->Instance==ADC1)
- 473              		.loc 1 223 0
- 474 0002 0368     		ldr	r3, [r0]
- 475 0004 0F4A     		ldr	r2, .L39
- 476 0006 9342     		cmp	r3, r2
- 477 0008 03D0     		beq	.L37
+ 472              		.loc 1 223 0
+ 473 0002 0368     		ldr	r3, [r0]
+ 474 0004 0F4A     		ldr	r2, .L39
+ 475 0006 9342     		cmp	r3, r2
+ 476 0008 03D0     		beq	.L37
  224:Src/adc.c     ****   {
  225:Src/adc.c     ****   /* USER CODE BEGIN ADC1_MspDeInit 0 */
  226:Src/adc.c     **** 
@@ -778,19 +777,19 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  239:Src/adc.c     ****     /* ADC1 DMA DeInit */
  240:Src/adc.c     ****     HAL_DMA_DeInit(adcHandle->DMA_Handle);
  241:Src/adc.c     ****   /* USER CODE BEGIN ADC1_MspDeInit 1 */
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 14
-
-
  242:Src/adc.c     **** 
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 14
+
+
  243:Src/adc.c     ****   /* USER CODE END ADC1_MspDeInit 1 */
  244:Src/adc.c     ****   }
  245:Src/adc.c     ****   else if(adcHandle->Instance==ADC2)
- 478              		.loc 1 245 0
- 479 000a 0F4A     		ldr	r2, .L39+4
- 480 000c 9342     		cmp	r3, r2
- 481 000e 0FD0     		beq	.L38
- 482              	.LVL25:
- 483              	.L33:
+ 477              		.loc 1 245 0
+ 478 000a 0F4A     		ldr	r2, .L39+4
+ 479 000c 9342     		cmp	r3, r2
+ 480 000e 0FD0     		beq	.L38
+ 481              	.LVL25:
+ 482              	.L33:
  246:Src/adc.c     ****   {
  247:Src/adc.c     ****   /* USER CODE BEGIN ADC2_MspDeInit 0 */
  248:Src/adc.c     **** 
@@ -808,107 +807,107 @@ ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 1
  260:Src/adc.c     ****   /* USER CODE END ADC2_MspDeInit 1 */
  261:Src/adc.c     ****   }
  262:Src/adc.c     **** } 
- 484              		.loc 1 262 0
- 485 0010 10BD     		pop	{r4, pc}
- 486              	.LVL26:
- 487              	.L37:
- 488 0012 0446     		mov	r4, r0
+ 483              		.loc 1 262 0
+ 484 0010 10BD     		pop	{r4, pc}
+ 485              	.LVL26:
+ 486              	.L37:
+ 487 0012 0446     		mov	r4, r0
  229:Src/adc.c     ****   
- 489              		.loc 1 229 0
- 490 0014 02F58C32 		add	r2, r2, #71680
- 491 0018 536C     		ldr	r3, [r2, #68]
- 492 001a 23F48073 		bic	r3, r3, #256
- 493 001e 5364     		str	r3, [r2, #68]
+ 488              		.loc 1 229 0
+ 489 0014 02F58C32 		add	r2, r2, #71680
+ 490 0018 536C     		ldr	r3, [r2, #68]
+ 491 001a 23F48073 		bic	r3, r3, #256
+ 492 001e 5364     		str	r3, [r2, #68]
  237:Src/adc.c     **** 
- 494              		.loc 1 237 0
- 495 0020 0F21     		movs	r1, #15
- 496 0022 0A48     		ldr	r0, .L39+8
- 497              	.LVL27:
- 498 0024 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 499              	.LVL28:
+ 493              		.loc 1 237 0
+ 494 0020 0F21     		movs	r1, #15
+ 495 0022 0A48     		ldr	r0, .L39+8
+ 496              	.LVL27:
+ 497 0024 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 498              	.LVL28:
  240:Src/adc.c     ****   /* USER CODE BEGIN ADC1_MspDeInit 1 */
- 500              		.loc 1 240 0
- 501 0028 A06B     		ldr	r0, [r4, #56]
- 502 002a FFF7FEFF 		bl	HAL_DMA_DeInit
- 503              	.LVL29:
- 504 002e EFE7     		b	.L33
- 505              	.LVL30:
- 506              	.L38:
+ 499              		.loc 1 240 0
+ 500 0028 A06B     		ldr	r0, [r4, #56]
+ 501 002a FFF7FEFF 		bl	HAL_DMA_DeInit
+ 502              	.LVL29:
+ 503 002e EFE7     		b	.L33
+ 504              	.LVL30:
+ 505              	.L38:
  251:Src/adc.c     ****   
- 507              		.loc 1 251 0
- 508 0030 074A     		ldr	r2, .L39+12
- 509 0032 536C     		ldr	r3, [r2, #68]
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 15
+ 506              		.loc 1 251 0
+ 507 0030 074A     		ldr	r2, .L39+12
+ 508 0032 536C     		ldr	r3, [r2, #68]
+ 509 0034 23F40073 		bic	r3, r3, #512
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 15
 
 
- 510 0034 23F40073 		bic	r3, r3, #512
- 511 0038 5364     		str	r3, [r2, #68]
+ 510 0038 5364     		str	r3, [r2, #68]
  256:Src/adc.c     **** 
- 512              		.loc 1 256 0
- 513 003a 1021     		movs	r1, #16
- 514 003c 0348     		ldr	r0, .L39+8
- 515              	.LVL31:
- 516 003e FFF7FEFF 		bl	HAL_GPIO_DeInit
- 517              	.LVL32:
- 518              		.loc 1 262 0
- 519 0042 E5E7     		b	.L33
- 520              	.L40:
- 521              		.align	2
- 522              	.L39:
- 523 0044 00200140 		.word	1073815552
- 524 0048 00210140 		.word	1073815808
- 525 004c 00000240 		.word	1073872896
- 526 0050 00380240 		.word	1073887232
- 527              		.cfi_endproc
- 528              	.LFE129:
- 530              		.comm	hdma_adc1,96,4
- 531              		.comm	hadc2,72,4
- 532              		.comm	hadc1,72,4
- 533              		.section	.rodata.MX_ADC1_Init.str1.4,"aMS",%progbits,1
- 534              		.align	2
- 535              	.LC0:
- 536 0000 5372632F 		.ascii	"Src/adc.c\000"
- 536      6164632E 
- 536      6300
- 537              		.text
- 538              	.Letext0:
- 539              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 540              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 541              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 542              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 543              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 544              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 545              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
- 546              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
- 547              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
- 548              		.file 11 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 549              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 550              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 551              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 552              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 553              		.file 16 "Inc/adc.h"
- 554              		.file 17 "Inc/dma.h"
-ARM GAS  C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s 			page 16
+ 511              		.loc 1 256 0
+ 512 003a 1021     		movs	r1, #16
+ 513 003c 0348     		ldr	r0, .L39+8
+ 514              	.LVL31:
+ 515 003e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 516              	.LVL32:
+ 517              		.loc 1 262 0
+ 518 0042 E5E7     		b	.L33
+ 519              	.L40:
+ 520              		.align	2
+ 521              	.L39:
+ 522 0044 00200140 		.word	1073815552
+ 523 0048 00210140 		.word	1073815808
+ 524 004c 00000240 		.word	1073872896
+ 525 0050 00380240 		.word	1073887232
+ 526              		.cfi_endproc
+ 527              	.LFE129:
+ 529              		.comm	hdma_adc1,96,4
+ 530              		.comm	hadc2,72,4
+ 531              		.comm	hadc1,72,4
+ 532              		.section	.rodata.MX_ADC1_Init.str1.4,"aMS",%progbits,1
+ 533              		.align	2
+ 534              	.LC0:
+ 535 0000 5372632F 		.ascii	"Src/adc.c\000"
+ 535      6164632E 
+ 535      6300
+ 536              		.text
+ 537              	.Letext0:
+ 538              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 539              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 540              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 541              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 542              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 543              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 544              		.file 8 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 545              		.file 9 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\lib\\gcc\\arm-none-eabi
+ 546              		.file 10 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include
+ 547              		.file 11 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 548              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 549              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 550              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 551              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 552              		.file 16 "Inc/adc.h"
+ 553              		.file 17 "Inc/dma.h"
+ARM GAS  C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 adc.c
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:18     .text.MX_ADC1_Init:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:25     .text.MX_ADC1_Init:00000000 MX_ADC1_Init
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:179    .text.MX_ADC1_Init:000000bc $d
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:18     .text.MX_ADC1_Init:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:25     .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:178    .text.MX_ADC1_Init:000000b8 $d
                             *COM*:00000048 hadc1
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:187    .text.MX_ADC2_Init:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:194    .text.MX_ADC2_Init:00000000 MX_ADC2_Init
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:285    .text.MX_ADC2_Init:00000060 $d
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:186    .text.MX_ADC2_Init:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:193    .text.MX_ADC2_Init:00000000 MX_ADC2_Init
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:284    .text.MX_ADC2_Init:00000060 $d
                             *COM*:00000048 hadc2
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:293    .text.HAL_ADC_MspInit:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:300    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:443    .text.HAL_ADC_MspInit:000000b0 $d
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:292    .text.HAL_ADC_MspInit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:299    .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:442    .text.HAL_ADC_MspInit:000000b0 $d
                             *COM*:00000060 hdma_adc1
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:454    .text.HAL_ADC_MspDeInit:00000000 $t
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:461    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:523    .text.HAL_ADC_MspDeInit:00000044 $d
-C:\Users\kotaro\AppData\Local\Temp\ccyFA1ZP.s:534    .rodata.MX_ADC1_Init.str1.4:00000000 $d
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:453    .text.HAL_ADC_MspDeInit:00000000 $t
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:460    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:522    .text.HAL_ADC_MspDeInit:00000044 $d
+C:\Users\kotaro\AppData\Local\Temp\cc7oDtbZ.s:533    .rodata.MX_ADC1_Init.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_ADC_Init

@@ -20,16 +20,21 @@
 extern enc_t enc;
 
 extern sensor_t sen_l;
+extern sensor_t sen_fl;
 extern sensor_t sen_front;
+extern sensor_t sen_fr;
 extern sensor_t sen_r;
 
 extern uint16_t flag_motion_end;
 extern uint8_t flag_motor;
+extern uint8_t flag_wall;
 
 extern maze_t maze;
 
 void Mode_Run(unsigned char flag_search);
 void Mode_Adjust(unsigned char mode);
+void Mode_Circuit(void);
+void Mode_enkai(void);
 
 /****************************************************************************************
  * outline  : wright mode 
@@ -175,7 +180,7 @@ void Mode_Sensor_Check(void)
             HAL_GPIO_WritePin(led3_GPIO_Port, led3_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(led2_GPIO_Port, led2_Pin, GPIO_PIN_SET);
         }
-        printf("l:%d f:%d r:%d \r", sen_l.now, sen_front.now, sen_r.now);
+        printf("l:%d fl:%d f:%d fr:%d r:%d \r", sen_l.now, sen_fl.now , sen_front.now, sen_fr.now , sen_r.now);
 
         if (Push() == ON)
         {
@@ -188,6 +193,7 @@ void Mode_Sensor_Check(void)
 
 void Mode_Run(unsigned char flag_search)
 {
+    flag_wall=TRUE;
     if (flag_search == FALSE)
     {
         Plan_Adachi();
@@ -207,7 +213,7 @@ void Mode_Run(unsigned char flag_search)
     }
 }
 
-extern gyro_t gyro;
+
 void Mode_Adjust(unsigned char motion)
 {
     adcStart();
@@ -219,58 +225,127 @@ void Mode_Adjust(unsigned char motion)
     gyro_offset_calc_reset();
     HAL_Delay(2500);
     flag_motor = TRUE;
+    enc.offset = 0;
 
     switch (motion)
     {
     case 0:
+        flag_wall=FALSE;
         Straight_half_accel();
-        while (flag_motion_end == FALSE) {} 
-        enc.offset = 0;
+        while (flag_motion_end == FALSE)
+        {
+        }
+        enc.offset=0;
         Motion_SlalomLeft();
-        enc.offset = 0;
         Straight_half_stop();
-        while (flag_motion_end == FALSE) {} 
-        
+        while (flag_motion_end == FALSE)
+        {
+        }
+        enc.offset=0;
+
         break;
     case 1:
+        flag_wall=FALSE;
         Straight_half_accel();
-        while (flag_motion_end == FALSE) {} 
-        enc.offset = 0;
+        while (flag_motion_end == FALSE)
+        {
+        }
+        enc.offset=0;
         Motion_SlalomRight();
-        enc.offset = 0;
         Straight_half_stop();
-        while (flag_motion_end == FALSE) {} 
+        while (flag_motion_end == FALSE)
+        {
+        }
+        enc.offset=0;
 
         break;
     case 2:
+        flag_wall=FALSE;
         Straight_half_accel();
-        while (flag_motion_end == FALSE) {}
-        enc.offset = 0;
+        while (flag_motion_end == FALSE)
+        {
+        }
+        enc.offset=0;
         Motion_Uturn();
-        enc.offset = 0;
         Motion_Uturn();
-        enc.offset = 0;
         Straight_half_stop();
-        while (flag_motion_end == FALSE) {} 
+        while (flag_motion_end == FALSE)
+        {
+        }
+        enc.offset=0;
         break;
     case 3:
+        flag_wall=TRUE;
         Motion_Start();
-        enc.offset = 0;
         Motion_Straight();
-        enc.offset = 0;
         Motion_Straight();
-        enc.offset = 0;
         Motion_Straight();
-        enc.offset = 0;
         Motion_Straight();
-        enc.offset = 0;
         Motion_Straight();
-        enc.offset = 0;
         Motion_Straight();
         Motion_Goal();
+        break;
+    case 4:
+        Mode_enkai();
         break;
     default:
         break;
     }
     flag_motor = FALSE;
+}
+
+void Mode_Circuit(void)
+{
+    adcStart();
+    while (sen_front.is_wall == FALSE)
+    {
+    }
+    Output_Buzzer(HZ_G);
+    HAL_Delay(2500);
+    gyro_offset_calc_reset();
+    HAL_Delay(2500);
+    flag_motor = TRUE;
+    enc.offset = 0;
+
+
+    //1
+    Motion_StartFast(14);
+    Motion_SlalomRight();
+    Motion_StraightFast(6);
+    Motion_SlalomRight();
+    Motion_StraightFast(14);
+    Motion_SlalomRight();
+    Motion_StraightFast(6);
+    Motion_SlalomRight();
+
+    //2
+    Motion_StraightFast(14);
+    Motion_SlalomRight();
+
+    Motion_StraightFast(6);
+    Motion_SlalomRight();
+
+    Motion_StraightFast(14);
+    Motion_SlalomRight();
+
+    Motion_StraightFast(6);
+    Motion_SlalomRight();
+
+    Motion_Goal();
+}
+
+void Mode_enkai(void)
+{
+    adcStart();
+    while (sen_front.is_wall == FALSE)
+    {
+    }
+    Output_Buzzer(HZ_G);
+    HAL_Delay(2500);
+    gyro_offset_calc_reset();
+    HAL_Delay(2500);
+    Output_Buzzer(HZ_G);
+    flag_motor = TRUE;
+
+    Motion_Enkai();
 }

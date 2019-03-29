@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -40,8 +40,7 @@
 #ifndef __spi_H
 #define __spi_H
 #ifdef __cplusplus
-extern "C"
-{
+ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -50,11 +49,11 @@ extern "C"
 
 /* USER CODE BEGIN Includes */
 #include "stdint.h"
-  /* USER CODE END Includes */
+/* USER CODE END Includes */
 
-  extern SPI_HandleTypeDef hspi2;
+extern SPI_HandleTypeDef hspi2;
 
-  /* USER CODE BEGIN Private defines */
+/* USER CODE BEGIN Private defines */
   //gyro
   typedef struct
   {
@@ -63,17 +62,17 @@ extern "C"
     uint16_t offset_cnt;
     int32_t offset;
   } gyro_t;
-  /* USER CODE END Private defines */
+/* USER CODE END Private defines */
 
-  extern void _Error_Handler(char *, int);
+extern void _Error_Handler(char *, int);
 
-  void MX_SPI2_Init(void);
+void MX_SPI2_Init(void);
 
-  /* USER CODE BEGIN Prototypes */
+/* USER CODE BEGIN Prototypes */
   void set_mpu6500(void);
   void Update_gyro(void);
   void gyro_offset_calc_reset(void);
-  /* USER CODE END Prototypes */
+/* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }

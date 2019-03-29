@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -48,6 +48,7 @@
 #define Certain       0x70//return from "WHO_AM_I"
 #define CONFIG        0x1A
 #define GYRO_CONFIG   0x1B
+#define ACCEL_CONFIG  0x1C
 #define PWR_MGMT_1    0x6B
 #define GYRO_OUT_Z_L  0x48
 #define GYRO_OUT_Z_H  0x47

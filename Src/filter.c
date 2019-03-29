@@ -4,7 +4,7 @@
 #include "tim.h"
 #include "main.h"
 #include "gpio.h"
-#include "stdint.h"
+#include <stdint.h>
 #include "filter.h"
 #include "interface.h"
 
@@ -14,7 +14,7 @@
 #define RIGHT_VALUE 2
 #define FINISH_CONVERT 3
 
-#define ADC_CONVERT_DATA_SIZE 4
+#define ADC_CONVERT_DATA_SIZE ((uint32_t)  4)
 
 #define TRUE 1
 #define FALSE 0
@@ -33,14 +33,18 @@ int16_t adc_counter;
 
 void setSensorConstant(void)
 {
-  sen_l.reference = 560;
-  sen_l.threshold = 480;
+  sen_l.reference = 578;
+  sen_l.threshold = 472;
 
-  sen_front.reference = 340;
-  sen_front.threshold = 310;
+  sen_fl.reference = 786;
 
-  sen_r.reference = 654;
-  sen_r.threshold = 555;
+  sen_front.reference = 793;
+  sen_front.threshold = 610;
+
+  sen_fr.reference = 803;
+
+  sen_r.reference = 670;
+  sen_r.threshold = 570;
 }
 
 void update_sensor_data(void)
@@ -114,7 +118,7 @@ void getADSensor(void)
     HAL_GPIO_WritePin(paluse2_GPIO_Port, paluse2_Pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(paluse3_GPIO_Port, paluse3_Pin, GPIO_PIN_SET);
     
-    for (i = 0; i < 100; i++)
+    for (i = 0; i < 200; i++)
     {
     }
     
@@ -131,17 +135,17 @@ void getADSensor(void)
     ADCOntData[2] = ADCBuff[2];
     ADCOntData[3] = ADCBuff[3];
 
-    sen_l.diff = sen_l.now - (ADCOntData[2] - ADCOffData[2]);
+    //sen_l.diff = sen_l.now - (ADCOntData[2] - ADCOffData[2]);
     sen_l.now = ADCOntData[2] - ADCOffData[2];
 
-    sen_fl.diff = sen_fl.now - (ADCOntData[3] - ADCOffData[3]);
+    //sen_fl.diff = sen_fl.now - (ADCOntData[3] - ADCOffData[3]);
     sen_fl.now = ADCOntData[3] - ADCOffData[3];
 
     HAL_GPIO_WritePin(paluse0_GPIO_Port, paluse0_Pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(paluse1_GPIO_Port, paluse1_Pin, GPIO_PIN_SET);
 
     
-    for (i = 0; i < 100; i++)
+    for (i = 0; i < 200; i++)
     {
     }
     
@@ -158,13 +162,13 @@ void getADSensor(void)
     ADCOntData[0] = ADCBuff[0];
     ADCOntData[1] = ADCBuff[1];
 
-    sen_fr.diff = sen_fr.now - (ADCOntData[0] - ADCOffData[0]);
+    //sen_fr.diff = sen_fr.now - (ADCOntData[0] - ADCOffData[0]);
     sen_fr.now = ADCOntData[0] - ADCOffData[0];
 
-    sen_r.diff = sen_r.now - (ADCOntData[1] - ADCOffData[1]);
+    //sen_r.diff = sen_r.now - (ADCOntData[1] - ADCOffData[1]);
     sen_r.now = ADCOntData[1] - ADCOffData[1];
     
-    for (i = 0; i < 100; i++)
+    for (i = 0; i < 200; i++)
     {
     }
     
@@ -189,6 +193,14 @@ float Filter_GetBatt(void)
     HAL_ADC_Stop(&hadc2);
   }
   batt = batt / 10.0f / 4095.0f * 133.0f / 33.0f * 3.3f;
-  LED_Control((unsigned char)batt);
+  //finish
+  while(1){
+    LED_Control((unsigned char)batt);
+    if(Push()==1){
+      Output_Buzzer(HZ_C_H);
+      HAL_Delay(500);
+      break;
+    }
+  }
   return batt;
 }

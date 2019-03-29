@@ -409,6 +409,7 @@ void Plan_Adachi(void)
 	Maze_Init(&maze);
 
 	flag_motor = TRUE;
+	enc.offset = 0;
 
 	position = 0b1;
 	direction = NORTH;
@@ -418,7 +419,6 @@ void Plan_Adachi(void)
 
 	while (flag_goal_is == FALSE)
 	{
-		enc.offset = 0;
 		Maze_Get_Wall();
 		Maze_CreateMap(&maze);
 		next_dir = Maze_Next_Motion();
@@ -467,37 +467,17 @@ void Plan_AllSearch(void)
 
 	if (sen_front.is_wall == FALSE)
 	{
+		Update_Position(FRONT);
 		Straight_half_accel();
 	}
 	else
 	{
-		switch (direction)
-		{
-		case NORTH:
-			direction = SOUTH;
-			position--;
-			break;
-		case SOUTH:
-			direction = NORTH;
-			position++;
-			break;
-		case EAST:
-			direction = WEST;
-			position = position - (0b1 << 4);
-			break;
-		case WEST:
-			direction = EAST;
-			position = position + (0b1 << 4);
-			break;
-		default:
-			break;
-		}
+		Update_Position(UTURN);
 		Motion_Restart();
 	}
 
 	while (1)
 	{
-		enc.offset = 0;
 		unsigned char next_dir;
 		Maze_Get_Wall();
 		end_flag = Maze_CreateAllMap(&maze);
@@ -638,10 +618,10 @@ void Plan_Fast(void)
 	gyro_offset_calc_reset();
 	HAL_Delay(2500);
 	flag_motor = TRUE;
+	enc.offset = 0;
 
 	while (q_motion.head != q_motion.tail)
 	{
-		enc.offset = 0;
 		motion_h = deq_motion(&q_motion);
 		motion_l = motion_h & 0b1111;
 		motion_h = motion_h >> 4;

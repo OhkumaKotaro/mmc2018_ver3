@@ -3,6 +3,7 @@
 #include "stdint.h"
 #include "filter.h"
 #include "spi.h"
+#include "interface.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -34,24 +35,26 @@ extern enc_t enc;
 extern gyro_t gyro;
 
 extern sensor_t sen_l;
+extern sensor_t sen_fl;
 extern sensor_t sen_front;
+extern sensor_t sen_fr;
 extern sensor_t sen_r;
 
 float enc_sum;
-float enc_before = 0;
+float enc_before;
 
 float y_sum;
-float y_before = 0;
+float y_before;
 
-float si_wall_sum;
-float si_wall_bef;
-
-float front_wall_sum = 0;
-float front_wall_before = 0;
+float fwall_error_s = 0;
+float fwall_error_y = 0;
 
 volatile unsigned char flag_motion_end;
 uint8_t flag_motor;
 unsigned char flag_wall;
+volatile unsigned char flag_front_wall;
+
+unsigned char add_l = 0, add_r = 0;
 
 /****************************************************************************************
  * outline  : PID control
@@ -210,46 +213,76 @@ float Control_encoder(void)
         }
     }
 
-    target = (float)straight_tgt.dir * straight_tgt.velocity;
+    target = (float)straight_tgt.dir * straight_tgt.velocity + fwall_error_s;
 
-    return PID_value(target, enc.velocity, &enc_sum, &enc_before, 4.0f, 10.0f, 0);
+    return PID_value(target, enc.velocity, &enc_sum, &enc_before, 4.2f, 10.0f, 0);
 }
 
 float Control_Side_Wall(void)
 {
     float wall_dif = 0;
-    float kp = 0.15f;
+    float kp = 0.3f;
 
-    if (sen_l.is_wall == TRUE && sen_r.is_wall == TRUE)
+    if (sen_l.now > sen_l.threshold + add_l && sen_r.now > sen_r.threshold + add_r)
     {
-        if (sen_l.diff > -200 && sen_r.diff > -200)
+        LED_Control(12);
+        if (sen_l.diff_1ms > -10 && sen_r.diff_1ms > -10)
         {
-            wall_dif = kp * ((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
+            if (sen_l.diff_1ms < 10 && sen_r.diff_1ms < 10)
+            {
+                wall_dif = kp * ((sen_l.now - sen_l.reference) - (sen_r.now - sen_r.reference));
+                add_l = 0;
+                add_r = 0;
+            }
+        }
+        else
+        {
+            add_l = 150;
+            add_r = 150;
         }
     }
-    else if (sen_l.is_wall == TRUE)
+    else if (sen_l.now > sen_l.threshold + add_l)
     {
-        if (sen_l.diff_1ms > -20)
+        LED_Control(4);
+        if (sen_l.diff_1ms > -10 && sen_l.diff_1ms < 10)
         {
             wall_dif = 2 * kp * (sen_l.now - sen_l.reference);
+            add_l=0;
+        }
+        else
+        {
+            add_l = 150;
         }
     }
-    else if (sen_r.is_wall == TRUE)
+    else if (sen_r.now > sen_r.threshold + add_r)
     {
-        if (sen_r.diff_1ms > -20)
+        LED_Control(8);
+        if (sen_r.diff_1ms > -10 && sen_r.diff_1ms < 10)
         {
             wall_dif = -2 * kp * (sen_r.now - sen_r.reference);
+            add_r = 0;
+        }
+        else
+        {
+            add_r = 150;
         }
     }
     else
     {
-        wall_dif = 0;
+        LED_Control(0);
     }
 
-    if(yawrate_tgt.dir!=0 || straight_tgt.velocity==0){
+    if (flag_wall != TRUE)
+    {
         wall_dif = 0;
+        LED_Control(0);
     }
 
+    if (yawrate_tgt.dir != 0 || straight_tgt.velocity < 400)
+    {
+        wall_dif = 0;
+        LED_Control(0);
+    }
     return wall_dif;
 }
 
@@ -286,27 +319,44 @@ float Control_gyro(void)
         flag_motion_end = TRUE;
     }
 
-    target = (float)yawrate_tgt.dir * yawrate_tgt.velocity- Control_Side_Wall();
+    target = (float)yawrate_tgt.dir * yawrate_tgt.velocity - Control_Side_Wall() + fwall_error_y;
 
     return PID_value(target, gyro.velocity, &y_sum, &y_before, 0.98f, 18.0f, 4.5f); //2.0f, 20.0f, 4.0f//0.92f, 17.0f, 4.0f
 }
 
-float Control_Front_Wall(void)
+void Control_Front_Wall(void)
 {
-    float pid = 0;
-    if (sen_front.is_wall == TRUE)
+    float error_s = 0;
+    float error_y = 0;
+
+    if (straight_tgt.velocity == 0 && yawrate_tgt.velocity == 0)
     {
-        if (sen_front.reference > sen_front.now)
+        if (sen_front.is_wall == TRUE)
         {
-            pid = 0.2f * (sen_front.reference - sen_front.now);
-            //front_wall_pid=(int16_t)PID_value((float)sen_front.reference,(float)sen_front.adc,&front_wall_sum,&front_wall_before,0.2f,0.1f,0);
+            error_s = sen_front.reference - sen_front.now;
+            error_y = sen_fl.now - sen_fl.reference - (sen_fr.now - sen_fr.reference);
+            fwall_error_s = error_s * 2.0f;
+            fwall_error_y = error_y * 3.0f;
+            if (-3 < error_s && error_s < 3)
+            {
+                if (-3 < error_y && error_y < 3)
+                {
+                    fwall_error_s = 0;
+                    fwall_error_y = 0;
+                    enc_sum = 0;
+                    enc_before = 0;
+                    y_sum = 0;
+                    y_before = 0;
+                    flag_front_wall = FALSE;
+                }
+            }
         }
     }
-    else
+    if (flag_front_wall == FALSE)
     {
-        pid = 0;
+        fwall_error_s = 0;
+        fwall_error_y = 0;
     }
-    return pid;
 }
 
 void Control_pwm(void)
@@ -316,6 +366,7 @@ void Control_pwm(void)
         int16_t straight_pid = 0;
         int16_t yawrate_pid = 0;
 
+        Control_Front_Wall();
         straight_pid = (int16_t)Control_encoder();
         yawrate_pid = (int16_t)Control_gyro();
 

@@ -24,6 +24,7 @@ void Motion_SlalomRight(void);
 void Motion_StartFast(unsigned char step);
 void Motion_StraightFast(unsigned char step);
 void Motion_GoalFast(unsigned char step);
+void Motion_Enkai(void);
 
 #ifdef __cplusplus
 }

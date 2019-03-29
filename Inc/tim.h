@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -60,7 +60,7 @@ extern TIM_HandleTypeDef htim4;
 
 //encoder
 #define ENC_CUL_ROT 1024.0f//512 * 2
-#define TIRE_RADIUS 12.3f  //[mm] ç›´ï¿½?24.58mm
+#define TIRE_RADIUS 12.3f  //[mm] ç›´?¿½?24.58mm
 #define GEAR_RATE 5.25f
 
 typedef struct{
